@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.1//EN" "urlrewrite3.1.dtd">
+	<!--
+		url rewrite,it's easy to make your site be attached by search engine
+		eg.google,baidu
+	-->
+<urlrewrite>
+	<!--
+		<rule > <from >/admin/</from> <to>/admin/index.jsp</to> </rule>
+	-->
+
+</urlrewrite>

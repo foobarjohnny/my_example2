@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="siteInfo" type="com.epaide.site.model.SiteInfo" />
+
+	<select id="getSiteInfo">
+		select * from t_site_info
+	</select>
+	<select id="getSiteInfos">
+		select * from t_site_info
+	</select>
+
+	<insert id="addSiteInfo" parameterClass="siteInfo">
+		insert into t_site_info(
+		id ,
+		name ,
+		title ,
+		logo ,
+		url ,
+		allowed_register ,
+		allowed_mailnotified ,
+		allowed_phone_auth ,
+		send_epaibe ,
+		unactiveduration ,
+		copyright ,
+		meta_key ,
+		meta_desc ,
+		site_desc ,
+		com_co_desc ,
+		register_agreement )
+		values(
+		#id#,#name#,#title#,
+		#logo#,#url#,#allowedRegister#,#allowedMailNotified#,#allowedPhoneAuth#,#sendEpaibe#,
+		#unactiveDuration#,
+		#copyright#,
+		#metaKey#,
+		#metaDesc#,
+		#siteDesc#,
+		#comCoDesc#,
+		#registerAgreement#
+		)
+	</insert>
+	<update id="updateSiteInfo">
+
+
+	</update>
+</sqlMap>
