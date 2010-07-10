@@ -1,0 +1,63 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/tx
+				 http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+				http://www.springframework.org/schema/aop
+				 http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+				 
+	<!-- 配置信息 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreResourceNotFound" value="true"/>
+		<property name="locations">
+			<list>
+				<value>classpath:config.properties</value>
+			</list>
+		</property>
+   	</bean> 
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${datasource.url}" />
+		<property name="user" value="${datasource.username}" />
+		<property name="password" value="${datasource.password}" />
+		<property name="minPoolSize" value="${datasource.miniPoolSize}" />
+		<property name="maxPoolSize" value="${datasource.maxPoolSize}" />
+		<property name="initialPoolSize" value="${datasource.initialPoolSize}" />
+		<property name="maxIdleTime" value="${datasource.maxIdleTime}" />
+	</bean>
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:/sql-map-config.xml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- transaction manager -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="txService"
+			expression="execution(* com.company.project..service.*Service.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txService" />
+		<aop:advisor
+			pointcut="execution(* com.company.project..service.*Service.*(..))"
+			advice-ref="txAdvice" />
+	</aop:config>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" rollback-for="Throwable" />
+			<tx:method name="save*" rollback-for="Throwable" />
+			<tx:method name="insert*" rollback-for="Throwable" />
+			<tx:method name="update*" rollback-for="Throwable" />
+			<tx:method name="modify*" rollback-for="Throwable" />
+			<tx:method name="remove*" rollback-for="Throwable" />
+			<tx:method name="delete*" rollback-for="Throwable" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+</beans>

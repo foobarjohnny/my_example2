@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.xsd">
+
+
+	<sec:http auto-config='true'>
+		<sec:intercept-url pattern="/login.jsp*" filters="none" />
+		<sec:intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
+		<sec:intercept-url pattern="/**" access="ROLE_ANONYMOUS,ROLE_USER,ROLE_ADMIN" />
+		<sec:form-login login-page="/login.jsp" />
+		<!-- 同一个用户只允许一个地方登陆 -->
+		<sec:concurrent-session-control
+			max-sessions="1" exception-if-maximum-exceeded="true" />
+	</sec:http>
+	<!--
+		<sec:authentication-provider user-service-ref="userDetailsService">
+		<sec:password-encoder hash="md5" /> </sec:authentication-provider>
+		<bean id="userDetailsService"
+		class="com.epaide.base.security.dao.DbUserServiceImpl" />
+	-->
+	<!-- 目前先使用常量用户 -->
+	<sec:authentication-provider>
+		<sec:user-service>
+			<sec:user password="admin" name="admin" authorities="ROLE_ADMIN" />
+			<sec:user password="user" name="user" authorities="ROLE_USER" />
+			<sec:user password="anonymous" name="anonymous" authorities="ROLE_ANONYMOUS" />
+		</sec:user-service>
+	</sec:authentication-provider>
+
+</beans>
