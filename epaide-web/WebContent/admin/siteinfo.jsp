@@ -4,14 +4,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<jsp:include page="/common/common.jsp"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 </head>
 <body>
-<s:form action="site/siteInfoAction_saveSiteInfo.action" method="post"
-	enctype="multipart/form-data">
-	<table width="100%" border="1" cellpadding="10" cellspacing="0"
-		bordercolor="#FFFFFF" bgcolor="#EEEEEE">
+<s:form action="site/siteInfoAction_saveSiteInfo.action" method="post" enctype="multipart/form-data">
+	<table width="100%" border="1" cellpadding="10" cellspacing="0"	bordercolor="#FFFFFF" bgcolor="#EEEEEE">
 		<s:hidden name="siteInfo.id"></s:hidden>
 		<tr>
 			<td width="34%" align="right">网站名称：</td>
@@ -73,10 +72,5 @@
 		</tr>
 	</table>
 </s:form>
-
-
-
-
-
 </body>
 </html>
