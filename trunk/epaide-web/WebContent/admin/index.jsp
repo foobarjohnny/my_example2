@@ -1,12 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>管理员</title>
 </head>
-<body>
-	管理界面
-</body>
+<frameset rows="67,*" cols="*" frameborder="no" border="0" framespacing="0">
+  <frame src="top.jsp" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
+  <frameset rows="*" cols="201,*" framespacing="0" frameborder="no" border="0">
+    <frame src="left.jsp" name="leftFrame"  noresize="noresize" id="leftFrame" title="leftFrame" />
+    <frame src="main.jsp" name="mainFrame" id="mainFrame" title="mainFrame" />
+  </frameset>
+</frameset>
+<noframes></noframes>
+
 </html>
