@@ -66,8 +66,7 @@
 		</tr>
 		<tr align="right">
 			<td colspan="2">
-			<div align="center"><input type="submit" name="Submit"
-				value="保存设置 "></div>
+			<div align="center"><input type="submit" name="Submit" value="保存设置 "></div>
 			</td>
 		</tr>
 	</table>

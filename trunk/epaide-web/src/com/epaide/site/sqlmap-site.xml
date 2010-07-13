@@ -15,11 +15,7 @@
 
 	<insert id="addSiteInfo" parameterClass="siteInfo">
 		insert into t_site_info(
-		id ,
-		name ,
-		title ,
-		logo ,
-		url ,
+		id ,name ,title ,logo ,url ,
 		allowed_register ,
 		allowed_mailnotified ,
 		allowed_phone_auth ,

@@ -12,5 +12,7 @@ public interface SiteInfoDao {
 	public SiteInfo save(SiteInfo info);
 
 	public void update(SiteInfo info);
+	
+	public SiteInfo get();
 
 }

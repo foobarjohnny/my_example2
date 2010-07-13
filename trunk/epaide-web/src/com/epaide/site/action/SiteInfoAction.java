@@ -24,6 +24,14 @@ public class SiteInfoAction extends ActionSupport {
 		}
 		return SUCCESS;
 	}
+	
+	public String findSiteInfo(){
+		siteInfo = service.getSiteInfo();
+		return SUCCESS;
+	}
+	
+	
+	
 	public SiteInfo getSiteInfo() {
 		return siteInfo;
 	}

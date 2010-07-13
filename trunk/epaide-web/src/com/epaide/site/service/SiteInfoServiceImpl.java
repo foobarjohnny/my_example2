@@ -20,6 +20,11 @@ public class SiteInfoServiceImpl implements SiteInfoService{
 	public void update(SiteInfo info) {
 		dao.update(info);
 	}
+
+	@Override
+	public SiteInfo getSiteInfo() {
+		return dao.get();
+	}
 	
 	
 	

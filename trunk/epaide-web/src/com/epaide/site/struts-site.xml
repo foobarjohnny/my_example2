@@ -6,7 +6,10 @@
 <struts >
 	<package name="site" extends="struts-default">
 		<action name="siteInfoAction_*" class="siteInfoAction" method="{1}">
-			<result name="success">
+			<result name="view">
+				/admin/siteinfo.jsp
+			</result>
+			<result name="success" >
 				/admin/siteinfo.jsp
 			</result>
 		</action>
