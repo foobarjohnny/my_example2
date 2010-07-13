@@ -21,7 +21,7 @@
   <tr>
     <td bgcolor="d2d2d2"><table width="100%" border="0" cellspacing="0" cellpadding="5">
       <tr>
-        <td class="admin_title2"><a target="mainFrame" href="siteinfo.htm">网站基本信息</a></td>
+        <td class="admin_title2"><a target="mainFrame" href="site/siteInfoAction_findSiteInfo.action">网站基本信息</a></td>
       </tr>
       <tr>
         <td class="admin_title2"><a target="mainFrame" href="admin_info_admin.htm">管理员账户管理</a></td>

@@ -19,4 +19,9 @@ public class SiteInfoDaoImpl extends GenericDaoImpl<SiteInfo, Integer>
 		super.update(paramT);
 	}
 
+	@Override
+	public SiteInfo get() {
+		return super.getAll().get(0);
+	}
+
 }

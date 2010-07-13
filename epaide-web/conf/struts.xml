@@ -5,7 +5,7 @@
 
 <struts>
 	<constant name="struts.multipart.saveDir" value="/tmp" />
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.devMode" value="false" />
 	<constant name="struts.ui.theme" value="simple"></constant>
 	<constant name="struts.objectFactory" value="spring"></constant>
 	<include file="com/epaide/site/struts-site.xml"></include>

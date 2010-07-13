@@ -62,7 +62,7 @@
 </ul>
 </div>
 
-<div id="container"><iframe name="contain"> </iframe></div>
+<div id="container"><iframe name="contain" frameborder="0"> </iframe></div>
 
 <div id="footer"></div>
 </body>
