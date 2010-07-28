@@ -1,6 +1,18 @@
+drop table t_site_info;
+drop table t_admin_info;
+drop  table t_help_center;
+drop table t_site_declare;
+drop table t_question;
+drop table t_answer;
+drop table t_category;
+drop table t_product;
+drop table t_robot;
+drop table t_user;
+
+
 create table t_site_info
 (
-   id                   int auto_increment,
+   id                   int primary key auto_increment,
    name             varchar(10),
    title             varchar(20),
    logo                 varchar(20),
