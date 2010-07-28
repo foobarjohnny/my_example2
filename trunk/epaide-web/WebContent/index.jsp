@@ -2,26 +2,34 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-<head>
-<jsp:include page="/common/common.jsp"/>
-<link style="text/css" href="css/css.css" rel="stylesheet" />
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="js/jquery.lavalamp.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$("#menuul").lavaLamp( {
-			fx : "backout",
-			speed : 700,
-			click : function(event, menuItem) {
-				return false;
-			}
-		});
-	});
-</script>
-</head>
+	<head>
+	<!-- 
+		<link style="text/css" href="css/jquery.lightbox-0.5.css"  rel="stylesheet"/>
+		<link style="text/css" href="css/global.css"  rel="stylesheet"/>
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js"></script>
+	-->
+		<link style="text/css" href="css/css.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+		<script type="text/javascript" src="js/jquery.lavalamp.min.js"></script>
+		<script type="text/javascript">
+	
+			$(function() {
+			    $("#menuul").lavaLamp({
+			        fx: "backout",
+			        speed: 700,
+			        click: function(event, menuItem) {
+			            return false;
+			        }
+			    });
+			});
+		</script>
+	</head>
 <body>
+
 <div id="top">
 <table>
 	<tbody>
@@ -61,9 +69,7 @@
      -->
 </ul>
 </div>
-
 <div id="container"><iframe name="contain" frameborder="0"> </iframe></div>
-
 <div id="footer"></div>
 </body>
 </html>
