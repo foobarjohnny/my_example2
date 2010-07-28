@@ -3,11 +3,17 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
+
 	<display-name>epaide-web</display-name>
+	
+	<!-- welcome file list, default file is index.jsp -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-	<!-- Spring Encoding -->
+
+	<!-- ============================ filter list begin ============================== -->
+	
+	<!-- Spring Encoding, the app default encoding is UTF-8 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -16,7 +22,8 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
-	<!-- Spring Security -->
+	
+	<!-- Spring Security filter -->
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -26,6 +33,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	<!-- UrlRewriter Filter -->
 	<filter>
 		<filter-name>UrlRewriteFilter</filter-name>
 		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
@@ -34,6 +42,8 @@
 		<filter-name>UrlRewriteFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<!-- struts2 dispatcher filter  -->
 	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -42,6 +52,10 @@
 		<filter-name>struts2</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<!-- ============================ filter list end ============================== -->
+	
+	<!-- spring application context split each module -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
@@ -51,13 +65,22 @@
 			classpath*:/com/epaide/site/applicationContext-site.xml
 		</param-value>
 	</context-param>
+	
+	
+	<!-- ============================ listener list begin ============================== -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	<!-- ============================ listener list begin ============================== -->
+	
+	<!-- ============ session configuration  begin ，20 minutes================ -->
 	<session-config>
 		<session-timeout>20</session-timeout>
 	</session-config>
-
+	<!-- ============ session configuration  end ，20 minutes================ -->
+	
+	<!-- ============ error page config begin ================ -->
 	<error-page>
 		<exception-type>java.lang.Throwable</exception-type>
 		<location>/common/500.jsp</location>
@@ -74,5 +97,6 @@
 		<error-code>403</error-code>
 		<location>/common/403.jsp</location>
 	</error-page>
-
+	<!-- ============ error page config end ================ -->
+	
 </web-app>
