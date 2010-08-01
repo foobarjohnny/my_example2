@@ -17,7 +17,8 @@
 				<value>classpath:config.properties</value>
 			</list>
 		</property>
-   	</bean> 
+   	</bean>
+   	
 	<!-- 配置数据源 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
@@ -30,10 +31,12 @@
 		<property name="initialPoolSize" value="${datasource.initialPoolSize}" />
 		<property name="maxIdleTime" value="${datasource.maxIdleTime}" />
 	</bean>
+	
 	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
 		<property name="configLocation" value="classpath:/sql-map-config.xml" />
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
 	<!-- transaction manager -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -59,5 +62,4 @@
 			<tx:method name="*" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
-
 </beans>
