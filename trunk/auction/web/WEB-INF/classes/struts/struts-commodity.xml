@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="commodity" extends="default">
+		<action name="sortDelete" class="sortAction" method="delete">
+			<result type="chain">sortSearch</result>
+		</action>
+		<action name="sortSearch" class="sortAction" method="search">
+			<result>WEB-INF/pages/admin/commodity/admin_goods_class.jsp</result>
+		</action>
+		<action name="sortForward" class="sortAction" method="forward">
+			<result>WEB-INF/pages/admin/commodity/admin_goods_class_form.jsp</result>
+		</action>
+		<action name="sortSave" class="sortAction" method="save">
+			<result type="chain">sortSearch</result>
+		</action>
+		
+		<action name="commodityDelete" class="commodityAction" method="delete">
+			<result type="chain">commoditySearch</result>
+		</action>
+		<action name="commoditySearch" class="commodityAction" method="search">
+			<result>WEB-INF/pages/admin/commodity/admin_goods.jsp</result>
+			<result name="progress">WEB-INF/pages/admin/commodity/admin_goods_progress.jsp</result>
+			<result name="lot">WEB-INF/pages/admin/commodity/admin_goods_lot.jsp</result>
+			<result name="reach">WEB-INF/pages/admin/commodity/admin_goods_reach.jsp</result>
+		</action>
+		<action name="commodityForward" class="commodityAction" method="forward">
+			<result>WEB-INF/pages/admin/commodity/admin_goods_add.jsp</result>
+		</action>
+		<action name="commoditySave" class="commodityAction" method="save">
+			<result type="chain">commodityForward</result>
+			<result name="page" type="chain">commoditySearch</result>
+		</action>
+		<action name="commodityAuction" class="commodityAction" method="auction">
+			<result type="chain">commoditySearch</result>
+		</action>
+		<action name="commoditySelect" class="commodityAction" method="select">
+			<result>WEB-INF/pages/admin/commodity/admin_goods_select.jsp</result>
+		</action>
+		
+		<action name="rebotDelete" class="rebotAction" method="delete">
+			<result type="chain">rebotSearch</result>
+		</action>
+		<action name="rebotSearch" class="rebotAction" method="search">
+			<result>WEB-INF/pages/admin/commodity/admin_goods_class.jsp</result>
+		</action>
+		<action name="rebotForward" class="rebotAction" method="forward">
+			<result>WEB-INF/pages/admin/commodity/admin_robot.jsp</result>
+		</action>
+		<action name="rebotSave" class="rebotAction" method="save">
+			<result type="chain">rebotSearch</result>
+		</action>
+		
+		<action name="orderDelete" class="orderAction" method="delete">
+			<result type="chain">orderSearch</result>
+		</action>
+		<action name="orderSearch" class="orderAction" method="search">
+			<result>WEB-INF/pages/admin/commodity/admin_order.jsp</result>
+		</action>
+		<action name="orderForward" class="orderAction" method="forward">
+			<result>WEB-INF/pages/admin/commodity/admin_robot.jsp</result>
+		</action>
+		<action name="orderSave" class="orderAction" method="save">
+			<result type="chain">orderSearch</result>
+		</action>
+		
+		<action name="ecurrDelete" class="ecurrAction" method="delete">
+			<result type="chain">ecurrSearch</result>
+		</action>
+		<action name="ecurrSearch" class="ecurrAction" method="search">
+			<result>WEB-INF/pages/admin/commodity/admin_e.jsp</result>
+		</action>
+		<action name="ecurrForward" class="ecurrAction" method="forward">
+			<result>WEB-INF/pages/admin/commodity/admin_e_form.jsp</result>
+		</action>
+		<action name="ecurrSave" class="ecurrAction" method="save">
+			<result type="chain">ecurrSearch</result>
+		</action>
+		
+		<action name="buyDelete" class="buyAction" method="delete">
+			<result type="chain">buySearch</result>
+		</action>
+		<action name="buySearch" class="buyAction" method="search">
+			<result>WEB-INF/pages/admin/commodity/admin_e_buy.jsp</result>
+		</action>
+		<action name="buyForward" class="buyAction" method="forward">
+			<result>WEB-INF/pages/admin/commodity/admin_e_buy_form.jsp</result>
+		</action>
+		<action name="buySave" class="buyAction" method="save">
+			<result type="chain">buySearch</result>
+		</action>
+		
+		<action name="consumeDelete" class="consumeAction" method="delete">
+			<result type="chain">consumeSearch</result>
+		</action>
+		<action name="consumeSearch" class="consumeAction" method="search">
+			<result>WEB-INF/pages/admin/commodity/admin_e_consume.jsp</result>
+		</action>
+		<action name="consumeForward" class="consumeAction" method="forward">
+			<result>WEB-INF/pages/admin/commodity/admin_e_consume_form.jsp</result>
+		</action>
+		<action name="consumeSave" class="consumeAction" method="save">
+			<result type="chain">consumeSearch</result>
+		</action>
+	</package>
+</struts>
