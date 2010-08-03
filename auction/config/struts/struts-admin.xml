@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="admin" extends="default">
+		<action name="top">
+			<result>WEB-INF/pages/admin/top.jsp</result>
+		</action>
+		<action name="left">
+			<result>WEB-INF/pages/admin/left.jsp</result>
+		</action>
+		<action name="main">
+			<result>WEB-INF/pages/admin/main.jsp</result>
+		</action>
+		<action name="netWorkForward" class="netWordAction" method="forwardInfo">
+			<result>WEB-INF/pages/admin/base/admin_info.jsp</result>
+		</action>
+		<action name="netWorkSave" class="netWordAction" method="saveInfo">
+			<result type="chain">netWorkForward</result>
+		</action>
+		<action name="managerDelete" class="managerAction" method="delete">
+			<result type="chain">managerSearch</result>
+		</action>
+		<action name="managerSearch" class="managerAction" method="search">
+			<result>WEB-INF/pages/admin/base/admin_info_admin.jsp</result>
+		</action>
+		<action name="managerForward" class="managerAction" method="forwardInfo">
+			<result>WEB-INF/pages/admin/base/admin_info_admin_form.jsp</result>
+		</action>
+		<action name="managerSave" class="managerAction" method="saveInfo">
+			<result type="chain">managerSearch</result>
+		</action>
+		
+		<action name="infoDelete" class="infoAction" method="delete">
+			<result name="help" type="chain">infoSearch</result>
+			<result name="post" type="chain">infoSearch</result>
+		</action>
+		<action name="infoSearch" class="infoAction" method="search">
+			<result name="help">WEB-INF/pages/admin/base/admin_info_help.jsp</result>
+			<result name="post">WEB-INF/pages/admin/base/admin_info_post.jsp</result>
+		</action>
+		<action name="infoForward" class="infoAction" method="forwardInfo">
+			<result name="web">WEB-INF/pages/admin/base/admin_info_web.jsp</result>
+			<result name="join">WEB-INF/pages/admin/base/admin_info_join.jsp</result>
+			<result name="reg">WEB-INF/pages/admin/base/admin_info_reg.jsp</result>
+			<result name="help">WEB-INF/pages/admin/base/admin_info_help_form.jsp</result>
+			<result name="post">WEB-INF/pages/admin/base/admin_info_post_form.jsp</result>
+		</action>
+		<action name="infoSave" class="infoAction" method="saveInfo">
+			<result type="chain">infoSearch</result>
+			<result name="web">WEB-INF/pages/admin/base/admin_info_web.jsp</result>
+			<result name="join">WEB-INF/pages/admin/base/admin_info_join.jsp</result>
+			<result name="reg">WEB-INF/pages/admin/base/admin_info_reg.jsp</result>
+			<result name="help" type="chain">infoSearch</result>
+			<result name="post" type="chain">infoSearch</result>
+		</action>
+		
+		<action name="problemDelete" class="problemAction" method="delete">
+			<result type="chain">problemSearch</result>
+		</action>
+		<action name="problemSearch" class="problemAction" method="search">
+			<result>WEB-INF/pages/admin/base/admin_info_que.jsp</result>
+		</action>
+		<action name="problemForward" class="problemAction" method="forwardProblem">
+			<result>WEB-INF/pages/admin/base/admin_info_que_form.jsp</result>
+		</action>
+		<action name="problemSave" class="problemAction" method="saveProblem">
+			<result type="chain">problemSearch</result>
+		</action>
+	</package>
+</struts>

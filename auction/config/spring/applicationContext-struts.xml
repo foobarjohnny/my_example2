@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+	<bean id="netWordAction" class="org.auction.module.admin.base.action.NetWorkAction" scope="prototype">
+		<property name="netWordService" ref="netWordService" />
+	</bean>
+	<bean id="managerAction" class="org.auction.module.admin.base.action.ManagerAction" scope="prototype">
+		<property name="managerService" ref="managerService" />
+	</bean>
+	<bean id="infoAction" class="org.auction.module.admin.base.action.InfoAction" scope="prototype">
+		<property name="infoService" ref="infoService" />
+	</bean>
+	<bean id="problemAction" class="org.auction.module.admin.base.action.ProblemAction" scope="prototype">
+		<property name="problemService" ref="problemService" />
+	</bean>
+	<bean id="sortAction" class="org.auction.module.admin.commodity.action.SortAction" scope="prototype">
+		<property name="sortService" ref="sortService" />
+	</bean>
+	<bean id="commodityAction" class="org.auction.module.admin.commodity.action.CommodityAction" scope="prototype">
+		<property name="commodityService" ref="commodityService" />
+	</bean>
+	<bean id="rebotAction" class="org.auction.module.admin.commodity.action.RebotAction" scope="prototype">
+		<property name="rebotService" ref="rebotService" />
+	</bean>
+	<bean id="orderAction" class="org.auction.module.admin.commodity.action.OrderAction" scope="prototype">
+		<property name="orderService" ref="orderService" />
+	</bean>
+	<bean id="ecurrAction" class="org.auction.module.admin.commodity.action.EcurrAction" scope="prototype">
+		<property name="ecurrService" ref="ecurrService" />
+	</bean>
+	<bean id="buyAction" class="org.auction.module.admin.commodity.action.BuyAction" scope="prototype">
+		<property name="buyService" ref="buyService" />
+	</bean>
+	<bean id="consumeAction" class="org.auction.module.admin.commodity.action.ConsumeAction" scope="prototype">
+		<property name="consumeService" ref="consumeService" />
+	</bean>
+	
+	<bean id="userAction" class="org.auction.module.admin.user.action.UserAction" scope="prototype">
+		<property name="userService" ref="userService" />
+	</bean>
+	<bean id="userAccountAction" class="org.auction.module.admin.user.action.UserAccountAction" scope="prototype">
+		<property name="userAccountService" ref="userAccountService" />
+	</bean>
+	<bean id="userAuctionAction" class="org.auction.module.admin.user.action.UserAuctionAction" scope="prototype">
+		<property name="userAuctionService" ref="userAuctionService" />
+	</bean>
+	
+	<bean id="viewCommodityAction" class="org.auction.module.admin.view.action.ViewCommodityAction" scope="prototype">
+		<property name="viewCommodityService" ref="viewCommodityService" />
+	</bean>
+	<bean id="showAction" class="org.auction.module.view.show.action.ShowAction" scope="prototype">
+		<property name="showService" ref="showService" />
+	</bean>
+</beans>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+	<bean id="netWordService" class="org.auction.module.admin.base.service.impl.NetWordServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="managerService" class="org.auction.module.admin.base.service.impl.ManagerServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="infoService" class="org.auction.module.admin.base.service.impl.InfoServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="problemService" class="org.auction.module.admin.base.service.impl.ProblemServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="sortService" class="org.auction.module.admin.commodity.service.impl.SortServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="commodityService" class="org.auction.module.admin.commodity.service.impl.CommodityServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="rebotService" class="org.auction.module.admin.commodity.service.impl.RebotServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="orderService" class="org.auction.module.admin.commodity.service.impl.OrderServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="ecurrService" class="org.auction.module.admin.commodity.service.impl.EcurrServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="buyService" class="org.auction.module.admin.commodity.service.impl.BuyServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="consumeService" class="org.auction.module.admin.commodity.service.impl.ConsumeServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	
+	<bean id="userService" class="org.auction.module.admin.user.service.impl.UserServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="userAccountService" class="org.auction.module.admin.user.service.impl.UserAccountServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="userAuctionService" class="org.auction.module.admin.user.service.impl.UserAuctionServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	
+	<bean id="viewCommodityService" class="org.auction.module.admin.view.service.impl.ViewCommodityServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="showService" class="org.auction.module.view.show.service.impl.ShowServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+</beans>

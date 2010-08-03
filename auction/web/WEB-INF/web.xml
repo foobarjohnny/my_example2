@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:/**/applicationContext*.xml</param-value>
+	</context-param>
+	<filter>
+		<filter-name>action</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+		<init-param>
+			<param-name>configProviders</param-name>
+			<param-value>org.mobile.common.action.GeneralConfigProvider</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>action</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>init</servlet-name>
+		<servlet-class>org.mobile.common.servlet.InitServlet</servlet-class>
+		<init-param>
+			<param-name>resource</param-name>
+			<param-value>resources</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<welcome-file-list>
+		<welcome-file>index.action</welcome-file>
+	</welcome-file-list>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+</web-app>
