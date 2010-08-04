@@ -13,24 +13,28 @@
 			<s:hidden name="id"/>
 			<s:hidden name="nettype" value="3"/>
 			<table width="100%" border="1" cellpadding="10" cellspacing="0"
-				bordercolor="#FFFFFF" bgcolor="#EEEEEE">
-				<tr>
+				bordercolor="#FFFFFF" bgcolor="#EEEEEE" height="100%">
+				<tr height="10%">
 					<td width="22%" align="right">
 						标题：
 					</td>
 					<td width="78%">
-						<s:textfield name="title"/>
+						<s:textfield name="title" size="30"/>
 					</td>
 				</tr>
-				<tr>
+				<tr height="80%">
 					<td align="right">
 						内容：
 					</td>
 					<td>
-						<s:textarea name="info"/>
+						<s:hidden name="info" id="info"></s:hidden>
+						<fck:editor instanceName="info" height="100%">
+							<jsp:attribute name="value">&nbsp;
+							</jsp:attribute>
+						</fck:editor>
 					</td>
 				</tr>
-				<tr align="right">
+				<tr height="10%" align="right">
 					<td colspan="2">
 						<div align="center">
 							<input type="submit" name="Submit" value=" 保存设置 " />

@@ -14,7 +14,7 @@
 			function next() {
 				var currentPage = document.getElementById("pageBean.currentPage").value;
 				var totalPage = document.getElementById("pageBean.totalPage").value;
-				if (parseInt(currentPage) != (totalPage)) {
+				if ((parseInt(currentPage) != (totalPage)) && totalPage != 0) {
 					document.getElementById("pageBean.currentPage").value = parseInt(currentPage) + 1;
 					form1.submit();
 				}
@@ -50,7 +50,7 @@
 					<td width="19%" align="center">
 						<strong>联系电话</strong>
 					</td>
-					<td width="18%" align="center">
+					<td width="30%" align="center">
 						<strong>管理权限</strong>
 					</td>
 					<td width="12%" align="center">
@@ -60,20 +60,36 @@
 				<s:iterator value="dataList" id="data" status="status">
 					<tr>
 						<td align="center" valign="middle">
-							<s:property value="account"/>
+							<s:property id="data" value="account"/>
 						</td>
 						<td align="center" valign="middle">
-							<s:property value="realname"/>
+							<s:property id="data" value="realname"/>
 						</td>
 						<td align="center">
-							<s:property value="telphone"/>
+							<s:property id="data" value="telphone"/>
 						</td>
 						<td align="center">
-							<s:property value="managerFuns"/>
+							<s:iterator id="d" value="managerFuns">
+								<s:if test="#d == 1">
+									商品管理
+								</s:if>
+								<s:if test="#d == 2">
+									订单管理
+								</s:if>
+								<s:if test="#d == 3">
+									用户管理
+								</s:if>
+								<s:if test="#d == 4">
+									机器人管理
+								</s:if>
+								<s:if test="#d == 5">
+									广告管理 
+								</s:if>
+							</s:iterator>
 						</td>
 						<td align="center">
-							<a href="managerForward.action?id=<s:property value="id"/>">修改</a>｜
-							<a href="managerDelete.action?id=<s:property value="id"/>">删除</a>
+							<a href="managerForward.action?id=<s:property id="data" value="id"/>">修改</a>｜
+							<a href="managerDelete.action?id=<s:property id="data" value="id"/>">删除</a>
 						</td>
 					</tr>
 				</s:iterator>

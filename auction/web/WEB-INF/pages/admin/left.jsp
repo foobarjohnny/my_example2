@@ -65,6 +65,7 @@
 								<a target="mainFrame" href="infoSearch.action?nettype=5">网站公告</a>
 							</td>
 						</tr>
+						<!--  
 						<tr>
 							<td class="admin_title2">
 								<a target="mainFrame" href="admin_info_blog.htm">网站日志</a>
@@ -80,6 +81,7 @@
 								<a target="mainFrame" href="admin_info_Server.htm">服务器参数探针</a>
 							</td>
 						</tr>
+						-->
 					</table>
 				</td>
 			</tr>

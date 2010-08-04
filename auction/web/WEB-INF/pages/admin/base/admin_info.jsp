@@ -19,7 +19,7 @@
 						网站名称：
 					</td>
 					<td width="66%">
-						<s:textfield name="networkName"/>
+						<s:textfield name="networkName" size="30"/>
 					</td>
 				</tr>
 				<tr>
@@ -27,7 +27,7 @@
 						网站标题：
 					</td>
 					<td>
-						<s:textfield name="title"/>
+						<s:textfield name="title" size="30"/>
 					</td>
 				</tr>
 				<tr>
@@ -43,7 +43,7 @@
 						网站地址：
 					</td>
 					<td>
-						<s:textfield name="webSite"/>
+						<s:textfield name="webSite" size="30"/>
 					</td>
 				</tr>
 				<tr>
@@ -75,7 +75,7 @@
 						注册赠送E拍币数：
 					</td>
 					<td>
-						<s:textfield name="giveEcur"/>
+						<s:textfield name="giveEcur" size="10"/>
 						枚
 					</td>
 				</tr>
@@ -84,7 +84,7 @@
 						注销不活动用户时间：
 					</td>
 					<td>
-						<s:textfield name="outName"/>
+						<s:textfield name="outName" size="10"/>
 						分钟
 					</td>
 				</tr>
@@ -93,7 +93,7 @@
 						网站版权信息：
 					</td>
 					<td>
-						<s:textarea name="copyright"/>
+						<s:textarea name="copyright" rows="10" cols="50"/>
 					</td>
 				</tr>
 				<tr>
@@ -103,7 +103,7 @@
 						<font color="#FF0000">针对搜索引擎设置的网页关键词,多个关键词请用,号分隔</font>
 					</td>
 					<td>
-						<s:textarea name="metaKey"/>
+						<s:textarea name="metaKey" rows="10" cols="50"/>
 					</td>
 				</tr>
 				<tr>
@@ -113,7 +113,7 @@
 						<font color="#FF0000">针对搜索引擎设置的网页描述,多个描述请用,号分隔</font>
 					</td>
 					<td>
-						<s:textarea name="metaDes"/>
+						<s:textarea name="metaDes" rows="10" cols="50"/>
 					</td>
 				</tr>
 				<tr align="right">
