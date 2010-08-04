@@ -37,7 +37,7 @@
 				bordercolor="#FFFFFF" bgcolor="#EEEEEE">
 				<tr>
 					<td colspan="7">
-						<input type="button" name="Submit2" value="增加管理员" onclick="insert()"/>
+						<input type="button" name="Submit2" value="新增类别" onclick="insert()"/>
 					</td>
 				</tr>
 				<tr>
