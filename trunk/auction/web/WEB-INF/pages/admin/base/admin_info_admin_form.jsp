@@ -18,7 +18,7 @@
 						管理员账号：
 					</td>
 					<td width="68%">
-						<s:textfield name="account"/>
+						<s:textfield name="account" size="30"/>
 					</td>
 				</tr>
 				<tr>
@@ -26,7 +26,7 @@
 						真实姓名：
 					</td>
 					<td>
-						<s:textfield name="realname"/>
+						<s:textfield name="realname" size="30"/>
 					</td>
 				</tr>
 				<tr>
@@ -34,7 +34,7 @@
 						密码：
 					</td>
 					<td>
-						<s:password name="password"/>
+						<s:password name="password" size="30" />
 					</td>
 				</tr>
 				<tr>
@@ -50,7 +50,7 @@
 						联系电话：
 					</td>
 					<td>
-						<s:textfield name="telphone"/>
+						<s:textfield name="telphone" size="30"/>
 					</td>
 				</tr>
 				<tr>
@@ -58,14 +58,48 @@
 						管理权限：
 					</td>
 					<td>
-						<s:if test="managerFuns.length > 0">
+						<input type="checkbox" name="managerFuns" value="1" id="managerFuns-1"
+							<s:iterator id="d" value="values">
+								<s:if test="#d == 1">
+									checked
+								</s:if>
+							</s:iterator>
+						/>
+						<label for="managerFuns-1" class="checkboxLabel">商品管理</label>
+						<input type="checkbox" name="managerFuns" value="2" id="managerFuns-2"
+							<s:iterator id="d" value="values">
+								<s:if test="#d == 2">
+									checked
+								</s:if>
+							</s:iterator>
+						/>
+						<label for="managerFuns-2" class="checkboxLabel">订单管理</label>
+						<input type="checkbox" name="managerFuns" value="3" id="managerFuns-3"
+							<s:iterator id="d" value="values">
+								<s:if test="#d == 3">
+									checked
+								</s:if>
+							</s:iterator>
+						/>
+						<label for="managerFuns-3" class="checkboxLabel">用户管理</label>
+						<input type="checkbox" name="managerFuns" value="4" id="managerFuns-4"
+							<s:iterator id="d" value="values">
+								<s:if test="#d == 4">
+									checked
+								</s:if>
+							</s:iterator>
+						/>
+						<label for="managerFuns-4" class="checkboxLabel">机器人管理</label>
+						<input type="checkbox" name="managerFuns" value="5" id="managerFuns-5"
+							<s:iterator id="d" value="values">
+								<s:if test="#d == 5">
+									checked
+								</s:if>
+							</s:iterator>
+						/>
+						<label for="managerFuns-5" class="checkboxLabel">广告管理</label>
 
-								<s:checkboxlist list="#{1:'商品管理',2:'订单管理',3:'用户管理',4:'机器人管理',5:'广告管理'}" name="managerFuns" />
-
-						</s:if>
-						<s:else>
-							<s:checkboxlist list="#{1:'商品管理',2:'订单管理',3:'用户管理',4:'机器人管理',5:'广告管理'}" name="managerFuns"/>
-						</s:else>
+						
 					</td>
 				</tr>
 				<tr align="right">

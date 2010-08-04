@@ -14,16 +14,20 @@
 			<s:hidden name="nettype" value="2"/>
 			<s:hidden name="id"/>
 			<table width="100%" border="1" cellpadding="10" cellspacing="0"
-				bordercolor="#FFFFFF" bgcolor="#EEEEEE">
-				<tr>
+				bordercolor="#FFFFFF" bgcolor="#EEEEEE" height="100%">
+				<tr height="90%">
 					<td width="22%" align="right" valign="middle">
 						简介内容：
 					</td>
 					<td width="78%">
-						<s:textarea name="info"/>
+						<s:hidden name="info" id="info"></s:hidden>
+						<fck:editor instanceName="info" height="100%">
+							<jsp:attribute name="value">&nbsp;
+							</jsp:attribute>
+						</fck:editor>
 					</td>
 				</tr>
-				<tr align="right">
+				<tr height="10%" align="right">
 					<td colspan="2">
 						<div align="center">
 							<input type="submit" name="Submit" value=" 保存设置 ">

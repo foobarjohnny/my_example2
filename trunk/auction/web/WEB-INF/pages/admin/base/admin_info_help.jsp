@@ -27,7 +27,7 @@
 	</head>
 	<body>
 		<div align="center" class="admin_title1">
-			——管理员账户管理——
+			——帮助中心——
 		</div>
 		<hr>
 		<s:form action="infoSearch.action" name="form1">
@@ -38,7 +38,7 @@
 				bordercolor="#FFFFFF" bgcolor="#EEEEEE">
 				<tr>
 					<td colspan="7">
-						<input type="button" name="Submit2" value="增加管理员" onclick="insert()"/>
+						<input type="button" name="Submit2" value="新增帮助文档" onclick="insert()"/>
 					</td>
 				</tr>
 				<tr>
@@ -47,9 +47,6 @@
 					</td>
 					<td width="10%" align="center" valign="middle">
 						<strong>发布时间</strong>
-					</td>
-					<td width="19%" align="center">
-						<strong>内容</strong>
 					</td>
 					<td width="12%" align="center">
 						<strong>操作</strong>
@@ -62,9 +59,6 @@
 						</td>
 						<td align="center" valign="middle">
 							<s:property value="releasedate"/>
-						</td>
-						<td align="center">
-							<s:property value="info"/>
 						</td>
 						<td align="center">
 							<a href="infoForward.action?id=<s:property value="id"/>&nettype=3">修改</a>｜
