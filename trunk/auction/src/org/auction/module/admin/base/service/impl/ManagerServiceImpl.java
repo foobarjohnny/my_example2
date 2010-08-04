@@ -18,14 +18,29 @@ public class ManagerServiceImpl extends GeneralService implements
 					model.getId());
 			BeanProcessUtils.copyProperties(model, tsManager);
 			if (tsManager.getManagerFun() != null) {
-				model.setManagerFuns(tsManager.getManagerFun().split(","));
+				String[] s = tsManager.getManagerFun().split(",");
+				Long[] l = new Long[s.length];
+				for (int i = 0; i < s.length; i++) {
+					l[i] = Long.parseLong(s[i]);
+				}
+				model.setValues(l);
 			}
 		}
 	}
 
 	public void saveInfo(ManagerData model) throws GeneralException {
-		TsManager tsManager = new TsManager();
+		TsManager tsManager = null;
+		if (model.getId() != null && !model.getId().equals("")) {
+			tsManager = (TsManager) generalDao.load(TsManager.class, model
+					.getId());
+		} else {
+			tsManager = new TsManager();
+		}
+		String password = tsManager.getPassword();
 		BeanProcessUtils.copyProperties(tsManager, model);
+		if (model.getPassword() == null || model.getPassword().equals("")) {
+			tsManager.setPassword(password);
+		}
 		String[] fun = model.getManagerFuns();
 		String fs = "";
 		if (fun != null && fun.length > 0) {
@@ -58,7 +73,7 @@ public class ManagerServiceImpl extends GeneralService implements
 			ManagerData data = new ManagerData();
 			BeanProcessUtils.copyProperties(data, tsManager);
 			if (tsManager.getManagerFun() != null) {
-				model.setManagerFuns(tsManager.getManagerFun().split(","));
+				data.setManagerFuns(tsManager.getManagerFun().split(","));
 			}
 			model.getDataList().add(data);
 		}

@@ -14,6 +14,8 @@ public class ManagerData extends GeneralData {
 	private String telphone;
 	private String[] managerFuns;
 
+	private Long[] values;
+
 	private List<ManagerData> dataList = new ArrayList<ManagerData>();
 	private List<FunData> funList = new ArrayList<FunData>();
 
@@ -24,7 +26,7 @@ public class ManagerData extends GeneralData {
 		funList.add(new FunData(4, "机器人管理 "));
 		funList.add(new FunData(5, "广告管理"));
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -87,5 +89,13 @@ public class ManagerData extends GeneralData {
 
 	public void setFunList(List<FunData> funList) {
 		this.funList = funList;
+	}
+
+	public Long[] getValues() {
+		return values;
+	}
+
+	public void setValues(Long[] values) {
+		this.values = values;
 	}
 }
