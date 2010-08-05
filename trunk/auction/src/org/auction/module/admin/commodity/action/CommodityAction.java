@@ -10,7 +10,7 @@ public class CommodityAction extends GeneralAction<CommodityData> {
 	private static final long serialVersionUID = 1L;
 
 	private CommodityData model = new CommodityData();
-
+	
 	private CommodityService commodityService;
 
 	public String forward() throws GeneralException {

@@ -1,5 +1,7 @@
 package org.auction.module.admin.commodity.data;
 
+import java.io.File;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,9 +12,9 @@ public class CommodityData extends GeneralData {
 
 	private String id;
 	private String tradename;
-	private Long marketPrice;
-	private Long purchasePrice;
-	private Long markUp;
+	private BigDecimal marketPrice = new BigDecimal(0);
+	private BigDecimal purchasePrice = new BigDecimal(0);
+	private BigDecimal markUp = new BigDecimal(0);
 	private Long consume;
 	private String restricts;
 	private Date starttime;
@@ -24,7 +26,8 @@ public class CommodityData extends GeneralData {
 	private String sortId;
 	private String sortName;
 	private String searchName;
-
+	private String uploadFileName;
+	private File upload;
 	private List<CommodityData> dataList = new ArrayList<CommodityData>();
 	private List<SortData> sortList = new ArrayList<SortData>();
 
@@ -44,27 +47,27 @@ public class CommodityData extends GeneralData {
 		this.tradename = tradename;
 	}
 
-	public Long getMarketPrice() {
+	public BigDecimal getMarketPrice() {
 		return marketPrice;
 	}
 
-	public void setMarketPrice(Long marketPrice) {
+	public void setMarketPrice(BigDecimal marketPrice) {
 		this.marketPrice = marketPrice;
 	}
 
-	public Long getPurchasePrice() {
+	public BigDecimal getPurchasePrice() {
 		return purchasePrice;
 	}
 
-	public void setPurchasePrice(Long purchasePrice) {
+	public void setPurchasePrice(BigDecimal purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public Long getMarkUp() {
+	public BigDecimal getMarkUp() {
 		return markUp;
 	}
 
-	public void setMarkUp(Long markUp) {
+	public void setMarkUp(BigDecimal markUp) {
 		this.markUp = markUp;
 	}
 
@@ -171,4 +174,21 @@ public class CommodityData extends GeneralData {
 	public void setSearchName(String searchName) {
 		this.searchName = searchName;
 	}
+
+	public String getUploadFileName() {
+		return uploadFileName;
+	}
+
+	public void setUploadFileName(String uploadFileName) {
+		this.uploadFileName = uploadFileName;
+	}
+
+	public File getUpload() {
+		return upload;
+	}
+
+	public void setUpload(File upload) {
+		this.upload = upload;
+	}
+
 }

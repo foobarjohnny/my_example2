@@ -16,14 +16,14 @@
         <property name="tradename" type="java.lang.String">
             <column name="TRADENAME" length="30" />
         </property>
-        <property name="marketPrice" type="java.lang.Long">
-            <column name="MARKET_PRICE" precision="10" scale="0" />
+        <property name="marketPrice" type="java.math.BigDecimal">
+            <column name="MARKET_PRICE" precision="10" scale="2" />
         </property>
-        <property name="purchasePrice" type="java.lang.Long">
-            <column name="PURCHASE_PRICE" precision="10" scale="0" />
+        <property name="purchasePrice" type="java.math.BigDecimal">
+            <column name="PURCHASE_PRICE" precision="10" scale="2" />
         </property>
-        <property name="markUp" type="java.lang.Long">
-            <column name="MARK_UP" precision="10" scale="0" />
+        <property name="markUp" type="java.math.BigDecimal">
+            <column name="MARK_UP" precision="10" scale="2" />
         </property>
         <property name="consume" type="java.lang.Long">
             <column name="CONSUME" precision="10" scale="0" />
@@ -48,7 +48,12 @@
             <column name="ADDTIMES" />
         </property>
         <property name="summary" type="java.lang.String">
-            <column name="SUMMARY" length="3000" />
+            <column name="SUMMARY"  />
+        </property>
+        <property name="deleteif" type="java.lang.String">
+            <column name="DELETEIF" length="1">
+                <comment>1ãæ­£å¨ç«æåå 2ãæµæåå 3ãæäº¤åå</comment>
+            </column>
         </property>
         <set name="tsBingcurs" inverse="true">
             <key>

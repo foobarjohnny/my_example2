@@ -3,11 +3,11 @@ package org.auction.module.admin.base.service.impl;
 import java.io.File;
 import java.util.List;
 
-import org.apache.struts2.ServletActionContext;
 import org.auction.entity.TsNetwork;
 import org.auction.module.admin.base.data.NetWorkData;
 import org.auction.module.admin.base.service.NetWordService;
 import org.mobile.common.exception.GeneralException;
+import org.mobile.common.manager.GeneralManager;
 import org.mobile.common.service.GeneralService;
 import org.mobile.common.util.BeanProcessUtils;
 import org.mobile.common.util.FileUpload;
@@ -30,8 +30,8 @@ public class NetWordServiceImpl extends GeneralService implements
 		BeanProcessUtils.copyProperties(tsNetwork, model);
 		// 上传图片处理
 		if (model.getLogoFile() != null) {
-			String targetDir = ServletActionContext.getServletContext()
-					.getRealPath("/images");
+			GeneralManager manager = GeneralManager.getCurrentManager();
+			String targetDir = manager.getImageDir(GeneralManager.IMAGE);
 			File file = new File(targetDir, "logo.jpg");
 			FileUpload.upload(model.getLogoFile(), file);
 			tsNetwork.setLogo(file.getAbsolutePath());

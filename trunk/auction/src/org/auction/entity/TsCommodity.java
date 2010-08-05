@@ -1,6 +1,6 @@
 package org.auction.entity;
 
-import java.sql.Timestamp;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,9 +16,9 @@ public class TsCommodity implements java.io.Serializable {
 	private String id;
 	private TsSort tsSort;
 	private String tradename;
-	private Long marketPrice;
-	private Long purchasePrice;
-	private Long markUp;
+	private BigDecimal marketPrice = new BigDecimal(0);
+	private BigDecimal purchasePrice = new BigDecimal(0);
+	private BigDecimal markUp = new BigDecimal(0);
 	private Long consume;
 	private String restricts;
 	private Date starttime;
@@ -26,6 +26,7 @@ public class TsCommodity implements java.io.Serializable {
 	private String state;
 	private Integer addtimes;
 	private String summary;
+	private String deleteif;
 	private Set tsBingcurs = new HashSet(0);
 	private Set tsOrders = new HashSet(0);
 	private Set tsRebotcoms = new HashSet(0);
@@ -40,30 +41,6 @@ public class TsCommodity implements java.io.Serializable {
 	/** minimal constructor */
 	public TsCommodity(Date starttime) {
 		this.starttime = starttime;
-	}
-
-	/** full constructor */
-	public TsCommodity(TsSort tsSort, String tradename, Long marketPrice,
-			Long purchasePrice, Long markUp, Long consume, String restricts,
-			Timestamp starttime, Integer endtime, String state,
-			Integer addtimes, String summary, Set tsBingcurs, Set tsOrders,
-			Set tsRebotcoms, Set tsBiddings) {
-		this.tsSort = tsSort;
-		this.tradename = tradename;
-		this.marketPrice = marketPrice;
-		this.purchasePrice = purchasePrice;
-		this.markUp = markUp;
-		this.consume = consume;
-		this.restricts = restricts;
-		this.starttime = starttime;
-		this.endtime = endtime;
-		this.state = state;
-		this.addtimes = addtimes;
-		this.summary = summary;
-		this.tsBingcurs = tsBingcurs;
-		this.tsOrders = tsOrders;
-		this.tsRebotcoms = tsRebotcoms;
-		this.tsBiddings = tsBiddings;
 	}
 
 	// Property accessors
@@ -92,27 +69,27 @@ public class TsCommodity implements java.io.Serializable {
 		this.tradename = tradename;
 	}
 
-	public Long getMarketPrice() {
-		return this.marketPrice;
+	public BigDecimal getMarketPrice() {
+		return marketPrice;
 	}
 
-	public void setMarketPrice(Long marketPrice) {
+	public void setMarketPrice(BigDecimal marketPrice) {
 		this.marketPrice = marketPrice;
 	}
 
-	public Long getPurchasePrice() {
-		return this.purchasePrice;
+	public BigDecimal getPurchasePrice() {
+		return purchasePrice;
 	}
 
-	public void setPurchasePrice(Long purchasePrice) {
+	public void setPurchasePrice(BigDecimal purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public Long getMarkUp() {
-		return this.markUp;
+	public BigDecimal getMarkUp() {
+		return markUp;
 	}
 
-	public void setMarkUp(Long markUp) {
+	public void setMarkUp(BigDecimal markUp) {
 		this.markUp = markUp;
 	}
 
@@ -170,6 +147,14 @@ public class TsCommodity implements java.io.Serializable {
 
 	public void setSummary(String summary) {
 		this.summary = summary;
+	}
+
+	public String getDeleteif() {
+		return deleteif;
+	}
+
+	public void setDeleteif(String deleteif) {
+		this.deleteif = deleteif;
 	}
 
 	public Set getTsBingcurs() {

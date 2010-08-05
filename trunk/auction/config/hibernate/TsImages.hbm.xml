@@ -14,7 +14,7 @@
             <column name="IMAGEID" length="32" />
         </property>
         <property name="filepath" type="java.lang.String">
-            <column name="FILEPATH" length="100" />
+            <column name="FILEPATH" length="500" />
         </property>
         <property name="tablename" type="java.lang.String">
             <column name="TABLENAME" length="32" />

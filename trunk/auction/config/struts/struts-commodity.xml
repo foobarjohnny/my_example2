@@ -33,6 +33,7 @@
 		<action name="commoditySave" class="commodityAction" method="save">
 			<result type="chain">commodityForward</result>
 			<result name="page" type="chain">commoditySearch</result>
+			<result name="input" type="chain">commodityForward</result>
 		</action>
 		<action name="commodityAuction" class="commodityAction" method="auction">
 			<result type="chain">commoditySearch</result>
