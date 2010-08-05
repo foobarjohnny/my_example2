@@ -1,23 +1,37 @@
 package org.auction.module.admin.commodity.service.impl;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.auction.entity.TsCommodity;
+import org.auction.entity.TsImages;
 import org.auction.entity.TsSort;
 import org.auction.module.admin.commodity.data.CommodityData;
 import org.auction.module.admin.commodity.data.SortData;
 import org.auction.module.admin.commodity.service.CommodityService;
 import org.mobile.common.bean.SearchBean;
 import org.mobile.common.exception.GeneralException;
+import org.mobile.common.manager.GeneralManager;
 import org.mobile.common.service.GeneralService;
 import org.mobile.common.util.BeanProcessUtils;
+import org.mobile.common.util.FileUpload;
+import org.mobile.common.util.UUIDFactory;
 
 public class CommodityServiceImpl extends GeneralService implements
 		CommodityService {
 
 	public void delete(CommodityData model) throws GeneralException {
-		generalDao.delete(TsCommodity.class, model.getId());
+		TsCommodity tsCommodity = (TsCommodity) generalDao.get(
+				TsCommodity.class, model.getId());
+		if (tsCommodity.getState() == null
+				|| tsCommodity.getState().equals("4")
+				|| tsCommodity.getState().equals("2")
+				|| tsCommodity.getState().equals("")) {
+			generalDao.delete(tsCommodity);
+		} else if (tsCommodity.getState().equals("3")) {
+			tsCommodity.setDeleteif("1");
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -37,17 +51,49 @@ public class CommodityServiceImpl extends GeneralService implements
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public void save(CommodityData model) throws GeneralException {
 		TsCommodity tsCommodity = new TsCommodity();
 		BeanProcessUtils.copyProperties(tsCommodity, model);
 		TsSort tsSort = (TsSort) generalDao
 				.get(TsSort.class, model.getSortId());
 		tsCommodity.setTsSort(tsSort);
+		boolean isSave = false;
+		TsImages tsImages = null;
 		if (model.getId() != null && !model.getId().equals("")) {
+			List<SearchBean> search = new ArrayList<SearchBean>();
+			search.add(new SearchBean("imageid", "eq", "string", tsCommodity
+					.getId()));
+			search.add(new SearchBean("tablename", "eq", "string",
+					"TS_COMMODITY"));
+			List list = generalDao.search(TsImages.class, search, null, null);
+			if (list != null && list.size() > 0) {
+				tsImages = (TsImages) list.get(0);
+			}
 			generalDao.update(tsCommodity);
 		} else {
 			tsCommodity.setState("4");
+			isSave = true;
+			tsImages = new TsImages();
+			tsImages.setImageid(tsCommodity.getId());
 			generalDao.save(tsCommodity);
+		}
+		// 保存图片
+		if (model.getUpload() != null) {
+			GeneralManager manager = GeneralManager.getCurrentManager();
+			String targetDir = manager.getImageDir(GeneralManager.UPLOAD_IMAGE);
+			File file = new File(targetDir, UUIDFactory.createUUID()
+					+ model.getUploadFileName().substring(
+							model.getUploadFileName().lastIndexOf("."),
+							model.getUploadFileName().length()));
+			FileUpload.upload(model.getUpload(), file);
+			tsImages.setFilepath(file.getAbsolutePath());
+			tsImages.setTablename("TS_COMMODITY");
+			if (isSave) {
+				generalDao.save(tsImages);
+			} else {
+				generalDao.update(tsImages);
+			}
 		}
 	}
 
