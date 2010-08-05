@@ -94,6 +94,7 @@
 										</tr>
 										<tr>
 											<td align="center" class="indextime">
+												
 												<div id="div${status.index }" style="color:red">
 													<script type="text/javascript">
 														var div${status.index } = null;

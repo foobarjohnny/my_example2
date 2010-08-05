@@ -6,10 +6,10 @@
 	</head>
 	<body>
 		<div align="center" class="admin_title1">
-			——发布新商品——
+			——发布新商品——<s:fielderror></s:fielderror>
 		</div>
 		<hr>
-		<s:form action="commoditySave.action" name="form1">
+		<s:form action="commoditySave.action" name="form1" method="post" enctype="multipart/form-data">
 			<s:hidden name="id" />
 			<s:hidden name="methodName" />
 			<table width="100%" border="1" cellpadding="10" cellspacing="0"
@@ -79,7 +79,7 @@
 						竞拍开始时间：
 					</td>
 					<td>
-						<s:textfield name="starttime" />
+						<s:textfield name="starttime" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="true"/>
 					</td>
 				</tr>
 				<tr>
@@ -105,15 +105,19 @@
 						上传图片：
 					</td>
 					<td>
-						（此处仿淘宝上传图片形式）
+						<s:file name="upload"/>
 					</td>
 				</tr>
 				<tr>
 					<td align="right">
 						商品简介：
 					</td>
-					<td>
-						<s:textarea name="summary"/>
+					<td height="500">
+						<s:hidden name="summary" id="summary"/>
+						<fck:editor instanceName="summary" height="100%">
+							<jsp:attribute name="value">&nbsp;
+							</jsp:attribute>
+						</fck:editor>
 					</td>
 				</tr>
 				<tr align="right">
