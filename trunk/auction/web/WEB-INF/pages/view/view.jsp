@@ -3,6 +3,7 @@
 <html>
 	<head>
 		<%@ include file="/resources/resources.jsp"%>
+		<script type="text/javascript" src="js/dwr/auctionRomet.js"></script>
 		<script type="text/javascript">
 	/**
 	 * 显示时间
@@ -25,10 +26,21 @@
 			--maxtime;
 			var msg = hour + ":" + minutes + ":" + seconds;
 			document.all[id].innerHTML = msg;
+			//bidingRomet.find('','', showMsg);
 		} else {
 			clearInterval(timer);
 			document.all[id].innerHTML = "竞拍结束";
 		}
+	}
+	function showMsg(data) {
+		
+	}
+	function doSubmit(id, htmlId) {
+		var price = document.getElementById("price" + htmlId).value;
+		if (price == "") {
+			price = "0";
+		}
+		auctionRomet.auction(id, price);
 	}
 </script>
 	</head>
@@ -106,8 +118,9 @@
 										<tr>
 											<td align="center">
 												<p class="indexjg">
-													￥54.53
+													￥${data.marketPrice }
 												</p>
+												<input type="hidden" id="price${status.index }" value="${data.marketPrice }">
 											</td>
 										</tr>
 										<tr>
@@ -117,7 +130,7 @@
 										</tr>
 										<tr>
 											<td align="center">
-												<img src="images/wyjp.gif" width="104" height="27">
+												<img src="images/wyjp.gif" width="104" height="27" onclick="doSubmit('${data.id}', '${status.index }');">
 											</td>
 										</tr>
 									</table>
