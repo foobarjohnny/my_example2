@@ -4,6 +4,23 @@
 	<head>
 		<title></title>
 		<%@ include file="/resources/resources.jsp"%>
+		<script type="text/javascript" src="js/dwr/loginRomet.js"></script>
+		<script type="text/javascript">
+			function login() {
+				var username = document.getElementById("username").value;
+				var password = document.getElementById("password").value;
+				loginRomet.login(username, password, callBackHandler);
+			}
+			function callBackHandler(data) {
+				var s = data.split(",");
+				if (data != "error") {
+					document.getElementById("userLogin").style.display = "none";
+					document.getElementById("displayUser").style.display = "block";
+					document.getElementById("userId").value = s[1];
+					document.getElementById("user").innerHTML = s[0];
+				}
+			}
+		</script>
 	</head>
 
 	<body leftmargin="0" topmargin="0"
@@ -118,57 +135,43 @@
 						<tr>
 							<td align="center" bgcolor="#FFFFFF">
 								<table width="100%" border="0" cellspacing="0" cellpadding="5">
-									<tr>
+									<tr id="userLogin" style="display: block">
 										<td>
-											用户名：
-											<input name="textfield2" type="text" value="请输入用户名" size="12">
+											<table>
+												<tr>
+													<td>
+														用户名：
+														<input name="username" type="text" id="username" value="" size="8">
+													</td>
+												</tr>
+												<tr>
+													<td>
+														密&nbsp;&nbsp;码：
+														<input name="password" type="password" id="password" value="" size="10">
+													</td>
+												</tr>
+												<tr>
+													<td align="center">
+														<img src="images/dl.gif" width="40" height="22" onclick="login()">
+														<img src="images/hr.gif" width="1" height="1">
+														<a href="userlogin.htm"><img src="images/zc.gif"
+																width="41" height="22" border="0"> </a>
+													</td>
+												</tr>
+											</table>
 										</td>
 									</tr>
-									<tr>
+									<tr id="displayUser" style="display: none">
 										<td>
-											密&nbsp;&nbsp;码：
-											<input name="textfield" type="text" value="请输入密码" size="12">
-										</td>
-									</tr>
-									<tr>
-										<td align="center">
-											<img src="images/dl.gif" width="40" height="22">
-											<img src="images/hr.gif" width="1" height="1">
-											<a href="userlogin.htm"><img src="images/zc.gif"
-													width="41" height="22" border="0"> </a>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											用户名：
-											<span class="indexsp">用户名</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											付费E拍币：
-										</td>
-									</tr>
-									<tr>
-										<td>
-											免费E拍币：
-										</td>
-									</tr>
-									<tr>
-										<td>
-											赢得的竞拍：
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<a href="userlogin.htm#sjyz"><font color="#FF0000">手机验证,送5枚E拍币!</font>
-											</a>
-										</td>
-									</tr>
-									<tr>
-										<td height="25">
-											<a href="userlogin.htm#sjyz"><font color="#FF0000">邀请好友,送20枚E拍币!</font>
-											</a>
+											<table>
+												<tr>
+													<td>
+														用户名：
+														<span class="indexsp" id="user">用户名</span>
+														<input type="hidden" name="userId" id="userId"/>
+													</td>
+												</tr>
+											</table>
 										</td>
 									</tr>
 									<tr>
