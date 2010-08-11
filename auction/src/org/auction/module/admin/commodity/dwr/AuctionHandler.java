@@ -13,16 +13,23 @@ public class AuctionHandler {
 
 	private AuctionService auctionService;
 
-	public void auction(String comptyId, String price) {
+	public String auction(String comptyId, String price, String userId) {
 		HttpServletRequest req = WebContextFactory.get()
 				.getHttpServletRequest();
 		LoginBean bean = (LoginBean) req.getSession().getAttribute("login");
 		if (bean != null) {
-			AuctionData data = new AuctionData();
-			data.setComptyId(comptyId);
-			data.setUserId(bean.getId());
-			data.setPrice(new BigDecimal(price));
-			auctionService.auction(data);
+			if (userId != null && !userId.equals(bean.getId())) {
+				AuctionData data = new AuctionData();
+				data.setComptyId(comptyId);
+				data.setUserId(bean.getId());
+				data.setPrice(new BigDecimal(price));
+				auctionService.auction(data);
+				return "success";
+			} else {
+				return "你现在是最高出价者，请勿瞎点，否则出事概不负责。";
+			}
+		} else {
+			return "你还没有登录，请先登录在参加竞拍。";
 		}
 	}
 

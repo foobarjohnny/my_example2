@@ -1,7 +1,8 @@
 package org.auction.module.admin.commodity.data;
 
-import java.sql.Timestamp;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.mobile.common.action.GeneralData;
@@ -9,8 +10,8 @@ import org.mobile.common.action.GeneralData;
 public class BidingData extends GeneralData {
 
 	private String id;
-	private Long price;
-	private Timestamp biddate;
+	private BigDecimal price;
+	private Date biddate;
 	private String isbid;
 	private String userId;
 	private String username;
@@ -45,19 +46,19 @@ public class BidingData extends GeneralData {
 		this.id = id;
 	}
 
-	public Long getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(Long price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
-	public Timestamp getBiddate() {
+	public Date getBiddate() {
 		return biddate;
 	}
 
-	public void setBiddate(Timestamp biddate) {
+	public void setBiddate(Date biddate) {
 		this.biddate = biddate;
 	}
 

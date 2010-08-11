@@ -16,9 +16,9 @@ public class BidingHandler {
 	private BidingService bidingService;
 
 	@SuppressWarnings("unchecked")
-	public String find(String commpityId, String userId)
+	public String find(String commpityId, String userId, String did)
 			throws GeneralException {
-		String returnStr = "";
+		String returnStr = "no";
 		BidingData model = new BidingData();
 		model.setCommpityId(commpityId);
 		model.setUserId(userId);
@@ -26,7 +26,8 @@ public class BidingHandler {
 		if (list != null && list.size() > 0) {
 			BidingData data = list.get(0);
 			if (data.getUserId() != null) {
-				returnStr = "userId:" + data.getUserId();
+				returnStr = "index:" + did;
+				returnStr += ",userId:" + data.getUserId();
 				returnStr += ",username:" + data.getUsername();
 				returnStr += ",price:" + data.getPrice();
 			}

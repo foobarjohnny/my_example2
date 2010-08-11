@@ -38,6 +38,8 @@ public class AuctionServiceImpl extends GeneralService implements
 				tsBidding.setBiddate(new Date());
 				tsBidding
 						.setPrice(data.getPrice().add(tsCommodity.getMarkUp()));
+				tsBidding.setIsbid("1");
+				modify(tsCommodity.getId());
 				generalDao.update(tsUser);
 				generalDao.save(tsConsume);
 				generalDao.save(tsBidding);
@@ -62,6 +64,8 @@ public class AuctionServiceImpl extends GeneralService implements
 				tsBidding.setBiddate(new Date());
 				tsBidding
 						.setPrice(data.getPrice().add(tsCommodity.getMarkUp()));
+				tsBidding.setIsbid("1");
+				modify(tsCommodity.getId());
 				generalDao.update(tsUser);
 				generalDao.save(tsConsume);
 				generalDao.save(tsBidding);
@@ -72,10 +76,16 @@ public class AuctionServiceImpl extends GeneralService implements
 			tsBidding.setTsCommodity(tsCommodity);
 			tsBidding.setTsUser(tsUser);
 			tsBidding.setBiddate(new Date());
-			tsBidding
-					.setPrice(data.getPrice().add(tsCommodity.getMarkUp()));
+			tsBidding.setPrice(data.getPrice().add(tsCommodity.getMarkUp()));
+			tsBidding.setIsbid("1");
+			modify(tsCommodity.getId());
 			generalDao.save(tsBidding);
 		}
 	}
 
+	private void modify(String comptyId) {
+		String hql = "update TsBidding t set t.isbid='2' where t.tsCommodity.id='"
+				+ comptyId + "' and  t.isbid='1'";
+		generalDao.executeHql(hql);
+	}
 }
