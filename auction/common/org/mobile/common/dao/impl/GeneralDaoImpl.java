@@ -103,6 +103,12 @@ public class GeneralDaoImpl implements IGeneralDao {
 		return q.executeUpdate();
 	}
 
+	public int executeHql(String hql) {
+		Session session = getSession();
+		Query query = session.createQuery(hql);
+		return query.executeUpdate();
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<Object> search(Class clazz, List<SearchBean> searchBeans,
 			PageBean pageBean, List<OrderByBean> orderBean) {
