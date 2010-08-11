@@ -18,10 +18,14 @@ public class BidingServiceImpl extends GeneralService implements BidingService {
 		searchBeans.add(new SearchBean("tsCommodity.id", "eq", "string", model
 				.getCommpityId()));
 		searchBeans.add(new SearchBean("isbid", "eq", "string", "1"));
+		if (model.getUserId() != null && !model.getUserId().equals("")) {
+			searchBeans.add(new SearchBean("tsUser.id", "neq", "string", model
+					.getUserId()));
+		}
 		List list = generalDao.search(TsBidding.class, searchBeans, null, null);
 		List<BidingData> newList = new ArrayList<BidingData>();
 		for (int i = 0; i < list.size(); i++) {
-			TsBidding tsBiding = (TsBidding)list.get(i);
+			TsBidding tsBiding = (TsBidding) list.get(i);
 			BidingData data = new BidingData();
 			data.setUserId(tsBiding.getTsUser().getId());
 			data.setUsername(tsBiding.getTsUser().getUsername());
