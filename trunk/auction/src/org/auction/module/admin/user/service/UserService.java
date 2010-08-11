@@ -1,6 +1,7 @@
 package org.auction.module.admin.user.service;
 
 import org.auction.module.admin.user.data.UserData;
+import org.mobile.common.bean.LoginBean;
 import org.mobile.common.exception.GeneralException;
 
 public interface UserService {
@@ -20,5 +21,7 @@ public interface UserService {
 	public void view(UserData model) throws GeneralException;
 	
 	public void update(UserData model) throws GeneralException;
+	
+	public LoginBean loginDwr(UserData model) throws GeneralException;
 	
 }
