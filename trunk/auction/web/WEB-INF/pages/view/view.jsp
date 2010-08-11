@@ -10,7 +10,7 @@
 	 * 
 	 * @return
 	 */
-	function displayTime(id, time, timer) {
+	function displayTime(id, time, timer, tid, did) {
 		var newDate = new Date();
 		var first = time.getTime();
 		var last = newDate.getTime();
@@ -26,21 +26,38 @@
 			--maxtime;
 			var msg = hour + ":" + minutes + ":" + seconds;
 			document.all[id].innerHTML = msg;
-			//bidingRomet.find('','', showMsg);
+			var userid = document.getElementById("user" + did).value;
+			bidingRomet.find(tid,userid,did, showMsg);
 		} else {
 			clearInterval(timer);
 			document.all[id].innerHTML = "竞拍结束";
 		}
 	}
 	function showMsg(data) {
-		
+		if (data != "no") {
+			var s = data.split(",");
+			var index = (s[0].split(":"))[1];
+			var uid = (s[1].split(":"))[1];
+			var uname = (s[2].split(":"))[1];
+			var price = (s[3].split(":"))[1];
+			document.getElementById("user" + index).value = uid;
+			document.getElementById("price" + index).value = price;
+			document.getElementById("userdisplay" + index).innerHTML = uname;
+			document.getElementById("display" + index).innerHTML = "￥" + price;
+		}
 	}
 	function doSubmit(id, htmlId) {
 		var price = document.getElementById("price" + htmlId).value;
 		if (price == "") {
 			price = "0";
 		}
-		auctionRomet.auction(id, price);
+		var uid = document.getElementById("user" + htmlId).value;
+		auctionRomet.auction(id, price, uid, callBackMsg);
+	}
+	function callBackMsg(data) {
+		if (data != "success") {
+			alert(data);
+		}
 	}
 </script>
 	</head>
@@ -110,22 +127,25 @@
 												<div id="div${status.index }" style="color:red">
 													<script type="text/javascript">
 														var div${status.index } = null;
-														div${status.index } = setInterval("displayTime('div${status.index }', new Date(${year}, ${month}, ${day}, ${hour }, ${minute }, ${second }), div${status.index })", 1000);
+														div${status.index } = setInterval("displayTime('div${status.index }', new Date(${year}, ${month}, ${day}, ${hour }, ${minute }, ${second }), div${status.index }, '${data.id}', '${status.index }')", 1000);
 													</script>
 												</div>
 											</td>
 										</tr>
 										<tr>
 											<td align="center">
-												<p class="indexjg">
-													￥${data.marketPrice }
+												<p class="indexjg" id="userdisplay${status.index }">
+													
 												</p>
-												<input type="hidden" id="price${status.index }" value="${data.marketPrice }">
+												<input type="hidden" id="user${status.index }" value="">
 											</td>
 										</tr>
 										<tr>
 											<td align="center">
-												<a href="zhanji.htm"></a>
+												<p class="indexjg" id="display${status.index }">
+													￥${data.marketPrice }
+												</p>
+												<input type="hidden" id="price${status.index }" value="${data.marketPrice }">
 											</td>
 										</tr>
 										<tr>
