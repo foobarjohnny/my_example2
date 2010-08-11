@@ -60,7 +60,7 @@ public interface IGeneralDao {
 	 */
 	@SuppressWarnings("unchecked")
 	public void delete(Class clazz, String id);
-	
+
 	/**
 	 * 删除数据
 	 * 
@@ -108,10 +108,18 @@ public interface IGeneralDao {
 	@SuppressWarnings("unchecked")
 	public List<Object> search(Class clazz, List<SearchBean> searchBeans,
 			PageBean pageBean, List<OrderByBean> orderBean);
-	
+
+	/**
+	 * 执行hql语句
+	 * 
+	 * @param hql
+	 * @return
+	 */
+	public int executeHql(String hql);
+
 	public List<Object> select();
-	
+
 	public List<Object> now(String id);
-	
+
 	public List<Object> follow(String id, String[] ids);
 }

@@ -7,6 +7,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.struts2.ServletActionContext;
 import org.mobile.common.bean.SqlBean;
 import org.mobile.common.log.GeneralLog;
 
@@ -19,6 +20,8 @@ import org.mobile.common.log.GeneralLog;
 public class GeneralManager {
 
 	public static final String GENERAL_MANAGER = "GeneralManager";
+	public static final String UPLOAD_IMAGE = "/upload/images";
+	public static final String IMAGE = "/images";
 	private static ThreadLocal<GeneralManager> local = new ThreadLocal<GeneralManager>();
 	private GeneralLog logger = GeneralLog.getInstance();
 	/** sessionId */
@@ -87,6 +90,15 @@ public class GeneralManager {
 	 */
 	public void postProcess() {
 		GeneralLog.getInstance().debug(request.getRequestURL(), "Request Stop");
+	}
+
+	/**
+	 * 上传图片路径
+	 * 
+	 * @return
+	 */
+	public String getImageDir(String dir) {
+		return ServletActionContext.getServletContext().getRealPath(dir);
 	}
 
 	public String getSessionId() {
