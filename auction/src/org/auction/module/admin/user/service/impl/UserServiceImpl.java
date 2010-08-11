@@ -73,6 +73,26 @@ public class UserServiceImpl extends GeneralService implements UserService {
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
+	public LoginBean loginDwr(UserData model) throws GeneralException {
+		List<SearchBean> search = new ArrayList<SearchBean>();
+		search.add(new SearchBean("username", "eq", "string", model
+				.getUsername()));
+		search.add(new SearchBean("password", "eq", "string", model
+				.getPassword()));
+		List list = generalDao.search(TsUser.class, search, null, null);
+		if (list != null && list.size() > 0) {
+			TsUser tsUser = (TsUser) list.get(0);
+			LoginBean bean = new LoginBean();
+			bean.setWorkNo(tsUser.getUsername());
+			bean.setId(tsUser.getId());
+			// GeneralManager manager = GeneralManager.getCurrentManager();
+			// SessionManager.setLoginInfo(manager.getSessionId(), bean);
+			return bean;
+		}
+		return null;
+	}
+
 	public void regedit(UserData model) throws GeneralException {
 		TsUser tsUser = new TsUser();
 		BeanProcessUtils.copyProperties(tsUser, model);

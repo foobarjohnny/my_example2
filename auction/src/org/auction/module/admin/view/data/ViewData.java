@@ -1,5 +1,6 @@
 package org.auction.module.admin.view.data;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ public class ViewData extends GeneralData {
 
 	private String id;
 	private String tradename;
+	private BigDecimal marketPrice = new BigDecimal(0);
 	
 	private int year;
 	private int month;
@@ -98,6 +100,14 @@ public class ViewData extends GeneralData {
 
 	public void setTemp(long temp) {
 		this.temp = temp;
+	}
+
+	public BigDecimal getMarketPrice() {
+		return marketPrice;
+	}
+
+	public void setMarketPrice(BigDecimal marketPrice) {
+		this.marketPrice = marketPrice;
 	}
 
 }
