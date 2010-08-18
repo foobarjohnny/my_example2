@@ -1,7 +1,9 @@
 package org.mobile.common.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
+import org.auction.entity.TsCommodity;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -183,8 +185,8 @@ public class GeneralDaoImpl implements IGeneralDao {
 					criteria
 							.add(Restrictions.isNull(searchBean.getFieldName()));
 				} else if (searchBean.getSignl().equals("notnull")) {
-					criteria
-							.add(Restrictions.isNotNull(searchBean.getFieldName()));
+					criteria.add(Restrictions.isNotNull(searchBean
+							.getFieldName()));
 				}
 			}
 		}
@@ -228,7 +230,9 @@ public class GeneralDaoImpl implements IGeneralDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Object> select() {
-		Query query = getSession().createQuery("from TsCommodity c where c.state != '3' and c.tsRebotcoms not in (from TsRebotcom r where r.tsCommodity != c)");
+		Query query = getSession()
+				.createQuery(
+						"from TsCommodity c where c.state != '3' and c.tsRebotcoms not in (from TsRebotcom r where r.tsCommodity != c)");
 		return query.list();
 	}
 
@@ -247,6 +251,40 @@ public class GeneralDaoImpl implements IGeneralDao {
 		query.setParameter("id", id);
 		query.setParameterList("ids", ids);
 		return query.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Object> auction(String[] ids) {
+		if (ids != null) {
+			Criteria criteria = getSession().createCriteria(TsCommodity.class);
+			criteria.add(Restrictions.le("starttime", new Date()));
+			criteria.add(Restrictions.not(Restrictions.in("state",
+					new String[] { "2", "3" })));
+			criteria.add(Restrictions.not(Restrictions.in("id", ids)));
+			// String hql =
+			// "from TsCommodity where id not in (:ids) and starttime >= :starttime and state != '2' and state != '3'";
+			// Query query = getSession().createQuery(hql);
+			// query.setDate("starttime", new Date());
+			// query.setParameterList("ids", ids);
+			return criteria.list();
+		} else {
+			Criteria criteria = getSession().createCriteria(TsCommodity.class);
+			criteria.add(Restrictions.le("starttime", new Date()));
+			criteria.add(Restrictions.not(Restrictions.in("state",
+					new String[] { "2", "3" })));
+			// String hql =
+			// "from TsCommodity where  starttime >= :starttime and state != '2' and state != '3'";
+			// Query query = getSession().createQuery(hql);
+			// query.setDate("starttime", new Date());
+			return criteria.list();
+		}
+	}
+
+	public Object getBinding(String id) {
+		String hql = "from TsBidding t where t.tsCommodity.id = :id and isbid='1'";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("id", id);
+		return query.uniqueResult();
 	}
 
 }
