@@ -7,6 +7,7 @@ import org.auction.module.admin.user.service.UserService;
 import org.directwebremoting.WebContextFactory;
 import org.mobile.common.bean.LoginBean;
 import org.mobile.common.exception.GeneralException;
+import org.mobile.common.session.SessionManager;
 
 public class LoginHandler {
 
@@ -22,6 +23,7 @@ public class LoginHandler {
 			HttpServletRequest req = WebContextFactory.get()
 					.getHttpServletRequest();
 			req.getSession().setAttribute("login", bean);
+			SessionManager.setLoginInfo(req.getSession().getId(), bean);
 			return bean.getWorkNo() + "," + bean.getId();
 		} else {
 			return "error";

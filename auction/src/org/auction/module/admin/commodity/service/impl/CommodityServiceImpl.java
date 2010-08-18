@@ -2,6 +2,8 @@ package org.auction.module.admin.commodity.service.impl;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.auction.entity.TsCommodity;
@@ -58,6 +60,10 @@ public class CommodityServiceImpl extends GeneralService implements
 		TsSort tsSort = (TsSort) generalDao
 				.get(TsSort.class, model.getSortId());
 		tsCommodity.setTsSort(tsSort);
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(tsCommodity.getStarttime());
+		cal.add(Calendar.HOUR_OF_DAY, tsCommodity.getEndtime());
+		tsCommodity.setOvertime(cal.getTime());
 		boolean isSave = false;
 		TsImages tsImages = null;
 		if (model.getId() != null && !model.getId().equals("")) {
@@ -160,6 +166,11 @@ public class CommodityServiceImpl extends GeneralService implements
 		TsCommodity tsCommodity = (TsCommodity) generalDao.get(
 				TsCommodity.class, model.getId());
 		tsCommodity.setState("1");
+		tsCommodity.setStarttime(new Date());
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(tsCommodity.getStarttime());
+		cal.add(Calendar.HOUR_OF_DAY, tsCommodity.getEndtime());
+		tsCommodity.setOvertime(cal.getTime());
 		generalDao.update(tsCommodity);
 	}
 
