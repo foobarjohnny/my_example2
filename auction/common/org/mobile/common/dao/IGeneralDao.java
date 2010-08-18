@@ -127,4 +127,6 @@ public interface IGeneralDao {
 	
 	public Object getBinding(String id);
 	
+	public int countE(String id, String uid);
+	
 }

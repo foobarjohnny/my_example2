@@ -287,4 +287,17 @@ public class GeneralDaoImpl implements IGeneralDao {
 		return query.uniqueResult();
 	}
 
+	public int countE(String id, String uid) {
+		String hql = "select count(id) from TsBidding t where t.tsCommodity.id = :id and t.tsUser.id=:uid";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("id", id);
+		query.setParameter("uid", uid);
+		Object obj = query.uniqueResult();
+		if (obj != null) {
+			return Integer.parseInt(String.valueOf(obj));
+		} else {
+			return 0;
+		}
+	}
+
 }
