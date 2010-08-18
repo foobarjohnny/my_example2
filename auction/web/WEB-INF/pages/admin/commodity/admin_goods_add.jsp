@@ -11,6 +11,7 @@
 		<hr>
 		<s:form action="commoditySave.action" name="form1" method="post" enctype="multipart/form-data">
 			<s:hidden name="id" />
+			<s:hidden name="state" />
 			<s:hidden name="methodName" />
 			<table width="100%" border="1" cellpadding="10" cellspacing="0"
 				bordercolor="#FFFFFF" bgcolor="#EEEEEE">

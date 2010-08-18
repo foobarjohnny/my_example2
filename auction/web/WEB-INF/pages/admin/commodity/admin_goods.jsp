@@ -30,7 +30,7 @@
 			——商品类别管理——
 		</div>
 		<hr>
-		<s:form action="sortSearch.action" name="form1">
+		<s:form action="commoditySearch.action" name="form1">
 			<s:hidden name="pageBean.currentPage" />
 			<s:hidden name="pageBean.totalPage" />
 			<table width="100%" border="1" cellpadding="10" cellspacing="0"
@@ -51,7 +51,7 @@
 						<strong>开始时间</strong>
 					</td>
 					<td width="10%" align="center" valign="middle">
-						<strong>结束时间</strong>
+						<strong>时长</strong>
 					</td>
 					<td width="12%" align="center">
 						<strong>操作</strong>

@@ -11,23 +11,20 @@
 	 * @return
 	 */
 	function displayTime(id, time, timer, tid, did) {
-		var newDate = new Date();
-		var first = time.getTime();
-		var last = newDate.getTime();
-		var maxtime = (first - last) / 1000;
+		//var newDate = new Date();
+		//var first = time.getTime();
+		//var last = newDate.getTime();
+		var maxtime = time / 1000;
 		if (maxtime >= 0) {
 			hour = Math.floor(maxtime / 3600);
 			minutes = Math.floor((maxtime - hour * 3600) / 60);
 			seconds = Math.floor(maxtime % 60);
-			// msg = "距离结束还有" + hour + "小时" + minutes + "分" + seconds + "秒";
-			//if(maxtime == 5*60) {
-			//	alert('注意，还有5分钟!');
-			//}
 			--maxtime;
+			eval("time" + did + "=time" + did + "-1000");
 			var msg = hour + ":" + minutes + ":" + seconds;
 			document.all[id].innerHTML = msg;
 			var userid = document.getElementById("user" + did).value;
-			bidingRomet.find(tid,userid,did, showMsg);
+			//bidingRomet.find(tid,userid,did, showMsg);
 		} else {
 			clearInterval(timer);
 			document.all[id].innerHTML = "竞拍结束";
@@ -123,11 +120,12 @@
 										</tr>
 										<tr>
 											<td align="center" class="indextime">
-												
 												<div id="div${status.index }" style="color:red">
 													<script type="text/javascript">
 														var div${status.index } = null;
-														div${status.index } = setInterval("displayTime('div${status.index }', new Date(${year}, ${month}, ${day}, ${hour }, ${minute }, ${second }), div${status.index }, '${data.id}', '${status.index }')", 1000);
+														var time${status.index } = ${data.remaining};
+														div${status.index } = setInterval("displayTime('div${status.index }', time${status.index }, div${status.index }, '${data.id}', '${status.index }')", 1000);
+														
 													</script>
 												</div>
 											</td>
