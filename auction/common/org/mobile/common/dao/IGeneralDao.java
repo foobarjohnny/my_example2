@@ -122,4 +122,9 @@ public interface IGeneralDao {
 	public List<Object> now(String id);
 
 	public List<Object> follow(String id, String[] ids);
+	
+	public List<Object> auction(String[] ids);
+	
+	public Object getBinding(String id);
+	
 }
