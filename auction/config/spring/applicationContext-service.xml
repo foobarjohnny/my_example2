@@ -79,4 +79,8 @@
 		class="org.auction.module.admin.commodity.service.impl.AuctionServiceImpl">
 		<property name="generalDao" ref="generalDao" />
 	</bean>
+	<bean id="jobService"
+		class="org.auction.module.manager.job.service.impl.JobServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
 </beans>

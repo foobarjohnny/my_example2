@@ -56,6 +56,14 @@
 			<result name="help" type="chain">infoSearch</result>
 			<result name="post" type="chain">infoSearch</result>
 		</action>
+		<action name="infoView" class="infoAction" method="viewInfo">
+			<result name="help">WEB-INF/pages/view/info/view_help.jsp</result>
+			<result name="post">WEB-INF/pages/view/info/view_post.jsp</result>
+		</action>
+		<action name="infoViewList" class="infoAction" method="viewInfoList">
+			<result name="help">WEB-INF/pages/view/info/view_help_list.jsp</result>
+			<result name="post">WEB-INF/pages/view/info/view_post_list.jsp</result>
+		</action>
 		
 		<action name="problemDelete" class="problemAction" method="delete">
 			<result type="chain">problemSearch</result>

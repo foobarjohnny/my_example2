@@ -39,11 +39,26 @@
 		<action name="userAuction" class="userAuctionAction" method="auction">
 			<result>WEB-INF/pages/user/admin_user_auction.jsp</result>
 		</action>
-		<action name="userNow" class="userAuctionAction" method="now">
-			<result>WEB-INF/pages/user/admin_user_now.jsp</result>
-		</action>
+		
 		<action name="userFollow" class="userAuctionAction" method="follow">
 			<result>WEB-INF/pages/user/admin_user_now.jsp</result>
+		</action>
+		
+		<!-- 登陆用户前台信息  -->
+		<action name="userInfomation" class="userAction" method="viewInfo">
+			<result>WEB-INF/pages/view/user/myepaide.jsp</result>
+		</action>
+		<action name="viewUser" class="userAction" method="viewUser">
+			<result>WEB-INF/pages/view/user/user.jsp</result>
+		</action>
+		<action name="viewSaveUser" class="userAction" method="viewSaveUser">
+			<result type="chain">viewUser</result>
+		</action>
+		<action name="viewPass" class="userAction" method="viewPass">
+			<result>WEB-INF/pages/view/user/pass.jsp</result>
+		</action>
+		<action name="userNow" class="userAuctionAction" method="now">
+			<result>WEB-INF/pages/view/user/admin_user_now.jsp</result>
 		</action>
 	</package>
 </struts>
