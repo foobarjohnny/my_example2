@@ -71,6 +71,29 @@ public class InfoAction extends GeneralAction<InfoData> {
 		}
 		return SUCCESS;
 	}
+	
+	public String viewInfo() throws GeneralException {
+		infoService.forwardInfo(model);
+		if (model.getNettype().equals("5")) {
+			return "post";
+		} else if (model.getNettype().equals("3")) {
+			return "help";
+		} else {
+			return SUCCESS;
+		}
+	}
+	
+	public String viewInfoList() throws GeneralException {
+		setPage(model);
+		infoService.search(model);
+		if (model.getNettype().equals("5")) {
+			return "post";
+		} else if (model.getNettype().equals("3")) {
+			return "help";
+		} else {
+			return SUCCESS;
+		}
+	}
 
 	public InfoData getModel() {
 		return model;

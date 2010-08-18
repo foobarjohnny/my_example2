@@ -22,6 +22,7 @@ public class TsCommodity implements java.io.Serializable {
 	private Long consume;
 	private String restricts;
 	private Date starttime;
+	private Date overtime;
 	private Integer endtime;
 	private String state;
 	private Integer addtimes;
@@ -187,6 +188,14 @@ public class TsCommodity implements java.io.Serializable {
 
 	public void setTsBiddings(Set tsBiddings) {
 		this.tsBiddings = tsBiddings;
+	}
+
+	public Date getOvertime() {
+		return overtime;
+	}
+
+	public void setOvertime(Date overtime) {
+		this.overtime = overtime;
 	}
 
 }

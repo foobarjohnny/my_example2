@@ -4,14 +4,16 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.auction.module.manager.data.TradeData;
 import org.mobile.common.action.GeneralData;
 
 public class ViewData extends GeneralData {
 
 	private String id;
 	private String tradename;
+	private Long remaining;
 	private BigDecimal marketPrice = new BigDecimal(0);
-	
+
 	private int year;
 	private int month;
 	private int day;
@@ -21,6 +23,8 @@ public class ViewData extends GeneralData {
 	private long temp;
 
 	private List<ViewData> dataList = new ArrayList<ViewData>();
+
+	private List<TradeData> tradeList = new ArrayList<TradeData>();
 
 	public String getId() {
 		return id;
@@ -108,6 +112,22 @@ public class ViewData extends GeneralData {
 
 	public void setMarketPrice(BigDecimal marketPrice) {
 		this.marketPrice = marketPrice;
+	}
+
+	public Long getRemaining() {
+		return remaining;
+	}
+
+	public void setRemaining(Long remaining) {
+		this.remaining = remaining;
+	}
+
+	public List<TradeData> getTradeList() {
+		return tradeList;
+	}
+
+	public void setTradeList(List<TradeData> tradeList) {
+		this.tradeList = tradeList;
 	}
 
 }
