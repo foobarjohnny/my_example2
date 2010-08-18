@@ -40,10 +40,10 @@ public class Job {
 	}
 
 	/**
-	 * 监控竞拍商品是否结束
+	 * 竞拍结束商品生成订单
 	 */
-	public void destoryComtity() {
-
+	public void destoryComtity() throws GeneralException {
+		jobService.finish();
 	}
 
 	public void setJobService(IJobService jobService) {

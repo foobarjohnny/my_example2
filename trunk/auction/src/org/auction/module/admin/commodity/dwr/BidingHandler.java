@@ -30,6 +30,7 @@ public class BidingHandler {
 				returnStr += ",userId:" + data.getUserId();
 				returnStr += ",username:" + data.getUsername();
 				returnStr += ",price:" + data.getPrice();
+				returnStr += ",add:" + data.getTime();
 			}
 		}
 		return returnStr;

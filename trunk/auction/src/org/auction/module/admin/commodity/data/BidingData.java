@@ -17,6 +17,8 @@ public class BidingData extends GeneralData {
 	private String username;
 	private String commpityId;
 
+	private int time;
+
 	public String getUsername() {
 		return username;
 	}
@@ -84,6 +86,14 @@ public class BidingData extends GeneralData {
 
 	public void setCommpityId(String commpityId) {
 		this.commpityId = commpityId;
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
 	}
 
 }

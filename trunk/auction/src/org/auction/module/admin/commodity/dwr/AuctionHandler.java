@@ -13,7 +13,7 @@ public class AuctionHandler {
 
 	private AuctionService auctionService;
 
-	public String auction(String comptyId, String price, String userId) {
+	public String auction(String comptyId, String price, String userId, String htmlId) {
 		HttpServletRequest req = WebContextFactory.get()
 				.getHttpServletRequest();
 		LoginBean bean = (LoginBean) req.getSession().getAttribute("login");
@@ -23,10 +23,17 @@ public class AuctionHandler {
 				data.setComptyId(comptyId);
 				data.setUserId(bean.getId());
 				data.setPrice(new BigDecimal(price));
-				auctionService.auction(data);
-				return "success";
+				if (auctionService.auction(data)) {
+					if (data.isAdd()) {
+						return "add:" + htmlId + ":" + data.getTime();
+					} else {
+						return "success";
+					}
+				} else {
+					return "参与商品已经竞拍结束。";
+				}
 			} else {
-				return "你现在是最高出价者，请勿瞎点，否则出事概不负责。";
+				return "你现在是最高出价者。";
 			}
 		} else {
 			return "你还没有登录，请先登录在参加竞拍。";
