@@ -4,5 +4,5 @@ import org.auction.module.admin.commodity.data.AuctionData;
 
 public interface AuctionService {
 
-	public void auction(AuctionData data);
+	public boolean auction(AuctionData data);
 }

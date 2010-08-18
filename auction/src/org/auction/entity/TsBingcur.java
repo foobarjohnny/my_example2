@@ -1,6 +1,7 @@
 package org.auction.entity;
 
-import java.sql.Timestamp;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * TsBingcur entity. @author MyEclipse Persistence Tools
@@ -13,8 +14,8 @@ public class TsBingcur implements java.io.Serializable {
 	private String id;
 	private TsCommodity tsCommodity;
 	private TsUser tsUser;
-	private Timestamp binddate;
-	private Long price;
+	private Date binddate;
+	private BigDecimal price;
 	private Integer amount;
 
 	// Constructors
@@ -24,13 +25,13 @@ public class TsBingcur implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public TsBingcur(Timestamp binddate) {
+	public TsBingcur(Date binddate) {
 		this.binddate = binddate;
 	}
 
 	/** full constructor */
 	public TsBingcur(TsCommodity tsCommodity, TsUser tsUser,
-			Timestamp binddate, Long price, Integer amount) {
+			Date binddate, BigDecimal price, Integer amount) {
 		this.tsCommodity = tsCommodity;
 		this.tsUser = tsUser;
 		this.binddate = binddate;
@@ -64,19 +65,19 @@ public class TsBingcur implements java.io.Serializable {
 		this.tsUser = tsUser;
 	}
 
-	public Timestamp getBinddate() {
+	public Date getBinddate() {
 		return this.binddate;
 	}
 
-	public void setBinddate(Timestamp binddate) {
+	public void setBinddate(Date binddate) {
 		this.binddate = binddate;
 	}
 
-	public Long getPrice() {
+	public BigDecimal getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(Long price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

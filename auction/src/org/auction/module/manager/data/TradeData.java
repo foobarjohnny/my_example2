@@ -33,7 +33,12 @@ public class TradeData {
 	// 当前竞拍用户信息
 	private String uid;
 	private String username;
-
+	
+	//增加时间
+	private boolean isAdd;
+	
+	private boolean over = false;
+	
 	public String getId() {
 		return id;
 	}
@@ -192,5 +197,21 @@ public class TradeData {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public boolean isAdd() {
+		return isAdd;
+	}
+
+	public void setAdd(boolean isAdd) {
+		this.isAdd = isAdd;
+	}
+
+	public boolean isOver() {
+		return over;
+	}
+
+	public void setOver(boolean over) {
+		this.over = over;
 	}
 }

@@ -8,4 +8,6 @@ import org.mobile.common.exception.GeneralException;
 public interface IJobService {
 
 	public List<TradeData> getNewComtity(String[] ids) throws GeneralException;
+
+	public void finish() throws GeneralException;
 }

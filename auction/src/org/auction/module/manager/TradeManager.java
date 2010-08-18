@@ -20,6 +20,15 @@ public class TradeManager {
 	public static void add(TradeData tradeData) {
 		tradeDataMap.put(tradeData.getId(), tradeData);
 	}
+	
+	/**
+	 * 获得指定商品
+	 * @param key
+	 * @return
+	 */
+	public static TradeData get(String key) {
+		return tradeDataMap.get(key);
+	}
 
 	/**
 	 * 删除已经竞拍的商品
