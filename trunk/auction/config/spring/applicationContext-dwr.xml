@@ -20,4 +20,9 @@
 		<property name="auctionService" ref="auctionService" />
 		<dwr:remote javascript="auctionRomet"></dwr:remote>
 	</bean>
+	<bean id="userRomet"
+		class="org.auction.module.admin.user.dwr.UserHandler">
+		<property name="userService" ref="userService" />
+		<dwr:remote javascript="userRomet"></dwr:remote>
+	</bean>
 </beans>
