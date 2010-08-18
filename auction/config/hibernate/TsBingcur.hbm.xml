@@ -16,11 +16,11 @@
         <many-to-one name="tsUser" class="org.auction.entity.TsUser" fetch="select">
             <column name="USERID" length="32" />
         </many-to-one>
-        <property name="binddate" type="java.sql.Timestamp">
+        <property name="binddate" type="java.util.Date">
             <column name="BINDDATE" length="19" not-null="true" />
         </property>
-        <property name="price" type="java.lang.Long">
-            <column name="PRICE" precision="10" scale="0" />
+        <property name="price" type="java.math.BigDecimal">
+            <column name="PRICE" precision="10" scale="2" />
         </property>
         <property name="amount" type="java.lang.Integer">
             <column name="AMOUNT" />
