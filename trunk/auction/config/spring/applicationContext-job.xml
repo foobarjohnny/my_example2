@@ -29,7 +29,7 @@
 			<ref bean="taskone" />
 		</property>
 		<property name="cronExpression">
-			<value>0 15 * ? * *</value>
+			<value>0 0/15 * ? * *</value>
 		</property>
 	</bean>
 	<bean id="timetwo" class="org.springframework.scheduling.quartz.CronTriggerBean">
@@ -37,7 +37,7 @@
 			<ref bean="tasktwo" />
 		</property>
 		<property name="cronExpression">
-			<value>0/1 * * ? * *</value>
+			<value>0 0/15 * ? * *</value>
 		</property>
 	</bean>
 	<bean id="start" lazy-init="false" autowire="no"
