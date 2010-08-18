@@ -11,9 +11,6 @@
 	 * @return
 	 */
 	function displayTime(id, time, timer, tid, did) {
-		//var newDate = new Date();
-		//var first = time.getTime();
-		//var last = newDate.getTime();
 		var maxtime = time / 1000;
 		if (maxtime >= 0) {
 			hour = Math.floor(maxtime / 3600);
@@ -24,10 +21,11 @@
 			var msg = hour + ":" + minutes + ":" + seconds;
 			document.all[id].innerHTML = msg;
 			var userid = document.getElementById("user" + did).value;
-			//bidingRomet.find(tid,userid,did, showMsg);
+			bidingRomet.find(tid,userid,did, showMsg);
 		} else {
 			clearInterval(timer);
 			document.all[id].innerHTML = "竞拍结束";
+			//document.getElementById("button" + did).style.display = "none";
 		}
 	}
 	function showMsg(data) {
@@ -37,10 +35,16 @@
 			var uid = (s[1].split(":"))[1];
 			var uname = (s[2].split(":"))[1];
 			var price = (s[3].split(":"))[1];
+			var add = (s[4].split(":"))[1];
 			document.getElementById("user" + index).value = uid;
 			document.getElementById("price" + index).value = price;
 			document.getElementById("userdisplay" + index).innerHTML = uname;
 			document.getElementById("display" + index).innerHTML = "￥" + price;
+			var overtime = eval("time" + index);
+			var lasttime = parseInt(add) * 1000;
+			if (overtime - lasttime < 0) {
+				eval("time" + index + "=" + lasttime);
+			}
 		}
 	}
 	function doSubmit(id, htmlId) {
@@ -49,10 +53,15 @@
 			price = "0";
 		}
 		var uid = document.getElementById("user" + htmlId).value;
-		auctionRomet.auction(id, price, uid, callBackMsg);
+		auctionRomet.auction(id, price, uid, htmlId, callBackMsg);
 	}
 	function callBackMsg(data) {
-		if (data != "success") {
+		var s = data.split(":");
+		if (s[0] == "add") {
+			eval("time" + s[1] + "=" + parseInt(s[2])*1000);
+		} else if (s[0] == "success") {
+			//alert("竞拍成功");
+		} else {
 			alert(data);
 		}
 	}
@@ -148,7 +157,7 @@
 										</tr>
 										<tr>
 											<td align="center">
-												<img src="images/wyjp.gif" width="104" height="27" onclick="doSubmit('${data.id}', '${status.index }');">
+												<img src="images/wyjp.gif" width="104" height="27" onclick="doSubmit('${data.id}', '${status.index }');" id="buttion${status.index }">
 											</td>
 										</tr>
 									</table>
