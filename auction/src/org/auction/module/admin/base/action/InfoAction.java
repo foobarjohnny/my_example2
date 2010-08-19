@@ -57,6 +57,7 @@ public class InfoAction extends GeneralAction<InfoData> {
 	}
 
 	public String saveInfo() throws GeneralException {
+		try{
 		infoService.saveInfo(model);
 		if (model.getNettype().equals("1")) {
 			return "web";
@@ -68,6 +69,9 @@ public class InfoAction extends GeneralAction<InfoData> {
 			return "help";
 		} else if (model.getNettype().equals("5")) {
 			return "post";
+		}
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return SUCCESS;
 	}
