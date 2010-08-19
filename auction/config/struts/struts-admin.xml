@@ -4,7 +4,14 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+
+	<!-- Background Administrator  View  -->
 	<package name="admin" extends="default">
+
+	<!-- total view pages -->
+		<action name="index">
+			<result>WEB-INF/pages/view/index.jsp</result>
+		</action>
 		<action name="top">
 			<result>WEB-INF/pages/admin/top.jsp</result>
 		</action>
@@ -14,6 +21,20 @@
 		<action name="main">
 			<result>WEB-INF/pages/admin/main.jsp</result>
 		</action>
+		<action name="footer">
+			<result>WEB-INF/pages/admin/footer.jsp</result>
+		</action>
+	<!-- end -->
+		
+	<!-- Website Base information setting up  -->
+		<action name="websiteBaseInfo" class="websiteBaseInfoAction" method="searchInfoData">
+			<result>WEB-INF/pages/admin/base/admin_info.jsp</result>
+		</action>
+		
+		<action name="saveWebsiteInfo" class="websiteBaseInfoAction" method="save">
+			<result>WEB-INF/pages/admin/base/admin_info.jsp</result>
+		</action>
+		
 		<action name="netWorkForward" class="netWordAction" method="forwardInfo">
 			<result>WEB-INF/pages/admin/base/admin_info.jsp</result>
 		</action>
@@ -32,27 +53,37 @@
 		<action name="managerSave" class="managerAction" method="saveInfo">
 			<result type="chain">managerSearch</result>
 		</action>
-		
+
 		<action name="infoDelete" class="infoAction" method="delete">
 			<result name="help" type="chain">infoSearch</result>
 			<result name="post" type="chain">infoSearch</result>
 		</action>
 		<action name="infoSearch" class="infoAction" method="search">
-			<result name="help">WEB-INF/pages/admin/base/admin_info_help.jsp</result>
-			<result name="post">WEB-INF/pages/admin/base/admin_info_post.jsp</result>
+			<result name="help">WEB-INF/pages/admin/base/admin_info_help.jsp
+			</result>
+			<result name="post">WEB-INF/pages/admin/base/admin_info_post.jsp
+			</result>
 		</action>
 		<action name="infoForward" class="infoAction" method="forwardInfo">
-			<result name="web">WEB-INF/pages/admin/base/admin_info_web.jsp</result>
-			<result name="join">WEB-INF/pages/admin/base/admin_info_join.jsp</result>
-			<result name="reg">WEB-INF/pages/admin/base/admin_info_reg.jsp</result>
-			<result name="help">WEB-INF/pages/admin/base/admin_info_help_form.jsp</result>
-			<result name="post">WEB-INF/pages/admin/base/admin_info_post_form.jsp</result>
+			<result name="web">WEB-INF/pages/admin/base/admin_info_web.jsp
+			</result>
+			<result name="join">WEB-INF/pages/admin/base/admin_info_join.jsp
+			</result>
+			<result name="reg">WEB-INF/pages/admin/base/admin_info_reg.jsp
+			</result>
+			<result name="help">WEB-INF/pages/admin/base/admin_info_help_form.jsp
+			</result>
+			<result name="post">WEB-INF/pages/admin/base/admin_info_post_form.jsp
+			</result>
 		</action>
 		<action name="infoSave" class="infoAction" method="saveInfo">
 			<result type="chain">infoSearch</result>
-			<result name="web">WEB-INF/pages/admin/base/admin_info_web.jsp</result>
-			<result name="join">WEB-INF/pages/admin/base/admin_info_join.jsp</result>
-			<result name="reg">WEB-INF/pages/admin/base/admin_info_reg.jsp</result>
+			<result name="web">WEB-INF/pages/admin/base/admin_info_web.jsp
+			</result>
+			<result name="join">WEB-INF/pages/admin/base/admin_info_join.jsp
+			</result>
+			<result name="reg">WEB-INF/pages/admin/base/admin_info_reg.jsp
+			</result>
 			<result name="help" type="chain">infoSearch</result>
 			<result name="post" type="chain">infoSearch</result>
 		</action>
@@ -77,5 +108,23 @@
 		<action name="problemSave" class="problemAction" method="saveProblem">
 			<result type="chain">problemSearch</result>
 		</action>
+		
+		<action name="adminLoginLog">
+			<result>WEB-INF/pages/admin/base/admin_info_blog.jsp</result>
+		</action>
+		
+		<action name="mysqlData">
+			<result>WEB-INF/pages/admin/base/admin_info_data.jsp</result>
+		</action>
+		
+		<action name="mysqlDataBackup" class="dbBackupAction" method="backup">
+			<result name="OK">WEB-INF/pages/admin/base/admin_info_data_ok.jsp</result>
+			<result name="ERROR">WEB-INF/pages/admin/base/admin_info_data.jsp</result>
+		</action>
+		
+		<action name="serverPoint">
+			<result>WEB-INF/pages/admin/base/admin_info_server.jsp</result>
+		</action>
+		
 	</package>
 </struts>
