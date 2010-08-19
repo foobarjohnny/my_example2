@@ -1,7 +1,7 @@
 package org.auction.module.admin.base.data;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.ArrayList;  
+import java.sql.Date;
 import java.util.List;
 
 import org.mobile.common.action.GeneralData;
