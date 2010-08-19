@@ -3,29 +3,47 @@ package org.mobile.common.manager;
 import java.util.ResourceBundle;
 
 /**
- * 资源管理器，获得资源文件内容
+ * 资源管理器，获得资源文件内容,通过单例获取资源绑定的管理器。
  * 
  * @author 孙树林
  * 
  */
 public class ResourceManager {
 
-	public static ResourceManager resource;
+	private static ResourceManager resource;
+	private static ResourceBundle bundle;
 
+	/**
+	 * 获取资源管理器,构造函数
+	 * @return
+	 */
 	public static ResourceManager getInstance() {
 		return resource;
 	}
 
-	private static ResourceBundle bundle;
-
+	/**
+	 * 获取资源的bundle，构造函数
+	 * @param path
+	 */
 	private ResourceManager(String path) {
 		bundle = ResourceBundle.getBundle(path);
 	}
 
+	/**
+	 * 获取指定关键字的字符串的内容
+	 * @param key
+	 * @return
+	 */
 	public String getString(String key) {
 		return bundle.getString(key);
 	}
 
+	/**
+	 * 带有缺省值的关键内容。
+	 * @param key
+	 * @param defaultValue
+	 * @return
+	 */
 	public String getString(String key, String defaultValue) {
 		String value = bundle.getString(key);
 		if (value != null && !value.trim().equals("")) {
@@ -34,11 +52,18 @@ public class ResourceManager {
 		return defaultValue;
 	}
 
+	/**
+	 * 
+	 * @param key
+	 * @param params
+	 * @return
+	 */
 	public String getString(String key, String[] params) {
 		String result = "";
 		String source = bundle.getString(key);
 		String[] sources = new String[params.length + 1];
 		int ind = 0;
+		//TODO 既然是解析字符串的过程，为什么不用split方法呢？
 		for (int i = 1; i < (params.length + 1); i++) {
 			int index = source.indexOf("%" + i);
 			if (index > 0) {
