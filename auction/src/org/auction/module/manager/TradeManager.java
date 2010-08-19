@@ -35,8 +35,8 @@ public class TradeManager {
 	 * 
 	 * @param tradeData
 	 */
-	public static void remove(TradeData tradeData) {
-		tradeDataMap.remove(tradeData.getId());
+	public static void remove(String id) {
+		tradeDataMap.remove(id);
 	}
 	
 	@SuppressWarnings("unchecked")

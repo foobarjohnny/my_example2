@@ -35,6 +35,7 @@ public class TsUser implements java.io.Serializable {
 	private Set tsBiddings = new HashSet(0);
 	private Set tsBuies = new HashSet(0);
 	private Set tsConsumes = new HashSet(0);
+	private Set tsOrders = new HashSet(0);
 
 	// Constructors
 
@@ -256,5 +257,13 @@ public class TsUser implements java.io.Serializable {
 
 	public void setTsConsumes(Set tsConsumes) {
 		this.tsConsumes = tsConsumes;
+	}
+
+	public Set getTsOrders() {
+		return tsOrders;
+	}
+
+	public void setTsOrders(Set tsOrders) {
+		this.tsOrders = tsOrders;
 	}
 }

@@ -1,5 +1,6 @@
 package org.auction.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -15,15 +16,17 @@ public class TsOrder implements java.io.Serializable {
 	private String ordernum;
 	private Date ordertime;
 	private String pay;
-	private Long amount;
+	private BigDecimal amount;
 	private String receiver;
 	private String telphone;
 	private String address;
 	private String remard;
-	private Long fare;
-	private Long totalPrices;
+	private BigDecimal fare;
+	private BigDecimal totalPrices;
 	private String state;
 	private String ordertype;
+	private TsUser tsUser;
+	private Integer ecount;
 
 	// Constructors
 
@@ -39,9 +42,9 @@ public class TsOrder implements java.io.Serializable {
 
 	/** full constructor */
 	public TsOrder(TsCommodity tsCommodity, String ordernum,
-			Date ordertime, String pay, Long amount, String receiver,
-			String telphone, String address, String remard, Long fare,
-			Long totalPrices, String state, String ordertype) {
+			Date ordertime, String pay, BigDecimal amount, String receiver,
+			String telphone, String address, String remard, BigDecimal fare,
+			BigDecimal totalPrices, String state, String ordertype) {
 		this.tsCommodity = tsCommodity;
 		this.ordernum = ordernum;
 		this.ordertime = ordertime;
@@ -99,11 +102,11 @@ public class TsOrder implements java.io.Serializable {
 		this.pay = pay;
 	}
 
-	public Long getAmount() {
+	public BigDecimal getAmount() {
 		return this.amount;
 	}
 
-	public void setAmount(Long amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 
@@ -139,19 +142,19 @@ public class TsOrder implements java.io.Serializable {
 		this.remard = remard;
 	}
 
-	public Long getFare() {
+	public BigDecimal getFare() {
 		return this.fare;
 	}
 
-	public void setFare(Long fare) {
+	public void setFare(BigDecimal fare) {
 		this.fare = fare;
 	}
 
-	public Long getTotalPrices() {
+	public BigDecimal getTotalPrices() {
 		return this.totalPrices;
 	}
 
-	public void setTotalPrices(Long totalPrices) {
+	public void setTotalPrices(BigDecimal totalPrices) {
 		this.totalPrices = totalPrices;
 	}
 
@@ -169,6 +172,22 @@ public class TsOrder implements java.io.Serializable {
 
 	public void setOrdertype(String ordertype) {
 		this.ordertype = ordertype;
+	}
+
+	public TsUser getTsUser() {
+		return tsUser;
+	}
+
+	public void setTsUser(TsUser tsUser) {
+		this.tsUser = tsUser;
+	}
+
+	public Integer getEcount() {
+		return ecount;
+	}
+
+	public void setEcount(Integer ecount) {
+		this.ecount = ecount;
 	}
 
 }
