@@ -24,9 +24,10 @@ public class InitServlet extends HttpServlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		// 系统资源文件
+		// 获取struts2的系统资源文件，装载的名称是resource.properties
 		String resources = config.getInitParameter("resource");
 		ResourceManager.init(resources);
+		
 		// 注册日期转换
 		ConvertUtils.register(new DateConvert(), java.util.Date.class);
 		// 系统功能权限
