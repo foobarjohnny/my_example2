@@ -11,6 +11,7 @@
 	<constant name="struts.ui.theme" value="simple" />
 	<constant name="struts.ui.templateDir" value="template" />
 	<constant name="struts.ui.templateSuffix" value="ftl" />
+	
 	<package name="default" extends="struts-default">
 		<interceptors>
 			<interceptor name="general"
