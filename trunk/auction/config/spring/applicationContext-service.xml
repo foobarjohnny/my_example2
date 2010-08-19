@@ -4,6 +4,13 @@
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd">
+	
+	<!-- Website Base Information setting up -->
+	<bean id="websiteBaseInfoService" class="org.auction.module.admin.base.service.impl.WebsiteBaseInfoServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	
+	
 	<bean id="netWordService"
 		class="org.auction.module.admin.base.service.impl.NetWordServiceImpl">
 		<property name="generalDao" ref="generalDao" />
@@ -20,6 +27,11 @@
 		class="org.auction.module.admin.base.service.impl.ProblemServiceImpl">
 		<property name="generalDao" ref="generalDao" />
 	</bean>
+	
+	<bean id="dbBackupService" class="org.auction.module.admin.base.service.impl.DbBackupServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	
 	<bean id="sortService"
 		class="org.auction.module.admin.commodity.service.impl.SortServiceImpl">
 		<property name="generalDao" ref="generalDao" />
