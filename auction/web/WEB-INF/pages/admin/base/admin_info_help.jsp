@@ -54,7 +54,7 @@
 				</tr>
 				<s:iterator value="dataList" id="data" status="status">
 					<tr>
-						<td align="center" valign="middle">
+						<td align="left" valign="middle">
 							<s:property value="title"/>
 						</td>
 						<td align="center" valign="middle">
