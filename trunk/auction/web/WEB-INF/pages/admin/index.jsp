@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ include file="/resources/taglib.jsp"%>
 <html>
-	<title></title>
+	<title>易拍得</title>
 	<frameset rows="67,*" cols="*" frameborder="no" border="0"
 		framespacing="0">
 		<frame src="top.action" name="topFrame" scrolling="No"

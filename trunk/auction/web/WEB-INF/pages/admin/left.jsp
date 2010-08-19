@@ -27,7 +27,7 @@
 					<table width="100%" border="0" cellspacing="0" cellpadding="5">
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="netWorkForward.action">网站基本信息</a>
+								<a target="mainFrame" href="websiteBaseInfo.action">网站基本信息</a>
 							</td>
 						</tr>
 						<tr>
@@ -65,23 +65,21 @@
 								<a target="mainFrame" href="infoSearch.action?nettype=5">网站公告</a>
 							</td>
 						</tr>
-						<!--  
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_info_blog.htm">网站日志</a>
+								<a target="mainFrame" href="adminLoginLog.action">网站日志[未实现，显示系统管理员登录的过程。]</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_info_data.htm">数据库备份</a>
+								<a target="mainFrame" href="mysqlData.action">数据库备份</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_info_Server.htm">服务器参数探针</a>
+								<a target="mainFrame" href="serverPoint.action">服务器参数探针[未实现]</a>
 							</td>
 						</tr>
-						-->
 					</table>
 				</td>
 			</tr>
