@@ -1,6 +1,6 @@
 package org.auction.module.admin.base.service.impl;
 
-import java.util.ArrayList;
+import java.util.ArrayList;  
 import java.util.Date;
 import java.util.List;
 
@@ -55,7 +55,7 @@ public class InfoServiceImpl extends GeneralService implements InfoService {
 	public void saveInfo(InfoData model) throws GeneralException {
 		TsInfo tsInfo = new TsInfo();
 		BeanProcessUtils.copyProperties(tsInfo, model);
-		tsInfo.setReleasedate(new Date());
+		tsInfo.setReleasedate(new Date(System.currentTimeMillis()));
 		if (model.getId() != null && !model.getId().equals("")) {
 			generalDao.update(tsInfo);
 		} else {
