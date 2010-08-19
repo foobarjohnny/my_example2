@@ -8,15 +8,18 @@ import org.apache.commons.beanutils.Converter;
 import org.mobile.common.manager.ResourceManager;
 
 /**
+ * 日期转换功能
  * 
  * @author 孙树林
  * 
  */
 public class DateConvert implements Converter {
 
-	private static SimpleDateFormat dateFormat = new SimpleDateFormat(
-			"yyyy-MM-dd");
+	private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
+	/**
+	 * 构造方法
+	 */
 	public DateConvert() {
 	}
 
