@@ -85,6 +85,7 @@ public class AuctionServiceImpl extends GeneralService implements
 			tradeData.setIsbid(tsBidding.getIsbid());
 			tradeData.setBiddate(tsBidding.getBiddate());
 			tradeData.setPrice(tsBidding.getPrice());
+			tradeData.setMarketPrice(tsBidding.getPrice());
 			// 获得竞拍商品时间是否小于最低限制
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(tradeData.getOvertime());

@@ -29,26 +29,6 @@ public class BidingServiceImpl extends GeneralService implements BidingService {
 			}
 		}
 		return newList;
-		// List<SearchBean> searchBeans = new ArrayList<SearchBean>();
-		// searchBeans.add(new SearchBean("tsCommodity.id", "eq", "string",
-		// model
-		// .getCommpityId()));
-		// searchBeans.add(new SearchBean("isbid", "eq", "string", "1"));
-		// if (model.getUserId() != null && !model.getUserId().equals("")) {
-		// searchBeans.add(new SearchBean("tsUser.id", "neq", "string", model
-		// .getUserId()));
-		// }
-		// List list = generalDao.search(TsBidding.class, searchBeans, null,
-		// null);
-		// for (int i = 0; i < list.size(); i++) {
-		// TsBidding tsBiding = (TsBidding) list.get(i);
-		// BidingData data = new BidingData();
-		// data.setUserId(tsBiding.getTsUser().getId());
-		// data.setUsername(tsBiding.getTsUser().getUsername());
-		// data.setPrice(tsBiding.getPrice());
-		// newList.add(data);
-		// }
-		// return newList;
 	}
 
 	public String delete(BidingData model) throws GeneralException {

@@ -1,12 +1,17 @@
 package org.auction.module.manager.job.service.impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.auction.entity.TsBidding;
 import org.auction.entity.TsBingcur;
 import org.auction.entity.TsCommodity;
+import org.auction.entity.TsOrder;
 import org.auction.entity.TsUser;
 import org.auction.module.manager.TradeManager;
 import org.auction.module.manager.data.TradeData;
@@ -63,7 +68,7 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 				Calendar today = Calendar.getInstance();
 				long time = endTime.getTimeInMillis() - today.getTimeInMillis();
 				// 商品竞拍结束处理
-				if (time < 0 && tradeData.isOver()) {
+				if (time < 0) {
 					createItem(tradeData);
 				}
 			}
@@ -104,11 +109,37 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 				tsBingcur.setAmount(e * tsCommodity.getConsume().intValue());
 			}
 			generalDao.save(tsBingcur);
-			//生成订单
+			// 生成订单
+			TsOrder tsOrder = new TsOrder();
+			tsOrder.setTsCommodity(tsCommodity);
+			tsOrder.setTsUser(tsUser);
+			tsOrder.setOrdertype("1");
+			tsOrder.setOrdernum("00000000001");
+			tsOrder.setAddress(tsUser.getAddress());
+			tsOrder.setOrdertime(new Date());
+			tsOrder.setReceiver(tsUser.getRealname());
+			tsOrder.setTelphone(tsUser.getTelphone());
+			tsOrder.setState("1");
+			tsOrder.setFare(new BigDecimal(20));
+			tsOrder.setAmount(tsBingcur.getPrice());
+			tsOrder.setEcount(tsBingcur.getAmount());
+			BigDecimal total = tsOrder.getFare().add(tsBingcur.getPrice()).add(
+					new BigDecimal(tsBingcur.getAmount() * 1));
+			tsOrder.setTotalPrices(total);
+			generalDao.save(tsOrder);
 		} else {
 			tsCommodity.setState("2");
 		}
 		// 更新商品状态
 		generalDao.update(tsCommodity);
+		// 删除TradeManager无用的信息
+		TradeManager.remove(tsCommodity.getId());
+	}
+
+	public static void main(String[] args) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("1", "1");
+		map.remove("1");
+		System.out.println(map.keySet().iterator().next());
 	}
 }
