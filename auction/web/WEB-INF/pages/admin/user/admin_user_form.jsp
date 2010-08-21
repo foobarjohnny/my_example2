@@ -35,7 +35,7 @@
 						密码确认：
 					</td>
 					<td width="78%">
-						<s:password name="password" />
+						<s:password name="password1" />
 					</td>
 				</tr>
 				<tr>

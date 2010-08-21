@@ -33,7 +33,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						市场价：
+						起始价：
 					</td>
 					<td>
 						<s:textfield name="marketPrice" />
@@ -46,6 +46,15 @@
 					</td>
 					<td>
 						<s:textfield name="purchasePrice" />
+						元
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						市场价：
+					</td>
+					<td>
+						<s:textfield name="prices" />
 						元
 					</td>
 				</tr>
