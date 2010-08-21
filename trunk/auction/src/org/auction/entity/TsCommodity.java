@@ -19,6 +19,7 @@ public class TsCommodity implements java.io.Serializable {
 	private BigDecimal marketPrice = new BigDecimal(0);
 	private BigDecimal purchasePrice = new BigDecimal(0);
 	private BigDecimal markUp = new BigDecimal(0);
+	private BigDecimal prices = new BigDecimal(0);
 	private Long consume;
 	private String restricts;
 	private Date starttime;
@@ -196,6 +197,14 @@ public class TsCommodity implements java.io.Serializable {
 
 	public void setOvertime(Date overtime) {
 		this.overtime = overtime;
+	}
+
+	public BigDecimal getPrices() {
+		return prices;
+	}
+
+	public void setPrices(BigDecimal prices) {
+		this.prices = prices;
 	}
 
 }

@@ -50,5 +50,7 @@ public class BuyServiceImpl extends GeneralService implements BuyService {
 			model.getDataList().add(data);
 		}
 	}
+	
+	
 
 }

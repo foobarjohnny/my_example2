@@ -12,4 +12,7 @@ public interface OrderService {
 	public void delete(OrderData model) throws GeneralException;
 
 	public void search(OrderData model) throws GeneralException;
+
+	public String createOrder(String id, String sessionId)
+			throws GeneralException;
 }

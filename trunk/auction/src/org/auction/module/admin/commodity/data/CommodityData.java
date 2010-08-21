@@ -13,6 +13,7 @@ public class CommodityData extends GeneralData {
 	private String id;
 	private String tradename;
 	private BigDecimal marketPrice = new BigDecimal(0);
+	private BigDecimal prices = new BigDecimal(0);
 	private BigDecimal purchasePrice = new BigDecimal(0);
 	private BigDecimal markUp = new BigDecimal(0);
 	private Long consume;
@@ -189,6 +190,14 @@ public class CommodityData extends GeneralData {
 
 	public void setUpload(File upload) {
 		this.upload = upload;
+	}
+
+	public BigDecimal getPrices() {
+		return prices;
+	}
+
+	public void setPrices(BigDecimal prices) {
+		this.prices = prices;
 	}
 
 }
