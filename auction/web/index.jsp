@@ -20,6 +20,30 @@
 					document.getElementById("user").innerHTML = s[0];
 				}
 			}
+			function helpAction(id) {
+				var obj = document.getElementById("leftMain");
+				obj.src = "infoView.action?model.nettype=3&model.id=" + id;
+			}
+			function postAction(id) {
+				var obj = document.getElementById("leftMain");
+				obj.src = "infoView.action?model.nettype=5&model.id=" + id;
+			}
+			function help_listAction() {
+				var obj = document.getElementById("leftMain");
+				obj.src = "infoViewList.action?model.nettype=3";
+			}
+			function post_listAction() {
+				var obj = document.getElementById("leftMain");
+				obj.src = "infoViewList.action?model.nettype=5";
+			}
+			function trade_listAction() {
+				var obj = document.getElementById("leftMain");
+				obj.src = "bingcurSearch.action";
+			}
+			function tradeAction(id) {
+				var obj = document.getElementById("leftMain");
+				obj.src = "bingcurForward.action?model.id=" + id;
+			}
 		</script>
 	</head>
 
@@ -43,14 +67,14 @@
 					&nbsp;
 				</td>
 				<td width="57" align="center" valign="middle">
-					<a href="index.htm"><span class="indextitle"><br>
+					<a href="showView.action"><span class="indextitle"><br>
 							首页</span> </a>
 				</td>
 				<td width="1" align="center" valign="middle">
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="115" align="center" valign="middle">
-					<a href="user/myepaide.htm"><span class="indextitle"><br>
+					<a href="userInfomation.action"><span class="indextitle"><br>
 							我的易拍得</span> </a>
 				</td>
 				<td width="1" height="5" align="center" valign="middle">
@@ -199,13 +223,13 @@
 										<tr>
 											<td>
 												<img src="images/dian.gif" width="5" height="5">
-												<a href="${post.id }">${post.title }</a>
+												<a href="#" onclick="postAction('${post.id }')">${post.title }</a>
 											</td>
 										</tr>
 									</s:iterator>
 									<tr>
 										<td align="right">
-											<a href="gg.htm">更多</a>>>
+											<a href="#" onclick="post_listAction()">更多</a>>>
 										</td>
 									</tr>
 								</table>
@@ -223,13 +247,13 @@
 										<tr>
 											<td>
 												<img src="images/dian.gif" width="5" height="5">
-												<a href="${help.id }">${help.title }</a>
+												<a href="#" onclick="helpAction('${help.id}')">${help.title }</a>
 											</td>
 										</tr>
 									</s:iterator>
 									<tr>
 										<td align="right">
-											<a href="help.htm">更多</a>>>
+											<a href="#" onclick="help_listAction()">更多</a>>>
 										</td>
 									</tr>
 								</table>
@@ -250,14 +274,14 @@
 												<img height="50" width="50">
 											</td>
 											<td width="67%">
-												<a href="lsshow.htm">${bing.user }以${bing.price
+												<a href="#" onclick="tradeAction('${bing.id}')">${bing.user }以${bing.price
 													}元竞拍下${bing.comityName }商品</a>
 											</td>
 										</tr>
 									</s:iterator>
 									<tr>
 										<td colspan="2" align="right">
-											<a href="lsjp.htm">更多</a>>>
+											<a href="#" onclick="trade_listAction()">更多</a>>>
 										</td>
 									</tr>
 								</table>
@@ -300,7 +324,7 @@ target="_blank" title="在线客服"><img
 				</td>
 				<td width="807" height="800">
 					<div>
-						<iframe frameborder="0" src="show.action" style="height: 100%;width: 100%;overflow: hidden">
+						<iframe frameborder="0" src="show.action" style="height: 100%;width: 100%;overflow: hidden" id="leftMain">
 							
 						</iframe>
 					</div>
