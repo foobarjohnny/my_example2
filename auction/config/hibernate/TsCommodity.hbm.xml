@@ -25,6 +25,9 @@
         <property name="markUp" type="java.math.BigDecimal">
             <column name="MARK_UP" precision="10" scale="2" />
         </property>
+        <property name="prices" type="java.math.BigDecimal">
+            <column name="PRICES" precision="10" scale="2" />
+        </property>
         <property name="consume" type="java.lang.Long">
             <column name="CONSUME" precision="10" scale="0" />
         </property>
