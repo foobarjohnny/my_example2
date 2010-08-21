@@ -84,4 +84,8 @@
 		scope="prototype">
 		<property name="showService" ref="showService" />
 	</bean>
+	
+	<bean id="bingcurAction" class="org.auction.module.admin.commodity.action.BingcurAction" scope="prototype">
+		<property name="bingcurService" ref="bingcurService" />
+	</bean>
 </beans>
