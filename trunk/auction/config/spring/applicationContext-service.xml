@@ -95,4 +95,8 @@
 		class="org.auction.module.manager.job.service.impl.JobServiceImpl">
 		<property name="generalDao" ref="generalDao" />
 	</bean>
+	<bean id="bingcurService"
+		class="org.auction.module.admin.commodity.service.impl.BingcurServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
 </beans>

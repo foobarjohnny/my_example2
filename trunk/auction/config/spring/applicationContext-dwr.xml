@@ -25,4 +25,9 @@
 		<property name="userService" ref="userService" />
 		<dwr:remote javascript="userRomet"></dwr:remote>
 	</bean>
+	<bean id="orderRomet"
+		class="org.auction.module.admin.commodity.dwr.BuyTradeHandler">
+		<property name="orderService" ref="orderService" />
+		<dwr:remote javascript="buyRomet"></dwr:remote>
+	</bean>
 </beans>
