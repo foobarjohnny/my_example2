@@ -106,5 +106,15 @@
 		<action name="consumeSave" class="consumeAction" method="save">
 			<result type="chain">consumeSearch</result>
 		</action>
+		
+		<action name="bingcurSearch" class="bingcurAction" method="search">
+			<result>WEB-INF/pages/view/trade/trade_list.jsp</result>
+		</action>
+		<action name="bingcurForward" class="bingcurAction" method="forward">
+			<result>WEB-INF/pages/view/trade/trade_view.jsp</result>
+		</action>
+		<action name="bidingSearch" class="bingcurAction" method="searchBiding">
+			<result>WEB-INF/pages/view/trade/biding_list.jsp</result>
+		</action>
 	</package>
 </struts>
