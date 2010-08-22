@@ -238,9 +238,21 @@ public class GeneralDaoImpl implements IGeneralDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Object> now(String id) {
-		String hql = "from TsCommodity c left join c.tsBiddings b where c.state = '1' and b.tsUser.id = :id";
+		//String hql = "select c from TsCommodity c left join c.tsBiddings b where c.state = '1' and b.tsUser.id = :id";
+		String hql = "select c from TsCommodity c where c.state = '1' and :id in (select b.tsUser.id from c.tsBiddings b )";
 		Query query = getSession().createQuery(hql);
 		query.setParameter("id", id);
+		return query.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Object> now(String id, PageBean pageBean) {
+		String hql = "select c from TsCommodity c left join c.tsBiddings b where c.state = '1' and b.tsUser.id = :id";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("id", id);
+		query.setFirstResult((pageBean.getCurrentPage() - 1)
+				* pageBean.getPageRec());
+		query.setMaxResults(pageBean.getPageRec());
 		return query.list();
 	}
 
