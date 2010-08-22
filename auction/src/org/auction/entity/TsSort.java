@@ -13,6 +13,7 @@ public class TsSort implements java.io.Serializable {
 
 	private String id;
 	private String sortname;
+	private String isValid;
 	private Set tsCommodities = new HashSet(0);
 
 	// Constructors
@@ -51,6 +52,14 @@ public class TsSort implements java.io.Serializable {
 
 	public void setTsCommodities(Set tsCommodities) {
 		this.tsCommodities = tsCommodities;
+	}
+
+	public String getIsValid() {
+		return isValid;
+	}
+
+	public void setIsValid(String isValid) {
+		this.isValid = isValid;
 	}
 
 }
