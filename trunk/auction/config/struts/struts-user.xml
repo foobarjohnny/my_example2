@@ -59,5 +59,12 @@
 		<action name="userFollow" class="userAuctionAction" method="follow">
 			<result>WEB-INF/pages/view/user/user_follow.jsp</result>
 		</action>
+
+		
+		<!-- 以下是用户注册的操作 -->
+		<action name="register">
+			<result>WEB-INF/pages/view/user/register.jsp</result>
+		</action>
+		
 	</package>
 </struts>
