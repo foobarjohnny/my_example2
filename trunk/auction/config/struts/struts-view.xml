@@ -8,6 +8,9 @@
 		<action name="show" class="viewCommodityAction" method="view">
 			<result>WEB-INF/pages/view/view.jsp</result>
 		</action>
+		<action name="showAll" class="viewCommodityAction" method="showAll">
+			<result>WEB-INF/pages/view/view_all.jsp</result>
+		</action>
 		<action name="showView" class="showAction" method="show">
 			<result>index.jsp</result>
 		</action>
