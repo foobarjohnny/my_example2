@@ -52,6 +52,7 @@ public class GeneralInterceptor extends AbstractInterceptor {
 			generalManager.preProcess();
 			return actionInvocation.invoke();
 		} catch (Exception e) {
+			e.printStackTrace();
 			generalManager.processException(e);
 			request.getSession().setAttribute(ActionConstant.ERROR, e);
 			return ActionConstant.ERROR;
