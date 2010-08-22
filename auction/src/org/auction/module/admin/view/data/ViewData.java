@@ -13,6 +13,7 @@ public class ViewData extends GeneralData {
 	private String tradename;
 	private Long remaining;
 	private BigDecimal marketPrice = new BigDecimal(0);
+	private String descript;
 
 	private int year;
 	private int month;
@@ -128,6 +129,14 @@ public class ViewData extends GeneralData {
 
 	public void setTradeList(List<TradeData> tradeList) {
 		this.tradeList = tradeList;
+	}
+
+	public String getDescript() {
+		return descript;
+	}
+
+	public void setDescript(String descript) {
+		this.descript = descript;
 	}
 
 }

@@ -6,4 +6,6 @@ import org.mobile.common.exception.GeneralException;
 public interface ViewCommodityService {
 
 	public void show(ViewData model) throws GeneralException;
+	
+	public void showAll(ViewData model) throws GeneralException;
 }
