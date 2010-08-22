@@ -13,6 +13,9 @@
         <property name="sortname" type="java.lang.String">
             <column name="SORTNAME" length="30" />
         </property>
+        <property name="isValid" type="java.lang.String">
+        	<column name="IS_VALID" length="1"/>
+        </property>
         <set name="tsCommodities" inverse="true">
             <key>
                 <column name="SORTID" length="32" />
