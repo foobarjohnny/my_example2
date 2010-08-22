@@ -16,6 +16,25 @@
 				var obj = document.getElementById("rightUser");
 				obj.src = "userNow.action";
 			}
+			function userView() {
+				var obj = document.getElementById("rightUser");
+				obj.src = "userAuction.action";
+			}
+			function buy() {
+				var obj = document.getElementById("rightUser");
+				obj.src = "userFollow.action";
+			}
+			function viewAccount() {
+				var obj = document.getElementById("rightUser");
+				obj.src = "userAccount.action";
+			}
+			function payE() {
+				
+			}
+			function buyE() {
+				var obj = document.getElementById("rightUser");
+				obj.src = "userAccount.action";
+			}
 		</script>
 	</head>
 	<body leftmargin="0" topmargin="0"
@@ -182,12 +201,12 @@
 						</tr>
 						<tr>
 							<td height="25" bgcolor="#FFFFFF">
-								<a href="winjp.htm">我赢得的竞拍</a>
+								<a href="#" onclick="userView()">我赢得的竞拍</a>
 							</td>
 						</tr>
 						<tr>
 							<td height="25" bgcolor="#FFFFFF">
-								<a href="buy.htm">我直接购买的产品</a>
+								<a href="#" onclick="buy()">我直接购买的产品</a>
 							</td>
 						</tr>
 						<tr>
@@ -215,7 +234,7 @@
 						</tr>
 						<tr>
 							<td height="25" bgcolor="#FFFFFF">
-								<A href="area_edit.htm">修改宝贝信息</A>
+								<a href="#" >修改宝贝</a>
 							</td>
 						</tr>
 						<tr>
@@ -228,7 +247,7 @@
 								<A href="area_ship.htm">等待发货的宝贝</A>
 							</td>
 						</tr>
-
+						
 						<tr>
 							<td height="25" bgcolor="#FFFFFF">
 								<A href="area_over.htm">成交的宝贝</A>
@@ -255,17 +274,18 @@
 							</td>
 						</tr>
 						
+						
+						
 						<tr>
 							<td height="25" bgcolor="#FFFFFF">
-								<a href="epaibi.htm">账户状况</a>
+								<a href="#" onclick="buyE()">购买明细</a>
 							</td>
 						</tr>
 						<tr>
 							<td height="25" bgcolor="#FFFFFF">
-								<a href="ebls.htm">历史明细</a>
+								<a href="#" onclick="payE()">消费明细</a>
 							</td>
 						</tr>
-
 						<tr>
 							<td colspan="3">
 								<img src="images/l_dow.gif" width="179" height="21">
