@@ -19,11 +19,16 @@ public class CommodityAction extends GeneralAction<CommodityData> {
 	}
 
 	public String save() throws GeneralException {
+		try{
 		commodityService.save(model);
 		if (model.getMethodName().equals("1")) {
 			return SUCCESS;
 		} else {
 			return "page";
+		}
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new GeneralException("");
 		}
 	}
 
