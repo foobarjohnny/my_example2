@@ -35,7 +35,9 @@ public class BingcurServiceImpl extends GeneralService implements
 		model.setPrices(tsBingcur.getTsCommodity().getPrices());
 		model.setMarkprices(tsBingcur.getTsCommodity().getPurchasePrice());
 		if (model.getPrices().compareTo(new BigDecimal(0)) > 0) {
-			model.setPercents(model.getPrice().divide(model.getPrices()));
+			BigDecimal total = (model.getPrices().subtract(model.getPrice()).subtract(new BigDecimal(tsBingcur.getAmount() * 1)));
+			BigDecimal percents = total.divide(model.getPrices(),BigDecimal.ROUND_HALF_DOWN);
+			model.setPercents(percents);
 		}
 		PageBean pageBean = new PageBean();
 		List<OrderByBean> orderBean = new ArrayList<OrderByBean>();
@@ -78,7 +80,9 @@ public class BingcurServiceImpl extends GeneralService implements
 			data.setSummary(tsBingcur.getTsCommodity().getSummary());
 			data.setPrices(tsBingcur.getTsCommodity().getPrices());
 			if (data.getPrices().compareTo(new BigDecimal(0)) > 0) {
-				data.setPercents(data.getPrice().divide(data.getPrices()));
+				BigDecimal total = (data.getPrices().subtract(data.getPrice()).subtract(new BigDecimal(tsBingcur.getAmount() * 1)));
+				BigDecimal percents = total.divide(data.getPrices(),BigDecimal.ROUND_HALF_DOWN);
+				data.setPercents(percents);
 			}
 			model.getDataList().add(data);
 		}
