@@ -9,6 +9,7 @@ public class SortData extends GeneralData {
 
 	private String id;
 	private String sortname;
+	private String isValid;
 
 	private List<SortData> dataList = new ArrayList<SortData>();
 
@@ -34,5 +35,13 @@ public class SortData extends GeneralData {
 
 	public void setDataList(List<SortData> dataList) {
 		this.dataList = dataList;
+	}
+
+	public String getIsValid() {
+		return isValid;
+	}
+
+	public void setIsValid(String isValid) {
+		this.isValid = isValid;
 	}
 }
