@@ -65,9 +65,15 @@
 			alert(data);
 		}
 	}
+	function showAll() {
+		trade.submit();
+	}
 </script>
 	</head>
 	<body>
+		<form action="showAll.action" method="post" name="trade">
+		
+		</form>
 		<table width="795" border="0" align="center" cellpadding="0"
 			cellspacing="0">
 			<tr>
@@ -84,7 +90,7 @@
 					<img src="images/jpsp.gif" width="99" height="28">
 				</td>
 				<td width="388" align="right" bgcolor="#FFFFFF">
-					<a href="jpall.htm">全部竞拍>></a>&nbsp;&nbsp;
+					<a href="#" onclick="showAll()">全部竞拍>></a>&nbsp;&nbsp;
 				</td>
 				<td width="10" rowspan="3" background="images/r_right.gif">
 					<img src="images/r_right.gif" width="10" height="1">
