@@ -55,7 +55,7 @@
 						</td>
 						<td align="center">
 							<a href="sortForward.action?id=<s:property value="id"/>&nettype=5">修改</a>｜
-							<a href="sortDelete.action?id=<s:property value="id"/>&nettype=5">删除</a>
+							<a href="sortDelete.action?id=<s:property value="id"/>&nettype=5&sortname=<s:property value="sortname"/>">删除</a>
 						</td>
 					</tr>
 				</s:iterator>
