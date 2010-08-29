@@ -41,6 +41,21 @@
 				help.submit();
 			}
 		}
+		function viewCom(id) {
+			help.id.value = id;
+			help.action = "orderForward.action";
+			help.submit();
+		}
+		function viewOrd(id) {
+			help.id.value = id;
+			help.action = "orderForward.action";
+			help.submit();
+		}
+		function pay(id) {
+			help.id.value = id;
+			help.action = "orderPay.action";
+			help.submit();
+		}
 		function view(id) {
 			help.id.value = id;
 			help.action = "bingcurForward.action";
@@ -50,6 +65,7 @@
 	</head>
 	<body leftmargin="0" topmargin="0"
 		style="filter: progid :   DXImageTransform.Microsoft.Gradient (   startColorStr =   '#6daf2f', endColorStr =   '#ffffff', gradientType =   '0' )">
+
 		<table width="795" border="0" align="center" cellpadding="0"
 			cellspacing="0">
 			<tr>
@@ -91,8 +107,8 @@
 			          	<s:iterator id="data" value="dataList" status="status">
 			          		
 				          	<tr>
-				              <td width="130" height="130" align="center"><a href="#" onclick="view('${data.id}')"><img width="120" height="120" border="0" ></a></td>
-				              <td width="274"><strong><a href="#" onclick="view('${data.id}')">${data.comityName }</a></strong><br>
+				              <td width="130" height="130" align="center"><img width="120" height="120" border="0" ></td>
+				              <td width="274"><strong>${data.comityName }</strong><br>
 				              	
 				              </td>
 				              <td align="center"><p class="indexjg">￥${data.price }</p>
@@ -107,7 +123,7 @@
 				              </td>
 				              <td align="center">
 				              	<s:if test="state == '未付款'">
-				              		付款
+				              		<a href="#" onclick="viewOrd('${data.orderId}')">付款</a>
 				              	</s:if>
 				              	<s:if test="state == '已发货'">
 				              		交易
@@ -115,6 +131,10 @@
 				              	<s:if test="state == '交易完成'">
 				              		我要秀宝
 				              	</s:if>
+				              	<!--  
+				              	<a href="#" onclick="viewCom('${data.id}')">我要秀宝</a><br>
+				              	<a href="#" onclick="viewOrd('${data.orderId}')">查看订单</a>
+				              	-->
 				              </td>
 				           	</tr>
 				        </s:iterator>

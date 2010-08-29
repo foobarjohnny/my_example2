@@ -23,9 +23,10 @@
 			var userid = document.getElementById("user" + did).value;
 			bidingRomet.find(tid,userid,did, showMsg);
 		} else {
+			var obj = document.getElementById("button" + did);
+			obj.style.display = "none";
 			clearInterval(timer);
 			document.all[id].innerHTML = "竞拍结束";
-			//document.getElementById("button" + did).style.display = "none";
 		}
 	}
 	function showMsg(data) {
@@ -163,7 +164,7 @@
 										</tr>
 										<tr>
 											<td align="center">
-												<img src="images/wyjp.gif" width="104" height="27" onclick="doSubmit('${data.id}', '${status.index }');" id="buttion${status.index }">
+												<img src="images/wyjp.gif" width="104" height="27" style="display: bolck" onclick="doSubmit('${data.id}', '${status.index }');" id="buttion${status.index }">
 											</td>
 										</tr>
 									</table>

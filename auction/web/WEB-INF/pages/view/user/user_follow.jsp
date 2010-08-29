@@ -41,6 +41,16 @@
 				help.submit();
 			}
 		}
+		function viewCom(id) {
+			help.id.value = id;
+			help.action = "orderForward.action";
+			help.submit();
+		}
+		function viewOrd(id) {
+			help.id.value = id;
+			help.action = "orderForward.action";
+			help.submit();
+		}
 		</script>
 	</head>
 	<body leftmargin="0" topmargin="0"
@@ -101,7 +111,7 @@
 				              </td>
 				              <td align="center">
 				              	<s:if test="state == '未付款'">
-				              		付款
+				              		<a href="#" onclick="viewOrd('${data.orderId}')">付款</a>
 				              	</s:if>
 				              	<s:if test="state == '已发货'">
 				              		交易完成
@@ -109,6 +119,10 @@
 				              	<s:if test="state == '交易完成'">
 				              		我要秀宝
 				              	</s:if>
+				              	<!--  
+				              	<a href="#" onclick="viewCom('${data.id}')">我要秀宝</a><br>
+				              	<a href="#" onclick="viewOrd('${data.orderId}')">查看订单</a>
+				              	-->
 				              </td>
 				           	</tr>
 				        </s:iterator>

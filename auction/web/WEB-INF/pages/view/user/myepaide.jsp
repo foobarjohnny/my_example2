@@ -29,11 +29,12 @@
 				obj.src = "userAccount.action";
 			}
 			function payE() {
-				
+				var obj = document.getElementById("rightUser");
+				obj.src = "searchUserPayE.action";
 			}
 			function buyE() {
 				var obj = document.getElementById("rightUser");
-				obj.src = "userAccount.action";
+				obj.src = "buySearchUserE.action";
 			}
 		</script>
 	</head>
@@ -145,11 +146,6 @@
 							</td>
 							<td width="5" rowspan="25" background="images/l_right.gif">
 								<img src="images/l_right.gif" width="5" height="1">
-							</td>
-						</tr>
-						<tr>
-							<td height="25" valign="top" bgcolor="#FFFFFF">
-								羸得的竞拍：22
 							</td>
 						</tr>
 						<tr>
