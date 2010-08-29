@@ -81,7 +81,7 @@
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="106" align="center" valign="middle">
-					<a href="buyeb.htm"><span class="indextitle"><br>
+					<a href="showEcurr.action"><span class="indextitle"><br>
 							购买E拍币</span> </a>
 				</td>
 				<td width="1" align="center" valign="middle">
