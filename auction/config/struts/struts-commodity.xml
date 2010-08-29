@@ -9,112 +9,164 @@
 			<result type="chain">sortSearch</result>
 		</action>
 		<action name="sortSearch" class="sortAction" method="search">
-			<result>WEB-INF/pages/admin/commodity/admin_goods_class.jsp</result>
+			<result>WEB-INF/pages/admin/commodity/admin_goods_class.jsp
+			</result>
 		</action>
 		<action name="sortForward" class="sortAction" method="forward">
-			<result>WEB-INF/pages/admin/commodity/admin_goods_class_form.jsp</result>
+			<result>WEB-INF/pages/admin/commodity/admin_goods_class_form.jsp
+			</result>
 		</action>
 		<action name="sortSave" class="sortAction" method="save">
 			<result type="chain">sortSearch</result>
 		</action>
-		
+
 		<action name="commodityDelete" class="commodityAction" method="delete">
 			<result type="chain">commoditySearch</result>
 		</action>
 		<action name="commoditySearch" class="commodityAction" method="search">
-			<result>WEB-INF/pages/admin/commodity/admin_goods.jsp</result>
-			<result name="progress">WEB-INF/pages/admin/commodity/admin_goods_progress.jsp</result>
-			<result name="lot">WEB-INF/pages/admin/commodity/admin_goods_lot.jsp</result>
-			<result name="reach">WEB-INF/pages/admin/commodity/admin_goods_reach.jsp</result>
+			<result>WEB-INF/pages/admin/commodity/admin_goods.jsp
+			</result>
+			<result name="progress">
+				WEB-INF/pages/admin/commodity/admin_goods_progress.jsp</result>
+			<result name="lot">
+				WEB-INF/pages/admin/commodity/admin_goods_lot.jsp</result>
+			<result name="reach">
+				WEB-INF/pages/admin/commodity/admin_goods_reach.jsp</result>
 		</action>
 		<action name="commodityForward" class="commodityAction" method="forward">
-			<result>WEB-INF/pages/admin/commodity/admin_goods_add.jsp</result>
+			<result>WEB-INF/pages/admin/commodity/admin_goods_add.jsp
+			</result>
 		</action>
 		<action name="commoditySave" class="commodityAction" method="save">
 			<result type="chain">commodityForward</result>
-			<result name="page" type="chain">commoditySearch</result>
-			<result name="input" type="chain">commodityForward</result>
+			<result name="page" type="chain">commoditySearch
+			</result>
+			<result name="input" type="chain">commodityForward
+			</result>
 		</action>
 		<action name="commodityAuction" class="commodityAction" method="auction">
 			<result type="chain">commoditySearch</result>
 		</action>
 		<action name="commoditySelect" class="commodityAction" method="select">
-			<result>WEB-INF/pages/admin/commodity/admin_goods_select.jsp</result>
+			<result>WEB-INF/pages/admin/commodity/admin_goods_select.jsp
+			</result>
 		</action>
-		
+
 		<action name="rebotDelete" class="rebotAction" method="delete">
 			<result type="chain">rebotSearch</result>
 		</action>
 		<action name="rebotSearch" class="rebotAction" method="search">
-			<result>WEB-INF/pages/admin/commodity/admin_goods_class.jsp</result>
+			<result>WEB-INF/pages/admin/commodity/admin_goods_class.jsp
+			</result>
 		</action>
 		<action name="rebotForward" class="rebotAction" method="forward">
-			<result>WEB-INF/pages/admin/commodity/admin_robot.jsp</result>
+			<result>WEB-INF/pages/admin/commodity/admin_robot.jsp
+			</result>
 		</action>
 		<action name="rebotSave" class="rebotAction" method="save">
 			<result type="chain">rebotSearch</result>
 		</action>
-		
+
 		<action name="orderDelete" class="orderAction" method="delete">
 			<result type="chain">orderSearch</result>
 		</action>
 		<action name="orderSearch" class="orderAction" method="search">
-			<result>WEB-INF/pages/admin/commodity/admin_order.jsp</result>
+			<result>WEB-INF/pages/admin/commodity/admin_order.jsp
+			</result>
 		</action>
-		<action name="orderForward" class="orderAction" method="forward">
-			<result>WEB-INF/pages/admin/commodity/admin_robot.jsp</result>
-		</action>
+
 		<action name="orderSave" class="orderAction" method="save">
 			<result type="chain">orderSearch</result>
 		</action>
-		
+
 		<action name="ecurrDelete" class="ecurrAction" method="delete">
 			<result type="chain">ecurrSearch</result>
 		</action>
 		<action name="ecurrSearch" class="ecurrAction" method="search">
-			<result>WEB-INF/pages/admin/commodity/admin_e.jsp</result>
+			<result>WEB-INF/pages/admin/commodity/admin_e.jsp
+			</result>
 		</action>
 		<action name="ecurrForward" class="ecurrAction" method="forward">
-			<result>WEB-INF/pages/admin/commodity/admin_e_form.jsp</result>
+			<result>WEB-INF/pages/admin/commodity/admin_e_form.jsp
+			</result>
 		</action>
 		<action name="ecurrSave" class="ecurrAction" method="save">
 			<result type="chain">ecurrSearch</result>
 		</action>
-		
+
 		<action name="buyDelete" class="buyAction" method="delete">
 			<result type="chain">buySearch</result>
 		</action>
 		<action name="buySearch" class="buyAction" method="search">
-			<result>WEB-INF/pages/admin/commodity/admin_e_buy.jsp</result>
+			<result>WEB-INF/pages/admin/commodity/admin_e_buy.jsp
+			</result>
 		</action>
 		<action name="buyForward" class="buyAction" method="forward">
-			<result>WEB-INF/pages/admin/commodity/admin_e_buy_form.jsp</result>
+			<result>WEB-INF/pages/admin/commodity/admin_e_buy_form.jsp
+			</result>
 		</action>
 		<action name="buySave" class="buyAction" method="save">
 			<result type="chain">buySearch</result>
 		</action>
-		
+
 		<action name="consumeDelete" class="consumeAction" method="delete">
 			<result type="chain">consumeSearch</result>
 		</action>
 		<action name="consumeSearch" class="consumeAction" method="search">
-			<result>WEB-INF/pages/admin/commodity/admin_e_consume.jsp</result>
+			<result>WEB-INF/pages/admin/commodity/admin_e_consume.jsp
+			</result>
 		</action>
 		<action name="consumeForward" class="consumeAction" method="forward">
-			<result>WEB-INF/pages/admin/commodity/admin_e_consume_form.jsp</result>
+			<result>WEB-INF/pages/admin/commodity/admin_e_consume_form.jsp
+			</result>
 		</action>
 		<action name="consumeSave" class="consumeAction" method="save">
 			<result type="chain">consumeSearch</result>
 		</action>
-		
+		<!-- 用户竞拍商品 -->
 		<action name="bingcurSearch" class="bingcurAction" method="search">
-			<result>WEB-INF/pages/view/trade/trade_list.jsp</result>
+			<result>WEB-INF/pages/view/trade/trade_list.jsp
+			</result>
 		</action>
 		<action name="bingcurForward" class="bingcurAction" method="forward">
-			<result>WEB-INF/pages/view/trade/trade_view.jsp</result>
+			<result>WEB-INF/pages/view/trade/trade_view.jsp
+			</result>
 		</action>
 		<action name="bidingSearch" class="bingcurAction" method="searchBiding">
-			<result>WEB-INF/pages/view/trade/biding_list.jsp</result>
+			<result>WEB-INF/pages/view/trade/biding_list.jsp
+			</result>
+		</action>
+		<!-- 用户购买E币查询 -->
+		<action name="buySearchUserE" class="buyAction" method="searchUserE">
+			<result>WEB-INF/pages/view/user/e_buy.jsp
+			</result>
+		</action>
+		<!-- 用户消费E币查询 -->
+		<action name="searchUserPayE" class="consumeAction" method="searchUserPayE">
+			<result>WEB-INF/pages/view/user/e_pay.jsp
+			</result>
+		</action>
+		<!-- 用户订单 -->
+		<action name="orderForward" class="orderAction" method="forward">
+			<result>WEB-INF/pages/view/user/order.jsp
+			</result>
+		</action>
+		<!-- 订单付款 -->
+		<action name="orderPay" class="orderAction" method="pay">
+			<result type="redirect">
+				${url}
+			</result>
+		</action>
+		<!-- 购买E拍币列表 -->
+		<action name="showEcurr" class="ecurrAction" method="showEcurr">
+			<result>WEB-INF/pages/view/user/ecurr.jsp
+			</result>
+		</action>
+		<!-- 购买E拍币 -->
+		<action name="buyEcurr" class="ecurrAction" method="buyEcurr">
+			<result type="redirect">
+				${url}
+			</result>
 		</action>
 	</package>
 </struts>

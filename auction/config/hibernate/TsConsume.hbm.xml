@@ -13,6 +13,9 @@
         <many-to-one name="tsUser" class="org.auction.entity.TsUser" fetch="select">
             <column name="USERID" length="32" />
         </many-to-one>
+        <many-to-one name="tsCommodity" class="org.auction.entity.TsCommodity" fetch="select">
+            <column name="COMMODITY" length="32" />
+        </many-to-one>
         <property name="buytime" type="java.util.Date">
             <column name="BUYTIME" length="19" />
         </property>

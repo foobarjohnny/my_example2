@@ -13,8 +13,8 @@
         <property name="amount" type="java.lang.Integer">
             <column name="AMOUNT" />
         </property>
-        <property name="paymoney" type="java.lang.Long">
-            <column name="PAYMONEY" precision="10" scale="0" />
+        <property name="paymoney" type="java.math.BigDecimal">
+            <column name="PAYMONEY" precision="10" scale="2" />
         </property>
         <property name="freecount" type="java.lang.Integer">
             <column name="FREECOUNT" />

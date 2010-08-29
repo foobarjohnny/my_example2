@@ -27,4 +27,5 @@
 	<bean id="generalDao" class="org.mobile.common.dao.impl.GeneralDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="alipay" class="org.auction.alipay.AlipayConfig" init-method="init"/>
 </beans>
