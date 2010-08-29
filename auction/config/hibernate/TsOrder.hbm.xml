@@ -17,7 +17,7 @@
             <column name="USERID" length="32" not-null="true" />
         </many-to-one>
         <property name="ordernum" type="java.lang.String">
-            <column name="ORDERNUM" length="20" />
+            <column name="ORDERNUM" length="32" />
         </property>
         <property name="ordertime" type="java.util.Date">
             <column name="ORDERTIME" length="19" />
