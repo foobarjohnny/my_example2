@@ -12,4 +12,6 @@ public interface BuyService {
 	public void delete(BuyData model) throws GeneralException;
 
 	public void search(BuyData model) throws GeneralException;
+	
+	public void searchBuy(BuyData model) throws GeneralException;
 }

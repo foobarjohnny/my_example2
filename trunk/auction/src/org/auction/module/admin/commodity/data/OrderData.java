@@ -1,5 +1,6 @@
 package org.auction.module.admin.commodity.data;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,17 +14,22 @@ public class OrderData extends GeneralData {
 	private Date ordertime;
 	private String commodityName;
 	private String pay;
-	private Long amount;
+	private BigDecimal amount;
 	private String receiver;
 	private String telphone;
 	private String address;
 	private String remard;
-	private Long fare;
-	private Long totalPrices;
+	private BigDecimal fare;
+	private BigDecimal totalPrices;
 	private String state;
 	private String ordertype;
+	private BigDecimal comprice;
+	private String selectType;
+	private String summary;
 	
 	private String methodName;
+	
+	private String url;
 
 	private List<OrderData> dataList = new ArrayList<OrderData>();
 
@@ -59,11 +65,11 @@ public class OrderData extends GeneralData {
 		this.pay = pay;
 	}
 
-	public Long getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(Long amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 
@@ -99,19 +105,19 @@ public class OrderData extends GeneralData {
 		this.remard = remard;
 	}
 
-	public Long getFare() {
+	public BigDecimal getFare() {
 		return fare;
 	}
 
-	public void setFare(Long fare) {
+	public void setFare(BigDecimal fare) {
 		this.fare = fare;
 	}
 
-	public Long getTotalPrices() {
+	public BigDecimal getTotalPrices() {
 		return totalPrices;
 	}
 
-	public void setTotalPrices(Long totalPrices) {
+	public void setTotalPrices(BigDecimal totalPrices) {
 		this.totalPrices = totalPrices;
 	}
 
@@ -153,5 +159,37 @@ public class OrderData extends GeneralData {
 
 	public void setCommodityName(String commodityName) {
 		this.commodityName = commodityName;
+	}
+
+	public BigDecimal getComprice() {
+		return comprice;
+	}
+
+	public void setComprice(BigDecimal comprice) {
+		this.comprice = comprice;
+	}
+
+	public String getSelectType() {
+		return selectType;
+	}
+
+	public void setSelectType(String selectType) {
+		this.selectType = selectType;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }

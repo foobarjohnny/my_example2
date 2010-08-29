@@ -10,10 +10,20 @@ public class OrderAction extends GeneralAction<OrderData> {
 	private static final long serialVersionUID = 1L;
 
 	private OrderData model = new OrderData();
-	
+
 	private OrderService orderService;
+	
+	private String requestUrl;
+	
+	public String pay() throws GeneralException {
+		// 查找订单信息
+		orderService.pay(model);
+		requestUrl = model.getUrl();
+		return SUCCESS;
+	}
 
 	public String forward() throws GeneralException {
+		orderService.forward(model);
 		return SUCCESS;
 	}
 
@@ -37,6 +47,14 @@ public class OrderAction extends GeneralAction<OrderData> {
 
 	public void setOrderService(OrderService orderService) {
 		this.orderService = orderService;
+	}
+
+	public String getRequestUrl() {
+		return requestUrl;
+	}
+
+	public void setRequestUrl(String requestUrl) {
+		this.requestUrl = requestUrl;
 	}
 
 }

@@ -33,6 +33,12 @@ public class ConsumeAction extends GeneralAction<ConsumeData> {
 		consumeService.search(model);
 		return SUCCESS;
 	}
+	
+	public String searchUserPayE() throws GeneralException {
+		this.setPage(model);
+		consumeService.searchPayE(model);
+		return SUCCESS;
+	}
 
 	public ConsumeData getModel() {
 		return model;

@@ -15,4 +15,6 @@ public interface OrderService {
 
 	public String createOrder(String id, String sessionId)
 			throws GeneralException;
+	
+	public void pay(OrderData model) throws GeneralException;
 }

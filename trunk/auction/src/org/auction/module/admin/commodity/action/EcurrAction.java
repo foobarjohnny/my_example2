@@ -12,6 +12,8 @@ public class EcurrAction extends GeneralAction<EcurrData> {
 	private EcurrData model = new EcurrData();
 
 	private EcurrService ecurrService;
+	
+	private String url;
 
 	public String forward() throws GeneralException {
 		ecurrService.forward(model);
@@ -33,6 +35,18 @@ public class EcurrAction extends GeneralAction<EcurrData> {
 		ecurrService.search(model);
 		return SUCCESS;
 	}
+	
+	public String showEcurr() throws GeneralException {
+		ecurrService.search(model);
+		return SUCCESS;
+	}
+	
+	public String buyEcurr() throws GeneralException {
+		isLogin();
+		ecurrService.buy(model);
+		url = model.getUrl();
+		return SUCCESS;
+	}
 
 	public EcurrData getModel() {
 		return model;
@@ -40,6 +54,14 @@ public class EcurrAction extends GeneralAction<EcurrData> {
 
 	public void setEcurrService(EcurrService ecurrService) {
 		this.ecurrService = ecurrService;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

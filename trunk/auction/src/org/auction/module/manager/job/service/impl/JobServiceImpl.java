@@ -1,6 +1,7 @@
 package org.auction.module.manager.job.service.impl;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -11,11 +12,13 @@ import java.util.Map;
 import org.auction.entity.TsBidding;
 import org.auction.entity.TsBingcur;
 import org.auction.entity.TsCommodity;
+import org.auction.entity.TsNum;
 import org.auction.entity.TsOrder;
 import org.auction.entity.TsUser;
 import org.auction.module.manager.TradeManager;
 import org.auction.module.manager.data.TradeData;
 import org.auction.module.manager.job.service.IJobService;
+import org.mobile.common.bean.SearchBean;
 import org.mobile.common.exception.GeneralException;
 import org.mobile.common.service.GeneralService;
 import org.mobile.common.util.BeanProcessUtils;
@@ -80,6 +83,7 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 	 * 
 	 * @param tradeData
 	 */
+	@SuppressWarnings("unchecked")
 	private void createItem(TradeData tradeData) {
 		// 获得商品信息
 		TsCommodity tsCommodity = (TsCommodity) generalDao.get(
@@ -114,7 +118,24 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 			tsOrder.setTsCommodity(tsCommodity);
 			tsOrder.setTsUser(tsUser);
 			tsOrder.setOrdertype("1");
-			tsOrder.setOrdernum("00000000001");
+			// 生成订单号
+			List<SearchBean> searchBeans = new ArrayList<SearchBean>();
+			searchBeans.add(new SearchBean("tablename", "eq", "string",
+					"TS_ORDER"));
+			List list = generalDao.search(TsNum.class, searchBeans, null, null);
+			if (list != null && list.size() > 0) {
+				TsNum tsNum = (TsNum) list.get(0);
+				SimpleDateFormat format = new SimpleDateFormat("yyyyMMddhhmmss");
+				String num = format.format(new Date());
+				int len = String.valueOf(tsNum.getSequ()).length();
+				for (int i = len - 1; i < 6; i++) {
+					num += "0";
+				}
+				num = num + tsNum.getSequ();
+				tsOrder.setOrdernum(num);
+				tsNum.setSequ(tsNum.getSequ() + 1);
+				generalDao.update(tsNum);
+			}
 			tsOrder.setAddress(tsUser.getAddress());
 			tsOrder.setOrdertime(new Date());
 			tsOrder.setReceiver(tsUser.getRealname());
