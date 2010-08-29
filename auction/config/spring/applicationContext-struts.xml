@@ -88,4 +88,7 @@
 	<bean id="bingcurAction" class="org.auction.module.admin.commodity.action.BingcurAction" scope="prototype">
 		<property name="bingcurService" ref="bingcurService" />
 	</bean>
+	<bean id="imageAction" class="org.auction.module.admin.commodity.action.ImageAction" scope="prototype">
+		<property name="imagesService" ref="imagesService" />
+	</bean>
 </beans>
