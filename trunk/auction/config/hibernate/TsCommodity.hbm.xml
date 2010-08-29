@@ -85,5 +85,11 @@
             </key>
             <one-to-many class="org.auction.entity.TsBidding" />
         </set>
+        <set name="tsConsumes" inverse="true">
+            <key>
+                <column name="COMMODITY" length="32" />
+            </key>
+            <one-to-many class="org.auction.entity.TsConsume" />
+        </set>
     </class>
 </hibernate-mapping>
