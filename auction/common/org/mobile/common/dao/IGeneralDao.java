@@ -122,11 +122,13 @@ public interface IGeneralDao {
 	public List<Object> now(String id);
 
 	public List<Object> follow(String id, String[] ids);
-	
+
 	public List<Object> auction(String[] ids);
-	
+
 	public Object getBinding(String id);
-	
+
 	public int countE(String id, String uid);
-	
+
+	public List<Object> search(String hql, String count, PageBean pageBean);
+
 }
