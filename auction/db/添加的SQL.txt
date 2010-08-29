@@ -1,0 +1,31 @@
+drop table if exists TS_NUM;
+
+/*==============================================================*/
+/* Table: TS_NUM                                                */
+/*==============================================================*/
+create table TS_NUM
+(
+   ID                   bigint not null auto_increment,
+   TABLENAME            varchar(32),
+   SEQU                 bigint,
+   primary key (ID)
+);
+
+drop table if exists TS_ECU;
+
+/*==============================================================*/
+/* Table: TS_ECU                                                */
+/*==============================================================*/
+create table TS_ECU
+(
+   ID                   varchar(32) not null,
+   USERID               varchar(32),
+   ECUID                varchar(32),
+   primary key (ID)
+);
+
+alter table TS_ECU add constraint FK_Reference_17 foreign key (USERID)
+      references TS_USER (ID) on delete restrict on update restrict;
+
+alter table TS_ECU add constraint FK_Reference_18 foreign key (ECUID)
+      references TS_ECURR (ID) on delete restrict on update restrict;
