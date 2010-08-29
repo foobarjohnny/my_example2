@@ -1,6 +1,9 @@
 package org.mobile.common.action;
 
 import org.mobile.common.bean.PageBean;
+import org.mobile.common.exception.GeneralException;
+import org.mobile.common.manager.GeneralManager;
+import org.mobile.common.session.SessionManager;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -27,6 +30,19 @@ public abstract class GeneralAction<T> extends ActionSupport implements
 
 		} else {
 			generalData.setPageBean(new PageBean());
+		}
+	}
+
+	/**
+	 * 判断用户是否登录
+	 * 
+	 * @return
+	 */
+	protected void isLogin() throws GeneralException{
+		boolean isLogin = SessionManager.isLogin(GeneralManager.getCurrentManager()
+				.getSessionId());
+		if (!isLogin) {
+			throw new GeneralException("用户没有登录！");
 		}
 	}
 }

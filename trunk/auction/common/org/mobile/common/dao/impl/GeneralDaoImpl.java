@@ -312,4 +312,28 @@ public class GeneralDaoImpl implements IGeneralDao {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Object> search(String hql, String count, PageBean pageBean) {
+		count(count, pageBean);
+		Query query = getSession().createQuery(hql);
+		query.setFirstResult((pageBean.getCurrentPage() - 1)
+				* pageBean.getPageRec());
+		query.setMaxResults(pageBean.getPageRec());
+		return query.list();
+	}
+
+	private void count(String count, PageBean pageBean) {
+		Query query = getSession().createQuery(count);
+		Integer obj = Integer.parseInt(String.valueOf(query.uniqueResult()));
+		if (obj != null) {
+			int pageRec = pageBean.getPageRec();
+			if (obj % pageRec == 0) {
+				pageBean.setTotalPage(obj / pageRec);
+			} else {
+				pageBean.setTotalPage(obj / pageRec + 1);
+			}
+		} else {
+			pageBean.setTotalPage(0);
+		}
+	}
 }
