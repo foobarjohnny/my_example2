@@ -1,5 +1,7 @@
 package org.auction.entity;
 
+import java.math.BigDecimal;
+
 /**
  * TsEcurr entity. @author MyEclipse Persistence Tools
  */
@@ -10,7 +12,7 @@ public class TsEcurr implements java.io.Serializable {
 
 	private String id;
 	private Integer amount;
-	private Long paymoney;
+	private BigDecimal paymoney;
 	private Integer freecount;
 	private String remark;
 
@@ -21,7 +23,7 @@ public class TsEcurr implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TsEcurr(Integer amount, Long paymoney, Integer freecount,
+	public TsEcurr(Integer amount, BigDecimal paymoney, Integer freecount,
 			String remark) {
 		this.amount = amount;
 		this.paymoney = paymoney;
@@ -47,11 +49,11 @@ public class TsEcurr implements java.io.Serializable {
 		this.amount = amount;
 	}
 
-	public Long getPaymoney() {
+	public BigDecimal getPaymoney() {
 		return this.paymoney;
 	}
 
-	public void setPaymoney(Long paymoney) {
+	public void setPaymoney(BigDecimal paymoney) {
 		this.paymoney = paymoney;
 	}
 

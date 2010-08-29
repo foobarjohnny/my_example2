@@ -75,6 +75,7 @@ public class UserAuctionServiceImpl extends GeneralService implements
 				data.setPrices(tsCommodity.getPrices());
 				data.setPrice(tsBingcur.getPrice());
 				data.setState(state);
+				data.setId(tsCommodity.getId());
 				if (data.getPrices().compareTo(new BigDecimal(0)) > 0) {
 					BigDecimal total = (data.getPrices().subtract(data.getPrice()).subtract(new BigDecimal(tsBingcur.getAmount() * 1)));
 					BigDecimal percents = total.divide(data.getPrices(),BigDecimal.ROUND_HALF_DOWN);
@@ -151,6 +152,8 @@ public class UserAuctionServiceImpl extends GeneralService implements
 				data.setSummary(tsCommodity.getSummary());
 				data.setPrice(tsOrder.getAmount());
 				data.setBinddate(tsOrder.getOrdertime());
+				data.setId(tsCommodity.getId());
+				data.setOrderId(tsOrder.getId());
 				model.getDataList().add(data);
 			}
 

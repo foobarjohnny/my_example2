@@ -34,7 +34,7 @@ public class AuctionServiceImpl extends GeneralService implements
 			if (tsCommodity.getRestricts().equals("2")) {
 				// 收费
 				Integer paycur = tsUser.getPaycur();
-				if (paycur != null && paycur != 0) {
+				if (paycur != null && paycur != 0 && paycur - consume > 0) {
 					// 剩余数量
 					Long pay = paycur - consume;
 					tsUser.setPaycur(pay.intValue());
@@ -45,12 +45,15 @@ public class AuctionServiceImpl extends GeneralService implements
 					tsConsume.setRemark("竞拍" + tsCommodity.getTradename());
 					tsConsume.setAmount(consume.intValue());
 					tsConsume.setBuytype("2");
+					tsConsume.setTsCommodity(tsCommodity);
 					generalDao.update(tsUser);
 					generalDao.save(tsConsume);
+				} else {
+					return false;
 				}
 			} else if (tsCommodity.getRestricts().equals("3")) {
 				Integer freecur = tsUser.getFreecur();
-				if (freecur != null && freecur != 0) {
+				if (freecur != null && freecur != 0 && freecur - consume > 0) {
 					// 剩余数量
 					Long pay = freecur - consume;
 					tsUser.setFreecur(pay.intValue());
@@ -61,8 +64,11 @@ public class AuctionServiceImpl extends GeneralService implements
 					tsConsume.setRemark("竞拍" + tsCommodity.getTradename());
 					tsConsume.setAmount(consume.intValue());
 					tsConsume.setBuytype("3");
+					tsConsume.setTsCommodity(tsCommodity);
 					generalDao.update(tsUser);
 					generalDao.save(tsConsume);
+				} else {
+					return false;
 				}
 			} else {
 				// 无限制

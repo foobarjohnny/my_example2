@@ -12,4 +12,6 @@ public interface ConsumeService {
 	public void delete(ConsumeData model) throws GeneralException;
 
 	public void search(ConsumeData model) throws GeneralException;
+	
+	public void searchPayE(ConsumeData model) throws GeneralException;
 }

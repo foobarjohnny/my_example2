@@ -1,5 +1,6 @@
 package org.auction.module.admin.commodity.data;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +10,11 @@ public class EcurrData extends GeneralData {
 
 	private String id;
 	private Integer amount;
-	private Long paymoney;
+	private BigDecimal paymoney;
 	private Integer freecount;
 	private String remark;
+	
+	private String url;
 	
 	private List<EcurrData> dataList = new ArrayList<EcurrData>();
 
@@ -31,11 +34,11 @@ public class EcurrData extends GeneralData {
 		this.amount = amount;
 	}
 
-	public Long getPaymoney() {
+	public BigDecimal getPaymoney() {
 		return paymoney;
 	}
 
-	public void setPaymoney(Long paymoney) {
+	public void setPaymoney(BigDecimal paymoney) {
 		this.paymoney = paymoney;
 	}
 
@@ -61,6 +64,14 @@ public class EcurrData extends GeneralData {
 
 	public void setDataList(List<EcurrData> dataList) {
 		this.dataList = dataList;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

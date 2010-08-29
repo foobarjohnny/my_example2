@@ -33,6 +33,7 @@ public class TsCommodity implements java.io.Serializable {
 	private Set tsOrders = new HashSet(0);
 	private Set tsRebotcoms = new HashSet(0);
 	private Set tsBiddings = new HashSet(0);
+	private Set tsConsumes = new HashSet(0);
 
 	// Constructors
 
@@ -205,6 +206,14 @@ public class TsCommodity implements java.io.Serializable {
 
 	public void setPrices(BigDecimal prices) {
 		this.prices = prices;
+	}
+
+	public Set getTsConsumes() {
+		return tsConsumes;
+	}
+
+	public void setTsConsumes(Set tsConsumes) {
+		this.tsConsumes = tsConsumes;
 	}
 
 }

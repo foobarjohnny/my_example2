@@ -1,5 +1,6 @@
 package org.auction.module.admin.commodity.data;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,11 @@ public class ConsumeData extends GeneralData {
 	private String remark;
 	private String buytype;
 	private Integer amount;
+	private String comId;
+	private String comname;
+	private String descript;
+	private BigDecimal markPrice = new BigDecimal(0);
+	private BigDecimal price = new BigDecimal(0);
 
 	private List<ConsumeData> dataList = new ArrayList<ConsumeData>();
 
@@ -80,5 +86,45 @@ public class ConsumeData extends GeneralData {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getComId() {
+		return comId;
+	}
+
+	public void setComId(String comId) {
+		this.comId = comId;
+	}
+
+	public String getComname() {
+		return comname;
+	}
+
+	public void setComname(String comname) {
+		this.comname = comname;
+	}
+
+	public String getDescript() {
+		return descript;
+	}
+
+	public void setDescript(String descript) {
+		this.descript = descript;
+	}
+
+	public BigDecimal getMarkPrice() {
+		return markPrice;
+	}
+
+	public void setMarkPrice(BigDecimal markPrice) {
+		this.markPrice = markPrice;
+	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
 }

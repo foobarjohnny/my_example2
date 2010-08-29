@@ -30,7 +30,7 @@ public class AuctionHandler {
 						return "success";
 					}
 				} else {
-					return "参与商品已经竞拍结束。";
+					return "竞拍点数不够，请充值在竞拍";
 				}
 			} else {
 				return "你现在是最高出价者。";

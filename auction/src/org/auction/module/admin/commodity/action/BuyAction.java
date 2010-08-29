@@ -34,6 +34,12 @@ public class BuyAction extends GeneralAction<BuyData> {
 		return SUCCESS;
 	}
 
+	public String searchUserE() throws GeneralException {
+		this.setPage(model);
+		buyService.searchBuy(model);
+		return SUCCESS;
+	}
+
 	public BuyData getModel() {
 		return model;
 	}
