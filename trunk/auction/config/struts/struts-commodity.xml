@@ -168,5 +168,7 @@
 				${url}
 			</result>
 		</action>
+		<!-- 显示图片 -->
+		<action name="showImage" class="imageAction" method="showImage"/>
 	</package>
 </struts>

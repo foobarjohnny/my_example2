@@ -99,4 +99,8 @@
 		class="org.auction.module.admin.commodity.service.impl.BingcurServiceImpl">
 		<property name="generalDao" ref="generalDao" />
 	</bean>
+	<bean id="imagesService"
+		class="org.auction.module.admin.commodity.service.impl.ImageServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
 </beans>
