@@ -131,7 +131,7 @@
 										</tr>
 										<tr>
 											<td align="center">
-												<a href="jpshow.htm"><img alt="" src="images/1_hot_006.jpg" border="0"/> </a>
+												<a href="jpshow.htm"><img alt="" src="showImage.action?id=${data.id }" border="0"/> </a>
 											</td>
 										</tr>
 										<tr>
