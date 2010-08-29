@@ -80,9 +80,9 @@ public class CommodityServiceImpl extends GeneralService implements
 		} else {
 			tsCommodity.setState("4");
 			isSave = true;
+			generalDao.save(tsCommodity);
 			tsImages = new TsImages();
 			tsImages.setImageid(tsCommodity.getId());
-			generalDao.save(tsCommodity);
 		}
 		// 保存图片
 		if (model.getUpload() != null) {
