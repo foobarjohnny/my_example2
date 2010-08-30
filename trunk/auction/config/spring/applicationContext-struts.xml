@@ -88,7 +88,12 @@
 	<bean id="bingcurAction" class="org.auction.module.admin.commodity.action.BingcurAction" scope="prototype">
 		<property name="bingcurService" ref="bingcurService" />
 	</bean>
+	<!-- 显示商品图片 -->
 	<bean id="imageAction" class="org.auction.module.admin.commodity.action.ImageAction" scope="prototype">
 		<property name="imagesService" ref="imagesService" />
+	</bean>
+	<!-- 支付宝返回请求参数处理 -->
+	<bean id="alipayAction" class="org.auction.module.manager.action.AlipayAction" scope="prototype">
+		<property name="alipayService" ref="alipayService" />
 	</bean>
 </beans>
