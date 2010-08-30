@@ -11,6 +11,7 @@ public class TsEcu implements java.io.Serializable {
 	private String id;
 	private TsEcurr tsEcurr;
 	private TsUser tsUser;
+	private String state;
 
 	// Constructors
 
@@ -48,6 +49,14 @@ public class TsEcu implements java.io.Serializable {
 
 	public void setTsUser(TsUser tsUser) {
 		this.tsUser = tsUser;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 }

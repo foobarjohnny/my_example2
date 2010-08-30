@@ -69,6 +69,7 @@ public class EcurrServiceImpl extends GeneralService implements EcurrService {
 		TsEcu tsEcu = new TsEcu();
 		tsEcu.setTsEcurr(tsEcurr);
 		tsEcu.setTsUser(tsUser);
+		tsEcu.setState("2");
 		generalDao.save(tsEcu);
 		// 生成参数
 		Map params = new HashMap();
