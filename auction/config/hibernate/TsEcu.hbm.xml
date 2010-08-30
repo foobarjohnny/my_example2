@@ -16,5 +16,8 @@
         <many-to-one name="tsUser" class="org.auction.entity.TsUser" fetch="select">
             <column name="USERID" length="32" />
         </many-to-one>
+        <property name="state" type="java.lang.String">
+            <column name="STATE" />
+        </property>
     </class>
 </hibernate-mapping>

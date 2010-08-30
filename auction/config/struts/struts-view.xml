@@ -14,5 +14,9 @@
 		<action name="showView" class="showAction" method="show">
 			<result>index.jsp</result>
 		</action>
+		<!-- 支付宝返回请求参数业务处理 -->
+		<action name="alipay" class="alipayAction" method="handler">
+			<result>index.jsp</result>
+		</action>
 	</package>
 </struts>
