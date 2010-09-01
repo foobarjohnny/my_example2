@@ -107,7 +107,7 @@
 			          	<s:iterator id="data" value="dataList" status="status">
 			          		
 				          	<tr>
-				              <td width="130" height="130" align="center"><img width="120" height="120" border="0" ></td>
+				              <td width="130" height="130" align="center"><img width="120" height="120" border="0" src="showImage.action?id=${data.id }"></td>
 				              <td width="274"><strong>${data.comityName }</strong><br>
 				              	
 				              </td>
@@ -133,6 +133,7 @@
 				              	</s:if>
 				              	<!--  
 				              	<a href="#" onclick="viewCom('${data.id}')">我要秀宝</a><br>
+				              	
 				              	<a href="#" onclick="viewOrd('${data.orderId}')">查看订单</a>
 				              	-->
 				              </td>
