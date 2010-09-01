@@ -169,6 +169,8 @@
 			</result>
 		</action>
 		<!-- 显示图片 -->
-		<action name="showImage" class="imageAction" method="showImage"/>
+		<action name="showImage" class="imageAction" method="showImage">
+			<interceptor-ref name="defaultStack"/>
+		</action>
 	</package>
 </struts>
