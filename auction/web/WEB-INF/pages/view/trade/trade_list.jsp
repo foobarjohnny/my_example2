@@ -94,7 +94,7 @@
 							              <td colspan="5" background="images/hr.gif"><img src="images/hr.gif" width="1" height="1"></td>
 							          </tr>
 							          <tr>
-							              <td width="130" height="130" align="center"><a href="#" onclick="view('${data.id}')"><img width="120" height="120" border="0" ></a></td>
+							              <td width="130" height="130" align="center"><a href="#" onclick="view('${data.id}')"><img width="120" height="120" border="0" src="showImage.action?id=${data.tradeId }"></a></td>
 							              <td width="274"><strong><a href="#" onclick="view('${data.id}')">${data.comityName }</a></strong><br>
 							              	
 							              </td>

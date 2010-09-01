@@ -55,7 +55,7 @@
             <td width="48%" height="454" valign="top">
             	<table width="362" border="0" cellspacing="0">
               <tr>
-                <td width="360" align="center" valign="top"><img height="360" width="360" border="0"></td>
+                <td width="360" align="center" valign="top"><img height="360" width="360" border="0" src="showImage.action?id=${tradeId }"></td>
               </tr>
               <tr>
                 <td><table width="360" height="90" border="0" cellpadding="0" cellspacing="0">

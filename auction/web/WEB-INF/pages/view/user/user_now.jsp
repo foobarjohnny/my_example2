@@ -144,7 +144,7 @@
 			          	</tr>
 			          	<s:iterator id="data" value="tradeData" status="status">
 			          	<tr>
-				            <td width="100" align="center"><a href="jpshow.htm"><img width="100" height="100" border="0" ></a></td>
+				            <td width="100" align="center"><a href="jpshow.htm"><img width="100" height="100" border="0" src="showImage.action?id=${data.id }"></a></td>
 				            <td width="324"><strong><a href="jpshow.htm"><s:property id="data" value="tradename"/></a></strong><br>
 				            	
 				            </td>
