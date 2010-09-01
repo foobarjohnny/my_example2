@@ -67,7 +67,7 @@ public class ConsumeServiceImpl extends GeneralService implements
 				.getCurrentManager().getSessionId());
 		if (loginBean != null) {
 			String hql = "select c.tsCommodity,sum(c.amount) from TsConsume c where c.tsUser.id='" + loginBean.getId() + "' group by c.tsCommodity";
-			String pageTotal = "select count(id) from TsConsume c where c.tsUser.id='" + loginBean.getId() + "' group by c.tsCommodity";
+			String pageTotal = "select count(id) from TsConsume c where c.tsUser.id='" + loginBean.getId() + "' ";
 			List list = generalDao.search(hql, pageTotal, model.getPageBean());
 			if (list != null && list.size() > 0) {
 				for (int i=0;i<list.size();i++) {

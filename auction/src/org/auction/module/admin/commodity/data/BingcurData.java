@@ -16,6 +16,7 @@ public class BingcurData extends GeneralData {
 	private String user;
 	private String comityName;
 	private String summary;
+	private String tradeId;
 	private BigDecimal prices = new BigDecimal(0);
 	private BigDecimal percents = new BigDecimal(0);
 	private BigDecimal markprices = new BigDecimal(0);
@@ -116,5 +117,13 @@ public class BingcurData extends GeneralData {
 
 	public void setMarkprices(BigDecimal markprices) {
 		this.markprices = markprices;
+	}
+
+	public String getTradeId() {
+		return tradeId;
+	}
+
+	public void setTradeId(String tradeId) {
+		this.tradeId = tradeId;
 	}
 }

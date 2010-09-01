@@ -43,6 +43,7 @@ public class ShowServiceImpl implements IShowService {
 			BeanProcessUtils.copyProperties(data, tsSort);
 			data.setUser(tsSort.getTsUser().getRealname());
 			data.setComityName(tsSort.getTsCommodity().getTradename());
+			data.setTradeId(tsSort.getTsCommodity().getId());
 			model.getBingcurDataList().add(data);
 		}
 		// 网站公告

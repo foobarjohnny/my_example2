@@ -12,6 +12,8 @@ import org.auction.entity.TsSort;
 import org.auction.module.admin.commodity.data.CommodityData;
 import org.auction.module.admin.commodity.data.SortData;
 import org.auction.module.admin.commodity.service.CommodityService;
+import org.auction.module.manager.TradeManager;
+import org.auction.module.manager.data.TradeData;
 import org.mobile.common.bean.SearchBean;
 import org.mobile.common.exception.GeneralException;
 import org.mobile.common.manager.GeneralManager;
@@ -53,7 +55,6 @@ public class CommodityServiceImpl extends GeneralService implements
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	public void save(CommodityData model) throws GeneralException {
 		TsCommodity tsCommodity = new TsCommodity();
 		BeanProcessUtils.copyProperties(tsCommodity, model);
@@ -65,27 +66,17 @@ public class CommodityServiceImpl extends GeneralService implements
 		cal.add(Calendar.HOUR_OF_DAY, tsCommodity.getEndtime());
 		tsCommodity.setOvertime(cal.getTime());
 		boolean isSave = false;
-		TsImages tsImages = null;
 		if (model.getId() != null && !model.getId().equals("")) {
-			List<SearchBean> search = new ArrayList<SearchBean>();
-			search.add(new SearchBean("imageid", "eq", "string", tsCommodity
-					.getId()));
-			search.add(new SearchBean("tablename", "eq", "string",
-					"TS_COMMODITY"));
-			List list = generalDao.search(TsImages.class, search, null, null);
-			if (list != null && list.size() > 0) {
-				tsImages = (TsImages) list.get(0);
-			}
 			generalDao.update(tsCommodity);
 		} else {
 			tsCommodity.setState("4");
 			isSave = true;
 			generalDao.save(tsCommodity);
-			tsImages = new TsImages();
-			tsImages.setImageid(tsCommodity.getId());
 		}
 		// 保存图片
 		if (model.getUpload() != null) {
+			TsImages tsImages = new TsImages();
+			tsImages.setImageid(tsCommodity.getId());
 			GeneralManager manager = GeneralManager.getCurrentManager();
 			String targetDir = manager.getImageDir(GeneralManager.UPLOAD_IMAGE);
 			File file = new File(targetDir, UUIDFactory.createUUID()
@@ -95,11 +86,13 @@ public class CommodityServiceImpl extends GeneralService implements
 			FileUpload.upload(model.getUpload(), file);
 			tsImages.setFilepath(file.getAbsolutePath());
 			tsImages.setTablename("TS_COMMODITY");
-			if (isSave) {
-				generalDao.save(tsImages);
-			} else {
-				generalDao.update(tsImages);
+			if (!isSave) {
+				// 更新删除以前图片
+				String hql = "delete from TsImages where tablename='TS_COMMODITY' and imageid='"
+						+ tsCommodity.getId() + "'";
+				generalDao.executeHql(hql);
 			}
+			generalDao.save(tsImages);
 		}
 	}
 
@@ -162,7 +155,11 @@ public class CommodityServiceImpl extends GeneralService implements
 		}
 	}
 
+	/**
+	 * 商品上架竞拍
+	 */
 	public void auction(CommodityData model) throws GeneralException {
+		// 获得要上架的商品
 		TsCommodity tsCommodity = (TsCommodity) generalDao.get(
 				TsCommodity.class, model.getId());
 		tsCommodity.setState("1");
@@ -172,6 +169,10 @@ public class CommodityServiceImpl extends GeneralService implements
 		cal.add(Calendar.HOUR_OF_DAY, tsCommodity.getEndtime());
 		tsCommodity.setOvertime(cal.getTime());
 		generalDao.update(tsCommodity);
+		// 将商品加入竞拍列表
+		TradeData tradeData = new TradeData();
+		BeanProcessUtils.copyProperties(tradeData, tsCommodity);
+		TradeManager.add(tradeData);
 	}
 
 	@SuppressWarnings("unchecked")
