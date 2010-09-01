@@ -34,6 +34,7 @@ public class BingcurServiceImpl extends GeneralService implements
 		model.setSummary(tsBingcur.getTsCommodity().getSummary());
 		model.setPrices(tsBingcur.getTsCommodity().getPrices());
 		model.setMarkprices(tsBingcur.getTsCommodity().getPurchasePrice());
+		model.setTradeId(tsBingcur.getTsCommodity().getId());
 		if (model.getPrices().compareTo(new BigDecimal(0)) > 0) {
 			BigDecimal total = (model.getPrices().subtract(model.getPrice()).subtract(new BigDecimal(tsBingcur.getAmount() * 1)));
 			BigDecimal percents = total.divide(model.getPrices(),BigDecimal.ROUND_HALF_DOWN);
@@ -77,6 +78,7 @@ public class BingcurServiceImpl extends GeneralService implements
 			BeanProcessUtils.copyProperties(data, tsBingcur);
 			data.setUser(tsBingcur.getTsUser().getUsername());
 			data.setComityName(tsBingcur.getTsCommodity().getTradename());
+			data.setTradeId(tsBingcur.getTsCommodity().getId());
 			data.setSummary(tsBingcur.getTsCommodity().getSummary());
 			data.setPrices(tsBingcur.getTsCommodity().getPrices());
 			if (data.getPrices().compareTo(new BigDecimal(0)) > 0) {

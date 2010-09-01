@@ -37,8 +37,10 @@ public class SortServiceImpl extends GeneralService implements SortService {
 		TsSort tsSort = new TsSort();
 		BeanProcessUtils.copyProperties(tsSort, model);
 		if (model.getId() != null && !model.getId().equals("")) {
+			tsSort.setIsValid(Constant.YES);
 			generalDao.update(tsSort);
 		} else {
+			tsSort.setIsValid(Constant.YES);
 			generalDao.save(tsSort);
 		}
 	}
