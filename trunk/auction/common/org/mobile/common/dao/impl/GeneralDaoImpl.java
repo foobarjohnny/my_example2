@@ -228,6 +228,12 @@ public class GeneralDaoImpl implements IGeneralDao {
 		}
 	}
 
+	public int executeHql(String hql, String name, String[] ids) {
+		Query query = getSession().createQuery(hql);
+		query.setParameterList(name, ids);
+		return query.executeUpdate();
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<Object> select() {
 		Query query = getSession()

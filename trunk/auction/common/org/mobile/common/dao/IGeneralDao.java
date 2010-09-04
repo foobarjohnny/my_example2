@@ -116,6 +116,14 @@ public interface IGeneralDao {
 	 * @return
 	 */
 	public int executeHql(String hql);
+	
+	/**
+	 * 执行hql语句
+	 * 
+	 * @param hql
+	 * @return
+	 */
+	public int executeHql(String hql, String name, String[] ids);
 
 	public List<Object> select();
 
