@@ -18,7 +18,11 @@ public class ImageServiceImpl extends GeneralService implements ImageService {
 	@SuppressWarnings("unchecked")
 	public void getImage(ImageData model) throws Exception {
 		List<SearchBean> list = new ArrayList<SearchBean>();
-		list.add(new SearchBean("tablename","eq","string","TS_COMMODITY"));
+		if (model.getType() != null && !model.getType().equals("")) {
+			list.add(new SearchBean("tablename","eq","string",model.getType()));
+		} else {
+			list.add(new SearchBean("tablename","eq","string","TS_COMMODITY"));
+		}
 		list.add(new SearchBean("imageid","eq","string",model.getId()));
 		List imageList = generalDao.search(TsImages.class, list, null, null);
 		if (imageList != null && imageList.size() > 0) {
