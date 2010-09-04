@@ -30,4 +30,9 @@
 		<property name="orderService" ref="orderService" />
 		<dwr:remote javascript="buyRomet"></dwr:remote>
 	</bean>
+	<bean id="publisRomet"
+		class="org.auction.module.admin.commodity.dwr.PublisHandler">
+		<property name="publisService" ref="publisService" />
+		<dwr:remote javascript="publisRomet"></dwr:remote>
+	</bean>
 </beans>

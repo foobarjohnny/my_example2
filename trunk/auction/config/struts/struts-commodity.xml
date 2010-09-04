@@ -123,6 +123,31 @@
 		<action name="consumeSave" class="consumeAction" method="save">
 			<result type="chain">consumeSearch</result>
 		</action>
+		
+		<action name="publisDelete" class="publisAction" method="delete">
+			<result type="chain">publisSearch</result>
+		</action>
+		<action name="publisSearch" class="publisAction" method="search">
+			<result>WEB-INF/pages/admin/commodity/admin_cool_edit.jsp
+			</result>
+		</action>
+		<action name="publisForward" class="publisAction" method="forward">
+			<result>WEB-INF/pages/admin/commodity/admin_cool_add.jsp
+			</result>
+		</action>
+		<action name="publisSave" class="publisAction" method="save">
+			<result type="chain">publisSearch</result>
+		</action>
+		<!-- 酷品发布 -->
+		<action name="coolSearch" class="publisAction" method="coolSearch">
+			<result>WEB-INF/pages/view/trade/cool.jsp
+			</result>
+		</action>
+		<!-- 酷品预览 -->
+		<action name="coolForward" class="publisAction" method="coolForward">
+			<result>WEB-INF/pages/view/trade/coolView.jsp
+			</result>
+		</action>
 		<!-- 用户竞拍商品 -->
 		<action name="bingcurSearch" class="bingcurAction" method="search">
 			<result>WEB-INF/pages/view/trade/trade_list.jsp

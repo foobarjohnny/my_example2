@@ -107,4 +107,8 @@
 		class="org.auction.module.manager.alipay.service.impl.AlipayServiceImpl">
 		<property name="generalDao" ref="generalDao" />
 	</bean>
+	<bean id="publisService"
+		class="org.auction.module.admin.commodity.service.impl.PublisServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
 </beans>
