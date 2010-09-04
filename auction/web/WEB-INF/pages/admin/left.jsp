@@ -386,12 +386,12 @@
 					<table width="100%" border="0" cellspacing="0" cellpadding="5">
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_cool_add.htm">酷品发布</a>
+								<a target="mainFrame" href="publisForward.action">酷品发布</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_cool_edit.htm">酷品统计</a>
+								<a target="mainFrame" href="publisSearch.action">酷品统计</a>
 							</td>
 						</tr>
 
