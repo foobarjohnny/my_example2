@@ -96,4 +96,8 @@
 	<bean id="alipayAction" class="org.auction.module.manager.action.AlipayAction" scope="prototype">
 		<property name="alipayService" ref="alipayService" />
 	</bean>
+	<bean id="publisAction" class="org.auction.module.admin.commodity.action.PublisAction"
+		scope="prototype">
+		<property name="publisService" ref="publisService" />
+	</bean>
 </beans>
