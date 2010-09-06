@@ -244,7 +244,8 @@ public class GeneralDaoImpl implements IGeneralDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Object> now(String id) {
-		//String hql = "select c from TsCommodity c left join c.tsBiddings b where c.state = '1' and b.tsUser.id = :id";
+		// String hql =
+		// "select c from TsCommodity c left join c.tsBiddings b where c.state = '1' and b.tsUser.id = :id";
 		String hql = "select c from TsCommodity c where c.state = '1' and :id in (select b.tsUser.id from c.tsBiddings b )";
 		Query query = getSession().createQuery(hql);
 		query.setParameter("id", id);
@@ -322,21 +323,27 @@ public class GeneralDaoImpl implements IGeneralDao {
 	public List<Object> search(String hql, String count, PageBean pageBean) {
 		count(count, pageBean);
 		Query query = getSession().createQuery(hql);
-		query.setFirstResult((pageBean.getCurrentPage() - 1)
-				* pageBean.getPageRec());
-		query.setMaxResults(pageBean.getPageRec());
+		// query.setFirstResult((pageBean.getCurrentPage() - 1)
+		// * pageBean.getPageRec());
+		// query.setMaxResults(pageBean.getPageRec());
 		return query.list();
 	}
 
 	private void count(String count, PageBean pageBean) {
 		Query query = getSession().createQuery(count);
-		Integer obj = Integer.parseInt(String.valueOf(query.uniqueResult()));
-		if (obj != null) {
-			int pageRec = pageBean.getPageRec();
-			if (obj % pageRec == 0) {
-				pageBean.setTotalPage(obj / pageRec);
+		Object o = query.uniqueResult();
+		if (o != null) {
+			Integer obj = Integer.parseInt(String.valueOf(o));
+			if (obj != null) {
+				int pageRec = pageBean.getPageRec();
+				if (obj % pageRec == 0) {
+					pageBean.setTotalPage(obj / pageRec);
+				} else {
+					pageBean.setTotalPage(obj / pageRec + 1);
+				}
+				pageBean.setTotalRec(obj);
 			} else {
-				pageBean.setTotalPage(obj / pageRec + 1);
+				pageBean.setTotalPage(0);
 			}
 		} else {
 			pageBean.setTotalPage(0);
