@@ -42,6 +42,9 @@
 					<td width="10%" align="center" valign="middle">
 						<strong>发布时间</strong>
 					</td>
+					<td width="10%" align="center" valign="middle">
+						<strong>会员名称</strong>
+					</td>
 					<td width="19%" align="center">
 						<strong>内容</strong>
 					</td>
@@ -56,6 +59,9 @@
 						</td>
 						<td align="center" valign="middle">
 							<s:property value="releasedate"/>
+						</td>
+						<td align="center" valign="middle">
+							<s:property value="username"/>
 						</td>
 						<td align="center">
 							<s:property value="substance"/>

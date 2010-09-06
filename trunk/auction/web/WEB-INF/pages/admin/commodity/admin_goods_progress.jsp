@@ -27,7 +27,7 @@
 	</head>
 	<body>
 		<div align="center" class="admin_title1">
-			——商品类别管理——
+			——正在竞拍商品管理——
 		</div>
 		<hr>
 		<s:form action="sortSearch.action" name="form1">
@@ -36,32 +36,43 @@
 			<table width="100%" border="1" cellpadding="10" cellspacing="0"
 				bordercolor="#FFFFFF" bgcolor="#EEEEEE">
 				<tr>
-					<td width="10%" align="center" valign="middle">
-						<strong>商品类别名称</strong>
-					</td>
-					<td width="10%" align="center" valign="middle">
+					<td width="30%" align="center" valign="middle">
 						<strong>商品名称</strong>
 					</td>
 					<td width="10%" align="center" valign="middle">
-						<strong>开始时间</strong>
+						<strong>剩余时间</strong>
 					</td>
 					<td width="10%" align="center" valign="middle">
-						<strong>结束时间</strong>
+						<strong>领先者</strong>
+					</td>
+					<td width="10%" align="center" valign="middle">
+						<strong>竞拍价</strong>
+					</td>
+					<td width="10%" align="center" valign="middle">
+						<strong>操作</strong>
 					</td>
 				</tr>
 				<s:iterator value="dataList" id="data" status="status">
 					<tr>
 						<td align="center" valign="middle">
-							<s:property value="sortName"/>
+							<table>
+								<tr>
+									<td><img src="showImage.action?id=${data.id }" height="80" width="80" border="0"/></td>
+									<td>${data.tradename}</td>
+								</tr>
+							</table>
 						</td>
 						<td align="center" valign="middle">
-							<s:property value="tradename"/>
+							${data.time}分钟
 						</td>
 						<td align="center" valign="middle">
-							<s:property value="starttime"/>
+							${data.username}
 						</td>
 						<td align="center" valign="middle">
-							<s:property value="endtime"/>
+							${data.bidPrice}
+						</td>
+						<td align="center" valign="middle">
+							<a href="">查看详情</a>
 						</td>
 					</tr>
 				</s:iterator>

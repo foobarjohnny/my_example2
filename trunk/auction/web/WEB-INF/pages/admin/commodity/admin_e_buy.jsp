@@ -23,6 +23,11 @@
 		form1.action = "buyForward.action";
 		form1.submit();
 	}
+	function search() {
+		document.getElementById("current").value = 1;
+		form1.action = "buySearch.action";
+		form1.submit();
+	}
 </script>
 	</head>
 	<body>
@@ -31,10 +36,19 @@
 		</div>
 		<hr>
 		<s:form action="buySearch.action" name="form1">
-			<s:hidden name="pageBean.currentPage" />
+			<s:hidden name="pageBean.currentPage" id="current"/>
 			<s:hidden name="pageBean.totalPage" />
 			<table width="100%" border="1" cellpadding="10" cellspacing="0"
 				bordercolor="#FFFFFF" bgcolor="#EEEEEE">
+				<tr>
+					<td width="15%" align="center" valign="middle" colspan="6">
+						用户名：<input type="text" name="searchBeans[0].value">
+						<input type="hidden" name="searchBeans[0].signl" value="eq">
+						<input type="hidden" name="searchBeans[0].type" value="string">
+						<input type="hidden" name="searchBeans[0].fieldName" value="tsUser.username">
+						<input type="button" value="查找" onclick="search()">
+					</td>
+				</tr>
 				<tr>
 					<td width="15%" align="center" valign="middle">
 						<strong>用户名</strong>
@@ -87,9 +101,9 @@
 						<s:property value="pageBean.totalPage" />
 						页，每页
 						<s:property value="pageBean.pageRec" />
-						条纪录 首页&nbsp;&nbsp;
+						条纪录&nbsp;&nbsp;
 						<a href="#" onclick="previous();">上一页</a>&nbsp;&nbsp;
-						<a href="#" onclick="next();">下一页</a>&nbsp;&nbsp; 尾页
+						<a href="#" onclick="next();">下一页</a>&nbsp;&nbsp;
 					</td>
 				</tr>
 			</table>

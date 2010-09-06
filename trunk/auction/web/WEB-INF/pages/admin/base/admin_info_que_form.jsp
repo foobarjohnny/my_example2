@@ -36,7 +36,11 @@
 						回复内容：
 					</td>
 					<td>
-						<s:textarea name="details" />
+						<s:hidden name="details" id="info"></s:hidden>
+						<fck:editor instanceName="info" height="100%">
+							<jsp:attribute name="value">&nbsp;
+							</jsp:attribute>
+						</fck:editor>
 					</td>
 				</tr>
 				<tr align="right">
