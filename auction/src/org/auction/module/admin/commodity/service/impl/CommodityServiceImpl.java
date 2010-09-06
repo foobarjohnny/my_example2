@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.auction.entity.TsBidding;
+import org.auction.entity.TsBingcur;
 import org.auction.entity.TsCommodity;
 import org.auction.entity.TsImages;
 import org.auction.entity.TsSort;
@@ -14,11 +16,13 @@ import org.auction.module.admin.commodity.data.SortData;
 import org.auction.module.admin.commodity.service.CommodityService;
 import org.auction.module.manager.TradeManager;
 import org.auction.module.manager.data.TradeData;
+import org.mobile.common.bean.OrderByBean;
 import org.mobile.common.bean.SearchBean;
 import org.mobile.common.exception.GeneralException;
 import org.mobile.common.manager.GeneralManager;
 import org.mobile.common.service.GeneralService;
 import org.mobile.common.util.BeanProcessUtils;
+import org.mobile.common.util.Constant;
 import org.mobile.common.util.FileUpload;
 import org.mobile.common.util.UUIDFactory;
 
@@ -46,7 +50,15 @@ public class CommodityServiceImpl extends GeneralService implements
 			model.setSortId(tsCommodity.getTsSort().getId());
 			BeanProcessUtils.copyProperties(model, tsCommodity);
 		}
-		List list = generalDao.search(TsSort.class, null, null, null);
+		List<SearchBean> search = new ArrayList<SearchBean>();
+		SearchBean bean = new SearchBean();
+		bean.setDisplayName("isValid");
+		bean.setFieldName("isValid");
+		bean.setSignl(Constant.EQ);
+		bean.setValue(Constant.YES);
+		bean.setType("java.lang.String");
+		search.add(bean);
+		List list = generalDao.search(TsSort.class, search, null, null);
 		for (int i = 0; i < list.size(); i++) {
 			TsSort tsSort = (TsSort) list.get(i);
 			SortData data = new SortData();
@@ -127,21 +139,41 @@ public class CommodityServiceImpl extends GeneralService implements
 
 	@SuppressWarnings("unchecked")
 	public void searchProgress(CommodityData model) throws GeneralException {
+		// 查询正在竞拍商品
 		List<SearchBean> search = new ArrayList<SearchBean>();
 		search.add(new SearchBean("state", "eq", "string", "1"));
 		List list = generalDao.search(TsCommodity.class, search, model
 				.getPageBean(), null);
 		for (int i = 0; i < list.size(); i++) {
 			TsCommodity tsCommodity = (TsCommodity) list.get(i);
+			Long time = (tsCommodity.getOvertime().getTime() - new Date()
+					.getTime())
+					/ (1000 * 60);
 			CommodityData data = new CommodityData();
 			data.setSortName(tsCommodity.getTsSort().getSortname());
 			BeanProcessUtils.copyProperties(data, tsCommodity);
+			data.setTime(time);
+			// 根据商品ID查询现在最高出价人
+			search = new ArrayList<SearchBean>();
+			search.add(new SearchBean("tsCommodity.id", "eq", "string",
+					tsCommodity.getId()));
+			List<OrderByBean> obs = new ArrayList<OrderByBean>();
+			obs.add(new OrderByBean("", "price", "desc"));
+			List b_list = generalDao.search(TsBidding.class, search, null, obs);
+			if (b_list != null && b_list.size() > 0) {
+				TsBidding tsBidding = (TsBidding) b_list.get(0);
+				data.setUsername(tsBidding.getTsUser().getUsername());
+				data.setBidPrice(tsBidding.getPrice());
+			} else {
+				data.setBidPrice(tsCommodity.getMarketPrice());
+			}
 			model.getDataList().add(data);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	public void searchReach(CommodityData model) throws GeneralException {
+		// 查询成交的商品
 		List<SearchBean> search = new ArrayList<SearchBean>();
 		search.add(new SearchBean("state", "eq", "string", "3"));
 		List list = generalDao.search(TsCommodity.class, search, model
@@ -151,8 +183,40 @@ public class CommodityServiceImpl extends GeneralService implements
 			CommodityData data = new CommodityData();
 			data.setSortName(tsCommodity.getTsSort().getSortname());
 			BeanProcessUtils.copyProperties(data, tsCommodity);
+			// 查询该商品成交用户
+			search = new ArrayList<SearchBean>();
+			search.add(new SearchBean("tsCommodity.id", "eq", "string",
+					tsCommodity.getId()));
+			List bing_list = generalDao.search(TsBingcur.class, search, null,
+					null);
+			if (bing_list != null && bing_list.size() > 0) {
+				TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
+				data.setUsername(tsBingcur.getTsUser().getUsername());
+				data.setBidPrice(tsBingcur.getPrice());
+				data.setOvertime(tsBingcur.getBinddate());
+			}
 			model.getDataList().add(data);
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public void getReach(CommodityData model) throws GeneralException {
+		TsCommodity tsCommodity = (TsCommodity) generalDao.get(
+				TsCommodity.class, model.getId());
+		BeanProcessUtils.copyProperties(model, tsCommodity);
+		List<SearchBean> search = new ArrayList<SearchBean>();
+		search.add(new SearchBean("tsCommodity.id", "eq", "string",
+				tsCommodity.getId()));
+		List bing_list = generalDao.search(TsBingcur.class, search, null,
+				null);
+		if (bing_list != null && bing_list.size() > 0) {
+			TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
+			model.setUsername(tsBingcur.getTsUser().getUsername());
+			model.setBidPrice(tsBingcur.getPrice());
+			model.setOvertime(tsBingcur.getBinddate());
+		}
+		//统计
+		
 	}
 
 	/**

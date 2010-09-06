@@ -28,6 +28,21 @@ public class ProblemAction extends GeneralAction<ProblemData> {
 		problemService.forwardInfo(model);
 		return SUCCESS;
 	}
+	
+	public String proForward() throws Exception {
+		problemService.proForward(model);
+		return SUCCESS;
+	}
+	
+	public String proSave() throws Exception {
+		problemService.saveInfo(model);
+		return SUCCESS;
+	}
+	
+	public String savePro() throws Exception {
+		problemService.savePro(model);
+		return SUCCESS;
+	}
 
 	public String saveProblem() throws GeneralException {
 		problemService.saveInfo(model);

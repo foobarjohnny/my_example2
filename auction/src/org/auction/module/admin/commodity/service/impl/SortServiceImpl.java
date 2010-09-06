@@ -47,7 +47,7 @@ public class SortServiceImpl extends GeneralService implements SortService {
 
 	@SuppressWarnings("unchecked")
 	public void search(SortData model) throws GeneralException {
-		List<SearchBean> search = new ArrayList<SearchBean>();
+		List<SearchBean> search = model.getSearchBeans();
 		//TODO添加查询条件按
 		SearchBean bean = new SearchBean();
 		bean.setDisplayName("isValid");

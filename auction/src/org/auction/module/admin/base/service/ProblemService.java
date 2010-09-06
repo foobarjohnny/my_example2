@@ -12,4 +12,8 @@ public interface ProblemService {
 	public void forwardInfo(ProblemData model) throws GeneralException;
 
 	public void saveInfo(ProblemData model) throws GeneralException;
+	
+	public void savePro(ProblemData model) throws GeneralException;
+	
+	public void proForward(ProblemData model) throws GeneralException;
 }

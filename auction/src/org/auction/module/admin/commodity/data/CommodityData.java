@@ -27,7 +27,11 @@ public class CommodityData extends GeneralData {
 	private String sortId;
 	private String sortName;
 	private String searchName;
+	private Date overtime;
 	private String uploadFileName;
+	private Long time;
+	private String username;
+	private BigDecimal bidPrice = new BigDecimal(0);
 	private File upload;
 	private List<CommodityData> dataList = new ArrayList<CommodityData>();
 	private List<SortData> sortList = new ArrayList<SortData>();
@@ -198,6 +202,38 @@ public class CommodityData extends GeneralData {
 
 	public void setPrices(BigDecimal prices) {
 		this.prices = prices;
+	}
+
+	public Date getOvertime() {
+		return overtime;
+	}
+
+	public void setOvertime(Date overtime) {
+		this.overtime = overtime;
+	}
+
+	public Long getTime() {
+		return time;
+	}
+
+	public void setTime(Long time) {
+		this.time = time;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public BigDecimal getBidPrice() {
+		return bidPrice;
+	}
+
+	public void setBidPrice(BigDecimal bidPrice) {
+		this.bidPrice = bidPrice;
 	}
 
 }
