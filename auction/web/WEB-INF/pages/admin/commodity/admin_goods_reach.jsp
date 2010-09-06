@@ -27,7 +27,7 @@
 	</head>
 	<body>
 		<div align="center" class="admin_title1">
-			——商品类别管理——
+			——成交的商品——
 		</div>
 		<hr>
 		<s:form action="sortSearch.action" name="form1">
@@ -36,37 +36,43 @@
 			<table width="100%" border="1" cellpadding="10" cellspacing="0"
 				bordercolor="#FFFFFF" bgcolor="#EEEEEE">
 				<tr>
-					<td width="10%" align="center" valign="middle">
-						<strong>商品类别名称</strong>
-					</td>
-					<td width="10%" align="center" valign="middle">
+					<td width="40%" align="center" valign="middle">
 						<strong>商品名称</strong>
 					</td>
 					<td width="10%" align="center" valign="middle">
-						<strong>开始时间</strong>
+						<strong>成交时间</strong>
 					</td>
 					<td width="10%" align="center" valign="middle">
-						<strong>结束时间</strong>
+						<strong>竞拍者</strong>
 					</td>
-					<td width="12%" align="center">
+					<td width="10%" align="center" valign="middle">
+						<strong>成交价</strong>
+					</td>
+					<td width="10%" align="center">
 						<strong>操作</strong>
 					</td>
 				</tr>
 				<s:iterator value="dataList" id="data" status="status">
 					<tr>
 						<td align="center" valign="middle">
-							<s:property value="sortName"/>
+							<table>
+								<tr>
+									<td><img src="showImage.action?id=${data.id }" height="80" width="80" border="0"/></td>
+									<td>${data.tradename}</td>
+								</tr>
+							</table>
 						</td>
 						<td align="center" valign="middle">
-							<s:property value="tradename"/>
+							${data.overtime }
 						</td>
 						<td align="center" valign="middle">
-							<s:property value="starttime"/>
+							${data.username }
 						</td>
 						<td align="center" valign="middle">
-							<s:property value="endtime"/>
+							${data.bidPrice }
 						</td>
 						<td align="center">
+							<a href="commodityView.action?id=<s:property value="id"/>&nettype=5">查看详情</a>
 							<a href="commodityDelete.action?id=<s:property value="id"/>&nettype=5">删除</a>
 						</td>
 					</tr>

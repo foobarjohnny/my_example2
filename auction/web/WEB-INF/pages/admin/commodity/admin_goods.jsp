@@ -42,16 +42,13 @@
 				</tr>
 				<tr>
 					<td width="10%" align="center" valign="middle">
-						<strong>商品类别名称</strong>
-					</td>
-					<td width="10%" align="center" valign="middle">
 						<strong>商品名称</strong>
 					</td>
 					<td width="10%" align="center" valign="middle">
 						<strong>开始时间</strong>
 					</td>
 					<td width="10%" align="center" valign="middle">
-						<strong>时长</strong>
+						<strong>结束时间</strong>
 					</td>
 					<td width="12%" align="center">
 						<strong>操作</strong>
@@ -60,21 +57,25 @@
 				<s:iterator value="dataList" id="data" status="status">
 					<tr>
 						<td align="center" valign="middle">
-							<s:property value="sortName"/>
-						</td>
-						<td align="center" valign="middle">
-							<s:property value="tradename"/>
+							<table>
+								<tr>
+									<td><img src="showImage.action?id=${data.id }" height="80" width="80" border="0"/></td>
+									<td><s:property value="tradename"/></td>
+								</tr>
+							</table>
 						</td>
 						<td align="center" valign="middle">
 							<s:property value="starttime"/>
 						</td>
 						<td align="center" valign="middle">
-							<s:property value="endtime"/>
+							<s:property value="overtime"/>
 						</td>
 						<td align="center">
+							<s:if test="state == 2 || state == 4">
 							<a href="commodityAuction.action?id=<s:property value="id"/>">竞拍</a>｜
 							<a href="commodityForward.action?id=<s:property value="id"/>&methodName=2">修改</a>｜
 							<a href="commodityDelete.action?id=<s:property value="id"/>&nettype=5">删除</a>
+							</s:if>
 						</td>
 					</tr>
 				</s:iterator>

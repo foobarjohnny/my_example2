@@ -27,7 +27,7 @@
 	</head>
 	<body>
 		<div align="center" class="admin_title1">
-			——商品类别管理——
+			——流拍商品管理——
 		</div>
 		<hr>
 		<s:form action="sortSearch.action" name="form1">
@@ -36,9 +36,6 @@
 			<table width="100%" border="1" cellpadding="10" cellspacing="0"
 				bordercolor="#FFFFFF" bgcolor="#EEEEEE">
 				<tr>
-					<td width="10%" align="center" valign="middle">
-						<strong>商品类别名称</strong>
-					</td>
 					<td width="10%" align="center" valign="middle">
 						<strong>商品名称</strong>
 					</td>
@@ -55,16 +52,18 @@
 				<s:iterator value="dataList" id="data" status="status">
 					<tr>
 						<td align="center" valign="middle">
-							<s:property value="sortName"/>
-						</td>
-						<td align="center" valign="middle">
-							<s:property value="tradename"/>
+							<table>
+								<tr>
+									<td><img src="showImage.action?id=${data.id }" height="80" width="80" border="0"/></td>
+									<td><s:property value="tradename"/></td>
+								</tr>
+							</table>
 						</td>
 						<td align="center" valign="middle">
 							<s:property value="starttime"/>
 						</td>
 						<td align="center" valign="middle">
-							<s:property value="endtime"/>
+							<s:property value="overtime"/>
 						</td>
 						<td align="center">
 							<a href="commodityAuction.action?id=<s:property value="id"/>&searchName=2">重新竞拍</a>｜

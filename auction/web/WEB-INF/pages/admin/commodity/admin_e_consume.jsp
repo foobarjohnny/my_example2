@@ -27,7 +27,7 @@
 	</head>
 	<body>
 		<div align="center" class="admin_title1">
-			——用户E拍币购买明细查询——
+			——用户E拍币消费明细查询——
 		</div>
 		<hr>
 		<s:form action="consumeSearch.action" name="form1">
@@ -39,11 +39,8 @@
 					<td width="31%" align="center" valign="middle">
 						<strong>描述</strong>
 					</td>
-					<td width="18%" align="center">
-						<strong>时间</strong>
-					</td>
-					<td width="12%" align="center">
-						<strong>类型</strong>
+					<td width="14%" align="center">
+						<strong>用户</strong>
 					</td>
 					<td width="14%" align="center">
 						<strong>E拍币数</strong>
@@ -55,22 +52,25 @@
 				<s:iterator value="dataList" id="data" status="status">
 					<tr>
 						<td align="center" valign="middle">
-							<s:property value="remark" />
+							<table width="100%" border="0" cellpadding="10" cellspacing="0">
+								<tr>
+									<td><img src="showImage.action?id=${data.comId }" height="80" width="80"></td>
+									<td>${data.comname }</td>
+								</tr>
+							</table>
 						</td>
 						<td align="center" valign="middle">
-							<s:property value="buytime" />
+							${data.username }
 						</td>
 						<td align="center" valign="middle">
-							<s:property value="buytype" />
-						</td>
-						<td align="center" valign="middle">
-							<s:property value="amount" />
+							${data.amount }
 						</td>
 						<td align="center">
 							<a href="consumeDelete.action?id=<s:property value="id"/>&nettype=5">删除</a>
 						</td>
 					</tr>
 				</s:iterator>
+				<!--  
 				<tr align="right">
 					<td colspan="7">
 						共
@@ -81,11 +81,12 @@
 						<s:property value="pageBean.totalPage" />
 						页，每页
 						<s:property value="pageBean.pageRec" />
-						条纪录 首页&nbsp;&nbsp;
+						条纪录 
 						<a href="#" onclick="previous();">上一页</a>&nbsp;&nbsp;
-						<a href="#" onclick="next();">下一页</a>&nbsp;&nbsp; 尾页
+						<a href="#" onclick="next();">下一页</a>
 					</td>
 				</tr>
+				-->
 			</table>
 		</s:form>
 	</body>
