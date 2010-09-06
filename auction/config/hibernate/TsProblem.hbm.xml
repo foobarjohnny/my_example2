@@ -22,5 +22,8 @@
         <property name="details" type="java.lang.String">
             <column name="DETAILS" length="3000" />
         </property>
+        <many-to-one name="tsUser" class="org.auction.entity.TsUser" fetch="select">
+            <column name="USERID" length="32" />
+        </many-to-one>
     </class>
 </hibernate-mapping>
