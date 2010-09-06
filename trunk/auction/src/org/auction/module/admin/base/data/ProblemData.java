@@ -13,6 +13,8 @@ public class ProblemData extends GeneralData {
 	private String title;
 	private Date releasedate;
 	private String details;
+	private String userId;
+	private String username;
 
 	private List<ProblemData> dataList = new ArrayList<ProblemData>();
 
@@ -62,6 +64,22 @@ public class ProblemData extends GeneralData {
 
 	public void setDataList(List<ProblemData> dataList) {
 		this.dataList = dataList;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 }

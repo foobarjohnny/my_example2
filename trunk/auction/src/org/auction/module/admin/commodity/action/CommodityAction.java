@@ -61,6 +61,11 @@ public class CommodityAction extends GeneralAction<CommodityData> {
 		}
 	}
 	
+	public String view() throws Exception {
+		commodityService.getReach(model);
+		return SUCCESS;
+	}
+	
 	public String select() throws GeneralException {
 		commodityService.select(model);
 		return SUCCESS;

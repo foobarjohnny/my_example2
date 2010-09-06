@@ -1,12 +1,12 @@
 package org.auction.module.admin.commodity.service.impl;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.auction.entity.TsBingcur;
 import org.auction.entity.TsCommodity;
 import org.auction.entity.TsConsume;
+import org.auction.entity.TsUser;
 import org.auction.module.admin.commodity.data.ConsumeData;
 import org.auction.module.admin.commodity.service.ConsumeService;
 import org.mobile.common.bean.LoginBean;
@@ -44,17 +44,42 @@ public class ConsumeServiceImpl extends GeneralService implements
 
 	@SuppressWarnings("unchecked")
 	public void search(ConsumeData model) throws GeneralException {
-		List<SearchBean> search = new ArrayList<SearchBean>();
-		List list = generalDao.search(TsConsume.class, search, model
-				.getPageBean(), null);
-		for (int i = 0; i < list.size(); i++) {
-			TsConsume tsConsume = (TsConsume) list.get(i);
-			ConsumeData data = new ConsumeData();
-			BeanProcessUtils.copyProperties(data, tsConsume);
-			if (tsConsume.getTsUser() != null) {
-				data.setUsername(tsConsume.getTsUser().getUsername());
+		String hql = "select c.tsCommodity,sum(c.amount),c.tsUser  from TsConsume c ";
+		if (model.getSearchBeans() != null && model.getSearchBeans().size() > 0) {
+			if (model.getSearchBeans().get(0) != null) {
+				SearchBean s = model.getSearchBeans().get(0);
+				hql += " where c.tsUser.username='" + s.getValue() + "'";
 			}
-			model.getDataList().add(data);
+		}
+		hql += " group by c.tsCommodity,c.tsUser";
+		String pageTotal = "select count(id) as id from TsConsume c ";
+		if (model.getSearchBeans() != null && model.getSearchBeans().size() > 0) {
+			if (model.getSearchBeans().get(0) != null) {
+				SearchBean s = model.getSearchBeans().get(0);
+				pageTotal += " where c.tsUser.username='" + s.getValue() + "'";
+			}
+		}
+		
+		List list = generalDao.search(hql, pageTotal, model.getPageBean());
+		if (list != null && list.size() > 0) {
+			for (int i=0;i<list.size();i++) {
+				ConsumeData data = new ConsumeData();
+				Object[] obj = (Object[])list.get(i);
+				TsCommodity tsCommodity = (TsCommodity)obj[0];
+				data.setAmount((Integer)obj[1]);
+				data.setComname(tsCommodity.getTradename());
+				data.setDescript(tsCommodity.getSummary());
+				data.setComId(tsCommodity.getId());
+				data.setMarkPrice(tsCommodity.getPrices());
+				TsUser tsUser = (TsUser)obj[2];
+				data.setUsername(tsUser.getUsername());
+				Iterator it = tsCommodity.getTsBingcurs().iterator();
+				if (it.hasNext()) {
+					TsBingcur tsBingcur = (TsBingcur)it.next();
+					data.setPrice(tsBingcur.getPrice());
+				}
+				model.getDataList().add(data);
+			}
 		}
 	}
 

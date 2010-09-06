@@ -17,6 +17,7 @@ public class TsProblem implements java.io.Serializable {
 	private String title;
 	private Date releasedate;
 	private String details;
+	private TsUser tsUser;
 
 	// Constructors
 
@@ -78,6 +79,18 @@ public class TsProblem implements java.io.Serializable {
 
 	public void setDetails(String details) {
 		this.details = details;
+	}
+
+	public TsUser getTsUser() {
+		return tsUser;
+	}
+
+	public void setTsUser(TsUser tsUser) {
+		this.tsUser = tsUser;
+	}
+
+	public void setReleasedate(Date releasedate) {
+		this.releasedate = releasedate;
 	}
 
 }

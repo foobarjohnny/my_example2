@@ -22,4 +22,6 @@ public interface CommodityService {
 	public void auction(CommodityData model) throws GeneralException;
 	
 	public void select(CommodityData model) throws GeneralException;
+	
+	public void getReach(CommodityData model) throws GeneralException;
 }
