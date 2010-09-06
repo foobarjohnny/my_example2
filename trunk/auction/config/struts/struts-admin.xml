@@ -105,7 +105,7 @@
 		<action name="problemForward" class="problemAction" method="forwardProblem">
 			<result>WEB-INF/pages/admin/base/admin_info_que_form.jsp</result>
 		</action>
-		<action name="problemSave" class="problemAction" method="saveProblem">
+		<action name="problemSave" class="problemAction" method="savePro">
 			<result type="chain">problemSearch</result>
 		</action>
 		
@@ -125,6 +125,12 @@
 		<action name="serverPoint">
 			<result>WEB-INF/pages/admin/base/admin_info_server.jsp</result>
 		</action>
-		
+		<!-- 前台问题与建议 -->
+		<action name="proForward" class="problemAction" method="proForward">
+			<result>WEB-INF/pages/view/user/problem.jsp</result>
+		</action>
+		<action name="proSave" class="problemAction" method="proSave">
+			<result type="chain">proForward</result>
+		</action>
 	</package>
 </struts>
