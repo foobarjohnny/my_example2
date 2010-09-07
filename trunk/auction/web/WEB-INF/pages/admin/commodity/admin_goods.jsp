@@ -27,7 +27,7 @@
 	</head>
 	<body>
 		<div align="center" class="admin_title1">
-			——商品类别管理——
+			——商品管理——
 		</div>
 		<hr>
 		<s:form action="commoditySearch.action" name="form1">
@@ -37,7 +37,7 @@
 				bordercolor="#FFFFFF" bgcolor="#EEEEEE">
 				<tr>
 					<td colspan="7">
-						<input type="button" name="Submit2" value="增加管理员" onclick="insert()"/>
+						<input type="button" name="Submit2" value="新增商品" onclick="insert()"/>
 					</td>
 				</tr>
 				<tr>
