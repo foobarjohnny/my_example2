@@ -27,7 +27,7 @@
 	</head>
 	<body>
 		<div align="center" class="admin_title1">
-			——商品类别管理——
+			——未付款订单——
 		</div>
 		<hr>
 		<s:form action="orderSearch.action" name="form1">
@@ -63,7 +63,16 @@
 							<s:property value="ordernum"/>
 						</td>
 						<td align="center" valign="middle">
-							<s:property value="commodityName"/>
+							<table>
+								<tr>
+									<td><img src="showImage.action?id=${data.comId }" height="80" width="80" border="0"/></td>
+									<td>
+										<a href="bingcurForward.action?model.id=${bidId }" target="_blank">
+										<s:property value="commodityName"/>
+										</a>
+									</td>
+								</tr>
+							</table>
 						</td>
 						<td align="center" valign="middle">
 							<s:property value="ordertime"/>
@@ -76,7 +85,7 @@
 						</td>
 						<td align="center">
 							<a href="commodityAuction.action?id=<s:property value="id"/>">详情</a>｜
-							<a href="commodityForward.action?id=<s:property value="id"/>&methodName=2">作废</a>
+							<a href="orderChannel.action?id=<s:property value="id"/>&orderty=${ordertype }&state=${state }">作废</a>
 						</td>
 					</tr>
 				</s:iterator>
