@@ -12,9 +12,9 @@ public class OrderAction extends GeneralAction<OrderData> {
 	private OrderData model = new OrderData();
 
 	private OrderService orderService;
-	
+
 	private String requestUrl;
-	
+
 	public String pay() throws GeneralException {
 		// 查找订单信息
 		orderService.pay(model);
@@ -38,6 +38,16 @@ public class OrderAction extends GeneralAction<OrderData> {
 	public String search() throws GeneralException {
 		this.setPage(model);
 		orderService.search(model);
+		return SUCCESS;
+	}
+
+	public String cancel() throws GeneralException {
+		orderService.channel(model);
+		return SUCCESS;
+	}
+	
+	public String view() throws GeneralException {
+		orderService.view(model);
 		return SUCCESS;
 	}
 

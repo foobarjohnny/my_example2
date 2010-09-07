@@ -30,6 +30,8 @@ public class AuctionServiceImpl extends GeneralService implements
 					TsCommodity.class, data.getComptyId());
 			// 每次竞拍消耗E币数量
 			Long consume = tsCommodity.getConsume();
+			// 消费类型
+			String type = "";
 			// 竞拍方式2收费币,3免费币，1无限制
 			if (tsCommodity.getRestricts().equals("2")) {
 				// 收费
@@ -42,10 +44,12 @@ public class AuctionServiceImpl extends GeneralService implements
 					TsConsume tsConsume = new TsConsume();
 					tsConsume.setTsUser(tsUser);
 					tsConsume.setBuytime(new Date());
-					tsConsume.setRemark("竞拍" + tsCommodity.getTradename());
+					tsConsume.setRemark("竞拍" + tsCommodity.getTradename()
+							+ "消费付费E拍币" + consume.intValue() + "枚");
 					tsConsume.setAmount(consume.intValue());
 					tsConsume.setBuytype("2");
 					tsConsume.setTsCommodity(tsCommodity);
+					type = "2";
 					generalDao.update(tsUser);
 					generalDao.save(tsConsume);
 				} else {
@@ -61,9 +65,11 @@ public class AuctionServiceImpl extends GeneralService implements
 					TsConsume tsConsume = new TsConsume();
 					tsConsume.setTsUser(tsUser);
 					tsConsume.setBuytime(new Date());
-					tsConsume.setRemark("竞拍" + tsCommodity.getTradename());
+					tsConsume.setRemark("竞拍" + tsCommodity.getTradename()
+							+ "消费免费E拍币" + consume.intValue() + "枚");
 					tsConsume.setAmount(consume.intValue());
 					tsConsume.setBuytype("3");
+					type = "3";
 					tsConsume.setTsCommodity(tsCommodity);
 					generalDao.update(tsUser);
 					generalDao.save(tsConsume);
@@ -71,14 +77,52 @@ public class AuctionServiceImpl extends GeneralService implements
 					return false;
 				}
 			} else {
-				// 无限制
-
+				// 无限制,使用免费E拍币，在使用付费E拍币
+				Integer freecur = tsUser.getFreecur();
+				Integer paycur = tsUser.getPaycur();
+				if (freecur - consume > 0) {
+					// 使用免费E拍币
+					// 剩余数量
+					Long pay = freecur - consume;
+					tsUser.setFreecur(pay.intValue());
+					// 消费明细
+					TsConsume tsConsume = new TsConsume();
+					tsConsume.setTsUser(tsUser);
+					tsConsume.setBuytime(new Date());
+					tsConsume.setRemark("竞拍" + tsCommodity.getTradename()
+							+ "消费免费E拍币" + consume.intValue() + "枚");
+					tsConsume.setAmount(consume.intValue());
+					tsConsume.setBuytype("3");
+					type = "3";
+					tsConsume.setTsCommodity(tsCommodity);
+					generalDao.update(tsUser);
+					generalDao.save(tsConsume);
+				} else if (paycur - consume > 0) {
+					// 使用付费E拍币
+					Long pay = paycur - consume;
+					tsUser.setPaycur(pay.intValue());
+					// 消费明细
+					TsConsume tsConsume = new TsConsume();
+					tsConsume.setTsUser(tsUser);
+					tsConsume.setBuytime(new Date());
+					tsConsume.setRemark("竞拍" + tsCommodity.getTradename()
+							+ "消费付费E拍币" + consume.intValue() + "枚");
+					tsConsume.setAmount(consume.intValue());
+					tsConsume.setBuytype("2");
+					tsConsume.setTsCommodity(tsCommodity);
+					type = "2";
+					generalDao.update(tsUser);
+					generalDao.save(tsConsume);
+				} else {
+					return false;
+				}
 			}
 			// 竞拍表
 			TsBidding tsBidding = new TsBidding();
 			tsBidding.setTsCommodity(tsCommodity);
 			tsBidding.setTsUser(tsUser);
 			tsBidding.setBiddate(new Date());
+			tsBidding.setBidtype(type);
 			tsBidding.setPrice(data.getPrice().add(tsCommodity.getMarkUp()));
 			tsBidding.setIsbid("1");
 			modify(tsCommodity.getId());

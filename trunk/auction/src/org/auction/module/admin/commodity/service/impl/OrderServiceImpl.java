@@ -28,6 +28,22 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 
 	}
 
+	public void channel(OrderData model) throws GeneralException {
+		// 获得订单
+		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model
+				.getId());
+		tsOrder.setState("5");
+		generalDao.update(tsOrder);
+	}
+
+	public void view(OrderData model) throws GeneralException {
+		// 获得订单
+		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model
+				.getId());
+		BeanProcessUtils.copyProperties(model, tsOrder);
+		model.setCommodityName(tsOrder.getTsCommodity().getTradename());
+	}
+
 	public void forward(OrderData model) throws GeneralException {
 		// 获得订单
 		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model
@@ -35,7 +51,7 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 		BeanProcessUtils.copyProperties(model, tsOrder);
 		model.setCommodityName(tsOrder.getTsCommodity().getTradename());
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public void pay(OrderData model) throws GeneralException {
 		// 获得订单
@@ -75,6 +91,18 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 			OrderData data = new OrderData();
 			BeanProcessUtils.copyProperties(data, tsOrder);
 			data.setCommodityName(tsOrder.getTsCommodity().getTradename());
+			data.setComId(tsOrder.getTsCommodity().getId());
+			// 获得竞拍表记录
+			// 查询该商品成交用户
+			search = new ArrayList<SearchBean>();
+			search.add(new SearchBean("tsCommodity.id", "eq", "string",
+					tsOrder.getTsCommodity().getId()));
+			List bing_list = generalDao.search(TsBingcur.class, search, null,
+					null);
+			if (bing_list != null && bing_list.size() > 0) {
+				TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
+				data.setBidId(tsBingcur.getId());
+			}
 			model.getDataList().add(data);
 		}
 	}
@@ -139,8 +167,8 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 		TsOrder tsOrder = new TsOrder();
 		// 生成订单号
 		List<SearchBean> searchBeans = new ArrayList<SearchBean>();
-		searchBeans.add(new SearchBean("tablename", "eq", "string",
-				"TS_ORDER"));
+		searchBeans
+				.add(new SearchBean("tablename", "eq", "string", "TS_ORDER"));
 		List list = generalDao.search(TsNum.class, searchBeans, null, null);
 		if (list != null && list.size() > 0) {
 			TsNum tsNum = (TsNum) list.get(0);

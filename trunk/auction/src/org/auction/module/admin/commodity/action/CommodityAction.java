@@ -10,7 +10,7 @@ public class CommodityAction extends GeneralAction<CommodityData> {
 	private static final long serialVersionUID = 1L;
 
 	private CommodityData model = new CommodityData();
-	
+
 	private CommodityService commodityService;
 
 	public String forward() throws GeneralException {
@@ -19,14 +19,14 @@ public class CommodityAction extends GeneralAction<CommodityData> {
 	}
 
 	public String save() throws GeneralException {
-		try{
-		commodityService.save(model);
-		if (model.getMethodName().equals("1")) {
-			return SUCCESS;
-		} else {
-			return "page";
-		}
-		}catch(Exception e){
+		try {
+			commodityService.save(model);
+			if (model.getMethodName().equals("1")) {
+				return SUCCESS;
+			} else {
+				return "page";
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 			throw new GeneralException("");
 		}
@@ -36,7 +36,7 @@ public class CommodityAction extends GeneralAction<CommodityData> {
 		commodityService.delete(model);
 		return SUCCESS;
 	}
-	
+
 	public String auction() throws GeneralException {
 		commodityService.auction(model);
 		return SUCCESS;
@@ -60,12 +60,17 @@ public class CommodityAction extends GeneralAction<CommodityData> {
 			return SUCCESS;
 		}
 	}
-	
+
 	public String view() throws Exception {
 		commodityService.getReach(model);
 		return SUCCESS;
 	}
-	
+
+	public String history() throws Exception {
+		commodityService.getReachView(model);
+		return SUCCESS;
+	}
+
 	public String select() throws GeneralException {
 		commodityService.select(model);
 		return SUCCESS;

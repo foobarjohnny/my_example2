@@ -17,4 +17,8 @@ public interface OrderService {
 			throws GeneralException;
 	
 	public void pay(OrderData model) throws GeneralException;
+	
+	public void channel(OrderData model) throws GeneralException;
+	
+	public void view(OrderData model) throws GeneralException;
 }
