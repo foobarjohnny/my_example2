@@ -17,6 +17,7 @@ public class TsBidding implements java.io.Serializable {
 	private BigDecimal price;
 	private Date biddate;
 	private String isbid;
+	private String bidtype;
 
 	// Constructors
 
@@ -87,6 +88,14 @@ public class TsBidding implements java.io.Serializable {
 
 	public void setIsbid(String isbid) {
 		this.isbid = isbid;
+	}
+
+	public String getBidtype() {
+		return bidtype;
+	}
+
+	public void setBidtype(String bidtype) {
+		this.bidtype = bidtype;
 	}
 
 }

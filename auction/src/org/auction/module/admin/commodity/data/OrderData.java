@@ -13,6 +13,7 @@ public class OrderData extends GeneralData {
 	private String ordernum;
 	private Date ordertime;
 	private String commodityName;
+	private String comId;
 	private String pay;
 	private BigDecimal amount;
 	private String receiver;
@@ -26,12 +27,28 @@ public class OrderData extends GeneralData {
 	private BigDecimal comprice;
 	private String selectType;
 	private String summary;
-	
+	private String bidId;
 	private String methodName;
 	
 	private String url;
 
 	private List<OrderData> dataList = new ArrayList<OrderData>();
+
+	public String getComId() {
+		return comId;
+	}
+
+	public void setComId(String comId) {
+		this.comId = comId;
+	}
+
+	public String getBidId() {
+		return bidId;
+	}
+
+	public void setBidId(String bidId) {
+		this.bidId = bidId;
+	}
 
 	public String getId() {
 		return id;

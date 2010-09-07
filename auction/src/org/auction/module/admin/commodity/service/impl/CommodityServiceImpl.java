@@ -11,6 +11,7 @@ import org.auction.entity.TsBingcur;
 import org.auction.entity.TsCommodity;
 import org.auction.entity.TsImages;
 import org.auction.entity.TsSort;
+import org.auction.entity.TsUser;
 import org.auction.module.admin.commodity.data.CommodityData;
 import org.auction.module.admin.commodity.data.SortData;
 import org.auction.module.admin.commodity.service.CommodityService;
@@ -205,18 +206,52 @@ public class CommodityServiceImpl extends GeneralService implements
 				TsCommodity.class, model.getId());
 		BeanProcessUtils.copyProperties(model, tsCommodity);
 		List<SearchBean> search = new ArrayList<SearchBean>();
-		search.add(new SearchBean("tsCommodity.id", "eq", "string",
-				tsCommodity.getId()));
-		List bing_list = generalDao.search(TsBingcur.class, search, null,
-				null);
+		search.add(new SearchBean("tsCommodity.id", "eq", "string", tsCommodity
+				.getId()));
+		List bing_list = generalDao.search(TsBingcur.class, search, null, null);
 		if (bing_list != null && bing_list.size() > 0) {
 			TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
 			model.setUsername(tsBingcur.getTsUser().getUsername());
 			model.setBidPrice(tsBingcur.getPrice());
 			model.setOvertime(tsBingcur.getBinddate());
+			model.setBidId(tsBingcur.getId());
 		}
-		//统计
-		
+
+		// 统计参与竞拍人数
+		String hql = "select count(distinct t.tsUser.id) from TsBidding t where t.tsCommodity.id='"
+				+ tsCommodity.getId() + "'";
+		Object count = generalDao.executeQuery(hql);
+		model.setCount(Integer.parseInt(String.valueOf(count)));
+		// 获得付费E拍币数量
+		String p_hql = "select count(t.id) from TsBidding t where t.tsCommodity.id='"
+				+ tsCommodity.getId() + "' and t.bidtype='2'";
+		Object pcount = generalDao.executeQuery(p_hql);
+		model.setPcount(Integer.parseInt(String.valueOf(pcount))
+				* tsCommodity.getConsume().intValue());
+		// 免费E拍币数量
+		String f_hql = "select count(t.id) from TsBidding t where t.tsCommodity.id='"
+				+ tsCommodity.getId() + "' and t.bidtype='3'";
+		Object fcount = generalDao.executeQuery(f_hql);
+		model.setFcount(Integer.parseInt(String.valueOf(fcount))
+				* tsCommodity.getConsume().intValue());
+	}
+
+	/**
+	 * 商品竞拍历史
+	 */
+	@SuppressWarnings("unchecked")
+	public void getReachView(CommodityData model) throws GeneralException {
+		String hql = "select count(t.id), t.tsUser from TsBidding t where t.tsCommodity.id='"
+				+ model.getId() + "' group by t.tsUser";
+		List list = generalDao.executeQueryList(hql);
+		for (int i = 0; i < list.size(); i++) {
+			Object[] obj = (Object[]) list.get(i);
+			CommodityData data = new CommodityData();
+			data.setCount(Integer.parseInt(String.valueOf(obj[0])));
+			TsUser user = (TsUser) obj[1];
+			data.setUsername(user.getUsername());
+			model.getDataList().add(data);
+		}
 	}
 
 	/**

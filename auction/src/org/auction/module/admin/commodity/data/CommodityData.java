@@ -32,9 +32,21 @@ public class CommodityData extends GeneralData {
 	private Long time;
 	private String username;
 	private BigDecimal bidPrice = new BigDecimal(0);
+	private Integer count;
+	private Integer pcount;
+	private Integer fcount;
 	private File upload;
+	private String bidId;
 	private List<CommodityData> dataList = new ArrayList<CommodityData>();
 	private List<SortData> sortList = new ArrayList<SortData>();
+
+	public String getBidId() {
+		return bidId;
+	}
+
+	public void setBidId(String bidId) {
+		this.bidId = bidId;
+	}
 
 	public String getId() {
 		return id;
@@ -234,6 +246,30 @@ public class CommodityData extends GeneralData {
 
 	public void setBidPrice(BigDecimal bidPrice) {
 		this.bidPrice = bidPrice;
+	}
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+
+	public Integer getPcount() {
+		return pcount;
+	}
+
+	public void setPcount(Integer pcount) {
+		this.pcount = pcount;
+	}
+
+	public Integer getFcount() {
+		return fcount;
+	}
+
+	public void setFcount(Integer fcount) {
+		this.fcount = fcount;
 	}
 
 }
