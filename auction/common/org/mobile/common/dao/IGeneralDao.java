@@ -138,5 +138,9 @@ public interface IGeneralDao {
 	public int countE(String id, String uid);
 
 	public List<Object> search(String hql, String count, PageBean pageBean);
+	
+	public Object executeQuery(String hql);
 
+	@SuppressWarnings("unchecked")
+	public List executeQueryList(String hql);
 }

@@ -349,4 +349,15 @@ public class GeneralDaoImpl implements IGeneralDao {
 			pageBean.setTotalPage(0);
 		}
 	}
+
+	public Object executeQuery(String hql) {
+		Query query = getSession().createQuery(hql);
+		return query.uniqueResult();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List executeQueryList(String hql) {
+		Query query = getSession().createQuery(hql);
+		return query.list();
+	}
 }
