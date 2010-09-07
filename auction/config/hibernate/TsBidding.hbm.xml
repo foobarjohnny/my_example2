@@ -25,5 +25,8 @@
         <property name="isbid" type="java.lang.String">
             <column name="ISBID" length="1" />
         </property>
+        <property name="bidtype" type="java.lang.String">
+            <column name="BIDTYPE" length="1" />
+        </property>
     </class>
 </hibernate-mapping>

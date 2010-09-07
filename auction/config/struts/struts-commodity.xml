@@ -51,7 +51,18 @@
 			<result>WEB-INF/pages/admin/commodity/admin_goods_select.jsp
 			</result>
 		</action>
-
+		<!-- 后台商品详情 -->
+		<action name="commodityView" class="commodityAction" method="view">
+			<result>WEB-INF/pages/admin/commodity/commodityView.jsp
+			</result>
+		</action>
+		<!-- 后台查看竞拍历史 -->
+		<action name="commodityHis" class="commodityAction" method="history">
+			<result>WEB-INF/pages/admin/commodity/history.jsp
+			</result>
+		</action>
+		
+		
 		<action name="rebotDelete" class="rebotAction" method="delete">
 			<result type="chain">rebotSearch</result>
 		</action>
@@ -78,7 +89,10 @@
 		<action name="orderSave" class="orderAction" method="save">
 			<result type="chain">orderSearch</result>
 		</action>
-
+		<!-- 订单作废 -->
+		<action name="orderChannel" class="orderAction" method="cancel">
+			<result type="chain">orderSearch</result>
+		</action>
 		<action name="ecurrDelete" class="ecurrAction" method="delete">
 			<result type="chain">ecurrSearch</result>
 		</action>
