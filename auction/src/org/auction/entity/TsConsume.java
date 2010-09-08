@@ -17,6 +17,7 @@ public class TsConsume implements java.io.Serializable {
 	private String buytype;
 	private Integer amount;
 	private TsCommodity tsCommodity;
+	private String state;
 
 	// Constructors
 
@@ -95,6 +96,14 @@ public class TsConsume implements java.io.Serializable {
 
 	public void setTsCommodity(TsCommodity tsCommodity) {
 		this.tsCommodity = tsCommodity;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 }

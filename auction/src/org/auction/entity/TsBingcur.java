@@ -17,6 +17,7 @@ public class TsBingcur implements java.io.Serializable {
 	private Date binddate;
 	private BigDecimal price;
 	private Integer amount;
+	private Integer free;
 
 	// Constructors
 
@@ -87,6 +88,14 @@ public class TsBingcur implements java.io.Serializable {
 
 	public void setAmount(Integer amount) {
 		this.amount = amount;
+	}
+
+	public Integer getFree() {
+		return free;
+	}
+
+	public void setFree(Integer free) {
+		this.free = free;
 	}
 
 }

@@ -21,6 +21,7 @@ public class ConsumeData extends GeneralData {
 	private String descript;
 	private BigDecimal markPrice = new BigDecimal(0);
 	private BigDecimal price = new BigDecimal(0);
+	private String bidId;
 
 	private List<ConsumeData> dataList = new ArrayList<ConsumeData>();
 
@@ -126,5 +127,13 @@ public class ConsumeData extends GeneralData {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+
+	public String getBidId() {
+		return bidId;
+	}
+
+	public void setBidId(String bidId) {
+		this.bidId = bidId;
 	}
 }

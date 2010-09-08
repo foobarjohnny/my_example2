@@ -29,6 +29,8 @@ public class OrderData extends GeneralData {
 	private String summary;
 	private String bidId;
 	private String methodName;
+	private Integer ecount;
+	private BigDecimal comPrice = new BigDecimal(0);
 	
 	private String url;
 
@@ -208,5 +210,21 @@ public class OrderData extends GeneralData {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public BigDecimal getComPrice() {
+		return comPrice;
+	}
+
+	public void setComPrice(BigDecimal comPrice) {
+		this.comPrice = comPrice;
+	}
+
+	public Integer getEcount() {
+		return ecount;
+	}
+
+	public void setEcount(Integer ecount) {
+		this.ecount = ecount;
 	}
 }

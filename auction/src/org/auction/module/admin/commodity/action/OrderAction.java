@@ -32,12 +32,19 @@ public class OrderAction extends GeneralAction<OrderData> {
 	}
 
 	public String delete() throws GeneralException {
+		orderService.delete(model);
 		return SUCCESS;
 	}
 
 	public String search() throws GeneralException {
 		this.setPage(model);
 		orderService.search(model);
+		return SUCCESS;
+	}
+	
+	public String searchChannel() throws GeneralException {
+		this.setPage(model);
+		orderService.searchChannel(model);
 		return SUCCESS;
 	}
 
@@ -48,6 +55,16 @@ public class OrderAction extends GeneralAction<OrderData> {
 	
 	public String view() throws GeneralException {
 		orderService.view(model);
+		return SUCCESS;
+	}
+	
+	public String orderView() throws GeneralException {
+		orderService.orderView(model);
+		return SUCCESS;
+	}
+	
+	public String orderChannelView() throws GeneralException {
+		orderService.orderView(model);
 		return SUCCESS;
 	}
 

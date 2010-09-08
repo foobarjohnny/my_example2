@@ -30,6 +30,19 @@ public class BuyTradeHandler {
 		}
 		return result;
 	}
+	
+	public String buyTrad(String id) throws Exception {
+		String result = "success";
+		HttpServletRequest req = WebContextFactory.get()
+				.getHttpServletRequest();
+		LoginBean bean = (LoginBean) req.getSession().getAttribute("login");
+		if (bean != null) {
+			result = orderService.createOrders(id, bean.getId());
+		} else {
+			result = "请登录后在购买";
+		}
+		return result;
+	}
 
 	public void setOrderService(OrderService orderService) {
 		this.orderService = orderService;

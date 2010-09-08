@@ -13,6 +13,7 @@ public class BingcurData extends GeneralData {
 	private Date binddate;
 	private BigDecimal price = new BigDecimal(0);;
 	private Integer amount;
+	private Integer free;
 	private String user;
 	private String comityName;
 	private String summary;
@@ -20,6 +21,7 @@ public class BingcurData extends GeneralData {
 	private BigDecimal prices = new BigDecimal(0);
 	private BigDecimal percents = new BigDecimal(0);
 	private BigDecimal markprices = new BigDecimal(0);
+	private String[] image;
 	private List<BingcurData> dataList = new ArrayList<BingcurData>();
 	private List<BidingData> bidingList = new ArrayList<BidingData>();
 
@@ -126,4 +128,21 @@ public class BingcurData extends GeneralData {
 	public void setTradeId(String tradeId) {
 		this.tradeId = tradeId;
 	}
+
+	public Integer getFree() {
+		return free;
+	}
+
+	public void setFree(Integer free) {
+		this.free = free;
+	}
+
+	public String[] getImage() {
+		return image;
+	}
+
+	public void setImage(String[] image) {
+		this.image = image;
+	}
+
 }

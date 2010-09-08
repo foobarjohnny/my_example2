@@ -106,12 +106,11 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 			tsBingcur.setTsUser(tsUser);
 			tsBingcur.setBinddate(tsBidding.getBiddate());
 			tsBingcur.setPrice(tsBidding.getPrice());
-			if (tsCommodity.getRestricts().equals("2")
-					|| tsCommodity.getRestricts().equals("3")) {
-				// 总共花费E币
-				int e = generalDao.countE(tsCommodity.getId(), tsUser.getId());
-				tsBingcur.setAmount(e * tsCommodity.getConsume().intValue());
-			}
+			// 总共花费E币
+			int e = generalDao.countE(tsCommodity.getId(), tsUser.getId());
+			tsBingcur.setAmount(e * tsCommodity.getConsume().intValue());
+			int f = generalDao.countF(tsCommodity.getId(), tsUser.getId());
+			tsBingcur.setAmount(f * tsCommodity.getConsume().intValue());
 			generalDao.save(tsBingcur);
 			// 生成订单
 			TsOrder tsOrder = new TsOrder();
