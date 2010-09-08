@@ -79,7 +79,7 @@
 		</action>
 
 		<action name="orderDelete" class="orderAction" method="delete">
-			<result type="chain">orderSearch</result>
+			<result type="chain">searchChannel</result>
 		</action>
 		<action name="orderSearch" class="orderAction" method="search">
 			<result>WEB-INF/pages/admin/commodity/admin_order.jsp
@@ -92,6 +92,19 @@
 		<!-- 订单作废 -->
 		<action name="orderChannel" class="orderAction" method="cancel">
 			<result type="chain">orderSearch</result>
+		</action>
+		<!-- 订单详情 -->
+		<action name="orderView" class="orderAction" method="orderView">
+			<result>WEB-INF/pages/admin/commodity/orderView.jsp</result>
+		</action>
+		<!-- 订单作废详情 -->
+		<action name="orderChannelView" class="orderAction" method="orderChannelView">
+			<result>WEB-INF/pages/admin/commodity/orderChannelView.jsp</result>
+		</action>
+		<!-- 订单作废列表 -->
+		<action name="searchChannel" class="orderAction" method="searchChannel">
+			<result>WEB-INF/pages/admin/commodity/admin_order_channel.jsp
+			</result>
 		</action>
 		<action name="ecurrDelete" class="ecurrAction" method="delete">
 			<result type="chain">ecurrSearch</result>
@@ -209,6 +222,10 @@
 		</action>
 		<!-- 显示图片 -->
 		<action name="showImage" class="imageAction" method="showImage">
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<!-- ID显示图片 -->
+		<action name="viewImage" class="imageAction" method="viewImage">
 			<interceptor-ref name="defaultStack"/>
 		</action>
 	</package>
