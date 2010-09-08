@@ -55,7 +55,8 @@
 							<table width="100%" border="0" cellpadding="10" cellspacing="0">
 								<tr>
 									<td><img src="showImage.action?id=${data.comId }" height="80" width="80"></td>
-									<td>${data.comname }</td>
+									<td><a href="bingcurForward.action?model.id=${bidId }" target="_blank">
+										${data.comname }</a></td>
 								</tr>
 							</table>
 						</td>
@@ -63,10 +64,10 @@
 							${data.username }
 						</td>
 						<td align="center" valign="middle">
-							${data.amount }
+							-${data.amount }
 						</td>
 						<td align="center">
-							<a href="consumeDelete.action?id=<s:property value="id"/>&nettype=5">删除</a>
+							<a href="consumeDelete.action?userId=${userId }&comId=${comId }">删除</a>
 						</td>
 					</tr>
 				</s:iterator>

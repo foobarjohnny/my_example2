@@ -84,8 +84,8 @@
 							<s:property value="totalPrices"/>
 						</td>
 						<td align="center">
-							<a href="commodityAuction.action?id=<s:property value="id"/>">详情</a>｜
-							<a href="orderChannel.action?id=<s:property value="id"/>&orderty=${ordertype }&state=${state }">作废</a>
+							<a href="orderView.action?id=<s:property value="id"/>">详情</a>｜
+							<a href="orderChannel.action?id=<s:property value="id"/>&ordertype=${ordertype }&state=${state }">作废</a>
 						</td>
 					</tr>
 				</s:iterator>

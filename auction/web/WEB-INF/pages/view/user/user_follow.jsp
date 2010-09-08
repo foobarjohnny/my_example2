@@ -97,7 +97,7 @@
 			          		
 				          	<tr>
 				              <td width="130" height="130" align="center"><img width="120" height="120" border="0" src="showImage.action?id=${data.id }"></td>
-				              <td width="274"><strong>${data.comityName }</strong><br>
+				              <td width="274"><strong><a href="bingcurForward.action?model.id=${data.bidId }" target="_blank">${data.comityName }</a></strong><br>
 				              	
 				              </td>
 				              <td align="center">

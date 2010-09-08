@@ -27,52 +27,65 @@
 	</head>
 	<body>
 		<div align="center" class="admin_title1">
-			——正在竞拍商品管理——
+			——作废订单——
 		</div>
 		<hr>
-		<s:form action="sortSearch.action" name="form1">
+		<s:form action="searchChannel.action" name="form1">
 			<s:hidden name="pageBean.currentPage" />
 			<s:hidden name="pageBean.totalPage" />
+			<s:hidden name="state" />
+			<s:hidden name="ordertype" />
 			<table width="100%" border="1" cellpadding="10" cellspacing="0"
 				bordercolor="#FFFFFF" bgcolor="#EEEEEE">
 				<tr>
-					<td width="30%" align="center" valign="middle">
-						<strong>商品名称</strong>
+					<td width="10%" align="center" valign="middle">
+						<strong>订单编号</strong>
 					</td>
 					<td width="10%" align="center" valign="middle">
-						<strong>剩余时间</strong>
+						<strong>竞拍商品</strong>
 					</td>
 					<td width="10%" align="center" valign="middle">
-						<strong>领先者</strong>
+						<strong>时间</strong>
 					</td>
 					<td width="10%" align="center" valign="middle">
-						<strong>竞拍价</strong>
+						<strong>竞拍者</strong>
 					</td>
 					<td width="10%" align="center" valign="middle">
+						<strong>原因</strong>
+					</td>
+					<td width="12%" align="center">
 						<strong>操作</strong>
 					</td>
 				</tr>
 				<s:iterator value="dataList" id="data" status="status">
 					<tr>
 						<td align="center" valign="middle">
+							<s:property value="ordernum"/>
+						</td>
+						<td align="center" valign="middle">
 							<table>
 								<tr>
-									<td><img src="showImage.action?id=${data.id }" height="80" width="80" border="0"/></td>
-									<td>${data.tradename}</td>
+									<td><img src="showImage.action?id=${data.comId }" height="80" width="80" border="0"/></td>
+									<td>
+										<a href="bingcurForward.action?model.id=${bidId }" target="_blank">
+										<s:property value="commodityName"/>
+										</a>
+									</td>
 								</tr>
 							</table>
 						</td>
 						<td align="center" valign="middle">
-							${data.time}分钟
+							<s:property value="ordertime"/>
 						</td>
 						<td align="center" valign="middle">
-							${data.username}
+							<s:property value="receiver"/>
 						</td>
 						<td align="center" valign="middle">
-							${data.bidPrice}
+							&nbsp;
 						</td>
-						<td align="center" valign="middle">
-							<a href="viewAuctionNow.action?id=${data.id }">查看详情</a>
+						<td align="center">
+							<a href="orderChannelView.action?id=<s:property value="id"/>">详情</a>｜
+							<a href="orderDelete.action?id=<s:property value="id"/>&ordertype=${ordertype }&state=${state }">删除</a>
 						</td>
 					</tr>
 				</s:iterator>

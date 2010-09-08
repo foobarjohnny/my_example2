@@ -192,7 +192,7 @@
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="orderSearch.action?ordertype=1&state=5">作废订单</a>
+								<a target="mainFrame" href="searchChannel.action?ordertype=1&state=5">作废订单</a>
 							</td>
 						</tr>
 
@@ -226,7 +226,7 @@
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="orderSearch.action?ordertype=2&state=5">作废订单</a>
+								<a target="mainFrame" href="searchChannel.action?ordertype=2&state=5">作废订单</a>
 							</td>
 						</tr>
 
