@@ -143,4 +143,6 @@ public interface IGeneralDao {
 
 	@SuppressWarnings("unchecked")
 	public List executeQueryList(String hql);
+	
+	public int countF(String id, String uid);
 }
