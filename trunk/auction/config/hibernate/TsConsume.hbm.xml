@@ -25,6 +25,9 @@
         <property name="buytype" type="java.lang.String">
             <column name="BUYTYPE" length="1" />
         </property>
+        <property name="state" type="java.lang.String">
+            <column name="STATE" length="1" />
+        </property>
         <property name="amount" type="java.lang.Integer">
             <column name="AMOUNT">
                 <comment>æ­£æ°ï¼ä¹° è´æ°ï¼è±</comment>

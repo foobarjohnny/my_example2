@@ -25,5 +25,8 @@
         <property name="amount" type="java.lang.Integer">
             <column name="AMOUNT" />
         </property>
+        <property name="free" type="java.lang.Integer">
+            <column name="FREE" />
+        </property>
     </class>
 </hibernate-mapping>
