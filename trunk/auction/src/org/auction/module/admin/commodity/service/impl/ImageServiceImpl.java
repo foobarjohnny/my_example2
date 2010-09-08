@@ -40,4 +40,16 @@ public class ImageServiceImpl extends GeneralService implements ImageService {
 		}
 	}
 
+	public void viewImage(ImageData model) throws Exception {
+		TsImages tsImages = (TsImages) generalDao.get(TsImages.class, model.getId());
+		InputStream fis = new FileInputStream(tsImages.getFilepath());
+		OutputStream os = ServletActionContext.getResponse().getOutputStream();
+		byte[] blobbytes = new byte[1024];
+		int bytesRead = 0;
+		while ((bytesRead = fis.read(blobbytes)) != -1) {
+			os.write(blobbytes, 0, bytesRead);
+		}
+		fis.close();
+	}
+
 }

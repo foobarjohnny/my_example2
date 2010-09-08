@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.auction.entity.TsBidding;
 import org.auction.entity.TsBingcur;
+import org.auction.entity.TsImages;
 import org.auction.module.admin.commodity.data.BidingData;
 import org.auction.module.admin.commodity.data.BingcurData;
 import org.auction.module.admin.commodity.service.BingcurService;
@@ -26,6 +27,7 @@ public class BingcurServiceImpl extends GeneralService implements
 
 	@SuppressWarnings("unchecked")
 	public String forward(BingcurData model) throws GeneralException {
+		// 查询竞拍商品
 		TsBingcur tsBingcur = (TsBingcur) generalDao.get(TsBingcur.class, model
 				.getId());
 		BeanProcessUtils.copyProperties(model, tsBingcur);
@@ -35,11 +37,15 @@ public class BingcurServiceImpl extends GeneralService implements
 		model.setPrices(tsBingcur.getTsCommodity().getPrices());
 		model.setMarkprices(tsBingcur.getTsCommodity().getPurchasePrice());
 		model.setTradeId(tsBingcur.getTsCommodity().getId());
+		model.setFree(tsBingcur.getFree());
 		if (model.getPrices().compareTo(new BigDecimal(0)) > 0) {
-			BigDecimal total = (model.getPrices().subtract(model.getPrice()).subtract(new BigDecimal(tsBingcur.getAmount() * 1)));
-			BigDecimal percents = total.divide(model.getPrices(),BigDecimal.ROUND_HALF_DOWN);
+			BigDecimal total = (model.getPrices().subtract(model.getPrice())
+					.subtract(new BigDecimal(tsBingcur.getAmount() * 1)));
+			BigDecimal percents = total.divide(model.getPrices(),
+					BigDecimal.ROUND_HALF_DOWN);
 			model.setPercents(percents);
 		}
+		// 竞拍历史
 		PageBean pageBean = new PageBean();
 		List<OrderByBean> orderBean = new ArrayList<OrderByBean>();
 		orderBean.add(new OrderByBean("", "biddate", "desc"));
@@ -57,6 +63,22 @@ public class BingcurServiceImpl extends GeneralService implements
 				model.getBidingList().add(bidingData);
 			}
 		}
+		// 获得商品图片ID
+		List<SearchBean> searchBean = new ArrayList<SearchBean>();
+		searchBean.add(new SearchBean("imageid", "eq", "string",
+				tsBingcur.getTsCommodity().getId()));
+		searchBean.add(new SearchBean("tablename", "eq", "string",
+				"TS_COMMODITY"));
+		List imagelist = generalDao.search(TsImages.class, searchBean, null,
+				null);
+		String[] images = new String[4];
+		for (int i = 0; i < imagelist.size(); i++) {
+			if (i < 4) {
+				TsImages tsImages = (TsImages) imagelist.get(i);
+				images[i] = tsImages.getId();
+			}
+		}
+		model.setImage(images);
 		return null;
 	}
 
@@ -82,8 +104,10 @@ public class BingcurServiceImpl extends GeneralService implements
 			data.setSummary(tsBingcur.getTsCommodity().getSummary());
 			data.setPrices(tsBingcur.getTsCommodity().getPrices());
 			if (data.getPrices().compareTo(new BigDecimal(0)) > 0) {
-				BigDecimal total = (data.getPrices().subtract(data.getPrice()).subtract(new BigDecimal(tsBingcur.getAmount() * 1)));
-				BigDecimal percents = total.divide(data.getPrices(),BigDecimal.ROUND_HALF_DOWN);
+				BigDecimal total = (data.getPrices().subtract(data.getPrice())
+						.subtract(new BigDecimal(tsBingcur.getAmount() * 1)));
+				BigDecimal percents = total.divide(data.getPrices(),
+						BigDecimal.ROUND_HALF_DOWN);
 				data.setPercents(percents);
 			}
 			model.getDataList().add(data);

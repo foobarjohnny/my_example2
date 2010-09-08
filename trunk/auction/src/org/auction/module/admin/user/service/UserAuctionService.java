@@ -11,4 +11,6 @@ public interface UserAuctionService {
 	public void now(UserAuctionData model) throws GeneralException;
 	
 	public void follow(UserAuctionData model) throws GeneralException;
+	
+	public void viewAuctionNow(UserAuctionData model) throws GeneralException;
 }

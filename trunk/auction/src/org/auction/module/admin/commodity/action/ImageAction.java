@@ -15,6 +15,10 @@ public class ImageAction extends GeneralAction<ImageData> {
 	public void showImage() throws Exception {
 		imagesService.getImage(model);
 	}
+	
+	public void viewImage() throws Exception {
+		imagesService.viewImage(model);
+	}
 
 	public ImageData getModel() {
 		return model;

@@ -1,15 +1,17 @@
 package org.auction.module.admin.user.service.impl;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
+import org.auction.entity.TsBidding;
 import org.auction.entity.TsBingcur;
 import org.auction.entity.TsCommodity;
+import org.auction.entity.TsImages;
 import org.auction.entity.TsOrder;
 import org.auction.entity.TsUser;
+import org.auction.module.admin.commodity.data.BidingData;
 import org.auction.module.admin.user.data.UserAuctionData;
 import org.auction.module.admin.user.service.UserAuctionService;
 import org.auction.module.admin.view.data.ViewData;
@@ -33,56 +35,53 @@ public class UserAuctionServiceImpl extends GeneralService implements
 		LoginBean bean = SessionManager.getLoginInfo(manager.getSessionId());
 		if (bean != null) {
 			TsUser tsUser = (TsUser) generalDao.get(TsUser.class, bean.getId());
-			PageBean pageBean = model.getPageBean();
-			List<SearchBean> searchBean = new ArrayList<SearchBean>();
-			searchBean.add(new SearchBean("tsUser.id", "eq", "string", tsUser
-					.getId()));
-			List<OrderByBean> orderByBeans = new ArrayList<OrderByBean>();
-			orderByBeans.add(new OrderByBean("", "binddate", "desc"));
-			List list = generalDao.search(TsBingcur.class, searchBean,
-					pageBean, orderByBeans);
-			// 用户竞拍到商品记录
-			for (int i = 0; i < list.size(); i++) {
-				TsBingcur tsBingcur = (TsBingcur) list.get(i);
-				// 商品信息
-				TsCommodity tsCommodity = tsBingcur.getTsCommodity();
-				// 获得该商品订单
+			// 查询用户购买订单
+			List<SearchBean> sb = new ArrayList<SearchBean>();
+			sb.add(new SearchBean("tsUser.id", "eq", "string", tsUser.getId()));
+			sb.add(new SearchBean("ordertype", "eq", "string", "1"));
+			List orderList = generalDao.search(TsOrder.class, sb, model
+					.getPageBean(), null);
+			for (int i = 0; i < orderList.size(); i++) {
+				TsOrder tsOrder = (TsOrder) orderList.get(i);
 				String state = null;
-				String orderId = null;
 				// 显示用户列表商品状态
-				Iterator tsOrders = tsCommodity.getTsOrders().iterator();
-				if (tsOrders.hasNext()) {
-					TsOrder tsOrder = (TsOrder) tsOrders.next();
-					orderId = tsOrder.getId();
-					if (tsOrder.getState().equals("1")) {
-						state = "未付款";
-					} else if (tsOrder.getState().equals("2")) {
-						state = "待发货";
-					} else if (tsOrder.getState().equals("3")) {
-						state = "已发货";
-					} else if (tsOrder.getState().equals("4")) {
-						state = "交易完成";
-					} else {
-						state = "作废";
-					}
+				if (tsOrder.getState().equals("1")) {
+					state = "未付款";
+				} else if (tsOrder.getState().equals("2")) {
+					state = "待发货";
+				} else if (tsOrder.getState().equals("3")) {
+					state = "已发货";
+				} else if (tsOrder.getState().equals("4")) {
+					state = "交易完成";
+				} else if (tsOrder.getState().equals("5")) {
+					state = "作废";
+				} else {
+					state = "删除";
 				}
+				// 商品信息
+				TsCommodity tsCommodity = tsOrder.getTsCommodity();
 				// 赋值
 				UserAuctionData data = new UserAuctionData();
-				BeanProcessUtils.copyProperties(data, tsBingcur);
-				data.setUser(tsBingcur.getTsUser().getUsername());
+				data.setState(state);
+				data.setUser(tsUser.getUsername());
 				data.setComityName(tsCommodity.getTradename());
 				data.setSummary(tsCommodity.getSummary());
-				data.setPrices(tsCommodity.getPrices());
-				data.setPrice(tsBingcur.getPrice());
-				data.setState(state);
+				data.setPrice(tsOrder.getAmount());
+				data.setBinddate(tsOrder.getOrdertime());
 				data.setId(tsCommodity.getId());
-				if (data.getPrices().compareTo(new BigDecimal(0)) > 0) {
-					BigDecimal total = (data.getPrices().subtract(data.getPrice()).subtract(new BigDecimal(tsBingcur.getAmount() * 1)));
-					BigDecimal percents = total.divide(data.getPrices(),BigDecimal.ROUND_HALF_DOWN);
-					data.setPercents(percents);
+				data.setOrderId(tsOrder.getId());
+				List<SearchBean> search = new ArrayList<SearchBean>();
+				search.add(new SearchBean("tsCommodity.id", "eq", "string",
+						tsCommodity.getId()));
+				List bing_list = generalDao.search(TsBingcur.class, search,
+						null, null);
+				if (bing_list != null && bing_list.size() > 0) {
+					TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
+					data.setBidId(tsBingcur.getId());
 				}
-				data.setOrderId(orderId);
-				model.getDataList().add(data);
+				if (!state.equals("作废") && !state.equals("删除")) {
+					model.getDataList().add(data);
+				}
 			}
 		}
 	}
@@ -139,8 +138,10 @@ public class UserAuctionServiceImpl extends GeneralService implements
 					state = "已发货";
 				} else if (tsOrder.getState().equals("4")) {
 					state = "交易完成";
-				} else {
+				} else if (tsOrder.getState().equals("5")) {
 					state = "作废";
+				} else {
+					state = "删除";
 				}
 				// 商品信息
 				TsCommodity tsCommodity = tsOrder.getTsCommodity();
@@ -154,9 +155,97 @@ public class UserAuctionServiceImpl extends GeneralService implements
 				data.setBinddate(tsOrder.getOrdertime());
 				data.setId(tsCommodity.getId());
 				data.setOrderId(tsOrder.getId());
-				model.getDataList().add(data);
+				List<SearchBean> search = new ArrayList<SearchBean>();
+				search.add(new SearchBean("tsCommodity.id", "eq", "string",
+						tsCommodity.getId()));
+				List bing_list = generalDao.search(TsBingcur.class, search,
+						null, null);
+				if (bing_list != null && bing_list.size() > 0) {
+					TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
+					data.setBidId(tsBingcur.getId());
+				}
+				if (!state.equals("作废") && !state.equals("删除")) {
+					model.getDataList().add(data);
+				}
 			}
 
 		}
 	}
+
+	/**
+	 * 正在竞拍商品单独显示
+	 */
+	@SuppressWarnings("unchecked")
+	public void viewAuctionNow(UserAuctionData model) throws GeneralException {
+		// 查找商品
+		TsCommodity tsCommodity = (TsCommodity) generalDao.get(
+				TsCommodity.class, model.getId());
+		model.setTradename(tsCommodity.getTradename());
+		model.setSummary(tsCommodity.getSummary());
+		model.setPrices(tsCommodity.getPrices());
+		model.setMarkup(tsCommodity.getMarkUp());
+		model.setAddtime(tsCommodity.getAddtimes());
+		model.setBuyprices(tsCommodity.getPurchasePrice());
+		model.setId(tsCommodity.getId());
+		String s = tsCommodity.getRestricts();
+		if (s.equals("1")) {
+			model.setType("无限制");
+		} else if (s.equals("2")) {
+			model.setType("收费E拍币");
+		} else {
+			model.setType("免费E拍币");
+		}
+		// 当前竞拍商品最高出价人
+		List<SearchBean> list = new ArrayList<SearchBean>();
+		list.add(new SearchBean("isbid", "eq", "string", "1"));
+		List bidList = generalDao.search(TsBidding.class, list, null, null);
+		if (bidList != null && bidList.size() > 0) {
+			TsBidding tsBidding = (TsBidding) bidList.get(0);
+			model.setUser(tsBidding.getTsUser().getUsername());
+			model.setMarkprices(tsBidding.getPrice());
+		}
+		// 获得商品图片ID
+		List<SearchBean> searchBean = new ArrayList<SearchBean>();
+		searchBean.add(new SearchBean("imageid", "eq", "string",
+				model.getId()));
+		searchBean.add(new SearchBean("tablename", "eq", "string",
+				"TS_COMMODITY"));
+		List imagelist = generalDao.search(TsImages.class, searchBean, null,
+				null);
+		String[] images = new String[4];
+		for (int i = 0; i < imagelist.size(); i++) {
+			if (i < 4) {
+				TsImages tsImages = (TsImages) imagelist.get(i);
+				images[i] = tsImages.getId();
+			}
+		}
+		model.setImage(images);
+		// 竞拍历史
+		PageBean pageBean = new PageBean();
+		List<OrderByBean> orderBean = new ArrayList<OrderByBean>();
+		orderBean.add(new OrderByBean("", "biddate", "desc"));
+		List<SearchBean> searchBeans = new ArrayList<SearchBean>();
+		searchBeans.add(new SearchBean("tsCommodity.id", "eq", "string",
+				model.getId()));
+		List lists = generalDao.search(TsBidding.class, searchBeans, pageBean,
+				orderBean);
+		if (lists != null && lists.size() > 0) {
+			for (int i = 0; i < lists.size(); i++) {
+				TsBidding tsBidding = (TsBidding) lists.get(i);
+				BidingData bidingData = new BidingData();
+				BeanProcessUtils.copyProperties(bidingData, tsBidding);
+				bidingData.setUsername(tsBidding.getTsUser().getUsername());
+				model.getBidingList().add(bidingData);
+			}
+		}
+		// 计算时间
+		Calendar endTime = Calendar.getInstance();
+		endTime.setTime(tsCommodity.getOvertime());
+		Calendar today = Calendar.getInstance();
+		long time = endTime.getTimeInMillis() - today.getTimeInMillis();
+		if (time > 0) {
+			model.setRemaining(new Long(time));
+		}
+	}
+
 }

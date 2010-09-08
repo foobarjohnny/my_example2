@@ -30,6 +30,12 @@ public class UserAuctionAction extends GeneralAction<UserAuctionData> {
 		userAuctionService.follow(model);
 		return SUCCESS;
 	}
+	
+	public String viewAuctionNow() throws GeneralException {
+		this.setPage(model);
+		userAuctionService.viewAuctionNow(model);
+		return SUCCESS;
+	}
 
 	public UserAuctionData getModel() {
 		return model;

@@ -21,7 +21,8 @@ public class ConsumeServiceImpl extends GeneralService implements
 		ConsumeService {
 
 	public void delete(ConsumeData model) throws GeneralException {
-		generalDao.delete(TsConsume.class, model.getId());
+		String hql = " update TsConsume t set t.state = '1' where t.tsCommodity.id='" + model.getComId() + "' and t.tsUser.id='" + model.getUserId() + "'";
+		generalDao.executeHql(hql);
 	}
 
 	public void forward(ConsumeData model) throws GeneralException {
@@ -44,19 +45,19 @@ public class ConsumeServiceImpl extends GeneralService implements
 
 	@SuppressWarnings("unchecked")
 	public void search(ConsumeData model) throws GeneralException {
-		String hql = "select c.tsCommodity,sum(c.amount),c.tsUser  from TsConsume c ";
+		String hql = "select c.tsCommodity,sum(c.amount),c.tsUser  from TsConsume c where c.state is null ";
 		if (model.getSearchBeans() != null && model.getSearchBeans().size() > 0) {
 			if (model.getSearchBeans().get(0) != null) {
 				SearchBean s = model.getSearchBeans().get(0);
-				hql += " where c.tsUser.username='" + s.getValue() + "'";
+				hql += " and c.tsUser.username='" + s.getValue() + "'";
 			}
 		}
 		hql += " group by c.tsCommodity,c.tsUser";
-		String pageTotal = "select count(id) as id from TsConsume c ";
+		String pageTotal = "select count(id) as id from TsConsume c where c.state is null";
 		if (model.getSearchBeans() != null && model.getSearchBeans().size() > 0) {
 			if (model.getSearchBeans().get(0) != null) {
 				SearchBean s = model.getSearchBeans().get(0);
-				pageTotal += " where c.tsUser.username='" + s.getValue() + "'";
+				pageTotal += " and c.tsUser.username='" + s.getValue() + "'";
 			}
 		}
 		
@@ -73,10 +74,12 @@ public class ConsumeServiceImpl extends GeneralService implements
 				data.setMarkPrice(tsCommodity.getPrices());
 				TsUser tsUser = (TsUser)obj[2];
 				data.setUsername(tsUser.getUsername());
+				data.setUserId(tsUser.getId());
 				Iterator it = tsCommodity.getTsBingcurs().iterator();
 				if (it.hasNext()) {
 					TsBingcur tsBingcur = (TsBingcur)it.next();
 					data.setPrice(tsBingcur.getPrice());
+					data.setBidId(tsBingcur.getId());
 				}
 				model.getDataList().add(data);
 			}
