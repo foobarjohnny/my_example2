@@ -4,13 +4,14 @@
 	<head>
 		<%@ include file="/resources/resources.jsp"%>
 		<script type="text/javascript" src="js/dwr/buyRomet.js"></script>
+		<script type="text/javascript" src="js/dwr/auctionRomet.js"></script>
 		<script type="text/javascript">
 			function showAll() {
 				form1.action = "bidingSearch.action";
 				form1.submit();
 			}
 			function buyTrade(id) {
-				buyRomet.buyTradm(id, callBackMethod);
+				buyRomet.buyTrad(id, callBackMethod);
 			}
 			function callBackMethod(data) {
 				if (data == "success") {
@@ -19,6 +20,70 @@
 					alert(data);
 				}
 			} 
+			/**
+			 * 显示时间
+			 * 
+			 * @return
+			 */
+			function displayTime(id, time, timer, tid, did) {
+				var maxtime = time / 1000;
+				if (maxtime >= 0) {
+					hour = Math.floor(maxtime / 3600);
+					minutes = Math.floor((maxtime - hour * 3600) / 60);
+					seconds = Math.floor(maxtime % 60);
+					--maxtime;
+					eval("time" + did + "=time" + did + "-1000");
+					var msg = hour + ":" + minutes + ":" + seconds;
+					document.all[id].innerHTML = msg;
+					var userid = document.getElementById("user" + did).value;
+					bidingRomet.find(tid,userid,did, showMsg);
+				} else {
+					var obj = document.getElementById("button" + did);
+					obj.style.display = "none";
+					clearInterval(timer);
+					document.all[id].innerHTML = "竞拍结束";
+				}
+			}
+			function showMsg(data) {
+				if (data != "no") {
+					var s = data.split(",");
+					var index = (s[0].split(":"))[1];
+					var uid = (s[1].split(":"))[1];
+					var uname = (s[2].split(":"))[1];
+					var price = (s[3].split(":"))[1];
+					var add = (s[4].split(":"))[1];
+					document.getElementById("user" + index).value = uid;
+					document.getElementById("price" + index).value = price;
+					document.getElementById("userdisplay" + index).innerHTML = uname;
+					document.getElementById("display" + index).innerHTML = "￥" + price;
+					var overtime = eval("time" + index);
+					var lasttime = parseInt(add) * 1000;
+					if (overtime - lasttime < 0) {
+						eval("time" + index + "=" + lasttime);
+					}
+				}
+			}
+			function doSubmit(id, htmlId) {
+				var price = document.getElementById("price" + htmlId).value;
+				if (price == "") {
+					price = "0";
+				}
+				var uid = document.getElementById("user" + htmlId).value;
+				auctionRomet.auction(id, price, uid, htmlId, callBackMsg);
+			}
+			function callBackMsg(data) {
+				var s = data.split(":");
+				if (s[0] == "add") {
+					eval("time" + s[1] + "=" + parseInt(s[2])*1000);
+				} else if (s[0] == "success") {
+					//alert("竞拍成功");
+				} else {
+					alert(data);
+				}
+			}
+			function showAll() {
+				trade.submit();
+			}
 		</script>
 	</head>
 	<body>
@@ -37,7 +102,7 @@
 					<img src="images/r_left.gif" width="10" height="1">
 				</td>
 				<td width="775" height="40" align="center" bgcolor="#FFFFFF">
-					<span class="admin_title1">商品名称</span>&nbsp;
+					<span class="admin_title1">${tradename }</span>&nbsp;
 				</td>
 				<td width="10" rowspan="3" background="images/r_right.gif">
 					<img src="images/r_right.gif" width="10" height="1">
@@ -99,37 +164,47 @@
             </td>
             <td width="52%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="4">
               <tr>
-                <td width="59%"><strong>成交价格：</strong></td>
-                <td width="41%" class="indexjg">￥${price }</td>
+                <td width="59%"><strong>当前竞拍价格：</strong></td>
+                <td width="41%" class="indexjg">
+                <p class="indexjg" id="display0">
+						￥${markprices }	
+				</p>
+                	
+                <input type="hidden" id="price0" value="${markprices }">
+                </td>
               </tr>
               <tr>
                 <td>竞拍者：</td> 
-	             <td>${user }</td>
+	             <td>
+	             <p class="indexjg" id="userdisplay0">
+							${user }						
+				</p>
+				<input type="hidden" id="user0" value="${user }">
+	             </td>
 				</tr>
               <tr>
                 <td>市场价：</td>
                 <td>￥${prices }</td>
               </tr>
               <tr>
-                <td>收费E拍币：</td>
-                <td>${amount }枚（￥${amount*2 }）</td>
-              </tr>
-              <tr>
-                <td>免费E拍币：</td>
-                <td>${free }枚</td>
-              </tr>
-              <tr>
-                <td class="admin_title2">节省了：</td>
-                <td class="indexsp">￥${prices-price-amount*2 }</td>
-              </tr>
-              <tr>
-                <td colspan="2" align="center"><div class="jptime">竞拍已经结束</div><br>
-                  		结束时间：${binddate }                  </td>
+                <td colspan="2" align="center">
+                <div id="div0" class="jptime" style="color:red">
+					<script type="text/javascript">
+						var div0 = null;
+						var time0 = ${remaining};
+						div0 = setInterval("displayTime('div0', time0, div0, '${id}', '0')", 1000);
+						
+					</script>
+				</div><br>
+                  每次竞价商品价格增加￥${markup }&nbsp;&nbsp;时间增加${addtime }秒<br>
+                  此${type }
+                  	 </td>
                 </tr>
               <tr>
-                <td colspan="2" align="center"><table width="200" height="37" border="0" cellpadding="0" cellspacing="0">
+                <td colspan="2" align="center"><table width="70%" height="37" border="0" cellpadding="0" cellspacing="0">
                     <tr>
-                      <td width="200" height="37" align="center" background="images/jgb.gif"><a href="#" onclick="buyTrade('${id}')"><strong><font color="#FFFFFF">现在购买￥${markprices }</font></strong></a></td>
+                    	 <td width="104" height="37"><img src="images/wyjp.gif" width="104" height="27" onclick="doSubmit('${id}', '0');"></td>
+                      <td width="200" height="37" align="center" background="images/jgb.gif"><a href="#" onclick="buyTrade('${id}')"><strong><font color="#FFFFFF">现在购买￥${buyprices }</font></strong></a></td>
                     </tr>
                   </table></td>
                 </tr>

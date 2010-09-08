@@ -126,12 +126,12 @@
 											<td width="100%">
 												<img src="images/title_l.gif" width="3" height="12">
 												&nbsp;
-												<a href="jpshow.htm"><s:property id="data" value="tradename"/></a>
+												<a href="viewAuctionNow.action?id=${data.id }"><s:property id="data" value="tradename"/></a>
 											</td>
 										</tr>
 										<tr>
 											<td align="center">
-												<a href="jpshow.htm"><img alt="" src="showImage.action?id=${data.id }" border="0"/> </a>
+												<a href="viewAuctionNow.action?id=${data.id }"><img alt="" src="showImage.action?id=${data.id }" border="0"/> </a>
 											</td>
 										</tr>
 										<tr>

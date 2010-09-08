@@ -153,10 +153,10 @@
 			            </tr>
 						<tr>
 							<td width="130" height="130" align="center">
-								<a href="jpshow.htm"><img width="120" height="120" border="0" ></a>
+								<a href="viewAuctionNow.action?id=${data.id }" ><img width="120" height="120" border="0" src="showImage.action?id=${data.id }"></a>
 							</td>
 							<td>
-								<a href="jpshow.htm"><s:property id="data" value="tradename"/></a>
+								<a href="viewAuctionNow.action?id=${data.id }" ><s:property id="data" value="tradename"/></a>
 							</td>
 							<td align="center">
 								<p class="indexjg" id="display${status.index }">
