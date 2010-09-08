@@ -44,6 +44,14 @@
 				var obj = document.getElementById("leftMain");
 				obj.src = "bingcurForward.action?model.id=" + id;
 			}
+			function cool() {
+				var obj = document.getElementById("leftMain");
+				obj.src = "coolSearch.action";
+			}
+			function wtyj() {
+				var obj = document.getElementById("leftMain");
+				obj.src = "proForward.action";
+			}
 		</script>
 	</head>
 
@@ -102,14 +110,14 @@
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="95" align="center" valign="middle">
-					<a href="cool.htm"><span class="indextitle"><br>
+					<a href="#" onclick="cool()"><span class="indextitle"><br>
 							酷品投票</span> </a>
 				</td>
 				<td width="1" align="center" valign="middle">
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="112" align="center" valign="middle">
-					<a href="wtyj.htm"><span class="indextitle"><br>
+					<a href="#" onclick="wtyj()"><span class="indextitle"><br>
 							问题与建议</span> </a>
 				</td>
 				<td width="1" align="center" valign="middle">
@@ -271,7 +279,7 @@
 									<s:iterator id="bing" value="bingcurDataList">
 										<tr>
 											<td width="33%">
-												<img height="50" width="50">
+												<img height="50" width="50" src="showImage.action?id=${bing.tradeId }">
 											</td>
 											<td width="67%">
 												<a href="#" onclick="tradeAction('${bing.id}')">${bing.user }以${bing.price
