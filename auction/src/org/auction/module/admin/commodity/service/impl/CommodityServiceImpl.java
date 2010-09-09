@@ -86,26 +86,29 @@ public class CommodityServiceImpl extends GeneralService implements
 			isSave = true;
 			generalDao.save(tsCommodity);
 		}
+		
 		// 保存图片
 		if (model.getUpload() != null) {
-			TsImages tsImages = new TsImages();
-			tsImages.setImageid(tsCommodity.getId());
-			GeneralManager manager = GeneralManager.getCurrentManager();
-			String targetDir = manager.getImageDir(GeneralManager.UPLOAD_IMAGE);
-			File file = new File(targetDir, UUIDFactory.createUUID()
-					+ model.getUploadFileName().substring(
-							model.getUploadFileName().lastIndexOf("."),
-							model.getUploadFileName().length()));
-			FileUpload.upload(model.getUpload(), file);
-			tsImages.setFilepath(file.getAbsolutePath());
-			tsImages.setTablename("TS_COMMODITY");
 			if (!isSave) {
 				// 更新删除以前图片
 				String hql = "delete from TsImages where tablename='TS_COMMODITY' and imageid='"
 						+ tsCommodity.getId() + "'";
 				generalDao.executeHql(hql);
 			}
-			generalDao.save(tsImages);
+			GeneralManager manager = GeneralManager.getCurrentManager();
+			String targetDir = manager.getImageDir(GeneralManager.UPLOAD_IMAGE);
+			for (int i=0;i<model.getUpload().length;i++) {
+				TsImages tsImages = new TsImages();
+				tsImages.setImageid(tsCommodity.getId());
+				File file = new File(targetDir, UUIDFactory.createUUID()
+						+ model.getUploadFileName()[i].substring(
+								model.getUploadFileName()[i].lastIndexOf("."),
+								model.getUploadFileName()[i].length()));
+				FileUpload.upload(model.getUpload()[i], file);
+				tsImages.setFilepath(file.getAbsolutePath());
+				tsImages.setTablename("TS_COMMODITY");
+				generalDao.save(tsImages);
+			}
 		}
 	}
 

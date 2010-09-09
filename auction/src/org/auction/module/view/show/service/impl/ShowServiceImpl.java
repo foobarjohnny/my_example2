@@ -41,7 +41,7 @@ public class ShowServiceImpl implements IShowService {
 			TsBingcur tsSort = (TsBingcur) list.get(i);
 			BingcurData data = new BingcurData();
 			BeanProcessUtils.copyProperties(data, tsSort);
-			data.setUser(tsSort.getTsUser().getRealname());
+			data.setUser(tsSort.getTsUser().getUsername());
 			data.setComityName(tsSort.getTsCommodity().getTradename());
 			data.setTradeId(tsSort.getTsCommodity().getId());
 			model.getBingcurDataList().add(data);
