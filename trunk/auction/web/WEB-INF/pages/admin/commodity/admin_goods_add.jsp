@@ -115,6 +115,9 @@
 						上传图片：
 					</td>
 					<td>
+						<s:file name="upload"/><br>
+						<s:file name="upload"/><br>
+						<s:file name="upload"/><br>
 						<s:file name="upload"/>
 					</td>
 				</tr>

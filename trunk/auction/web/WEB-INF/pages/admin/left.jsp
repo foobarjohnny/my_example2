@@ -415,12 +415,12 @@
 					<table width="100%" border="0" cellspacing="0" cellpadding="5">
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_show.htm">秀宝审核</a>
+								<a target="mainFrame" href="notAut.action">秀宝审核</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_show_yes.htm">已审核的秀宝</a>
+								<a target="mainFrame" href="finshedAut.action">已审核的秀宝</a>
 							</td>
 						</tr>
 
