@@ -320,7 +320,7 @@ public class GeneralDaoImpl implements IGeneralDao {
 	}
 	
 	public int countF(String id, String uid) {
-		String hql = "select count(id) from TsBidding t where t.tsCommodity.id = :id and t.tsUser.id=:uid and bidtype='1'";
+		String hql = "select count(id) from TsBidding t where t.tsCommodity.id = :id and t.tsUser.id=:uid and bidtype='3'";
 		Query query = getSession().createQuery(hql);
 		query.setParameter("id", id);
 		query.setParameter("uid", uid);
