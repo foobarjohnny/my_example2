@@ -111,4 +111,8 @@
 		class="org.auction.module.admin.commodity.service.impl.PublisServiceImpl">
 		<property name="generalDao" ref="generalDao" />
 	</bean>
+	<bean id="showcomService"
+		class="org.auction.module.admin.commodity.service.impl.ShowcomServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
 </beans>

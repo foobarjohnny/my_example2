@@ -100,4 +100,8 @@
 		scope="prototype">
 		<property name="publisService" ref="publisService" />
 	</bean>
+	<bean id="showcomAction" class="org.auction.module.admin.commodity.action.ShowcomAction"
+		scope="prototype">
+		<property name="showcomService" ref="showcomService" />
+	</bean>
 </beans>
