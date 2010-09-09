@@ -28,14 +28,14 @@ public class CommodityData extends GeneralData {
 	private String sortName;
 	private String searchName;
 	private Date overtime;
-	private String uploadFileName;
+	private String[] uploadFileName;
 	private Long time;
 	private String username;
 	private BigDecimal bidPrice = new BigDecimal(0);
 	private Integer count;
 	private Integer pcount;
 	private Integer fcount;
-	private File upload;
+	private File[] upload;
 	private String bidId;
 	private List<CommodityData> dataList = new ArrayList<CommodityData>();
 	private List<SortData> sortList = new ArrayList<SortData>();
@@ -192,19 +192,19 @@ public class CommodityData extends GeneralData {
 		this.searchName = searchName;
 	}
 
-	public String getUploadFileName() {
+	public String[] getUploadFileName() {
 		return uploadFileName;
 	}
 
-	public void setUploadFileName(String uploadFileName) {
+	public void setUploadFileName(String[] uploadFileName) {
 		this.uploadFileName = uploadFileName;
 	}
 
-	public File getUpload() {
+	public File[] getUpload() {
 		return upload;
 	}
 
-	public void setUpload(File upload) {
+	public void setUpload(File[] upload) {
 		this.upload = upload;
 	}
 
