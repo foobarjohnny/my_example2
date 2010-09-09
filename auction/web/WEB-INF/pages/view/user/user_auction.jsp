@@ -41,7 +41,7 @@
 				help.submit();
 			}
 		}
-		function viewCom(id) {
+		function forwardShowcom(id) {
 			help.id.value = id;
 			help.action = "orderForward.action";
 			help.submit();
@@ -132,7 +132,7 @@
 				              		我要秀宝
 				              	</s:if>
 				              	  
-				              	<a href="#" onclick="viewCom('${data.id}')">我要秀宝</a><br>
+				              	<a href="forwardShowcom.action?tradeId=${data.id }" >我要秀宝</a><br>
 				              	
 				              	<a href="#" onclick="viewOrd('${data.orderId}')">查看订单</a>
 				              	<!--

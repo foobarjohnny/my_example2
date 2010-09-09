@@ -36,6 +36,18 @@
 				var obj = document.getElementById("rightUser");
 				obj.src = "buySearchUserE.action";
 			}
+			function show() {
+				var obj = document.getElementById("rightUser");
+				obj.src = "showcomsList.action";
+			}
+			function cool() {
+				var obj = document.getElementById("leftMain");
+				obj.src = "coolSearch.action";
+			}
+			function wtyj() {
+				var obj = document.getElementById("leftMain");
+				obj.src = "proForward.action";
+			}
 		</script>
 	</head>
 	<body leftmargin="0" topmargin="0"
@@ -74,7 +86,7 @@
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="106" align="center" valign="middle">
-					<a href="../buyeb.htm"><span class="indextitle"><br>
+					<a href="showEcurr.action"><span class="indextitle"><br>
 							购买E拍币</span>
 					</a>
 				</td>
@@ -82,7 +94,7 @@
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="74" align="center" valign="middle">
-					<a href="../show.htm"><span class="indextitle"><br>
+					<a  href="#" onclick="show()"><span class="indextitle"><br>
 							秀宝街</span>
 					</a>
 				</td>
@@ -98,7 +110,7 @@
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="95" align="center" valign="middle">
-					<a href="../cool.htm"><span class="indextitle"><br>
+					<a href="#" onclick="cool()"><span class="indextitle"><br>
 							酷品投票</span>
 					</a>
 				</td>
@@ -106,7 +118,7 @@
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="112" align="center" valign="middle">
-					<a href="../wtyj.htm"><span class="indextitle"><br>
+					<a href="#" onclick="wtyj()"><span class="indextitle"><br>
 							问题与建议</span>
 					</a>
 				</td>
@@ -160,7 +172,7 @@
 						</tr>
 						<tr>
 							<td height="25" valign="top" bgcolor="#FFFFFF">
-								<strong><a href="../buyeb.htm">我要充值</a>&nbsp;&nbsp;邀请好友</strong>
+								<strong><a href="showEcurr.action">我要充值</a>&nbsp;&nbsp;</strong>
 								<hr size="1">
 							</td>
 						</tr>
