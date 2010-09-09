@@ -228,5 +228,50 @@
 		<action name="viewImage" class="imageAction" method="viewImage">
 			<interceptor-ref name="defaultStack"/>
 		</action>
+		<!-- 后台未审核秀宝 -->
+		<action name="notAut" class="showcomAction" method="notAut">
+			<result>WEB-INF/pages/admin/user/notAut.jsp
+			</result>
+		</action>
+		<!-- 后台秀宝查看 -->
+		<action name="viewShowcom" class="showcomAction" method="view">
+			<result>WEB-INF/pages/admin/user/view.jsp
+			</result>
+		</action>
+		<!-- 后台秀宝删除 -->
+		<action name="deleteShowcom" class="showcomAction" method="delete">
+			<result type="chain">notAut
+			</result>
+		</action>
+		<!-- 前台秀宝发布界面 -->
+		<action name="forwardShowcom" class="showcomAction" method="forward">
+			<result>WEB-INF/pages/view/user/view.jsp
+			</result>
+		</action>
+		<!-- 前台秀宝发布 -->
+		<action name="saveShowcom" class="showcomAction" method="save">
+			<result>WEB-INF/pages/view/user/view.jsp
+			</result>
+		</action>
+		<!-- 后台秀宝审核 -->
+		<action name="autShowcom" class="showcomAction" method="aut">
+			<result type="chain">notAut
+			</result>
+		</action>
+		<!-- 后台已审核秀宝 -->
+		<action name="finshedAut" class="showcomAction" method="finshedAut">
+			<result>WEB-INF/pages/admin/user/aut.jsp
+			</result>
+		</action>
+		<!-- 后台秀宝删除 -->
+		<action name="deleteShow" class="showcomAction" method="delete">
+			<result type="chain">finshedAut
+			</result>
+		</action>
+		<!-- 前台秀宝 -->
+		<action name="showcomsList" class="showcomAction" method="viewList">
+			<result>WEB-INF/pages/view/trade/show.jsp
+			</result>
+		</action>
 	</package>
 </struts>
