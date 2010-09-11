@@ -41,11 +41,11 @@
 				obj.src = "showcomsList.action";
 			}
 			function cool() {
-				var obj = document.getElementById("leftMain");
+				var obj = document.getElementById("rightUser");
 				obj.src = "coolSearch.action";
 			}
 			function wtyj() {
-				var obj = document.getElementById("leftMain");
+				var obj = document.getElementById("rightUser");
 				obj.src = "proForward.action";
 			}
 		</script>
@@ -102,7 +102,7 @@
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="81" align="center" valign="middle">
-					<a href="../taobao.htm"><span class="indextitle"><br>
+					<a href="#"><span class="indextitle"><br>
 							淘宝岛</span>
 					</a>
 				</td>
@@ -126,7 +126,7 @@
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="123" align="center">
-					<a href="../xdqm.htm"><span class="indextitle"><br>
+					<a href="#"><span class="indextitle"><br>
 							心得与窍门</span>
 					</a>&nbsp;&nbsp;&nbsp;&nbsp;
 				</td>
