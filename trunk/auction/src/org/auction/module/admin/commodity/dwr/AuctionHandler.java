@@ -23,7 +23,14 @@ public class AuctionHandler {
 				data.setComptyId(comptyId);
 				data.setUserId(bean.getId());
 				data.setPrice(new BigDecimal(price));
-				if (auctionService.auction(data)) {
+				boolean is = false;
+				try {
+					is = auctionService.auction(data);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+					
+				if (is) {
 					if (data.isAdd()) {
 						return "add:" + htmlId + ":" + data.getTime();
 					} else {
