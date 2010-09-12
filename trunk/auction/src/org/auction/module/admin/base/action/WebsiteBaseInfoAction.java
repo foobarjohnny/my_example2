@@ -25,7 +25,6 @@ public class WebsiteBaseInfoAction  extends GeneralAction<WebsiteInfoData> {
 	 */
 	public String searchInfoData() throws GeneralException{
 		model = webServices.searchInfoData();
-		System.out.println("model=" + model.getMetaDes());
 		return SUCCESS;
 	}
 	
