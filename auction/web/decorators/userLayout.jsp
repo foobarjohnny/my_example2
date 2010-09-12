@@ -2,7 +2,6 @@
 
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page"%>
-<%@ include file="/resources/taglib.jsp"%>
 
 <html>
 	<head>
@@ -11,9 +10,10 @@
 		
 		<script type="text/javascript">
 			$( function() {
-				$('#sidebar').load("showView.action","");
+				$('#sidebar').load("userInfomation.action","");
 			});
 		</script>
+		
 	</head>
 
 	<body leftmargin="0" topmargin="0" style="filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr='#6daf2f', endColorStr='#ffffff', gradientType='0')">		
@@ -30,6 +30,7 @@
 			
 			<!-- 这是主要内容展现区的布局 -->
 			<div id="mainContent" style="height:600px; margin-bottom:5px; margin:0 auto; width:1000px;">
+
 				<!-- 这是左侧导航的布局 -->
 				<div id="sidebar" style="float:left; width:200px; height:500px;line-height:500px">
 				</div>
