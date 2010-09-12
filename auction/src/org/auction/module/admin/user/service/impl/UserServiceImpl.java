@@ -22,9 +22,11 @@ public class UserServiceImpl extends GeneralService implements UserService {
 	}
 
 	public void forward(UserData model) throws GeneralException {
-		if (model.getId() != null && !model.getId().equals("")) {
+		GeneralManager m = GeneralManager.getCurrentManager();
+		LoginBean lb = SessionManager.getLoginInfo(m.getSessionId());
+		if (lb != null) {	
 			TsUser tsUser = (TsUser) generalDao
-					.get(TsUser.class, model.getId());
+			.get(TsUser.class, lb.getId());
 			BeanProcessUtils.copyProperties(model, tsUser);
 		}
 	}
