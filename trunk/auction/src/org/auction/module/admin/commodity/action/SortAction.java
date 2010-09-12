@@ -19,8 +19,12 @@ public class SortAction extends GeneralAction<SortData> {
 	}
 
 	public String save() throws GeneralException {
-		sortService.save(model);
-		return SUCCESS;
+		boolean ret = sortService.save(model);
+		if(ret){
+			return SUCCESS;
+		}else{
+			return ERROR;
+		}
 	}
 
 	public String delete() throws GeneralException {
