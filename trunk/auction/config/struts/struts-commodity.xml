@@ -34,15 +34,12 @@
 				WEB-INF/pages/admin/commodity/admin_goods_reach.jsp</result>
 		</action>
 		<action name="commodityForward" class="commodityAction" method="forward">
-			<result>WEB-INF/pages/admin/commodity/admin_goods_add.jsp
-			</result>
+			<result>WEB-INF/pages/admin/commodity/admin_goods_add.jsp</result>
 		</action>
 		<action name="commoditySave" class="commodityAction" method="save">
-			<result type="chain">commodityForward</result>
-			<result name="page" type="chain">commoditySearch
-			</result>
-			<result name="input" type="chain">commodityForward
-			</result>
+			<result>WEB-INF/pages/admin/commodity/admin_goods_add_success.jsp</result>
+			<result name="page" type="chain">commoditySearch</result>
+			<result name="input" type="chain">commodityForward</result>
 		</action>
 		<action name="commodityAuction" class="commodityAction" method="auction">
 			<result type="chain">commoditySearch</result>

@@ -28,9 +28,11 @@
 			<result name="error">WEB-INF/pages/error.jsp
 			</result>
 		</global-results>
+<!-- 		
 		<action name="index">
 			<result>WEB-INF/pages/admin/index.jsp</result>
 		</action>
+ -->
 		<action name="view">
 			<result>WEB-INF/pages/view/index.jsp</result>
 		</action>
