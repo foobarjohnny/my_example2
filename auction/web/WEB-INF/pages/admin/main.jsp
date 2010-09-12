@@ -1,10 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ include file="/resources/taglib.jsp"%>
-<html>
-	<HEAD>
-		<%@ include file="/resources/resources.jsp"%>
-	</HEAD>
-	<body>
 		<p>
 			&nbsp;
 		</p>
@@ -57,5 +52,3 @@
 		<p>
 			&nbsp;
 		</p>
-	</body>
-</html>

@@ -15,10 +15,10 @@
 			<table width="100%" border="1" cellpadding="10" cellspacing="0"
 				bordercolor="#FFFFFF" bgcolor="#EEEEEE" height="100%">
 				<tr height="10%">
-					<td width="22%" align="right">
+					<td width="8%" align="right">
 						标题：
 					</td>
-					<td width="78%">
+					<td width="92%">
 						<s:textfield name="title" size="30"/>
 					</td>
 				</tr>

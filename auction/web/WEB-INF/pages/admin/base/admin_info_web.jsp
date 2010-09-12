@@ -18,15 +18,11 @@
 		<s:form action="infoSave.action" name="form1">
 			<s:hidden name="nettype" value="1"/>
 			<s:hidden name="id"/>
-			<table width="100%" border="1" cellpadding="10" cellspacing="0"
+			<table width="100%" border="0" cellpadding="10" cellspacing="0"
 				bordercolor="#FFFFFF" bgcolor="#EEEEEE" height="100%">
-				<tr height="90%">
-					<td width="22%" align="right" valign="middle">
-						简介内容：
-					</td>
-					<td width="78%" >
+					<td width="100%" height="90%" >
 						<s:hidden name="info" id="info"></s:hidden>
-						<fck:editor instanceName="info" height="100%">
+						<fck:editor instanceName="info" height="800"  width="800">
 							<jsp:attribute name="value">&nbsp;
 							</jsp:attribute>
 						</fck:editor>
