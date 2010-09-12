@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<decorators defaultdir="/decorators">
+	<!-- excludes结点则指定了哪些路径的请求不使用任何模板 -->
+	
+	<!--/index.jsp和凡是以/login/开头的请求路径一律不使用模板-->
+	<excludes>
+		<pattern>/js/**</pattern>
+		<pattern>/css/**</pattern>
+		<pattern>/resources/**</pattern>
+		<pattern>/upload/**</pattern>
+		<pattern>/fckeditor/**</pattern>
+		<!-- 
+		<pattern>/WEB-INF/pages/admin/*</pattern>
+		 -->
+		<pattern>/test.jsp*</pattern>
+		<pattern>/showView.action</pattern>
+		
+	</excludes>
+	
+	<!-- 定义一些常用的导航，广告，左侧导航条等等内容 -->
+	<!-- <decorator name="printable1" page="printable1.jsp"/>  -->
+	<decorator name="navigator" page="navigator.jsp"/>
+	<decorator name="advertise" page="advertise.jsp"/>
+	<!-- 
+	<decorator name="sidebar" page="sidebar.jsp"/>
+	-->
+	<decorator name="footer" page="footer.jsp" />
+	
+	<!-- decorator结点指定了模板的位置和文件名，通过pattern来指定哪些路径引用哪个模板 -->
+	
+	<!-- 装饰首页的内容，包括登录商品展现 -->
+	<decorator name="main" page="layout.jsp">
+		<pattern>/show.action*</pattern>
+		<pattern>/showAll.action*</pattern>
+		<pattern>/infoView.action*</pattern>
+		<pattern>/infoViewList.action*</pattern>
+		<pattern>/bingcurForward.action*</pattern>
+		<pattern>/bingcurSearch.action*</pattern>
+		<pattern>/bidingSearch.action*</pattern>
+		<pattern>/buyEcurr.action*</pattern>
+		<pattern>/proSave.action*</pattern>
+		<pattern>/showEcurr.action*</pattern>
+		<pattern>/showcomsList.action*</pattern>
+		<pattern>/coolSearch.action*</pattern>
+		<pattern>/proForward.action*</pattern>
+		<pattern>/bingcurForward.action*</pattern>
+		<pattern>/coolSearch.action*</pattern>
+		
+		<pattern>/WEB-INF/pages/view/*</pattern>
+		<pattern>/WEB-INF/pages/view/trade/*</pattern>
+	</decorator>
+	<decorator name="userDecorator" page="userLayout.jsp">
+		<pattern>/viewUser.action*</pattern>
+		<pattern>/viewPass.action*</pattern>
+		<pattern>/userNow.action*</pattern>
+		<pattern>/userAuction.action*</pattern>
+		<pattern>/userFollow.action*</pattern>
+		<pattern>/buySearchUserE.action*</pattern>
+		<pattern>/searchUserPayE.action*</pattern>
+	
+		
+		<!-- 
+		<pattern>WEB-INF/pages/view/user/user.jsp</pattern>
+		<pattern>/WEB-INF/pages/user/admin_user_account.jsp*</pattern>
+		<pattern>/WEB-INF/pages/user/admin_user_auction.jsp*</pattern>
+		<pattern>/WEB-INF/pages/user/admin_user_now.jsp*</pattern>
+		<pattern>/WEB-INF/pages/user/admin_user_reg.jsp*</pattern>
+		<pattern>/WEB-INF/pages/user/admin_user_reg_form.jsp*</pattern>
+		<pattern>/WEB-INF/pages/user/index.jsp*</pattern>
+		<pattern>/WEB-INF/pages/user/success.jsp*</pattern>
+		 -->
+	</decorator>
+</decorators>  
+
