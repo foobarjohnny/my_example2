@@ -39,7 +39,7 @@
 		
 		<!-- 登陆用户前台信息  -->
 		<action name="userInfomation" class="userAction" method="viewInfo">
-			<result>WEB-INF/pages/view/user/myepaide.jsp</result>
+			<result>userLeft.jsp</result>
 		</action>
 		<action name="viewUser" class="userAction" method="viewUser">
 			<result>WEB-INF/pages/view/user/user.jsp</result>

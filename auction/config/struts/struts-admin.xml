@@ -10,7 +10,7 @@
 
 	<!-- total view pages -->
 		<action name="index">
-			<result>WEB-INF/pages/view/index.jsp</result>
+			<result>WEB-INF/pages/admin/index.jsp</result>
 		</action>
 		<action name="top">
 			<result>WEB-INF/pages/admin/top.jsp</result>
