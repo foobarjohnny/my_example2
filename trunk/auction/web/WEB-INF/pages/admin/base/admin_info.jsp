@@ -3,6 +3,88 @@
 <html>
 	<head>
 		<%@ include file="/resources/resources.jsp"%>
+		<script language="javascript">
+			$(document).ready(function(){
+				//获取提交操作
+				var obj = $("[name=Submit]");
+				//开始验证前台的输入信息
+				obj.click(function(){
+					var networkName = $("[name=model.networkName]");
+					var title       = $("[name=model.title]");
+					var logo        = $("[name=model.logoFile]");
+					var website     = $("[name=model.webSite]");
+					var email       = $("[name=model.isEmail]");
+					var phone       = $("[name=model.isPhone]");
+					var reg         = $("[name=model.isReg]");
+					var giveEcur    = $("[name=model.giveEcur]");
+					var outName     = $("[name=model.outName]");
+					var copyright   = $("[name=model.copyright]");
+					var meta        = $("[name=model.metaKey]");
+					var metaDesc    = $("[name=model.metaDes]");
+
+					if(!networkName.val()){
+						alert('"网站名称"不能为空！');
+						networkName.focus();
+						return false;
+					}
+					if(!title.val()){
+						alert('"网站标题"不能为空！');
+						title.focus();
+						return false;
+					}
+					if(!logo.val()){
+						alert('"网站Logo"不能为空');
+						logo.focus();
+						return false;
+					}
+					if(!website.val()){
+						alert('"网站地址"不能为空');
+						website.focus();
+						return false;
+					}
+					if(!email.val()){
+						alert('"邮件地址"不能为空');
+						email.focus();
+						return false;
+					}
+					if(!phone.val()){
+						alert('""不能为空');
+						phone.focus();
+						return false;
+					}
+					if(!reg.val()){
+						alert('"注册"不能为空');
+						reg.focus();
+						return false;
+					}
+					if(!giveEcur.val()){
+						alert('"注册赠送E拍币"不能为空');
+						giveEcur.focus();
+						return false;
+					}
+					if(!outName.val()){
+						alert('"注销不活动用户"不能为空');
+						outName.focus();
+						return false;
+					}
+					if(!copyright.val()){
+						alert('"网站注册版权"不能为空');
+						copyright.focus();
+						return false;
+					}
+					if(!meta.val()){
+						alert('"META关键字"不能为空');
+						meta.focus();
+						return fasle;
+					}
+					if(!metaDesc.val()){							
+						alert('"META描述"不能为空');
+						metaDesc.focus();
+						return false;
+					}
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<div align="center" class="admin_title1">

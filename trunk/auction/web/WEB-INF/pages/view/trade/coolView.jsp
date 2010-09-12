@@ -1,11 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ include file="/resources/taglib.jsp"%>
-<html>
-	<head>
-		<%@ include file="/resources/resources.jsp"%>
-		<script type="text/javascript" src="js/dwr/userRomet.js"></script>
-		<script type="text/javascript" src="js/dwr/auctionRomet.js"></script>
-		<script type="text/javascript" src="js/dwr/publisRomet.js"></script>
 		<script type="text/javascript">
 		function previous() {
 			var currentPage = document.getElementById("pageBean.currentPage").value;
@@ -48,24 +42,21 @@
 			help.submit();
 		}
 		function vote(id) {
-			publisRomet.vote(id, callBackHandler);
+			publisRomet.vote(id, modifyValue);
 		}
-		function callBackHandler(data) {
+		function modifyValue(data) {
 			if (data != "error") {
 				var s = data.split(",");
 				document.all["d" + s[0]].innerHTML = s[1];			
 			}
 		}
 		</script>
-	</head>
-	<body leftmargin="0" topmargin="0"
-		style="filter: progid :   DXImageTransform.Microsoft.Gradient (   startColorStr =   '#6daf2f', endColorStr =   '#ffffff', gradientType =   '0' )">
 		<table width="795" border="0" align="center" cellpadding="0"
 			cellspacing="0">
 			<tr>
-				<td colspan="3">
-					<img src="images/r_top.gif" width="795" height="20">
-				</td>
+			<td colspan="3" height="20" align="center" background="images/r_top.gif">
+				&nbsp;
+			</td>
 			</tr>
 			<tr>
 				<td width="10" rowspan="3" background="images/r_left.gif">
@@ -80,8 +71,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td valign="top" background="images/hr.gif">
-					<img src="images/hr.gif" width="1" height="1">
+				<td valign="top" background="images/hr.gif" height="1">
 				</td>
 			</tr>
 			<tr>
@@ -153,10 +143,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3">
-					<img src="images/r_dow.gif" width="795" height="20">
-				</td>
+			<td colspan="3" height="20" align="center" background="images/r_dow.gif">
+				&nbsp;
+			</td>
 			</tr>
 		</table>
-	</body>
-</html>
