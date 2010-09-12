@@ -17,14 +17,14 @@
 					
 				</td>
 				<td width="57" align="center" valign="middle">
-					<a href="showView.action"><span class="indextitle"><br>
+					<a href="show.action"><span class="indextitle"><br>
 							首页</span> </a>
 				</td>
 				<td width="1" align="center" valign="middle">
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="115" align="center" valign="middle">
-					<a href="userInfomation.action"><span class="indextitle"><br>
+					<a href="viewUser.action"><span class="indextitle"><br>
 							我的易拍得</span> </a>
 				</td>
 				<td width="1" height="5" align="center" valign="middle">
@@ -38,7 +38,7 @@
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="74" align="center" valign="middle">
-					<a href="show.htm"><span class="indextitle"><br>
+					<a href="showcomsList.action"><span class="indextitle"><br>
 							秀宝街</span> </a>
 				</td>
 				<td width="1" align="center" valign="middle">
@@ -52,21 +52,21 @@
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="95" align="center" valign="middle">
-					<a href="cool.htm"><span class="indextitle"><br>
+					<a href="coolSearch.action"><span class="indextitle"><br>
 							酷品投票</span> </a>
 				</td>
 				<td width="1" align="center" valign="middle">
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="112" align="center" valign="middle">
-					<a href="wtyj.htm"><span class="indextitle"><br>
+					<a href="proForward.action"><span class="indextitle"><br>
 							问题与建议</span> </a>
 				</td>
 				<td width="1" align="center" valign="middle">
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="123" align="center">
-					<a href="xdqm.htm"><span class="indextitle"><br>
+					<a href="#" onclick="alert('还未实现');"><span class="indextitle"><br>
 							心得与窍门</span> </a>&nbsp;&nbsp;&nbsp;&nbsp;
 				</td>
 			</tr>
