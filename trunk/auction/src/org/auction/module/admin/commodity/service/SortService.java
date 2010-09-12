@@ -7,7 +7,7 @@ public interface SortService {
 
 	public void forward(SortData model) throws GeneralException;
 
-	public void save(SortData model) throws GeneralException;
+	public boolean save(SortData model) throws GeneralException;
 
 	public void delete(SortData model) throws GeneralException;
 

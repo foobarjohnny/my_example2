@@ -33,9 +33,22 @@ public class SortServiceImpl extends GeneralService implements SortService {
 		}
 	}
 
-	public void save(SortData model) throws GeneralException {
+	/*
+	 * 保存产品分类的操作
+	 * @see org.auction.module.admin.commodity.service.SortService#save(org.auction.module.admin.commodity.data.SortData)
+	 */
+	public boolean save(SortData model) throws GeneralException {
+		
+		//先按照分类的名称检查是否存在相同名称的分类信息
+		TsSort sortTemp = getSortByName(model);
+		if(sortTemp.getId() != null ){
+			//说明存在同样名称的产品分类
+			return false;
+		}
+			
 		TsSort tsSort = new TsSort();
 		BeanProcessUtils.copyProperties(tsSort, model);
+		tsSort.setIsValid(Constant.YES);
 		if (model.getId() != null && !model.getId().equals("")) {
 			tsSort.setIsValid(Constant.YES);
 			generalDao.update(tsSort);
@@ -43,8 +56,10 @@ public class SortServiceImpl extends GeneralService implements SortService {
 			tsSort.setIsValid(Constant.YES);
 			generalDao.save(tsSort);
 		}
+		
+		return true;
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	public void search(SortData model) throws GeneralException {
 		List<SearchBean> search = model.getSearchBeans();
@@ -77,12 +92,38 @@ public class SortServiceImpl extends GeneralService implements SortService {
 		bean.setValue(data.getId());
 		bean.setType("java.lang.String");
 		search.add(bean);
-		List list = generalDao.search(TsSort.class, search, null, null);
+		List<Object> list = generalDao.search(TsSort.class, search, null, null);
 		if(list.size() > 0){
 			return (TsSort)list.get(0); 
 		}else{
 			return new TsSort();
 		}
 	}
-	
+
+	/**
+	 * 根据产品分类的名称检索
+	 * @param data
+	 * @return
+	 * @throws GeneralException
+	 */
+	public TsSort getSortByName(SortData data) throws GeneralException{
+		
+		List<SearchBean> search = new ArrayList<SearchBean>();
+
+		SearchBean bean = new SearchBean();
+		bean.setDisplayName("sortname");
+		bean.setFieldName("sortname");
+		bean.setSignl(Constant.EQ);
+		bean.setValue(data.getSortname());
+		bean.setType("java.lang.String");
+		
+		search.add(bean);
+		
+		List<Object> list = generalDao.search(TsSort.class, search, null, null);
+		if(list.size() > 0){
+			return (TsSort)list.get(0); 
+		}else{
+			return new TsSort();
+		}
+	}
 }
