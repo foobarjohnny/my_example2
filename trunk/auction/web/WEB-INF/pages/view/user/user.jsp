@@ -2,11 +2,11 @@
 <%@ include file="/resources/taglib.jsp"%>
 
 <script type="text/javascript">
-			function doSubmit() {
-				user.action = "viewSaveUser.action";
-				user.submit();
-			}
-		</script>
+	function doSubmit() {
+		user.action = "viewSaveUser.action";
+		user.submit();
+	}
+</script>
 <form action="" method="post" name="user">
 	<s:hidden name="id" />
 	<s:hidden name="username" />
@@ -16,8 +16,8 @@
 	<table width="795" border="0" align="center" cellpadding="0"
 		cellspacing="0">
 		<tr>
-			<td colspan="3">
-				<img src="images/r_top.gif" width="795" height="20">
+			<td colspan="3" height="20" align="center" background="images/r_top.gif">
+				&nbsp;
 			</td>
 		</tr>
 		<tr>
@@ -33,12 +33,11 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top" background="images/hr.gif">
-				<img src="images/hr.gif" width="1" height="1">
+			<td valign="top" background="images/hr.gif" colspan="3" height="1">
 			</td>
 		</tr>
 		<tr>
-			<td valign="top" bgcolor="#FFFFFF">
+			<td valign="top" bgcolor="#FFFFFF" colspan="3">
 				<table width="69%" border="0" align="center" cellpadding="10"
 					cellspacing="0">
 					<tr>
@@ -99,7 +98,9 @@
 					<tr>
 						<td colspan="2" align="center">
 							<input type="button" name="Submit" value="修改"
-								onclick="doSubmit()">
+								onclick=
+	doSubmit();
+>
 						</td>
 					</tr>
 					<tr>
@@ -111,8 +112,8 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="3">
-				<img src="images/r_dow.gif" width="795" height="20">
+			<td colspan="4" height="20" align="center" background="images/r_dow.gif">
+				&nbsp;
 			</td>
 		</tr>
 	</table>
