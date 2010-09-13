@@ -75,11 +75,6 @@
 								<a target="mainFrame" href="mysqlData.action">数据库备份</a>
 							</td>
 						</tr>
-						<tr>
-							<td class="admin_title2">
-								<a target="mainFrame" href="serverPoint.action">服务器参数探针[未实现]</a>
-							</td>
-						</tr>
 					</table>
 				</td>
 			</tr>
@@ -148,12 +143,14 @@
 					<table width="100%" border="0" cellspacing="0" cellpadding="5">
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="rebotForward.action?methodName=1">增加机器人</a>
+								<!-- <a target="mainFrame" href="rebotForward.action?methodName=1">增加机器人</a>  -->
+								<a href="#" onclick="alert('未实现');">增加机器人</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_jqr_edit.htm">修改机器人</a>
+								<!-- <a target="mainFrame" href="admin_jqr_edit.htm">修改机器人</a> -->
+								<a href="#"  onclick="alert('未实现');">修改机器人</a>
 							</td>
 						</tr>
 
@@ -260,12 +257,14 @@
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_user_mail.htm">用户邮件群发</a>
+								<!-- <a target="mainFrame" href="admin_user_mail.htm">用户邮件群发</a> -->
+								<a href="#"  onclick="alert('未实现');">用户邮件群发</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_user_friend.htm">用户邀请记录</a>
+								<!-- <a target="mainFrame" href="admin_user_friend.htm">用户邀请记录</a> -->
+								<a href="#"  onclick="alert('未实现');">用户邀请记录</a>
 							</td>
 						</tr>
 
@@ -289,47 +288,56 @@
 					<table width="100%" border="0" cellspacing="0" cellpadding="5">
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_area_add.htm">发布新商品</a>
+								<!-- <a target="mainFrame" href="admin_area_add.htm">发布新商品</a> -->
+								<a href="#"  onclick="alert('未实现');">发布新商品</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_area_edit.htm">修改商品信息</a>
+								<a target="mainFrame" href="admin_area_edit.htm">修改商品信息</a> -->
+								<a href="#"  onclick="alert('未实现');">修改商品信息</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_area_ing.htm">正在竞拍的商品</a>
+								<!-- <a target="mainFrame" href="admin_area_ing.htm">正在竞拍的商品</a> -->
+								<a href="#"  onclick="alert('未实现');">正在竞拍的商品</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_area_ok.htm">拍下的商品</a>
+								<!-- <a target="mainFrame" href="admin_area_ok.htm">拍下的商品</a> -->
+								<a href="#"  onclick="alert('未实现');">拍下的商品</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_area_ship.htm">等待卖家发货商品</a>
+								<!-- <a target="mainFrame" href="admin_area_ship.htm">等待卖家发货商品</a> -->
+								<a href="#"  onclick="alert('未实现');">等待卖家发货商品</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_area_shipyes.htm">卖家已发货商品</a>
+								<!-- <a target="mainFrame" href="admin_area_shipyes.htm">卖家已发货商品</a> -->
+								<a href="#"  onclick="alert('未实现');">卖家已发货商品</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_area_over.htm">成交的商品</a>
+								<!-- <a target="mainFrame" href="admin_area_over.htm">成交的商品</a> -->
+								<a href="#"  onclick="alert('未实现');">成交的商品</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_area_no.htm">流拍的商品</a>
+								<!-- <a target="mainFrame" href="admin_area_no.htm">流拍的商品</a> -->
+								<a href="#"  onclick="alert('未实现');">流拍的商品</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_area_zf.htm">作废的商品订单</a>
+								<!-- <a target="mainFrame" href="admin_area_zf.htm">作废的商品订单</a> -->
+								<a href="#"  onclick="alert('未实现');">作废的商品订单</a>
 							</td>
 						</tr>
 					</table>
@@ -445,12 +453,14 @@
 					<table width="100%" border="0" cellspacing="0" cellpadding="5">
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_tem.htm">模版管理</a>
+								<!-- <a target="mainFrame" href="admin_tem.htm">模版管理</a> -->
+								<a href="#"  onclick="alert('未实现');">模版管理</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_tem_add.htm">添加模版</a>
+								<!-- <a target="mainFrame" href="admin_tem_add.htm">添加模版</a> -->
+								<a href="#"  onclick="alert('未实现');">添加模版</a>
 							</td>
 						</tr>
 
@@ -474,12 +484,14 @@
 					<table width="100%" border="0" cellspacing="0" cellpadding="5">
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_ads.htm">广告位管理</a>
+								<!-- <a target="mainFrame" href="admin_ads.htm">广告位管理</a> -->
+								<a href="#"  onclick="alert('未实现');">广告位管理</a> 
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<a target="mainFrame" href="admin_ad.htm">广告管理</a>
+								<!-- <a target="mainFrame" href="admin_ad.htm">广告管理</a> -->
+								<a href="#"  onclick="alert('未实现');">广告管理</a>
 							</td>
 						</tr>
 
