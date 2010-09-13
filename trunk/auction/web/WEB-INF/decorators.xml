@@ -52,6 +52,7 @@
 	</decorator>
 	<decorator name="userDecorator" page="userLayout.jsp">
 		<pattern>/viewUser.action*</pattern>
+		<pattern>/viewSaveUser.action*</pattern>
 		<pattern>/viewPass.action*</pattern>
 		<pattern>/userNow.action*</pattern>
 		<pattern>/userAuction.action*</pattern>
