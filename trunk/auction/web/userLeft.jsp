@@ -9,159 +9,246 @@
 </script>
 <table width="179" border="0" align="center" valign="top" cellpadding="0" cellspacing="0">
 	<tr>
-		<td colspan="3">
-			<img src="images/l_top.gif" width="179" height="21">
+		<td colspan="3"  width="179" height="21" background="images/l_top.gif">
+			&nbsp;
 		</td>
 	</tr>
 	<tr>
-		<td width="5" rowspan="25" background="images/l_left.gif">
-			<img src="images/l_left.gif" width="5" height="1">
+		<td width="5" height="25" background="images/l_left.gif">
 		</td>
 		<td width="169" height="25" valign="top" bgcolor="#FFFFFF">
 			欢迎您&nbsp;
 			<span class="title1">${username }</span>
 		</td>
-		<td width="5" rowspan="25" background="images/l_right.gif">
-			<img src="images/l_right.gif" width="5" height="1">
+		<td width="5" height="25" background="images/l_right.gif">
 		</td>
 	</tr>
 	<tr>
-		<td height="25" valign="top" bgcolor="#FFFFFF">
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169"  height="25" valign="top" bgcolor="#FFFFFF">
 			付费E拍币：${paycur }
 		</td>
-	</tr>
-	<tr>
-		<td height="25" valign="top" bgcolor="#FFFFFF">
-			免费E拍币：${freecur }
+		<td width="5" height="25" background="images/l_right.gif">
 		</td>
 	</tr>
 	<tr>
-		<td height="25" valign="top" bgcolor="#FFFFFF">
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169"  height="25" valign="top" bgcolor="#FFFFFF">
+			免费E拍币：${freecur }
+		</td>
+		<td width="5" height="25" background="images/l_right.gif">
+		</td>
+	</tr>
+	<tr>
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" valign="top" bgcolor="#FFFFFF">
 			<strong><a href="showEcurr.action">我要充值</a>&nbsp;&nbsp;</strong>
 			<hr size="1">
 		</td>
+		<td width="5" height="25" background="images/l_right.gif">
+		</td>
 	</tr>
 	<tr>
-		<td height="25" valign="top" bgcolor="#FFFFFF">
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" valign="top" bgcolor="#FFFFFF">
 			<img src="images/title_l.gif" width="3" height="12">
 			&nbsp;
 			<span class="admin_title1">用户信息</span>
 		</td>
-	</tr>
-	<tr>
-		<td height="25" bgcolor="#FFFFFF">
-			<a href="viewUser.action?id=${id}">基本信息</a>
+		<td width="5" height="25" background="images/l_right.gif">
 		</td>
 	</tr>
 	<tr>
-		<td bgcolor="#FFFFFF">
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
+			<a href="viewUser.action?id=${id}">基本信息</a>
+		</td>
+		<td width="5" height="25" background="images/l_right.gif">
+		</td>
+	</tr>
+	<tr>
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
 			<a href="viewPass.action?id=${id}">修改密码</a>
 			<hr size="1">
+		</td>
+		<td width="5" height="25" background="images/l_right.gif">
 		</td>
 	</tr>
 
 	<tr>
-		<td height="25" bgcolor="#FFFFFF">
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
 			<img src="images/title_l.gif" width="3" height="12">
 			&nbsp;
 			<span class="admin_title1">竞拍查询</span>
 		</td>
+		<td width="5" height="25" background="images/l_right.gif">
+		</td>
 	</tr>
 	<tr>
-		<td height="25" bgcolor="#FFFFFF">
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
 			<a href="userNow.action">我正在参与的竞拍</a>
 		</td>
+		<td width="5" height="25" background="images/l_right.gif">
+		</td>
 	</tr>
 	<tr>
-		<td height="25" bgcolor="#FFFFFF">
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
 			<a href="userAuction.action">我赢得的竞拍</a>
 		</td>
+		<td width="5" height="25" background="images/l_right.gif">
+		</td>
 	</tr>
 	<tr>
-		<td height="25" bgcolor="#FFFFFF">
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
 			<a href="userFollow.action">我直接购买的产品</a>
 		</td>
-	</tr>
-	<tr>
-		<td height="25" bgcolor="#FFFFFF">
-			<a href="jpzl.htm">我的竞拍助理</a>
+		<td width="5" height="25" background="images/l_right.gif">
 		</td>
 	</tr>
 	<tr>
-		<td height="25" bgcolor="#FFFFFF">
-			<a href="show.htm">我的秀宝</a>
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
+			<a href="#" onclick="alert('暂时未实现')">我的竞拍助理</a>
+		</td>
+		<td width="5" height="25" background="images/l_right.gif">
+		</td>
+	</tr>
+	<tr>
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
+			<a href="#" onclick="alert('暂时未实现')">我的秀宝</a>
 			<hr size="1">
 		</td>
+		<td width="5" height="25" background="images/l_right.gif">
+		</td>
 	</tr>
 	<tr>
-		<td height="25" bgcolor="#FFFFFF">
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
 			<img src="images/title_l.gif" width="3" height="12">
 			&nbsp;
 			<span class="admin_title1">淘宝岛</span>
 		</td>
-	</tr>
-	<tr>
-		<td height="25" bgcolor="#FFFFFF">
-			<A href="area_add.htm">发布宝贝</A>
+		<td width="5" height="25" background="images/l_right.gif">
 		</td>
 	</tr>
 	<tr>
-		<td height="25" bgcolor="#FFFFFF">
-			<a href="#">修改宝贝</a>
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
+			<a href="#" onclick="alert('暂时未实现')">发布宝贝</A>
+		</td>
+		<td width="5" height="25" background="images/l_right.gif">
 		</td>
 	</tr>
 	<tr>
-		<td height="25" bgcolor="#FFFFFF">
-			<A href="area_ok.htm">被拍下的宝贝</A>
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
+			<a href="#" onclick="alert('暂时未实现')">修改宝贝</a>
+		</td>
+		<td width="5" height="25" background="images/l_right.gif">
 		</td>
 	</tr>
 	<tr>
-		<td height="25" bgcolor="#FFFFFF">
-			<A href="area_ship.htm">等待发货的宝贝</A>
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
+			<a href="#" onclick="alert('暂时未实现')">被拍下的宝贝</A>
+		</td>
+		<td width="5" height="25" background="images/l_right.gif">
+		</td>
+	</tr>
+	<tr>
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
+			<a href="#" onclick="alert('暂时未实现')">等待发货的宝贝</A>
+		</td>
+		<td width="5" height="25" background="images/l_right.gif">
 		</td>
 	</tr>
 
 	<tr>
-		<td height="25" bgcolor="#FFFFFF">
-			<A href="area_over.htm">成交的宝贝</A>
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
+			<a href="#" onclick="alert('暂时未实现')">成交的宝贝</A>
+		</td>
+		<td width="5" height="25" background="images/l_right.gif">
 		</td>
 	</tr>
 	<tr>
-		<td height="25" bgcolor="#FFFFFF">
-			<A href="area_zf.htm"></A><A href="area_no.htm">流拍的宝贝</A>
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
+			<a href="#" onclick="alert('暂时未实现')">流拍的宝贝</A>
+		</td>
+		<td width="5" height="25" background="images/l_right.gif">
 		</td>
 	</tr>
 
 	<tr>
-		<td height="25" bgcolor="#FFFFFF">
-			<a href="area_mybuy.htm">我拍下的宝贝 </a>
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
+			<a href="#" onclick="alert('暂时未实现')">我拍下的宝贝 </a>
 			<hr size="1">
 		</td>
+		<td width="5" height="25" background="images/l_right.gif">
+		</td>
 	</tr>
 
 	<tr>
-		<td height="25" bgcolor="#FFFFFF" class="admin_title1">
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF" class="admin_title1">
 			<img src="images/title_l.gif" width="3" height="12">
 			&nbsp;
 			<span class="title1">E拍币查询</span>
 		</td>
+		<td width="5" height="25" background="images/l_right.gif">
+		</td>
 	</tr>
-
-
-
 	<tr>
-		<td height="25" bgcolor="#FFFFFF">
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
 			<a href="buySearchUserE.action">购买明细</a>
 		</td>
-	</tr>
-	<tr>
-		<td height="25" bgcolor="#FFFFFF">
-			<a href="searchUserPayE.action">消费明细</a>
+		<td width="5" height="25" background="images/l_right.gif">
 		</td>
 	</tr>
 	<tr>
-		<td colspan="3">
-			<img src="images/l_dow.gif" width="179" height="21">
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
+			<a href="searchUserPayE.action">消费明细</a>
+		</td>
+		<td width="5" height="25" background="images/l_right.gif">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3" width="179" height="21" background="images/l_dow.gif">
+			&nbsp;
 		</td>
 	</tr>
 	<tr>
