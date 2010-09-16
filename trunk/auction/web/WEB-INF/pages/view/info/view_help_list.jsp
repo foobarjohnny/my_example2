@@ -43,7 +43,7 @@
 	</script>
 <table width="795" border="0" align="center" cellpadding="0" cellspacing="0">
 	<tr>
-		<td colspan="4" height="20" align="center" background="images/r_top.gif">
+		<td colspan="4" align="center" background="images/r_top.gif">
 			&nbsp;
 		</td>
 	</tr>
@@ -63,13 +63,12 @@
 		</td>
 	</tr>
 	<tr>
-		<td colspan="4" valign="top" background="images/hr.gif">
-			<img src="images/hr.gif" width="1" height="1">
+		<td colspan="2" valign="top" background="images/hr.gif" height="1">
 		</td>
 	</tr>
 	<tr>
-		<td colspan="4" valign="top" bgcolor="#FFFFFF">
-			<table width="775" border="0" cellspacing="0" cellpadding="0">
+		<td colspan="2" valign="top" bgcolor="#FFFFFF">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td>
 						<form method="post" name="help" action="infoViewList">
@@ -77,12 +76,12 @@
 							<s:hidden name="pageBean.totalPage" />
 							<input type="hidden" name="id">
 							<input type="hidden" name="nettype" value="3">
-							<table width="100%" border="0" align="center" cellpadding="10"
+							<table width="100%" border="0" align="center" cellpadding="3"
 								cellspacing="0">
 								<s:iterator value="dataList" id="data" status="status">
 									<tr>
 										<td>
-											<img src="images/dian.gif" width="5" height="5">
+											<img src="images/dian.gif" width="5" height="5" align="center" valign="middle">
 											<a href="#" onclick="view('${data.id}')"><s:property
 													value="title" />
 											</a>
