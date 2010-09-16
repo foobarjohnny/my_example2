@@ -53,6 +53,9 @@
 		<pattern>/WEB-INF/pages/view/*</pattern>
 		<pattern>/WEB-INF/pages/view/trade/*</pattern>
 	</decorator>
+
+
+
 	<decorator name="userDecorator" page="userLayout.jsp">
 		<pattern>/viewUser.action*</pattern>
 		<pattern>/viewSaveUser.action*</pattern>
