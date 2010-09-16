@@ -41,7 +41,7 @@ public class OrderAction extends GeneralAction<OrderData> {
 		orderService.search(model);
 		return SUCCESS;
 	}
-	
+
 	public String searchChannel() throws GeneralException {
 		this.setPage(model);
 		orderService.searchChannel(model);
@@ -52,17 +52,17 @@ public class OrderAction extends GeneralAction<OrderData> {
 		orderService.channel(model);
 		return SUCCESS;
 	}
-	
+
 	public String view() throws GeneralException {
 		orderService.view(model);
 		return SUCCESS;
 	}
-	
+
 	public String orderView() throws GeneralException {
 		orderService.orderView(model);
 		return SUCCESS;
 	}
-	
+
 	public String orderChannelView() throws GeneralException {
 		orderService.orderView(model);
 		return SUCCESS;

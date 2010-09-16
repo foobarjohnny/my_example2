@@ -5,7 +5,8 @@ import org.auction.module.admin.commodity.service.RebotcomService;
 import org.mobile.common.exception.GeneralException;
 import org.mobile.common.service.GeneralService;
 
-public class RebotcomServiceImpl extends GeneralService implements RebotcomService {
+public class RebotcomServiceImpl extends GeneralService implements
+		RebotcomService {
 
 	public String delete(RebotcomData model) throws GeneralException {
 		// TODO Auto-generated method stub
@@ -26,6 +27,5 @@ public class RebotcomServiceImpl extends GeneralService implements RebotcomServi
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

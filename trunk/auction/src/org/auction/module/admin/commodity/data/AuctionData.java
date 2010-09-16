@@ -13,7 +13,7 @@ public class AuctionData extends GeneralData {
 	private Date data;
 
 	private boolean isAdd = false;
-	
+
 	private int time;
 
 	public String getUserId() {

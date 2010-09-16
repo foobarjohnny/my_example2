@@ -5,7 +5,7 @@ import org.mobile.common.action.GeneralData;
 public class ImageData extends GeneralData {
 
 	private String id;
-	
+
 	private String type;
 
 	public String getId() {

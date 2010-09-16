@@ -32,13 +32,13 @@ public class PublisAction extends GeneralAction<PublisData> {
 		publisService.search(model);
 		return SUCCESS;
 	}
-	
+
 	public String coolSearch() throws Exception {
 		this.setPage(model);
 		publisService.search(model);
 		return SUCCESS;
 	}
-	
+
 	public String coolForward() throws Exception {
 		publisService.forward(model);
 		return SUCCESS;

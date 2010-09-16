@@ -10,7 +10,7 @@ public class BingcurAction extends GeneralAction<BingcurData> {
 	private static final long serialVersionUID = 1L;
 
 	private BingcurData model = new BingcurData();
-	
+
 	private BingcurService bingcurService;
 
 	public String forward() throws GeneralException {
@@ -31,7 +31,7 @@ public class BingcurAction extends GeneralAction<BingcurData> {
 		bingcurService.search(model);
 		return SUCCESS;
 	}
-	
+
 	public String searchBiding() throws GeneralException {
 		setPage(model);
 		bingcurService.searchBiding(model);

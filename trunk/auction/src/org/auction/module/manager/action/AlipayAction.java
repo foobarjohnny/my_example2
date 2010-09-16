@@ -29,7 +29,7 @@ public class AlipayAction extends GeneralAction<AlipayData> {
 	 * @throws Exception
 	 */
 	public void notifyUrl() throws Exception {
-		
+
 	}
 
 	public AlipayData getModel() {

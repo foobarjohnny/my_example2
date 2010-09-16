@@ -3,25 +3,26 @@ package org.auction.module.admin.base.data;
 import java.util.Date;
 
 /**
- * [类说明]：用来记录数据库备份的页面的model信息
- * [注意事项]：
+ * [类说明]：用来记录数据库备份的页面的model信息 [注意事项]：
+ * 
  * @author 郭昕
- *
+ * 
  */
 public class DbBackupData {
 
 	private String id;
 	private String srcDir;
 	private String destDir;
-	private Date   backupTime;
-	private int    backupNum;
+	private Date backupTime;
+	private int backupNum;
 	private String isValid;
-	
-	public DbBackupData(){
-		
+
+	public DbBackupData() {
+
 	}
 
-	public DbBackupData(String srcDir, String destDir, Date backupTime, int backupNum, String isValid){
+	public DbBackupData(String srcDir, String destDir, Date backupTime,
+			int backupNum, String isValid) {
 		this.srcDir = srcDir;
 		this.destDir = destDir;
 		this.backupTime = backupTime;

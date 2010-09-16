@@ -1,5 +1,6 @@
 package org.auction.module.admin.commodity.service.impl;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,7 +22,11 @@ public class ConsumeServiceImpl extends GeneralService implements
 		ConsumeService {
 
 	public void delete(ConsumeData model) throws GeneralException {
-		String hql = " update TsConsume t set t.state = '1' where t.tsCommodity.id='" + model.getComId() + "' and t.tsUser.id='" + model.getUserId() + "'";
+		String hql = " update TsConsume t set t.state = '1' where t.tsCommodity.id='"
+				+ model.getComId()
+				+ "' and t.tsUser.id='"
+				+ model.getUserId()
+				+ "'";
 		generalDao.executeHql(hql);
 	}
 
@@ -60,26 +65,75 @@ public class ConsumeServiceImpl extends GeneralService implements
 				pageTotal += " and c.tsUser.username='" + s.getValue() + "'";
 			}
 		}
-		
+
 		List list = generalDao.search(hql, pageTotal, model.getPageBean());
 		if (list != null && list.size() > 0) {
-			for (int i=0;i<list.size();i++) {
+			for (int i = 0; i < list.size(); i++) {
 				ConsumeData data = new ConsumeData();
-				Object[] obj = (Object[])list.get(i);
-				TsCommodity tsCommodity = (TsCommodity)obj[0];
-				data.setAmount((Integer)obj[1]);
+				Object[] obj = (Object[]) list.get(i);
+				TsCommodity tsCommodity = (TsCommodity) obj[0];
+				data.setAmount((Integer) obj[1]);
 				data.setComname(tsCommodity.getTradename());
 				data.setDescript(tsCommodity.getSummary());
 				data.setComId(tsCommodity.getId());
 				data.setMarkPrice(tsCommodity.getPrices());
-				TsUser tsUser = (TsUser)obj[2];
+				TsUser tsUser = (TsUser) obj[2];
 				data.setUsername(tsUser.getUsername());
 				data.setUserId(tsUser.getId());
 				Iterator it = tsCommodity.getTsBingcurs().iterator();
 				if (it.hasNext()) {
-					TsBingcur tsBingcur = (TsBingcur)it.next();
+					TsBingcur tsBingcur = (TsBingcur) it.next();
 					data.setPrice(tsBingcur.getPrice());
 					data.setBidId(tsBingcur.getId());
+				}
+				model.getDataList().add(data);
+			}
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public void searchCom(ConsumeData model) throws GeneralException {
+		List<SearchBean> list = new ArrayList<SearchBean>();
+		list.add(new SearchBean("state", "eq", "string", "3"));
+		List dataList = generalDao.search(TsCommodity.class, list, model
+				.getPageBean(), null);
+		if (dataList != null && dataList.size() > 0) {
+			for (int i = 0; i < dataList.size(); i++) {
+				TsCommodity tsCommodity = (TsCommodity) dataList.get(i);
+				// 免费查询
+				String h1 = "select count(id) from TsBidding c where c.bidtype='1' and c.tsCommodity.id='" + tsCommodity.getId() + "'";
+				if (model.getSearchBeans() != null
+						&& model.getSearchBeans().size() > 0) {
+					if (model.getSearchBeans().get(0) != null) {
+						SearchBean s = model.getSearchBeans().get(0);
+						h1 += " and c.tsUser.username='" + s.getValue() + "'";
+					}
+				}
+				// 收费查询
+				String h2 = "select count(id) from TsBidding c where c.bidtype='2' and c.tsCommodity.id='" + tsCommodity.getId() + "'";
+				if (model.getSearchBeans() != null
+						&& model.getSearchBeans().size() > 0) {
+					if (model.getSearchBeans().get(0) != null) {
+						SearchBean s = model.getSearchBeans().get(0);
+						h2 += " and c.tsUser.username='" + s.getValue() + "'";
+					}
+				}
+				// 免费数量
+				Object o1 = generalDao.executeQuery(h1);
+				// 收费数量
+				Object o2 = generalDao.executeQuery(h2);
+				ConsumeData data = new ConsumeData();
+				data.setComname(tsCommodity.getTradename());
+				data.setAmount(Integer.parseInt((String.valueOf(o2))));
+				data.setFree(Integer.parseInt((String.valueOf(o1))));
+				data.setComId(tsCommodity.getId());
+				
+				Iterator it = tsCommodity.getTsBingcurs().iterator();
+				if (it.hasNext()) {
+					TsBingcur tsBingcur = (TsBingcur) it.next();
+					data.setPrice(tsBingcur.getPrice());
+					data.setBidId(tsBingcur.getId());
+					data.setBuytime(tsBingcur.getBinddate());
 				}
 				model.getDataList().add(data);
 			}
@@ -94,29 +148,31 @@ public class ConsumeServiceImpl extends GeneralService implements
 		LoginBean loginBean = SessionManager.getLoginInfo(GeneralManager
 				.getCurrentManager().getSessionId());
 		if (loginBean != null) {
-			String hql = "select c.tsCommodity,sum(c.amount) from TsConsume c where c.tsUser.id='" + loginBean.getId() + "' group by c.tsCommodity";
-			String pageTotal = "select count(id) from TsConsume c where c.tsUser.id='" + loginBean.getId() + "' ";
+			String hql = "select c.tsCommodity,sum(c.amount) from TsConsume c where c.tsUser.id='"
+					+ loginBean.getId() + "' group by c.tsCommodity";
+			String pageTotal = "select count(id) from TsConsume c where c.tsUser.id='"
+					+ loginBean.getId() + "' ";
 			List list = generalDao.search(hql, pageTotal, model.getPageBean());
 			if (list != null && list.size() > 0) {
-				for (int i=0;i<list.size();i++) {
+				for (int i = 0; i < list.size(); i++) {
 					ConsumeData data = new ConsumeData();
-					Object[] obj = (Object[])list.get(i);
-					TsCommodity tsCommodity = (TsCommodity)obj[0];
-					data.setAmount((Integer)obj[1]);
+					Object[] obj = (Object[]) list.get(i);
+					TsCommodity tsCommodity = (TsCommodity) obj[0];
+					data.setAmount((Integer) obj[1]);
 					data.setComname(tsCommodity.getTradename());
 					data.setDescript(tsCommodity.getSummary());
 					data.setComId(tsCommodity.getId());
 					data.setMarkPrice(tsCommodity.getPrices());
 					Iterator it = tsCommodity.getTsBingcurs().iterator();
 					if (it.hasNext()) {
-						TsBingcur tsBingcur = (TsBingcur)it.next();
+						TsBingcur tsBingcur = (TsBingcur) it.next();
 						data.setPrice(tsBingcur.getPrice());
 					}
 					model.getDataList().add(data);
 				}
 			}
 		}
-		
+
 	}
 
 }

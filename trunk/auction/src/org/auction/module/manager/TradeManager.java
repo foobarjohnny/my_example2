@@ -20,9 +20,10 @@ public class TradeManager {
 	public static void add(TradeData tradeData) {
 		tradeDataMap.put(tradeData.getId(), tradeData);
 	}
-	
+
 	/**
 	 * 获得指定商品
+	 * 
 	 * @param key
 	 * @return
 	 */
@@ -38,7 +39,7 @@ public class TradeManager {
 	public static void remove(String id) {
 		tradeDataMap.remove(id);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public static List<TradeData> getTradeData() {
 		List<TradeData> list = new ArrayList<TradeData>();

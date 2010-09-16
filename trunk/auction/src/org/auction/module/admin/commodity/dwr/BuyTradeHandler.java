@@ -30,7 +30,7 @@ public class BuyTradeHandler {
 		}
 		return result;
 	}
-	
+
 	public String buyTrad(String id) throws Exception {
 		String result = "success";
 		HttpServletRequest req = WebContextFactory.get()

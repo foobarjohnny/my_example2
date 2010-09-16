@@ -41,9 +41,9 @@ public class TsOrder implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TsOrder(TsCommodity tsCommodity, String ordernum,
-			Date ordertime, String pay, BigDecimal amount, String receiver,
-			String telphone, String address, String remard, BigDecimal fare,
+	public TsOrder(TsCommodity tsCommodity, String ordernum, Date ordertime,
+			String pay, BigDecimal amount, String receiver, String telphone,
+			String address, String remard, BigDecimal fare,
 			BigDecimal totalPrices, String state, String ordertype) {
 		this.tsCommodity = tsCommodity;
 		this.ordernum = ordernum;

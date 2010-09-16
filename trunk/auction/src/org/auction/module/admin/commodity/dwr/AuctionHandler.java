@@ -13,7 +13,8 @@ public class AuctionHandler {
 
 	private AuctionService auctionService;
 
-	public String auction(String comptyId, String price, String userId, String htmlId) {
+	public String auction(String comptyId, String price, String userId,
+			String htmlId) {
 		HttpServletRequest req = WebContextFactory.get()
 				.getHttpServletRequest();
 		LoginBean bean = (LoginBean) req.getSession().getAttribute("login");
@@ -29,7 +30,7 @@ public class AuctionHandler {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-					
+
 				if (is) {
 					if (data.isAdd()) {
 						return "add:" + htmlId + ":" + data.getTime();

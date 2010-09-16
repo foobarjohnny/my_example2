@@ -12,18 +12,18 @@ public interface CommodityService {
 	public void delete(CommodityData model) throws GeneralException;
 
 	public void search(CommodityData model) throws GeneralException;
-	
+
 	public void searchLot(CommodityData model) throws GeneralException;
-	
+
 	public void searchProgress(CommodityData model) throws GeneralException;
-	
+
 	public void searchReach(CommodityData model) throws GeneralException;
-	
+
 	public void auction(CommodityData model) throws GeneralException;
-	
+
 	public void select(CommodityData model) throws GeneralException;
-	
+
 	public void getReach(CommodityData model) throws GeneralException;
-	
+
 	public void getReachView(CommodityData model) throws GeneralException;
 }

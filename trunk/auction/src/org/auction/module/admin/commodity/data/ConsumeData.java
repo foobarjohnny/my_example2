@@ -16,6 +16,7 @@ public class ConsumeData extends GeneralData {
 	private String remark;
 	private String buytype;
 	private Integer amount;
+	private Integer free;
 	private String comId;
 	private String comname;
 	private String descript;
@@ -135,5 +136,13 @@ public class ConsumeData extends GeneralData {
 
 	public void setBidId(String bidId) {
 		this.bidId = bidId;
+	}
+
+	public Integer getFree() {
+		return free;
+	}
+
+	public void setFree(Integer free) {
+		this.free = free;
 	}
 }

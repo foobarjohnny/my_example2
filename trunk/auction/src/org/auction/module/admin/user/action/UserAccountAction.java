@@ -8,11 +8,11 @@ import org.mobile.common.exception.GeneralException;
 public class UserAccountAction extends GeneralAction<UserAccountData> {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private UserAccountData model = new UserAccountData();
 
 	private UserAccountService userAccountService;
-	
+
 	public String account() throws GeneralException {
 		this.setPage(model);
 		userAccountService.account(model);

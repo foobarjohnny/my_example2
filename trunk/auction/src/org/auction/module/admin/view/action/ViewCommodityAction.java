@@ -17,7 +17,7 @@ public class ViewCommodityAction extends GeneralAction<ViewData> {
 		viewCommodityService.show(model);
 		return SUCCESS;
 	}
-	
+
 	public String showAll() throws GeneralException {
 		this.setPage(model);
 		viewCommodityService.showAll(model);

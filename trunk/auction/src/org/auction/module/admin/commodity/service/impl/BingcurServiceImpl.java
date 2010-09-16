@@ -65,8 +65,8 @@ public class BingcurServiceImpl extends GeneralService implements
 		}
 		// 获得商品图片ID
 		List<SearchBean> searchBean = new ArrayList<SearchBean>();
-		searchBean.add(new SearchBean("imageid", "eq", "string",
-				tsBingcur.getTsCommodity().getId()));
+		searchBean.add(new SearchBean("imageid", "eq", "string", tsBingcur
+				.getTsCommodity().getId()));
 		searchBean.add(new SearchBean("tablename", "eq", "string",
 				"TS_COMMODITY"));
 		List imagelist = generalDao.search(TsImages.class, searchBean, null,

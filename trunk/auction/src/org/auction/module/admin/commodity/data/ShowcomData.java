@@ -21,11 +21,11 @@ public class ShowcomData extends GeneralData {
 	private String bidId;
 	private BigDecimal price = new BigDecimal(0);
 	private Integer count;
-	
+
 	private BigDecimal mprice = new BigDecimal(0);
-	
+
 	private BigDecimal js = new BigDecimal(0);
-	
+
 	private List<ShowcomData> dataList = new ArrayList<ShowcomData>();
 
 	public String getId() {

@@ -19,8 +19,8 @@ public class RebotServiceImpl extends GeneralService implements RebotService {
 
 	public void forward(RebotData model) throws GeneralException {
 		if (model.getId() != null && !model.getId().equals("")) {
-			TsRobot tsRobot = (TsRobot) generalDao.get(TsRobot.class,
-					model.getId());
+			TsRobot tsRobot = (TsRobot) generalDao.get(TsRobot.class, model
+					.getId());
 			BeanProcessUtils.copyProperties(model, tsRobot);
 		}
 	}
@@ -38,8 +38,8 @@ public class RebotServiceImpl extends GeneralService implements RebotService {
 	@SuppressWarnings("unchecked")
 	public void search(RebotData model) throws GeneralException {
 		List<SearchBean> search = new ArrayList<SearchBean>();
-		List list = generalDao.search(TsRobot.class, search,
-				model.getPageBean(), null);
+		List list = generalDao.search(TsRobot.class, search, model
+				.getPageBean(), null);
 		for (int i = 0; i < list.size(); i++) {
 			TsRobot tsRobot = (TsRobot) list.get(i);
 			RebotData data = new RebotData();

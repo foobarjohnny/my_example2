@@ -81,7 +81,7 @@ public class UserAction extends GeneralAction<UserData> {
 		userService.save(model);
 		return SUCCESS;
 	}
-	
+
 	public String viewPass() throws GeneralException {
 		userService.forward(model);
 		return SUCCESS;
