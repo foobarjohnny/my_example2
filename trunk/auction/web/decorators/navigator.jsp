@@ -44,10 +44,12 @@
 				<td width="1" align="center" valign="middle">
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
+				<!-- 
 				<td width="81" align="center" valign="middle">
 					<a href="taobao.htm"><span class="indextitle"><br>
 							淘宝岛</span> </a>
 				</td>
+				 -->
 				<td width="1" align="center" valign="middle">
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
