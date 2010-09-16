@@ -1,6 +1,6 @@
 package org.auction.module.admin.base.data;
 
-import java.util.ArrayList;  
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

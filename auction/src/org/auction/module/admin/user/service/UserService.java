@@ -13,15 +13,15 @@ public interface UserService {
 	public void delete(UserData model) throws GeneralException;
 
 	public void search(UserData model) throws GeneralException;
-	
+
 	public boolean login(UserData model) throws GeneralException;
-	
+
 	public void regedit(UserData model) throws GeneralException;
-	
+
 	public void view(UserData model) throws GeneralException;
-	
+
 	public void update(UserData model) throws GeneralException;
-	
+
 	public LoginBean loginDwr(UserData model) throws GeneralException;
-	
+
 }

@@ -10,7 +10,7 @@ public class SortAction extends GeneralAction<SortData> {
 	private static final long serialVersionUID = 1L;
 
 	private SortData model = new SortData();
-	
+
 	private SortService sortService;
 
 	public String forward() throws GeneralException {
@@ -20,9 +20,9 @@ public class SortAction extends GeneralAction<SortData> {
 
 	public String save() throws GeneralException {
 		boolean ret = sortService.save(model);
-		if(ret){
+		if (ret) {
 			return SUCCESS;
-		}else{
+		} else {
 			return ERROR;
 		}
 	}

@@ -15,7 +15,7 @@ public class RebotData extends GeneralData {
 	private Long endprice;
 	private Integer auctiontime;
 	private String methodName;
-	
+
 	private List<RebotData> dataList = new ArrayList<RebotData>();
 
 	public String getId() {

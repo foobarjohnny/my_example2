@@ -12,6 +12,6 @@ public interface EcurrService {
 	public void delete(EcurrData model) throws GeneralException;
 
 	public void search(EcurrData model) throws GeneralException;
-	
+
 	public void buy(EcurrData model) throws GeneralException;
 }

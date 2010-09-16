@@ -39,8 +39,8 @@ public class BuyServiceImpl extends GeneralService implements BuyService {
 
 	@SuppressWarnings("unchecked")
 	public void search(BuyData model) throws GeneralException {
-		List list = generalDao.search(TsBuy.class, model.getSearchBeans(), model.getPageBean(),
-				null);
+		List list = generalDao.search(TsBuy.class, model.getSearchBeans(),
+				model.getPageBean(), null);
 		for (int i = 0; i < list.size(); i++) {
 			TsBuy tsBuy = (TsBuy) list.get(i);
 			BuyData data = new BuyData();
@@ -61,9 +61,10 @@ public class BuyServiceImpl extends GeneralService implements BuyService {
 				.getCurrentManager().getSessionId());
 		if (loginBean != null) {
 			List<SearchBean> search = new ArrayList<SearchBean>();
-			search.add(new SearchBean("tsUser.id","eq","string",loginBean.getId()));
-			List list = generalDao.search(TsBuy.class, search, model.getPageBean(),
-					null);
+			search.add(new SearchBean("tsUser.id", "eq", "string", loginBean
+					.getId()));
+			List list = generalDao.search(TsBuy.class, search, model
+					.getPageBean(), null);
 			for (int i = 0; i < list.size(); i++) {
 				TsBuy tsBuy = (TsBuy) list.get(i);
 				BuyData data = new BuyData();

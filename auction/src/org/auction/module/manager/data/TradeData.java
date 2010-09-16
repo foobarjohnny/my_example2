@@ -33,12 +33,12 @@ public class TradeData {
 	// 当前竞拍用户信息
 	private String uid;
 	private String username;
-	
-	//增加时间
+
+	// 增加时间
 	private boolean isAdd;
-	
+
 	private boolean over = false;
-	
+
 	public String getId() {
 		return id;
 	}

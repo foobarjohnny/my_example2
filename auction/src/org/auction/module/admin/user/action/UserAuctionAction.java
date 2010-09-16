@@ -18,19 +18,19 @@ public class UserAuctionAction extends GeneralAction<UserAuctionData> {
 		userAuctionService.auction(model);
 		return SUCCESS;
 	}
-	
+
 	public String now() throws GeneralException {
 		this.setPage(model);
 		userAuctionService.now(model);
 		return SUCCESS;
 	}
-	
+
 	public String follow() throws GeneralException {
 		this.setPage(model);
 		userAuctionService.follow(model);
 		return SUCCESS;
 	}
-	
+
 	public String viewAuctionNow() throws GeneralException {
 		this.setPage(model);
 		userAuctionService.viewAuctionNow(model);

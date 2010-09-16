@@ -1,6 +1,6 @@
 package org.auction.entity;
 
-import java.util.Date; 
+import java.util.Date;
 
 /**
  * TsInfo entity. @author MyEclipse Persistence Tools
@@ -29,8 +29,7 @@ public class TsInfo implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TsInfo(String nettype, String info, String title,
-			Date releasedate) {
+	public TsInfo(String nettype, String info, String title, Date releasedate) {
 		this.nettype = nettype;
 		this.info = info;
 		this.title = title;

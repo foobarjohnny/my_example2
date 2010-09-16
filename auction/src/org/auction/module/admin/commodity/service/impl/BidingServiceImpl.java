@@ -19,7 +19,8 @@ public class BidingServiceImpl extends GeneralService implements BidingService {
 		TradeData tradeData = TradeManager.get(model.getCommpityId());
 		if (tradeData != null) {
 			String uid = tradeData.getUid();
-			if (uid != null && !uid.equals("") && !uid.equals(model.getUserId())) {
+			if (uid != null && !uid.equals("")
+					&& !uid.equals(model.getUserId())) {
 				BidingData data = new BidingData();
 				data.setUserId(uid);
 				data.setUsername(tradeData.getUsername());

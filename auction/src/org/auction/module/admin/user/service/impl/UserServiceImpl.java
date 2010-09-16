@@ -24,9 +24,8 @@ public class UserServiceImpl extends GeneralService implements UserService {
 	public void forward(UserData model) throws GeneralException {
 		GeneralManager m = GeneralManager.getCurrentManager();
 		LoginBean lb = SessionManager.getLoginInfo(m.getSessionId());
-		if (lb != null) {	
-			TsUser tsUser = (TsUser) generalDao
-			.get(TsUser.class, lb.getId());
+		if (lb != null) {
+			TsUser tsUser = (TsUser) generalDao.get(TsUser.class, lb.getId());
 			BeanProcessUtils.copyProperties(model, tsUser);
 		}
 	}
@@ -88,8 +87,12 @@ public class UserServiceImpl extends GeneralService implements UserService {
 			LoginBean bean = new LoginBean();
 			bean.setWorkNo(tsUser.getUsername());
 			bean.setId(tsUser.getId());
-			// GeneralManager manager = GeneralManager.getCurrentManager();
-			// SessionManager.setLoginInfo(manager.getSessionId(), bean);
+			bean.setPaycur(tsUser.getPaycur());
+			bean.setFreecur(tsUser.getFreecur());
+			//获得用户拍到商品数
+			String hql = "select count(id) from TsBingcur t where t.tsUser.id='" + tsUser.getId() + "'";
+			Object o = generalDao.executeQuery(hql);
+			bean.setAmount(Integer.parseInt(String.valueOf(o)));
 			return bean;
 		}
 		return null;

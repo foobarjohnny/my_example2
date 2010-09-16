@@ -1,6 +1,6 @@
 package org.auction.module.admin.base.service.impl;
 
-import java.util.ArrayList;  
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -40,13 +40,15 @@ public class InfoServiceImpl extends GeneralService implements InfoService {
 				BeanProcessUtils.copyProperties(model, tsInfo);
 			}
 		} else if (model.getNettype().equals("3")) {
-			if (model.getId()!= null && !model.getId().equals("")) {
-				TsInfo tsInfo = (TsInfo) generalDao.get(TsInfo.class, model.getId());
+			if (model.getId() != null && !model.getId().equals("")) {
+				TsInfo tsInfo = (TsInfo) generalDao.get(TsInfo.class, model
+						.getId());
 				BeanProcessUtils.copyProperties(model, tsInfo);
 			}
 		} else if (model.getNettype().equals("5")) {
-			if (model.getId()!= null && !model.getId().equals("")) {
-				TsInfo tsInfo = (TsInfo) generalDao.get(TsInfo.class, model.getId());
+			if (model.getId() != null && !model.getId().equals("")) {
+				TsInfo tsInfo = (TsInfo) generalDao.get(TsInfo.class, model
+						.getId());
 				BeanProcessUtils.copyProperties(model, tsInfo);
 			}
 		}

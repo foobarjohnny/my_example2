@@ -13,9 +13,9 @@ public class EcurrData extends GeneralData {
 	private BigDecimal paymoney;
 	private Integer freecount;
 	private String remark;
-	
+
 	private String url;
-	
+
 	private List<EcurrData> dataList = new ArrayList<EcurrData>();
 
 	public String getId() {

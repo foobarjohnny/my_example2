@@ -27,9 +27,9 @@ public class UserData extends GeneralData {
 	private Date lasttimeip;
 	private Integer paycur;
 	private Integer freecur;
-	
+
 	private String methodName;
-	
+
 	private List<UserData> dataList = new ArrayList<UserData>();
 
 	public String getId() {

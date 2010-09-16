@@ -14,7 +14,7 @@ public interface BidingService {
 	public String delete(BidingData model) throws GeneralException;
 
 	public String search(BidingData model) throws GeneralException;
-	
+
 	@SuppressWarnings("unchecked")
 	public List findNewPeople(BidingData model) throws GeneralException;
 }

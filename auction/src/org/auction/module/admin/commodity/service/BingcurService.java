@@ -12,6 +12,6 @@ public interface BingcurService {
 	public String delete(BingcurData model) throws GeneralException;
 
 	public String search(BingcurData model) throws GeneralException;
-	
+
 	public String searchBiding(BingcurData model) throws GeneralException;
 }

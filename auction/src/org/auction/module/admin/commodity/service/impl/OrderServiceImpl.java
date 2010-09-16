@@ -73,13 +73,12 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 		model.setComprice(total);
 		// 应付价格
 		model.setTotalPrices(bd);
-		
+
 		// 查询该商品成交用户
 		List<SearchBean> search = new ArrayList<SearchBean>();
 		search.add(new SearchBean("tsCommodity.id", "eq", "string", tsOrder
 				.getTsCommodity().getId()));
-		List bing_list = generalDao.search(TsBingcur.class, search, null,
-				null);
+		List bing_list = generalDao.search(TsBingcur.class, search, null, null);
 		if (bing_list != null && bing_list.size() > 0) {
 			TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
 			model.setBidId(tsBingcur.getId());
@@ -202,15 +201,17 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * 生成用户购买订单
 	 */
 	@SuppressWarnings("unchecked")
-	public String createOrders(String id, String userId) throws GeneralException {
+	public String createOrders(String id, String userId)
+			throws GeneralException {
 		String result = "success";
 		// 商品信息
-		TsCommodity tsCommodity = (TsCommodity) generalDao.get(TsCommodity.class, id);
+		TsCommodity tsCommodity = (TsCommodity) generalDao.get(
+				TsCommodity.class, id);
 		// 用户信息
 		TsUser tsUser = (TsUser) generalDao.get(TsUser.class, userId);
 		// 判断用户是否参与该商品竞拍,如果没有不允许购买

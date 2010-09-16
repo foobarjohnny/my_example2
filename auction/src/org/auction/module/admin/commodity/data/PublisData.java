@@ -20,7 +20,7 @@ public class PublisData extends GeneralData {
 	private String[] ids;
 	private File[] files;
 	private String[] filesFileName;
-	
+
 	private List<PublisData> dataList = new ArrayList<PublisData>();
 
 	public String getId() {

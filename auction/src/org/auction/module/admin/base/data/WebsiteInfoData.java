@@ -4,9 +4,8 @@ import java.io.File;
 
 import org.mobile.common.action.GeneralData;
 
-
 public class WebsiteInfoData extends GeneralData {
-	
+
 	private String id;
 	private String networkName;
 	private String title;
@@ -21,12 +20,12 @@ public class WebsiteInfoData extends GeneralData {
 	private String copyright;
 	private String metaKey;
 	private String metaDes;
-	
+
 	/**
 	 * 构造函数
 	 */
-	public WebsiteInfoData(){
-		
+	public WebsiteInfoData() {
+
 	}
 
 	public String getId() {

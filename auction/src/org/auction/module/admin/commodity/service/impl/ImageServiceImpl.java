@@ -19,29 +19,34 @@ public class ImageServiceImpl extends GeneralService implements ImageService {
 	public void getImage(ImageData model) throws Exception {
 		List<SearchBean> list = new ArrayList<SearchBean>();
 		if (model.getType() != null && !model.getType().equals("")) {
-			list.add(new SearchBean("tablename","eq","string",model.getType()));
+			list.add(new SearchBean("tablename", "eq", "string", model
+					.getType()));
 		} else {
-			list.add(new SearchBean("tablename","eq","string","TS_COMMODITY"));
+			list
+					.add(new SearchBean("tablename", "eq", "string",
+							"TS_COMMODITY"));
 		}
-		list.add(new SearchBean("imageid","eq","string",model.getId()));
+		list.add(new SearchBean("imageid", "eq", "string", model.getId()));
 		List imageList = generalDao.search(TsImages.class, list, null, null);
 		if (imageList != null && imageList.size() > 0) {
 			TsImages tsImages = (TsImages) imageList.get(0);
 			InputStream fis = new FileInputStream(tsImages.getFilepath());
-			OutputStream os = ServletActionContext.getResponse().getOutputStream();
-			
+			OutputStream os = ServletActionContext.getResponse()
+					.getOutputStream();
+
 			byte[] blobbytes = new byte[1024];
 			int bytesRead = 0;
 			while ((bytesRead = fis.read(blobbytes)) != -1) {
 				os.write(blobbytes, 0, bytesRead);
 			}
 			fis.close();
-			
+
 		}
 	}
 
 	public void viewImage(ImageData model) throws Exception {
-		TsImages tsImages = (TsImages) generalDao.get(TsImages.class, model.getId());
+		TsImages tsImages = (TsImages) generalDao.get(TsImages.class, model
+				.getId());
 		InputStream fis = new FileInputStream(tsImages.getFilepath());
 		OutputStream os = ServletActionContext.getResponse().getOutputStream();
 		byte[] blobbytes = new byte[1024];

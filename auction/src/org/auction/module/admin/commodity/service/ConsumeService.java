@@ -13,5 +13,7 @@ public interface ConsumeService {
 
 	public void search(ConsumeData model) throws GeneralException;
 	
+	public void searchCom(ConsumeData model) throws GeneralException;
+
 	public void searchPayE(ConsumeData model) throws GeneralException;
 }

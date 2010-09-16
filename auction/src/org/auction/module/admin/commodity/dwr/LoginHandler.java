@@ -24,7 +24,7 @@ public class LoginHandler {
 					.getHttpServletRequest();
 			req.getSession().setAttribute("login", bean);
 			SessionManager.setLoginInfo(req.getSession().getId(), bean);
-			return bean.getWorkNo() + "," + bean.getId();
+			return bean.getWorkNo() + "," + bean.getId() + "," + bean.getFreecur() + "," + bean.getPaycur() + "," + bean.getAmount();
 		} else {
 			return "error";
 		}

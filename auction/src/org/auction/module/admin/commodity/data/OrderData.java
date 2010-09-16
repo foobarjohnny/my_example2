@@ -31,7 +31,7 @@ public class OrderData extends GeneralData {
 	private String methodName;
 	private Integer ecount;
 	private BigDecimal comPrice = new BigDecimal(0);
-	
+
 	private String url;
 
 	private List<OrderData> dataList = new ArrayList<OrderData>();

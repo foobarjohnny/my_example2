@@ -60,11 +60,26 @@ public class PublisServiceImpl extends GeneralService implements PublisService {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public void forward(PublisData model) throws Exception {
 		if (model.getId() != null && !model.getId().equals("")) {
 			TsPublis tsCommodity = (TsPublis) generalDao.get(TsPublis.class,
 					model.getId());
 			BeanProcessUtils.copyProperties(model, tsCommodity);
+			List<SearchBean> sb = new ArrayList<SearchBean>();
+			sb.add(new SearchBean("imageid", "eq", "string", tsCommodity
+					.getId()));
+			sb.add(new SearchBean("tablename", "eq", "string", "TS_PUBLIS"));
+			List list = generalDao.search(TsImages.class, sb, null, null);
+
+			if (list != null && list.size() > 0) {
+				String[] ids = new String[list.size()];
+				for (int i = 0; i < list.size(); i++) {
+					TsImages image = (TsImages)list.get(i);
+					ids[i] = image.getId();
+				}
+				model.setIds(ids);
+			}
 		}
 	}
 
@@ -82,8 +97,8 @@ public class PublisServiceImpl extends GeneralService implements PublisService {
 	}
 
 	public boolean vote(PublisData model) throws Exception {
-		TsPublis tsCommodity = (TsPublis) generalDao.get(TsPublis.class,
-				model.getId());
+		TsPublis tsCommodity = (TsPublis) generalDao.get(TsPublis.class, model
+				.getId());
 		tsCommodity.setAmount(tsCommodity.getAmount() + 1);
 		generalDao.update(tsCommodity);
 		model.setAmount(tsCommodity.getAmount());

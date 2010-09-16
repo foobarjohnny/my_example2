@@ -36,7 +36,7 @@ public class InfoAction extends GeneralAction<InfoData> {
 			return "help";
 		} else if (model.getNettype().equals("5")) {
 			return "post";
-		} 
+		}
 		return SUCCESS;
 	}
 
@@ -57,25 +57,25 @@ public class InfoAction extends GeneralAction<InfoData> {
 	}
 
 	public String saveInfo() throws GeneralException {
-		try{
-		infoService.saveInfo(model);
-		if (model.getNettype().equals("1")) {
-			return "web";
-		} else if (model.getNettype().equals("2")) {
-			return "join";
-		} else if (model.getNettype().equals("4")) {
-			return "reg";
-		} else if (model.getNettype().equals("3")) {
-			return "help";
-		} else if (model.getNettype().equals("5")) {
-			return "post";
-		}
-		}catch(Exception e){
+		try {
+			infoService.saveInfo(model);
+			if (model.getNettype().equals("1")) {
+				return "web";
+			} else if (model.getNettype().equals("2")) {
+				return "join";
+			} else if (model.getNettype().equals("4")) {
+				return "reg";
+			} else if (model.getNettype().equals("3")) {
+				return "help";
+			} else if (model.getNettype().equals("5")) {
+				return "post";
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return SUCCESS;
 	}
-	
+
 	public String viewInfo() throws GeneralException {
 		infoService.forwardInfo(model);
 		if (model.getNettype().equals("5")) {
@@ -86,7 +86,7 @@ public class InfoAction extends GeneralAction<InfoData> {
 			return SUCCESS;
 		}
 	}
-	
+
 	public String viewInfoList() throws GeneralException {
 		setPage(model);
 		infoService.search(model);

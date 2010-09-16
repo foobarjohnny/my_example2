@@ -16,15 +16,15 @@ public class DbBackupAction extends GeneralAction<DbBackupData> {
 	public DbBackupData getModel() {
 		return model;
 	}
-	
-	public void setService(DbBackupService service){
+
+	public void setService(DbBackupService service) {
 		this.service = service;
 	}
 
 	public String backup() throws GeneralException {
-		if(service.backup(model)){
-			return "OK"; 
-		}else{
+		if (service.backup(model)) {
+			return "OK";
+		} else {
 			return "ERROR";
 		}
 	}

@@ -12,7 +12,7 @@ public class EcurrAction extends GeneralAction<EcurrData> {
 	private EcurrData model = new EcurrData();
 
 	private EcurrService ecurrService;
-	
+
 	private String url;
 
 	public String forward() throws GeneralException {
@@ -35,12 +35,12 @@ public class EcurrAction extends GeneralAction<EcurrData> {
 		ecurrService.search(model);
 		return SUCCESS;
 	}
-	
+
 	public String showEcurr() throws GeneralException {
 		ecurrService.search(model);
 		return SUCCESS;
 	}
-	
+
 	public String buyEcurr() throws GeneralException {
 		isLogin();
 		ecurrService.buy(model);

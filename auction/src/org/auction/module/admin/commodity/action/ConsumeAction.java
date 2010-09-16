@@ -34,6 +34,12 @@ public class ConsumeAction extends GeneralAction<ConsumeData> {
 		return SUCCESS;
 	}
 	
+	public String searchCom() throws GeneralException {
+		this.setPage(model);
+		consumeService.searchCom(model);
+		return SUCCESS;
+	}
+
 	public String searchUserPayE() throws GeneralException {
 		this.setPage(model);
 		consumeService.searchPayE(model);

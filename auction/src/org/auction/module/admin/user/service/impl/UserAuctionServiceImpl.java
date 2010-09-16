@@ -206,8 +206,8 @@ public class UserAuctionServiceImpl extends GeneralService implements
 		}
 		// 获得商品图片ID
 		List<SearchBean> searchBean = new ArrayList<SearchBean>();
-		searchBean.add(new SearchBean("imageid", "eq", "string",
-				model.getId()));
+		searchBean
+				.add(new SearchBean("imageid", "eq", "string", model.getId()));
 		searchBean.add(new SearchBean("tablename", "eq", "string",
 				"TS_COMMODITY"));
 		List imagelist = generalDao.search(TsImages.class, searchBean, null,
@@ -225,8 +225,8 @@ public class UserAuctionServiceImpl extends GeneralService implements
 		List<OrderByBean> orderBean = new ArrayList<OrderByBean>();
 		orderBean.add(new OrderByBean("", "biddate", "desc"));
 		List<SearchBean> searchBeans = new ArrayList<SearchBean>();
-		searchBeans.add(new SearchBean("tsCommodity.id", "eq", "string",
-				model.getId()));
+		searchBeans.add(new SearchBean("tsCommodity.id", "eq", "string", model
+				.getId()));
 		List lists = generalDao.search(TsBidding.class, searchBeans, pageBean,
 				orderBean);
 		if (lists != null && lists.size() > 0) {

@@ -31,8 +31,8 @@ public class TsBingcur implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TsBingcur(TsCommodity tsCommodity, TsUser tsUser,
-			Date binddate, BigDecimal price, Integer amount) {
+	public TsBingcur(TsCommodity tsCommodity, TsUser tsUser, Date binddate,
+			BigDecimal price, Integer amount) {
 		this.tsCommodity = tsCommodity;
 		this.tsUser = tsUser;
 		this.binddate = binddate;

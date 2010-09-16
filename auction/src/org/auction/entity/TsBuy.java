@@ -29,8 +29,8 @@ public class TsBuy implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TsBuy(TsUser tsUser, Date buytime, String remark,
-			String buytype, Integer amount) {
+	public TsBuy(TsUser tsUser, Date buytime, String remark, String buytype,
+			Integer amount) {
 		this.tsUser = tsUser;
 		this.buytime = buytime;
 		this.remark = remark;

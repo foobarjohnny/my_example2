@@ -14,6 +14,7 @@ import org.auction.module.admin.commodity.data.SortData;
 import org.auction.module.admin.view.data.ViewData;
 import org.auction.module.view.show.data.ShowData;
 import org.auction.module.view.show.service.IShowService;
+import org.mobile.common.bean.OrderByBean;
 import org.mobile.common.bean.PageBean;
 import org.mobile.common.bean.SearchBean;
 import org.mobile.common.dao.IGeneralDao;
@@ -27,6 +28,7 @@ public class ShowServiceImpl implements IShowService {
 	public void show(ShowData model) throws Exception {
 		// 商品分类
 		List<SearchBean> search = new ArrayList<SearchBean>();
+		//search.add(new SearchBean("isValid","eq","string","N"));
 		List list = generalDao.search(TsSort.class, search, null, null);
 		for (int i = 0; i < list.size(); i++) {
 			TsSort tsSort = (TsSort) list.get(i);
@@ -36,7 +38,9 @@ public class ShowServiceImpl implements IShowService {
 		}
 		// 竞拍历史
 		PageBean pageBean = new PageBean();
-		list = generalDao.search(TsBingcur.class, search, pageBean, null);
+		List<OrderByBean> orderList = new ArrayList<OrderByBean>();
+		orderList.add(new OrderByBean("","binddate","desc"));
+		list = generalDao.search(TsBingcur.class, search, pageBean, orderList);
 		for (int i = 0; i < list.size(); i++) {
 			TsBingcur tsSort = (TsBingcur) list.get(i);
 			BingcurData data = new BingcurData();
