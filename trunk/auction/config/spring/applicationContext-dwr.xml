@@ -5,33 +5,27 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd">
 	<dwr:configuration />
 	<dwr:controller id="dwrController" debug="true" />
-	<bean id="bidingRomet"
-		class="org.auction.module.admin.commodity.dwr.BidingHandler">
+	<bean id="bidingRomet" class="org.auction.module.admin.commodity.dwr.BidingHandler">
 		<property name="bidingService" ref="bidingService" />
 		<dwr:remote javascript="bidingRomet"></dwr:remote>
 	</bean>
-	<bean id="loginRomet"
-		class="org.auction.module.admin.commodity.dwr.LoginHandler">
+	<bean id="loginRomet" class="org.auction.module.admin.commodity.dwr.LoginHandler">
 		<property name="userService" ref="userService" />
 		<dwr:remote javascript="loginRomet"></dwr:remote>
 	</bean>
-	<bean id="auctionRomet"
-		class="org.auction.module.admin.commodity.dwr.AuctionHandler">
+	<bean id="auctionRomet" class="org.auction.module.admin.commodity.dwr.AuctionHandler">
 		<property name="auctionService" ref="auctionService" />
 		<dwr:remote javascript="auctionRomet"></dwr:remote>
 	</bean>
-	<bean id="userRomet"
-		class="org.auction.module.admin.user.dwr.UserHandler">
+	<bean id="userRomet" class="org.auction.module.admin.user.dwr.UserHandler">
 		<property name="userService" ref="userService" />
 		<dwr:remote javascript="userRomet"></dwr:remote>
 	</bean>
-	<bean id="orderRomet"
-		class="org.auction.module.admin.commodity.dwr.BuyTradeHandler">
+	<bean id="orderRomet" class="org.auction.module.admin.commodity.dwr.BuyTradeHandler">
 		<property name="orderService" ref="orderService" />
 		<dwr:remote javascript="buyRomet"></dwr:remote>
 	</bean>
-	<bean id="publisRomet"
-		class="org.auction.module.admin.commodity.dwr.PublisHandler">
+	<bean id="publisRomet" class="org.auction.module.admin.commodity.dwr.PublisHandler">
 		<property name="publisService" ref="publisService" />
 		<dwr:remote javascript="publisRomet"></dwr:remote>
 	</bean>
