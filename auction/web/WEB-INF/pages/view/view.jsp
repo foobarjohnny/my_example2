@@ -97,7 +97,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" valign="top" bgcolor="#FFFFFF">
-				<table width="100%" border="1" cellspacing="0" cellpadding="0" height="100%">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
 					<tr>
 						<% int i = 0; %>
 						<s:iterator value="dataList" id="data" status="status">
@@ -123,35 +123,35 @@
 								</tr>
 								<tr>
 									<td align="center">
-										<a href="viewAuctionNow.action?id=${data.id }"><img alt="" src="showImage.action?id=${data.id }" border="0"/> </a>
+										<a href="viewAuctionNow.action?id=${data.id }">
+											<img alt="" src="showImage.action?id=${data.id }" border="0" width="120" height="120"/> 
+										</a>
 									</td>
 								</tr>
-								<tr height="40">
+								<tr height="30"  valign="middle">
 									<td align="center" class="indextime">
 										<div id="div${status.index }" style="color:red">
 											<script type="text/javascript">
 												var div${status.index } = null;
 												var time${status.index } = ${data.remaining};
 												div${status.index } = setInterval("displayTime('div${status.index }', time${status.index }, div${status.index }, '${data.id}', '${status.index }')", 1000);
-												
 											</script>
 										</div>
 									</td>
 								</tr>
-								<tr height="40" >
+								<tr height="30"  valign="middle">
 									<td align="center">
 										<p class="indexjg" id="userdisplay${status.index }">
-											
+											<input type="hidden" id="user${status.index }" value="">
 										</p>
-										<input type="hidden" id="user${status.index }" value="">
 									</td>
 								</tr>
-								<tr height="40">
+								<tr height="30"  valign="middle">
 									<td align="center">
 										<p class="indexjg" id="display${status.index }">
 											￥${data.marketPrice }
+											<input type="hidden" id="price${status.index }" value="${data.marketPrice }">
 										</p>
-										<input type="hidden" id="price${status.index }" value="${data.marketPrice }">
 									</td>
 								</tr>
 								<tr>

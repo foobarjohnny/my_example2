@@ -20,7 +20,7 @@
 						商品名称：
 					</td>
 					<td width="73%">
-						<s:textfield name="tradename" />
+						<s:textfield name="tradename" size="60"/>
 					</td>
 				</tr>
 				<tr>
