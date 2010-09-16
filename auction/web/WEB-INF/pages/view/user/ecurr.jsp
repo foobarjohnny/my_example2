@@ -21,10 +21,7 @@
 		<td width="10" rowspan="3" background="images/r_left.gif">
 			<img src="images/r_left.gif" width="10" height="1">
 		</td>
-		<td width="775" height="40" align="center" bgcolor="#FFFFFF"
-			class="admin_title1">
-			我赢得的竞拍
-		</td>
+		<td width="775" valign="top" bgcolor="#FFFFFF">&nbsp;<img src="images/buyeb.gif" width="123" height="28"></td>
 		<td width="10" rowspan="3" background="images/r_right.gif">
 			<img src="images/r_right.gif" width="10" height="1">
 		</td>
@@ -58,7 +55,7 @@
 								￥${data.paymoney }
 							</td>
 							<td align="center">
-								${data.remark }
+								${data.amount }E拍币 + 赠送${freecount }枚E拍币
 							</td>
 						</tr>
 					</s:iterator>

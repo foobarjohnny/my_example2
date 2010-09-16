@@ -1,9 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ include file="/resources/taglib.jsp"%>
-<html>
-	<head>
 		<%@ include file="/resources/resources.jsp"%>
-		<script type="text/javascript" src="js/dwr/auctionRomet.js"></script>
 		<script type="text/javascript">
 	/**
 	 * 显示时间
@@ -30,6 +27,7 @@
 	}
 	function showMsg(data) {
 		if (data != "no") {
+			
 			var s = data.split(",");
 			var index = (s[0].split(":"))[1];
 			var uid = (s[1].split(":"))[1];
@@ -104,8 +102,7 @@
 		}
 	}
 </script>
-	</head>
-	<body>
+
 		<form action="" method="post" name="help">
 		<s:hidden name="pageBean.currentPage" />
 		<s:hidden name="pageBean.totalPage" />
@@ -114,8 +111,8 @@
 		<table width="795" border="0" align="center" cellpadding="0"
 			cellspacing="0">
 			<tr>
-				<td colspan="4">
-					<img src="images/r_top.gif" width="795" height="20">
+				<td colspan="4" height="20" align="center" background="images/r_top.gif">
+					&nbsp;
 				</td>
 			</tr>
 			<tr>
@@ -134,13 +131,12 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" valign="top" background="images/hr.gif">
-					<img src="images/hr.gif" width="1" height="1">
+				<td colspan="4" valign="top" background="images/hr.gif" height="1">
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" valign="top" bgcolor="#FFFFFF">
-					<table width="775" border="0" cellspacing="0" cellpadding="0">
+				<td colspan="4" valign="top" bgcolor="#FFFFFF">
+					<table width="765" border="0" cellspacing="0" cellpadding="0">
 						<tr>
 			              <td height="30" colspan="2" align="center"><p class="indexjg">商品描述</p></td>
 			              <td width="87" align="center"><p class="indexjg">最新价格</p></td>
@@ -198,10 +194,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4">
-					<img src="images/r_dow.gif" width="795" height="20">
+				<td colspan="4"  height="20" align="center" background="images/r_dow.gif">
+					&nbsp;
 				</td>
 			</tr>
 		</table>
-	</body>
-</html>

@@ -64,7 +64,7 @@
 				</td>
 				<td width="775" height="40" align="center" bgcolor="#FFFFFF"
 					class="admin_title1">
-					酷品投票
+					${tradename }
 				</td>
 				<td width="10" rowspan="3" background="images/r_right.gif">
 					<img src="images/r_right.gif" width="10" height="1">
@@ -80,15 +80,16 @@
 					  <tr>
 			            <td width="48%" height="454" valign="top"><table width="362" border="0" cellspacing="0">
 			              <tr>
-			                <td width="360" align="center" valign="top"><img height="360" width="360" border="0" src="showImage.action?id=${data.id }&type=TS_PUBLIS"></td>
+			                <td width="360" align="center" valign="top"><img height="360" width="360" border="0" src="showImage.action?id=${id }&type=TS_PUBLIS"></td>
 			              </tr>
 			              <tr>
 			                <td><table width="360" height="90" border="0" cellpadding="0" cellspacing="0">
 			                  <tr>
-			                    <td width="90" height="90" align="center" valign="middle" background="images/imgb.gif"></td>
-			                    <td width="90" align="center" valign="middle" background="images/imgb.gif"></td>
-			                    <td width="90" align="center" valign="middle" background="images/imgb.gif">&nbsp;</td>
-			                    <td width="90" align="center" valign="middle" background="images/imgb.gif">&nbsp;</td>
+			                  	<s:iterator id="img" value="ids" status="index">
+			                  		<td width="90" height="90" align="center" valign="middle" background="viewImage.action?id=${img }&type=TS_PUBLIS">
+			                  			
+			                  		</td>
+			                  	</s:iterator>
 			                  </tr>
 			                </table></td>
 			              </tr>

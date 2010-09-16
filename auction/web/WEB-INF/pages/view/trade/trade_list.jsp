@@ -60,7 +60,7 @@
 			</td>
 			<td width="387" valign="top" bgcolor="#FFFFFF">
 				&nbsp;&nbsp;
-				<img src="images/lsjp.gif" width="99" height="28">
+				<img src="images/lsjp.gif" width="123" height="28">
 			</td>
 			<td width="388" align="right" bgcolor="#FFFFFF">
 				&nbsp;&nbsp;

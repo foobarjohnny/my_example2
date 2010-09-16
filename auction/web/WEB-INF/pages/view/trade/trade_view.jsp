@@ -32,7 +32,7 @@
 				<img src="images/r_left.gif" width="10" height="1">
 			</td>
 			<td width="775" height="40" align="center" bgcolor="#FFFFFF">
-				<span class="admin_title1">商品名称</span>&nbsp;
+				<span class="admin_title1">${comityName }</span>&nbsp;
 			</td>
 			<td width="10" rowspan="3" background="images/r_right.gif">
 				<img src="images/r_right.gif" width="10" height="1">
@@ -72,7 +72,7 @@
 												<td width="90" align="center" valign="middle"
 													background="images/imgb.gif">
 													<s:if test="image[1] != null">
-														<img height="80" width="80">
+														<img height="80" width="80" src="viewImage.action?id=${image[1] }">
 													</s:if>
 													<s:else>
                     		&nbsp;
@@ -81,7 +81,7 @@
 												<td width="90" align="center" valign="middle"
 													background="images/imgb.gif">
 													<s:if test="image[2] != null">
-														<img height="80" width="80">
+														<img height="80" width="80" src="viewImage.action?id=${image[2] }">
 													</s:if>
 													<s:else>
                     		&nbsp;
@@ -90,7 +90,7 @@
 												<td width="90" align="center" valign="middle"
 													background="images/imgb.gif">
 													<s:if test="image[3] != null">
-														<img height="80" width="80">
+														<img height="80" width="80" src="viewImage.action?id=${image[3] }">
 													</s:if>
 													<s:else>
                     		&nbsp;

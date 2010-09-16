@@ -53,10 +53,7 @@
 		<td width="10" rowspan="3" background="images/r_left.gif">
 			<img src="images/r_left.gif" width="10" height="1">
 		</td>
-		<td width="387" valign="top" bgcolor="#FFFFFF">
-			&nbsp;&nbsp;
-			<img src="images/lsjp.gif" width="99" height="28">
-		</td>
+		<td width="775" valign="top" bgcolor="#FFFFFF">&nbsp;<img src="images/xbj.gif" width="123" height="28"></td>
 		<td width="388" align="right" bgcolor="#FFFFFF">
 			&nbsp;&nbsp;
 		</td>
