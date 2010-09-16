@@ -136,7 +136,7 @@
 		<action name="consumeDelete" class="consumeAction" method="delete">
 			<result type="chain">consumeSearch</result>
 		</action>
-		<action name="consumeSearch" class="consumeAction" method="search">
+		<action name="consumeSearch" class="consumeAction" method="searchCom">
 			<result>WEB-INF/pages/admin/commodity/admin_e_consume.jsp
 			</result>
 		</action>
