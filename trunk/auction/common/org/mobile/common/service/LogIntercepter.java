@@ -42,7 +42,8 @@ public class LogIntercepter implements AfterReturningAdvice {
 		if (method.getName().equals("login")) {
 			tsSystemLog.setFunctionName("登陆");
 		} else {
-			String functionName = FunctionManager.getMenuName(manager.getFunctionId());
+			String functionName = FunctionManager.getMenuName(manager
+					.getFunctionId());
 			tsSystemLog.setFunctionName(functionName);
 		}
 		Set<TsDbLog> set = new HashSet<TsDbLog>();

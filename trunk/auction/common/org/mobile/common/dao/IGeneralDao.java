@@ -116,7 +116,7 @@ public interface IGeneralDao {
 	 * @return
 	 */
 	public int executeHql(String hql);
-	
+
 	/**
 	 * 执行hql语句
 	 * 
@@ -138,11 +138,11 @@ public interface IGeneralDao {
 	public int countE(String id, String uid);
 
 	public List<Object> search(String hql, String count, PageBean pageBean);
-	
+
 	public Object executeQuery(String hql);
 
 	@SuppressWarnings("unchecked")
 	public List executeQueryList(String hql);
-	
+
 	public int countF(String id, String uid);
 }

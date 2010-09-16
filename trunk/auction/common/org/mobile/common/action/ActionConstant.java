@@ -19,6 +19,6 @@ public class ActionConstant {
 	public static final String FORWARD = "forward";
 
 	public static final String PAGER = "pager";
-	
+
 	public static final String INDEX = "index";
 }
