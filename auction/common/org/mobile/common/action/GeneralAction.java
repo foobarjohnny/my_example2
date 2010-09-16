@@ -1,5 +1,6 @@
 package org.mobile.common.action;
 
+
 import org.mobile.common.bean.PageBean;
 import org.mobile.common.exception.GeneralException;
 import org.mobile.common.manager.GeneralManager;
@@ -38,9 +39,9 @@ public abstract class GeneralAction<T> extends ActionSupport implements
 	 * 
 	 * @return
 	 */
-	protected void isLogin() throws GeneralException{
-		boolean isLogin = SessionManager.isLogin(GeneralManager.getCurrentManager()
-				.getSessionId());
+	protected void isLogin() throws GeneralException {
+		boolean isLogin = SessionManager.isLogin(GeneralManager
+				.getCurrentManager().getSessionId());
 		if (!isLogin) {
 			throw new GeneralException("用户没有登录！");
 		}

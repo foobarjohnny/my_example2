@@ -318,7 +318,7 @@ public class GeneralDaoImpl implements IGeneralDao {
 			return 0;
 		}
 	}
-	
+
 	public int countF(String id, String uid) {
 		String hql = "select count(id) from TsBidding t where t.tsCommodity.id = :id and t.tsUser.id=:uid and bidtype='3'";
 		Query query = getSession().createQuery(hql);
@@ -367,7 +367,7 @@ public class GeneralDaoImpl implements IGeneralDao {
 		Query query = getSession().createQuery(hql);
 		return query.uniqueResult();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List executeQueryList(String hql) {
 		Query query = getSession().createQuery(hql);

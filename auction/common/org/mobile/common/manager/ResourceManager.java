@@ -15,6 +15,7 @@ public class ResourceManager {
 
 	/**
 	 * 获取资源管理器,构造函数
+	 * 
 	 * @return
 	 */
 	public static ResourceManager getInstance() {
@@ -23,6 +24,7 @@ public class ResourceManager {
 
 	/**
 	 * 获取资源的bundle，构造函数
+	 * 
 	 * @param path
 	 */
 	private ResourceManager(String path) {
@@ -31,6 +33,7 @@ public class ResourceManager {
 
 	/**
 	 * 获取指定关键字的字符串的内容
+	 * 
 	 * @param key
 	 * @return
 	 */
@@ -40,6 +43,7 @@ public class ResourceManager {
 
 	/**
 	 * 带有缺省值的关键内容。
+	 * 
 	 * @param key
 	 * @param defaultValue
 	 * @return
@@ -63,7 +67,7 @@ public class ResourceManager {
 		String source = bundle.getString(key);
 		String[] sources = new String[params.length + 1];
 		int ind = 0;
-		//TODO 既然是解析字符串的过程，为什么不用split方法呢？
+		// TODO 既然是解析字符串的过程，为什么不用split方法呢？
 		for (int i = 1; i < (params.length + 1); i++) {
 			int index = source.indexOf("%" + i);
 			if (index > 0) {

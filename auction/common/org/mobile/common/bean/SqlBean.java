@@ -6,11 +6,11 @@ package org.mobile.common.bean;
  * 
  */
 public class SqlBean {
-	
+
 	public static final String INSERT = "insert";
-	
+
 	public static final String DLETE = "delete";
-	
+
 	public static final String UPDATE = "update";
 
 	private String sql;

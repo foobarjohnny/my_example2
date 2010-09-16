@@ -33,7 +33,7 @@ public class GeneralSession {
 	public Object getAttribute(String key) {
 		return valueMap.get(key);
 	}
-	
+
 	public void remove(String key) {
 		sessionMap.remove(key);
 	}

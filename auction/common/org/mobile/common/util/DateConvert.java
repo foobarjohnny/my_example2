@@ -15,7 +15,8 @@ import org.mobile.common.manager.ResourceManager;
  */
 public class DateConvert implements Converter {
 
-	private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	private static SimpleDateFormat dateFormat = new SimpleDateFormat(
+			"yyyy-MM-dd");
 
 	/**
 	 * 构造方法
