@@ -78,7 +78,7 @@
 			</td>
 		</tr>
 		<tr height="20">
-			<td width="10" background="images/r_left.gif">
+			<td width="10" rowspan="3" background="images/r_left.gif">
 				&nbsp;
 			</td>
 			<td width="387" valign="top" align="left" bgcolor="#FFFFFF">
@@ -87,16 +87,16 @@
 			<td width="388" align="right" bgcolor="#FFFFFF">
 				<a href="#" onclick="showAll()">全部竞拍>></a>&nbsp;&nbsp;
 			</td>
-			<td width="10" background="images/r_right.gif">
+			<td width="10" rowspan="3" background="images/r_right.gif">
 				&nbsp;
 			</td>
 		</tr>
 		<tr height="1">
-			<td colspan="4" height="1" background="images/hr.gif">
+			<td colspan="2" height="1" background="images/hr.gif">
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4" valign="top" bgcolor="#FFFFFF">
+			<td colspan="2" valign="top" bgcolor="#FFFFFF">
 				<table width="100%" border="1" cellspacing="0" cellpadding="0" height="100%">
 					<tr>
 						<% int i = 0; %>
