@@ -56,13 +56,13 @@
 				<s:iterator value="dataList" id="data" status="status">
 					<tr>
 						<td align="center" valign="middle">
-							<s:property value="remark"/>
+							购买<s:property value="amount"/>E拍币数量
 						</td>
 						<td align="center" valign="middle">
-							<s:property value="paymoney"/>
+							<s:property value="paymoney"/>元
 						</td>
 						<td align="center" valign="middle">
-							<s:property value="amount"/>
+							免费<s:property value="freecount"/>E拍币
 						</td>
 						<td align="center">
 							<a href="ecurrForward.action?id=<s:property value="id"/>&methodName=2">修改</a>｜

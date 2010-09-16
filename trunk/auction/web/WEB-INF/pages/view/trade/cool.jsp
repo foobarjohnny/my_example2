@@ -62,10 +62,7 @@
 		<td width="10" rowspan="3" background="images/r_left.gif">
 			<img src="images/r_left.gif" width="10" height="1">
 		</td>
-		<td width="775" height="40" align="center" bgcolor="#FFFFFF"
-			class="admin_title1">
-			酷品投票
-		</td>
+		<td width="775" valign="top" bgcolor="#FFFFFF">&nbsp;&nbsp;<img src="images/kptp.gif" width="99" height="28"> </td>
 		<td width="10" rowspan="3" background="images/r_right.gif">
 			<img src="images/r_right.gif" width="10" height="1">
 		</td>

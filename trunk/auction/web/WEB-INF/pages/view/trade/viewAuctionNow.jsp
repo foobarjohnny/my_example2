@@ -116,7 +116,7 @@
 							<tr>
 								<td width="360" align="center" valign="top">
 									<img height="350" width="350" border="0"
-										src="showImage.action?id=${tradeId }">
+										src="showImage.action?id=${id }">
 								</td>
 							</tr>
 							<tr>
@@ -137,7 +137,7 @@
 											<td width="90" align="center" valign="middle"
 												background="images/imgb.gif">
 												<s:if test="image[1] != null">
-													<img height="80" width="80">
+													<img height="80" width="80" src="viewImage.action?id=${image[1] }">
 												</s:if>
 												<s:else>
                     		&nbsp;
@@ -146,7 +146,7 @@
 											<td width="90" align="center" valign="middle"
 												background="images/imgb.gif">
 												<s:if test="image[2] != null">
-													<img height="80" width="80">
+													<img height="80" width="80" src="viewImage.action?id=${image[2] }">
 												</s:if>
 												<s:else>
                     		&nbsp;
@@ -155,7 +155,7 @@
 											<td width="90" align="center" valign="middle"
 												background="images/imgb.gif">
 												<s:if test="image[3] != null">
-													<img height="80" width="80">
+													<img height="80" width="80" src="viewImage.action?id=${image[3] }">
 												</s:if>
 												<s:else>
                     		&nbsp;
@@ -285,9 +285,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td height="1" colspan="2" align="center"
-						background="images/hr.gif">
-						<img src="images/hr.gif" width="1" height="1">
+					<td colspan="2" valign="top" background="images/hr.gif" height="1">
 					</td>
 				</tr>
 				<tr>

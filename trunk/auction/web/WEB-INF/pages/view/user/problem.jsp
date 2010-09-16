@@ -54,16 +54,12 @@
 							<input name="userId" type="hidden" size="50" value="${userId }">
 						</td>
 					</tr>
-					<tr height="500">
+					<tr >
 						<td align="right" valign="top">
 							您的问题与建议：
 						</td>
 						<td>
-							<s:hidden name="substance" id="info"></s:hidden>
-							<fck:editor instanceName="info" height="100%">
-								<jsp:attribute name="value">&nbsp;
-										</jsp:attribute>
-							</fck:editor>
+							<s:textarea name="substance" rows="15" cols="60"></s:textarea>
 						</td>
 					</tr>
 					<tr>

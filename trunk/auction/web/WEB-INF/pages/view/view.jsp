@@ -60,7 +60,8 @@
 		} else if (s[0] == "success") {
 			//alert("竞拍成功");
 		} else {
-			alert(data);
+			//alert(data);
+			//document.getElementById("showMsg").style.display = "block";
 		}
 	}
 	function showAll() {
@@ -69,6 +70,7 @@
 </script>
 
 <form action="showAll.action" method="post" name="trade">
+	
 	<table width="100%" border="0" align="center" valign="top" cellpadding="0" cellspacing="0">
 		<tr>
 			<td colspan="4" height="20" align="center" background="images/r_top.gif">
@@ -124,7 +126,7 @@
 										<a href="viewAuctionNow.action?id=${data.id }"><img alt="" src="showImage.action?id=${data.id }" border="0"/> </a>
 									</td>
 								</tr>
-								<tr>
+								<tr height="40">
 									<td align="center" class="indextime">
 										<div id="div${status.index }" style="color:red">
 											<script type="text/javascript">
@@ -136,7 +138,7 @@
 										</div>
 									</td>
 								</tr>
-								<tr>
+								<tr height="40" >
 									<td align="center">
 										<p class="indexjg" id="userdisplay${status.index }">
 											
@@ -144,7 +146,7 @@
 										<input type="hidden" id="user${status.index }" value="">
 									</td>
 								</tr>
-								<tr>
+								<tr height="40">
 									<td align="center">
 										<p class="indexjg" id="display${status.index }">
 											￥${data.marketPrice }

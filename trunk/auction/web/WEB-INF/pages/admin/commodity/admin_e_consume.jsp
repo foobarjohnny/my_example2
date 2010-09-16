@@ -40,7 +40,7 @@
 						<strong>描述</strong>
 					</td>
 					<td width="14%" align="center">
-						<strong>用户</strong>
+						<strong>时间</strong>
 					</td>
 					<td width="14%" align="center">
 						<strong>E拍币数</strong>
@@ -61,17 +61,17 @@
 							</table>
 						</td>
 						<td align="center" valign="middle">
-							${data.username }
+							${data.buytime }
 						</td>
 						<td align="center" valign="middle">
-							-${data.amount }
+							收费${data.amount }枚 + 免费${data.free }枚
 						</td>
 						<td align="center">
 							<a href="consumeDelete.action?userId=${userId }&comId=${comId }">删除</a>
 						</td>
 					</tr>
 				</s:iterator>
-				<!--  
+				 
 				<tr align="right">
 					<td colspan="7">
 						共
@@ -87,7 +87,7 @@
 						<a href="#" onclick="next();">下一页</a>
 					</td>
 				</tr>
-				-->
+				
 			</table>
 		</s:form>
 	</body>
