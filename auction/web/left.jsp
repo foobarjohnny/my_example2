@@ -21,8 +21,7 @@
 
 <table width="179" border="0" align="center" cellpadding="0" cellspacing="0">
 	<tr>
-		<td colspan="3">
-			<img src="images/l_top.gif" width="179" height="21">
+		<td colspan="3" background="images/l_top.gif" height="21" width="179">
 		</td>
 	</tr>
 	<tr>
