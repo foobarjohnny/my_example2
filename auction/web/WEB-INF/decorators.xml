@@ -46,9 +46,9 @@
 		<pattern>/proForward.action*</pattern>
 		<pattern>/bingcurForward.action*</pattern>
 		<pattern>/coolSearch.action*</pattern>
+		<pattern>/showImage.action*</pattern>
 		<pattern>/coolForward.action*</pattern>
 		<pattern>/viewAuctionNow.action*</pattern>
-		
 		
 		<pattern>/WEB-INF/pages/view/*</pattern>
 		<pattern>/WEB-INF/pages/view/trade/*</pattern>
