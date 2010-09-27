@@ -13,6 +13,10 @@ public class ShowData extends GeneralData {
 
 	private String username;
 	private String password;
+	private int payNum;
+	private int freeNum;
+	private String winGoods;//赢取的商品信息
+	private String isLogin;	//判断用户是否登录 Y表示登录； N表示未登录
 
 	// 商品分类
 	private List<SortData> sortDataList = new ArrayList<SortData>();
@@ -83,5 +87,37 @@ public class ShowData extends GeneralData {
 
 	public void setViewDataList(List<ViewData> viewDataList) {
 		this.viewDataList = viewDataList;
+	}
+
+	public int getPayNum() {
+		return payNum;
+	}
+
+	public void setPayNum(int payNum) {
+		this.payNum = payNum;
+	}
+
+	public int getFreeNum() {
+		return freeNum;
+	}
+
+	public void setFreeNum(int freeNum) {
+		this.freeNum = freeNum;
+	}
+
+	public String getIsLogin() {
+		return isLogin;
+	}
+
+	public void setIsLogin(String isLogin) {
+		this.isLogin = isLogin;
+	}
+
+	public String getWinGoods() {
+		return winGoods;
+	}
+
+	public void setWinGoods(String winGoods) {
+		this.winGoods = winGoods;
 	}
 }

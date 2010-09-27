@@ -8,6 +8,8 @@ import org.mobile.common.exception.GeneralException;
 public interface BidingService {
 
 	public String forward(BidingData model) throws GeneralException;
+	
+	public List<BidingData> getAll() throws GeneralException;
 
 	public String save(BidingData model) throws GeneralException;
 

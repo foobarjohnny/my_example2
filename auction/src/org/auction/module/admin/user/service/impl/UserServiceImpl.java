@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import org.auction.entity.TsUser;
 import org.auction.module.admin.user.data.UserData;
 import org.auction.module.admin.user.service.UserService;
@@ -17,6 +19,8 @@ import org.mobile.common.util.BeanProcessUtils;
 
 public class UserServiceImpl extends GeneralService implements UserService {
 
+	private static Logger logger = Logger.getLogger(UserServiceImpl.class);
+	
 	public void delete(UserData model) throws GeneralException {
 		generalDao.delete(TsUser.class, model.getId());
 	}
@@ -56,6 +60,7 @@ public class UserServiceImpl extends GeneralService implements UserService {
 
 	@SuppressWarnings("unchecked")
 	public boolean login(UserData model) throws GeneralException {
+		System.out.println( "开始进行客户的登录处理。。。。。。。。" + model.getUsername() + " " + model.getPassword() );
 		List<SearchBean> search = new ArrayList<SearchBean>();
 		search.add(new SearchBean("username", "eq", "string", model
 				.getUsername()));
@@ -76,12 +81,13 @@ public class UserServiceImpl extends GeneralService implements UserService {
 
 	@SuppressWarnings("unchecked")
 	public LoginBean loginDwr(UserData model) throws GeneralException {
+		
+		System.out.println( "dwr开始进行客户的登录处理。。。。。。。。" + model.getUsername() + " " + model.getPassword() );
 		List<SearchBean> search = new ArrayList<SearchBean>();
-		search.add(new SearchBean("username", "eq", "string", model
-				.getUsername()));
-		search.add(new SearchBean("password", "eq", "string", model
-				.getPassword()));
+		search.add(new SearchBean("username", "eq", "string", model.getUsername()));
+		search.add(new SearchBean("password", "eq", "string", model.getPassword()));
 		List list = generalDao.search(TsUser.class, search, null, null);
+		
 		if (list != null && list.size() > 0) {
 			TsUser tsUser = (TsUser) list.get(0);
 			LoginBean bean = new LoginBean();
