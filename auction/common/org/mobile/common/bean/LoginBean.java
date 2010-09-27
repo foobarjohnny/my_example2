@@ -1,13 +1,20 @@
 package org.mobile.common.bean;
 
+/**
+ * 登录用户检查bean
+ * @author Administrator
+ *
+ */
 public class LoginBean {
 
 	private String id;
 	private String workNo;
 	private String password;
-	private Integer paycur;
-	private Integer freecur;
-	private Integer amount;
+	private Integer paycur;		//用户剩余的付费竞拍币
+	private Integer freecur;	//用户剩余的免费竞拍币
+	private Integer amount;		
+	
+	private String winGoods;	//用户竞拍成功的产品信息
 
 	public Integer getAmount() {
 		return amount;
@@ -55,5 +62,25 @@ public class LoginBean {
 
 	public void setFreecur(Integer freecur) {
 		this.freecur = freecur;
+	}
+	
+	public String toString(){
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("[LoginBean]  ");
+		buffer.append("\n\tid      ="+id      );
+		buffer.append("\n\tworkNo  ="+workNo  );
+		buffer.append("\n\tpassword="+password);
+		buffer.append("\n\tpaycur  ="+paycur  );
+		buffer.append("\n\tfreecur ="+freecur );
+		buffer.append("\n\tamount  ="+amount  );
+		return buffer.toString();
+	}
+
+	public String getWinGoods() {
+		return winGoods;
+	}
+
+	public void setWinGoods(String winGoods) {
+		this.winGoods = winGoods;
 	}
 }
