@@ -7,53 +7,89 @@
 	 * 
 	 * @return
 	 */
-	function displayTime(id, time, timer, tid, did) {
-		var maxtime = time / 1000;
-		if (maxtime >= 0) {
+	function displayTime(obj) {
+		var d = eval('('+obj+')');
+		var t = parseInt(d.time);
+		var maxtime = t / 1000;
+		if (maxtime < 0) {
+			var auctionDiv = document.getElementById(d.id+"_auction_div");
+			auctionDiv.style.display = "none";
+			document.getElementById(d.id+"_time_div").innerHTML = "竞拍结束";
+		}else{
+			if(document.getElementById(d.id+"_sign").value == "1"){
+				document.getElementById(d.id+"_sign").value = "0";
+				t = parseInt(document.getElementById(d.id + "_remaining").value);
+			}
+			
+			d.time = t - 1000;
+			
 			hour = Math.floor(maxtime / 3600);
+			if(hour<10){hour = "0"+hour;}
 			minutes = Math.floor((maxtime - hour * 3600) / 60);
+			if(minutes < 10){minutes = "0" + minutes;}
 			seconds = Math.floor(maxtime % 60);
-			--maxtime;
-			eval("time" + did + "=time" + did + "-1000");
+			if(seconds < 10){seconds = "0" + seconds;}
 			var msg = hour + ":" + minutes + ":" + seconds;
-			document.all[id].innerHTML = msg;
-			var userid = document.getElementById("user" + did).value;
-			bidingRomet.find(tid,userid,did, showMsg);
-		} else {
-			var obj = document.getElementById("button" + did);
-			obj.style.display = "none";
-			clearInterval(timer);
-			document.all[id].innerHTML = "竞拍结束";
+			document.getElementById(d.id+"_time_div").innerHTML = msg;
+			document.getElementById(d.id+"_remaining").value=d.time;
+			var newValue = JSON.stringify(d,"");
+			setTimeout("displayTime('"+newValue+"')", 1000);
 		}
 	}
+
+	/**
+	 * 检查竞拍的价格
+	 */
+	function checkAuction(){
+		bidingRomet.find("","","", showMsg);
+		setTimeout("checkAuction()",1000);
+	}
+
+	/**
+	 * 获取了最新的价格之后的回调方法
+	 */
 	function showMsg(data) {
-		if (data != "no") {
-			var s = data.split(",");
-			var index = (s[0].split(":"))[1];
-			var uid = (s[1].split(":"))[1];
-			var uname = (s[2].split(":"))[1];
-			var price = (s[3].split(":"))[1];
-			var add = (s[4].split(":"))[1];
-			document.getElementById("user" + index).value = uid;
-			document.getElementById("price" + index).value = price;
-			document.getElementById("userdisplay" + index).innerHTML = uname;
-			document.getElementById("display" + index).innerHTML = "￥" + price;
-			var overtime = eval("time" + index);
-			var lasttime = parseInt(add) * 1000;
-			if (overtime - lasttime < 0) {
-				eval("time" + index + "=" + lasttime);
+		document.getElementById('result').value=data;
+		var obj = eval('(' + data +')');
+		
+		for(i = 0; i < obj.length; i++){
+			var bean = obj[i];
+			//检查是否是空对象
+			if(typeof(bean.id) != 'undefined'){//首先检查是否有指定产品编号
+				if(typeof(bean.username) != 'undefined' && bean.username != ""){//再检查是否有客户对该产品进行竞拍，如果没有，则不处理，继续走时
+					document.getElementById(bean.id+"_user_div").innerHTML=""+bean.username;
+					document.getElementById(bean.id+"_user").value=bean.userId;
+					document.getElementById(bean.id+"_price").value=bean.price;
+					document.getElementById(bean.id+"_price_div").innerHTML="￥" + bean.price;
+					var sourceTime = parseInt(document.getElementById(bean.id+'_remaining').value);
+					var addTime    = parseInt(bean.add)*1000;
+					if(sourceTime < addTime){
+						document.getElementById(bean.id+'_remaining').value = addTime;
+						document.getElementById(bean.id+'_sign').value = "1";
+					}
+				}
 			}
 		}
 	}
-	function doSubmit(id, htmlId) {
-		var price = document.getElementById("price" + htmlId).value;
+	function doSubmit(id) {
+		var price = document.getElementById(id+"_price").value;//不知道为什么还要从前台去取价格
 		if (price == "") {
 			price = "0";
 		}
-		var uid = document.getElementById("user" + htmlId).value;
-		auctionRomet.auction(id, price, uid, htmlId, callBackMsg);
+		var uid = document.getElementById(id+'_user').value;
+		auctionRomet.auction(id, price, uid, "", callBackMsg);
 	}
 	function callBackMsg(data) {
+		var obj = eval('('+data+')');
+		if(typeof(obj.operator) != 'undefined' && obj.operator == "success"){
+			if(typeof(obj.add) != 'undefined' && obj.add != ""){//时间发生变化了，价格的变化，是另外一个函数获取
+				document.getElementById(obj.id+'_sign').value="1";
+				document.getElementById(obj.id+'_remaining').value=obj.add;
+			}
+		}else{
+			alert(obj.msg);
+		}
+		/**
 		var s = data.split(":");
 		if (s[0] == "add") {
 			eval("time" + s[1] + "=" + parseInt(s[2])*1000);
@@ -63,6 +99,7 @@
 			//alert(data);
 			//document.getElementById("showMsg").style.display = "block";
 		}
+		*/
 	}
 	function showAll() {
 		trade.submit();
@@ -70,10 +107,11 @@
 </script>
 
 <form action="showAll.action" method="post" name="trade">
-	
-	<table width="100%" border="0" align="center" valign="top" cellpadding="0" cellspacing="0">
+	<table width="100%" border="0" align="center" valign="top"
+		cellpadding="0" cellspacing="0">
 		<tr>
-			<td colspan="4" height="20" align="center" background="images/r_top.gif">
+			<td colspan="4" height="20" align="center"
+				background="images/r_top.gif">
 				&nbsp;
 			</td>
 		</tr>
@@ -97,69 +135,85 @@
 		</tr>
 		<tr>
 			<td colspan="2" valign="top" bgcolor="#FFFFFF">
-				<table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0"
+					height="100%">
 					<tr>
-						<% int i = 0; %>
-						<s:iterator value="dataList" id="data" status="status">
 						<%
-							if (i == 5) {
-								i = 1;
+							int i = 0;
 						%>
-							</tr>
-							<tr>	
-						<%	} else {
-								i ++;
-							}
-						 %>
-						 <td width="154">
+						<s:iterator value="dataList" id="data" status="status">
+							<%
+								if (i == 5) {
+										i = 1;
+							%>
+					</tr>
+					<tr>
+						<%
+							} else {
+									i++;
+								}
+						%>
+						<td width="154" valign="top" align="left">
 							<table width="98%" border="0" align="center" cellpadding="3"
 								cellspacing="0">
 								<tr>
-									<td width="100%">
+									<td width="100%" valign="top">
 										<img src="images/title_l.gif" width="3" height="12">
 										&nbsp;
-										<a href="viewAuctionNow.action?id=${data.id }"><s:property id="data" value="tradename"/></a>
-									</td>
-								</tr>
-								<tr>
-									<td align="center">
-										<a href="viewAuctionNow.action?id=${data.id }">
-											<img alt="" src="showImage.action?id=${data.id }" border="0" width="120" height="120"/> 
+										<a href="viewAuctionNow.action?id=${data.id }"><s:property
+												id="data" value="tradename" />
 										</a>
 									</td>
 								</tr>
-								<tr height="30"  valign="middle">
+								<tr>
+									<td align="center" valign="top">
+										<a href="viewAuctionNow.action?id=${data.id }"> <img
+												alt="" src="showImage.action?id=${data.id }" border="0"
+												width="120" height="120" /> </a>
+									</td>
+								</tr>
+								<tr height="30" valign="middle">
 									<td align="center" class="indextime">
-										<div id="div${status.index }" style="color:red">
-											<script type="text/javascript">
-												var div${status.index } = null;
-												var time${status.index } = ${data.remaining};
-												div${status.index } = setInterval("displayTime('div${status.index }', time${status.index }, div${status.index }, '${data.id}', '${status.index }')", 1000);
-											</script>
+										<div id="${data.id }_time_div"
+											style="color: red; font-size: 24px; font-weight: bold;">
+											--:--:--
 										</div>
+										<!-- 这是一个信号量， 用来标识时间价格是否有变化 -->
+										<input type="hidden" id="${data.id }_sign" value="0" />
+										<input type="hidden" id="${data.id}_remaining" value="${data.remaining }" />
 									</td>
 								</tr>
-								<tr height="30"  valign="middle">
+								<tr height="30" valign="middle">
 									<td align="center">
-										<p class="indexjg" id="userdisplay${status.index }">
-											<input type="hidden" id="user${status.index }" value="">
-										</p>
+										<div id="${data.id}_user_div" class="indexjg">
+										</div>
+										<input type="hidden" id="${data.id }_user" value="">
 									</td>
 								</tr>
-								<tr height="30"  valign="middle">
+								<tr height="30" valign="middle">
 									<td align="center">
-										<p class="indexjg" id="display${status.index }">
+										<div id="${data.id }_price_div" class="indexjg">
 											￥${data.marketPrice }
-											<input type="hidden" id="price${status.index }" value="${data.marketPrice }">
-										</p>
+										</div>
+										<input type="hidden" id="${data.id}_price"
+											   value="${data.marketPrice }" />
 									</td>
 								</tr>
 								<tr>
-									<td align="center">
-										<img src="images/wyjp.gif" width="104" height="27" style="display: bolck" onclick="doSubmit('${data.id}', '${status.index }');" id="buttion${status.index }">
+									<td height="27" align="center" valign="top">
+										<div id="${data.id }_auction_div">
+											<img src="images/wyjp.gif" width="104" height="27"
+												style="display: bolck"
+												onclick="doSubmit('${data.id}');" />
+										</div>
 									</td>
 								</tr>
 							</table>
+							<script type="text/javascript">
+    							var obj_${data.id}='{"id":"${data.id}","time":${data.remaining}}';
+    							displayTime(obj_${data.id});
+    						</script>
+
 						</td>
 						</s:iterator>
 					</tr>
@@ -167,9 +221,29 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4"  height="20" align="center" background="images/r_dow.gif">
+			<td colspan="4" height="20" align="center"
+				background="images/r_dow.gif">
 				&nbsp;
 			</td>
 		</tr>
 	</table>
 </form>
+<table width="100%" border="0" align="left" valign="top"
+		cellpadding="0" cellspacing="0">
+	<tr>
+		<td align="left">
+			<textarea cols=100 rows=20 id="result" style="display:yes;">
+			</textarea>
+		</td>
+	</tr>
+</table>
+	
+<script type="text/javascript">
+	checkAuction();
+
+	function testTime(){
+		document.getElementById("402881e529df7d870129df8c4a6b0003_sign").value = "1";
+		document.getElementById("402881e529df7d870129df8c4a6b0003_remaining").value=5000;
+	}
+	//setTimeout("testTime()",2003);
+</script> 
