@@ -31,6 +31,24 @@ public class BidingServiceImpl extends GeneralService implements BidingService {
 		}
 		return newList;
 	}
+	
+	/**
+	 * 返回所有的竞拍的产品
+	 */
+	public List<BidingData> getAll() throws GeneralException{
+		List<BidingData> list = new ArrayList<BidingData>();
+		List<TradeData> tradeList = TradeManager.getTradeData();
+		for(TradeData bean : tradeList){
+			BidingData data = new BidingData();
+			data.setUserId(bean.getUid());
+			data.setId(bean.getId());
+			data.setUsername(bean.getUsername());
+			data.setPrice(bean.getMarketPrice());
+			data.setTime(bean.getAddtimes());
+			list.add(data);
+		}
+		return list;
+	}
 
 	public String delete(BidingData model) throws GeneralException {
 		// TODO Auto-generated method stub
