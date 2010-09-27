@@ -16,9 +16,8 @@
 	<tr>
 		<td width="5" height="25" background="images/l_left.gif">
 		</td>
-		<td width="169" height="25" valign="top" bgcolor="#FFFFFF">
-			欢迎您&nbsp;
-			<span class="title1">${username }</span>
+		<td width="169" height="25" valign="top" align="left" bgcolor="#FFFFFF">
+			欢迎您,&nbsp; <span style="color:#1e9021; font-weight:bold;">${username }</span>
 		</td>
 		<td width="5" height="25" background="images/l_right.gif">
 		</td>
@@ -26,8 +25,8 @@
 	<tr>
 		<td width="5" height="25" background="images/l_left.gif">
 		</td>
-		<td width="169"  height="25" valign="top" bgcolor="#FFFFFF">
-			付费E拍币：${paycur }
+		<td width="169"  height="25"  align="left" bgcolor="#FFFFFF">
+			付费E拍币： <span style="color: #1e9021;font-weight: bold;">${paycur }</span>
 		</td>
 		<td width="5" height="25" background="images/l_right.gif">
 		</td>
@@ -35,8 +34,8 @@
 	<tr>
 		<td width="5" height="25" background="images/l_left.gif">
 		</td>
-		<td width="169"  height="25" valign="top" bgcolor="#FFFFFF">
-			免费E拍币：${freecur }
+		<td width="169"  height="25"  align="left" bgcolor="#FFFFFF">
+			免费E拍币： <span style="color: #1e9021;font-weight: bold;">${freecur }</span>
 		</td>
 		<td width="5" height="25" background="images/l_right.gif">
 		</td>
