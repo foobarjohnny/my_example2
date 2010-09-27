@@ -44,6 +44,8 @@ a:active {
 .indexsp {
 	color: #1e9021;
 	font-size: 13px;
+	float:left;
+	font-weight: bold;
 }
 .indexjg {
 	color: #1e9021;
