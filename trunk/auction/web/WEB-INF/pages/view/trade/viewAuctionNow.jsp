@@ -73,13 +73,13 @@
 		} else if (s[0] == "success") {
 			//alert("竞拍成功");
 		} else {
-			alert(data);
+			//alert(data);
 		}
 	}
 	function showAll() { 
 		//form1.action="bidingSearch.action";
 		//form1.submit();
-		alert("【请注意】该功能目前没有提供！");
+		//alert("【请注意】该功能目前没有提供！");
 	}
 </script>
 <form action="bidingSearch.action" method="post" name="form1">
