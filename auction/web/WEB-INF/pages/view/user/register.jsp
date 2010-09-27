@@ -71,8 +71,8 @@
             <tr>
               <td width="27%" align="right" valign="top">用户名：</td>
               <td width="73%">
-              	<S
-              <input name="username" type="text" size="30">              </td>
+              		<input name="username" type="text" size="30">
+              </td>
             </tr>
             <tr>
               <td align="right" valign="top">密码:</td>
