@@ -89,6 +89,7 @@ public class InfoAction extends GeneralAction<InfoData> {
 
 	public String viewInfoList() throws GeneralException {
 		setPage(model);
+		model.getPageBean().setPageRec(30);
 		infoService.search(model);
 		if (model.getNettype().equals("5")) {
 			return "post";
