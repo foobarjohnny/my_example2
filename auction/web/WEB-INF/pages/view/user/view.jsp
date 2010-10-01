@@ -44,8 +44,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td valign="top" background="images/hr.gif">
-					<img src="images/hr.gif" width="1" height="1">
+				<td valign="top" background="images/hr.gif" height="1">
 				</td>
 			</tr>
 			<tr>
@@ -80,16 +79,12 @@
 								<input type="text" name="title" value="">
 							</td>
 						</tr>
-						<tr height="500">
+						<tr>
 							<td>
 								秀宝内容：
 							</td>
-							<td width="600">
-								<input type="hidden" name="remark" id="remark">
-								<fck:editor instanceName="remark" height="100%">
-									<jsp:attribute name="value">&nbsp;
-									</jsp:attribute>
-								</fck:editor>
+							<td>
+								<textarea rows="30" cols="50" name="remark"></textarea>
 							</td>
 						</tr>
 						<tr>

@@ -35,8 +35,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td valign="top" background="images/hr.gif">
-					<img src="images/hr.gif" width="1" height="1">
+				<td valign="top" background="images/hr.gif" height="1">
 				</td>
 			</tr>
 			<tr>
@@ -87,6 +86,7 @@
 			            <TD align="right">总价</TD>
 			            <TD>${totalPrices }</TD>
 			          </TR>
+			          <!--  
 			          <s:if test="state == 1">
 			          <TR>
 			            <TD align="center" colspan="6">
@@ -94,6 +94,7 @@
 			            </TD>
 			          </TR>
 			          </s:if>
+			          -->
 			        </table>
 				</td>
 			</tr>
