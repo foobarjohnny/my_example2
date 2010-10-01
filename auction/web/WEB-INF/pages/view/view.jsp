@@ -232,7 +232,7 @@
 		cellpadding="0" cellspacing="0">
 	<tr>
 		<td align="left">
-			<textarea cols=100 rows=20 id="result" style="display:yes;">
+			<textarea cols=100 rows=20 id="result" style="display:none;">
 			</textarea>
 		</td>
 	</tr>
