@@ -152,8 +152,6 @@
 			              		<a href="forwardShowcom.action?tradeId=${data.id }">我要秀宝</a>
 			              	</s:if>
 								<a href="#" onclick="viewOrd('${data.orderId}')">查看订单</a>
-								<!--
-			              	-->
 						</td>
 					</tr>
 				</s:iterator>
