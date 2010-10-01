@@ -92,7 +92,7 @@
 					<s:iterator value="dataList" id="data" status="status">
 						<tr>
 							<td align="center">
-								${data.comname }${data.descript }
+								${data.comname }
 							</td>
 							<td align="center">
 								<SPAN class="indexjg">￥${data.price}</SPAN>
