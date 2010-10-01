@@ -9,6 +9,9 @@ loginRomet._path = '/auction/dwr';
 loginRomet.login = function(p0, p1, callback) {
   dwr.engine._execute(loginRomet._path, 'loginRomet', 'login', p0, p1, callback);
 }
+loginRomet.loginOut = function(callback) {
+  dwr.engine._execute(loginRomet._path, 'loginRomet', 'loginOut', callback);
+}
 loginRomet.setUserService = function(p0, callback) {
   dwr.engine._execute(loginRomet._path, 'loginRomet', 'setUserService', p0, callback);
 }
