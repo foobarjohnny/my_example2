@@ -17,7 +17,23 @@
 			document.getElementById("user").innerHTML = s[0];
 			document.getElementById("payNum").innerHTML=s[3];
 			document.getElementById("freeNum").innerHTML=s[2];
+			document.getElementById("winGoods").innerHTML=s[4];
 		}
+	}
+	function loginout() {
+		loginRomet.loginOut(callHandler);
+	}
+	function callHandler() {
+		document.getElementById("userId").value = "";
+		document.getElementById("user").innerHTML = "";
+		document.getElementById("payNum").innerHTML = "";
+		document.getElementById("freeNum").innerHTML = "";
+		document.getElementById("winGoods").innerHTML = "";
+		document.getElementById("username").value = "";
+		document.getElementById("password").value = "";
+		document.getElementById("userLogin").style.display = "block";
+		document.getElementById("displayUser").style.display = "none";
+		
 	}
 </script>
 
@@ -85,8 +101,8 @@
 									用户名：
 								</td>
 								<td align="left">
-									<span class="indexsp" id="user">${username }</span>
-									<input type="hidden" name="userId" id="userId" />								
+									<span class="indexsp" id="user">${login.workNo }</span>
+									<input type="hidden" name="userId" id="userId" value="${login.id }"/>								
 								</td>
 							</tr>
 							<tr>
@@ -94,7 +110,7 @@
 									付费易拍币：
 								</td>
 								<td align="left">
-									<div id="payNum" class="indexsp">${payNum }</div>
+									<div id="payNum" class="indexsp">${login.paycur }</div>
 								</td>
 							</tr>
 							<tr>
@@ -102,7 +118,7 @@
 									免费易拍币：
 								</td>
 								<td align="left">
-									<div id="freeNum" class="indexsp">${freeNum }</div>
+									<div id="freeNum" class="indexsp">${login.freecur }</div>
 								</td>
 							</tr>
 							<tr>
@@ -110,12 +126,15 @@
 									赢得的竞拍：
 								</td>
 								<td align="left">
-									<div id="winGoods" class="indexsp">${winGoods }</div>
+									<div id="winGoods" class="indexsp">${login.amount }</div>
 								</td>
 							</tr>
 							<tr>
-								<td colspan="2">
-									<a href="#" target="newWindow">邀请好友，送10枚易拍币</a>
+								<td>
+									<input type="button" value="邀请好友" alt="送10枚易拍币">
+								</td>
+								<td>
+									<input type="button" value="退&nbsp;&nbsp;&nbsp;&nbsp;出" onclick="loginout();">
 								</td>
 							</tr>
 						</table>
@@ -246,7 +265,7 @@ target="_blank" title="在线客服"><img id="comm100_ButtonImage"
 </table>
 <script type="text/javascript">
 	//如果客户已经登录，那么显示客户的信息， 而无需再次登录
-	if('${isLogin}' == 'Y'){
+	if('${user_login}' == 'Y'){
 		document.getElementById("userLogin").style.display = "none";
 		document.getElementById("displayUser").style.display = "block";
 	}
