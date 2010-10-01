@@ -65,8 +65,8 @@
 		<pattern>/userFollow.action*</pattern>
 		<pattern>/buySearchUserE.action*</pattern>
 		<pattern>/searchUserPayE.action*</pattern>
-	
-		
+		<pattern>/orderForward.action*</pattern>
+		<pattern>/forwardShowcom.action*</pattern>
 		<!-- 
 		<pattern>WEB-INF/pages/view/user/user.jsp</pattern>
 		<pattern>/WEB-INF/pages/user/admin_user_account.jsp*</pattern>
