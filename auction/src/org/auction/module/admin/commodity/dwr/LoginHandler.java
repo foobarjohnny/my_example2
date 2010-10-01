@@ -12,29 +12,53 @@ import org.mobile.common.session.SessionManager;
 /**
  * 用户登录的操作
  * 
- * [类说明]：
- * [注意事项]：
- * @author 
- *
+ * [类说明]： [注意事项]：
+ * 
+ * @author
+ * 
  */
 public class LoginHandler {
 
 	private UserService userService;
 
-	public String login(String username, String password) throws GeneralException {
-		
+	public String login(String username, String password)
+			throws GeneralException {
+
 		UserData model = new UserData();
 		model.setUsername(username);
 		model.setPassword(password);
 		LoginBean bean = userService.loginDwr(model);
 		if (bean != null) {
-			HttpServletRequest req = WebContextFactory.get().getHttpServletRequest();
+			HttpServletRequest req = WebContextFactory.get()
+					.getHttpServletRequest();
 			req.getSession().setAttribute("login", bean);
+			req.getSession().setAttribute("user_login", "Y");
 			SessionManager.setLoginInfo(req.getSession().getId(), bean);
-			return bean.getWorkNo() + "," + bean.getId() + "," + bean.getFreecur() + "," + bean.getPaycur() + "," + bean.getAmount();
+			return bean.getWorkNo() + "," + bean.getId() + ","
+					+ bean.getFreecur() + "," + bean.getPaycur() + ","
+					+ bean.getAmount();
 		} else {
 			return "error";
 		}
+	}
+
+	/**
+	 * 用户退出
+	 * 
+	 * @return
+	 * @throws GeneralException
+	 */
+	public String loginOut() throws GeneralException {
+		HttpServletRequest req = WebContextFactory.get()
+				.getHttpServletRequest();
+		LoginBean bean = (LoginBean) req.getSession().getAttribute("login");
+		String sessionId = req.getSession().getId();
+		if (bean != null) {
+			req.getSession().removeAttribute("login");
+			req.getSession().removeAttribute("user_login");
+			SessionManager.removeSession(sessionId);
+		}
+		return "success";
 	}
 
 	public void setUserService(UserService userService) {
