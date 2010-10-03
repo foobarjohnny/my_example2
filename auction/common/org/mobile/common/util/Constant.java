@@ -7,6 +7,16 @@ package org.mobile.common.util;
  * 
  */
 public class Constant {
+	//每页显示的竞拍产品的数量
+	public static int SIZE_PER_PAGE = 10;
+	
+	
+	public static class COMMODITY_STATE{
+		public static String AUCTION_STATE ="1";	//正在竞拍商品
+		public static String CANCEL_STATE ="2";		//流拍商品
+		public static String SUCCESS_STATE ="3";	//成交商品'
+		public static String UNKNOWN_STATE = "4";	//新建的商品
+	}
 
 	public static String YES = "Y";
 	public static String NO = "N";

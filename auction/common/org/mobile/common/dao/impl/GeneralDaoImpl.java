@@ -272,31 +272,20 @@ public class GeneralDaoImpl implements IGeneralDao {
 		return query.list();
 	}
 
+	/**
+	 * 装载需要竞拍的产品信息
+	 */
 	@SuppressWarnings("unchecked")
 	public List<Object> auction(String[] ids) {
-		if (ids != null) {
-			Criteria criteria = getSession().createCriteria(TsCommodity.class);
-			criteria.add(Restrictions.le("starttime", new Date()));
-			criteria.add(Restrictions.not(Restrictions.in("state",
-					new String[] { "2", "3" })));
+		Criteria criteria = getSession().createCriteria(TsCommodity.class);
+		criteria.add(Restrictions.le("starttime", new Date()));
+		criteria.add(Restrictions.not(Restrictions.in("state", new String[] { "2", "3" })));
+
+		if (ids.length > 0) {
 			criteria.add(Restrictions.not(Restrictions.in("id", ids)));
-			// String hql =
-			// "from TsCommodity where id not in (:ids) and starttime >= :starttime and state != '2' and state != '3'";
-			// Query query = getSession().createQuery(hql);
-			// query.setDate("starttime", new Date());
-			// query.setParameterList("ids", ids);
-			return criteria.list();
-		} else {
-			Criteria criteria = getSession().createCriteria(TsCommodity.class);
-			criteria.add(Restrictions.le("starttime", new Date()));
-			criteria.add(Restrictions.not(Restrictions.in("state",
-					new String[] { "2", "3" })));
-			// String hql =
-			// "from TsCommodity where  starttime >= :starttime and state != '2' and state != '3'";
-			// Query query = getSession().createQuery(hql);
-			// query.setDate("starttime", new Date());
-			return criteria.list();
 		}
+		
+		return criteria.list();
 	}
 
 	public Object getBinding(String id) {
