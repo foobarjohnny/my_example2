@@ -62,6 +62,11 @@
 						</tr>
 						<tr>
 							<td class="admin_title2">
+								<a target="mainFrame" href="doohickeyList.action">心得与窍门</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="admin_title2">
 								<a target="mainFrame" href="infoSearch.action?nettype=5">网站公告</a>
 							</td>
 						</tr>

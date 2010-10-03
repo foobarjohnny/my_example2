@@ -53,7 +53,7 @@
 		</td>
 		<td width="775" height="40" align="center" bgcolor="#FFFFFF"
 			class="admin_title1">
-			竞拍历史
+			E拍币购买明细
 		</td>
 		<td width="10" rowspan="3" background="images/r_right.gif">
 			<img src="images/r_right.gif" width="10" height="1">
