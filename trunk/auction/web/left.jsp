@@ -19,6 +19,8 @@
 			document.getElementById("freeNum").innerHTML=s[2];
 			document.getElementById("winGoods").innerHTML=s[4];
 		}
+		//为了刷新右侧的页面的状态
+		window.location="http://localhost/auction/show.action";
 	}
 	function loginout() {
 		loginRomet.loginOut(callHandler);
@@ -33,7 +35,9 @@
 		document.getElementById("password").value = "";
 		document.getElementById("userLogin").style.display = "block";
 		document.getElementById("displayUser").style.display = "none";
-		
+
+		//为了刷新右侧的页面的状态， 这个在部署的时候需要修改。
+		window.location="http://localhost/auction/show.action";
 	}
 </script>
 
