@@ -32,8 +32,7 @@ public class Job {
 	 * @throws GeneralException
 	 */
 	public void addComtity() throws GeneralException {
-		String[] ids = TradeManager.getId();
-		List<TradeData> dataList = jobService.getNewComtity(ids);
+		List<TradeData> dataList = jobService.getNewComtity(TradeManager.getId());
 		for (int i = 0; i < dataList.size(); i++) {
 			TradeManager.add(dataList.get(i));
 		}

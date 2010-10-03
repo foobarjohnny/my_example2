@@ -1,6 +1,6 @@
 package org.auction.module.manager.job.service.impl;
 
-import java.math.BigDecimal;
+import java.math.BigDecimal; 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.log4j.Logger;
 
 import org.auction.entity.TsBidding;
 import org.auction.entity.TsBingcur;
@@ -22,44 +24,56 @@ import org.mobile.common.bean.SearchBean;
 import org.mobile.common.exception.GeneralException;
 import org.mobile.common.service.GeneralService;
 import org.mobile.common.util.BeanProcessUtils;
-
+import org.mobile.common.util.Constant;
+/**
+ * 装载正在竞拍商品的信息
+ * @author 
+ *
+ */
 public class JobServiceImpl extends GeneralService implements IJobService {
 
+	private static Logger logger = Logger.getLogger(JobServiceImpl.class);
+	
+	/**
+	 * 根据当前Application上下文中的商品编号， 来获取竞拍商品的相关信息，获取到新的需要竞拍的商品的信息
+	 */
 	@SuppressWarnings("unchecked")
 	public List<TradeData> getNewComtity(String[] ids) throws GeneralException {
+		
 		List<TradeData> dataList = new ArrayList<TradeData>();
 		List list = this.generalDao.auction(ids);
 		if (list != null && list.size() > 0) {
 			for (int i = 0; i < list.size(); i++) {
 				TsCommodity tsCommodity = (TsCommodity) list.get(i);
-				if (tsCommodity.getState().equals("4")) {
+				TradeData data = new TradeData();
+				
+				//如果状态是4的话，那么需要修改成为1，再次竞拍
+				if (tsCommodity.getState().equals(Constant.COMMODITY_STATE.UNKNOWN_STATE)) {
 					tsCommodity.setState("1");
 					generalDao.update(tsCommodity);
-					TradeData data = new TradeData();
 					BeanProcessUtils.copyProperties(data, tsCommodity);
-					dataList.add(data);
-				} else if (tsCommodity.getState().equals("1")) {
-					TradeData data = new TradeData();
+				//查询正在竞拍的商品	
+				} else if (tsCommodity.getState().equals(Constant.COMMODITY_STATE.AUCTION_STATE)) {
 					BeanProcessUtils.copyProperties(data, tsCommodity);
-					TsBidding tsBidding = (TsBidding) generalDao
-							.getBinding(tsCommodity.getId());
+					TsBidding tsBidding = (TsBidding) generalDao.getBinding(tsCommodity.getId());
 					if (tsBidding != null) {
 						BeanProcessUtils.copyProperties(data, tsBidding);
 						data.setBid(tsBidding.getId());
-						BeanProcessUtils.copyProperties(data, tsBidding
-								.getTsUser());
+						BeanProcessUtils.copyProperties(data, tsBidding.getTsUser());
 						data.setUid(tsBidding.getTsUser().getId());
 						data.setId(tsCommodity.getId());
 						data.setMarketPrice(tsBidding.getPrice());
 					}
-					dataList.add(data);
 				}
-
+				dataList.add(data);
 			}
 		}
 		return dataList;
 	}
 
+	/**
+	 * 对于竞拍完成的商品进行处理， 
+	 */
 	public void finish() throws GeneralException {
 		List<TradeData> list = TradeManager.getTradeData();
 		if (list != null && list.size() > 0) {

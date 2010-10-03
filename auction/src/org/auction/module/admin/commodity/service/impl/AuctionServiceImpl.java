@@ -123,7 +123,7 @@ public class AuctionServiceImpl extends GeneralService implements
 			tsBidding.setTsUser(tsUser);
 			tsBidding.setBiddate(new Date());
 			tsBidding.setBidtype(type);
-			tsBidding.setPrice(data.getPrice().add(tsCommodity.getMarkUp()));
+			tsBidding.setPrice(tradeData.getPrice().add(tsCommodity.getMarkUp()));
 			tsBidding.setIsbid("1");
 			modify(tsCommodity.getId());
 			generalDao.save(tsBidding);

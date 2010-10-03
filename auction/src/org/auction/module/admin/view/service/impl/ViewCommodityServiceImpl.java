@@ -11,19 +11,21 @@ import org.mobile.common.bean.PageBean;
 import org.mobile.common.exception.GeneralException;
 import org.mobile.common.service.GeneralService;
 
+import org.mobile.common.util.Constant;
+
 public class ViewCommodityServiceImpl extends GeneralService implements
 		ViewCommodityService {
 
 	public void show(ViewData model) throws GeneralException {
 		// 首页显示竞拍商品显示十条记录
 		List<TradeData> list = TradeManager.getTradeData();
-		for (int i = 0; i < list.size(); i++) {
+		int size = list.size() >= Constant.SIZE_PER_PAGE?Constant.SIZE_PER_PAGE : list.size();
+		for (int i = 0; i < size; i++) {
 			TradeData td = list.get(i);
 			ViewData vd = new ViewData();
 			vd.setId(td.getId());
 			vd.setTradename(td.getTradename());
-			if (td.getPrice() != null
-					&& td.getPrice().compareTo(td.getMarketPrice()) > 0) {
+			if (td.getPrice() != null && td.getPrice().compareTo(td.getMarketPrice()) > 0) {
 				vd.setMarketPrice(td.getPrice());
 			} else {
 				vd.setMarketPrice(td.getMarketPrice());

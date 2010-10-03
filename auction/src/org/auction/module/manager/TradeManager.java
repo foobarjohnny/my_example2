@@ -43,13 +43,14 @@ public class TradeManager {
 	@SuppressWarnings("unchecked")
 	public static List<TradeData> getTradeData() {
 		List<TradeData> list = new ArrayList<TradeData>();
-		if (tradeDataMap != null && tradeDataMap.size() > 0) {
-			Iterator it = tradeDataMap.keySet().iterator();
-			while (it.hasNext()) {
-				String key = it.next().toString();
-				list.add(tradeDataMap.get(key));
-			}
-		}
+		list.addAll(tradeDataMap.values());
+//		if (tradeDataMap != null && tradeDataMap.size() > 0) {
+//			Iterator it = tradeDataMap.keySet().iterator();
+//			while (it.hasNext()) {
+//				String key = it.next().toString();
+//				list.add(tradeDataMap.get(key));
+//			}
+//		}
 		return list;
 	}
 
@@ -63,7 +64,7 @@ public class TradeManager {
 			String[] strs = new String[tradeDataMap.size()];
 			return tradeDataMap.keySet().toArray(strs);
 		} else {
-			return null;
+			return new String[0];
 		}
 	}
 }
