@@ -27,7 +27,7 @@ public class TradeData {
 	private String deleteif;
 	// 当前竞拍信息
 	private String bid;
-	private BigDecimal price;
+	private BigDecimal price = new BigDecimal(0);
 	private Date biddate;
 	private String isbid;
 	// 当前竞拍用户信息

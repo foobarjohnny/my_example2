@@ -35,7 +35,7 @@ public class AuctionHandler {
 				AuctionData data = new AuctionData();
 				data.setComptyId(comptyId);
 				data.setUserId(bean.getId());
-				data.setPrice(new BigDecimal(price));
+				//data.setPrice(new BigDecimal(price));
 				boolean is = false;
 				try {
 					is = auctionService.auction(data);
