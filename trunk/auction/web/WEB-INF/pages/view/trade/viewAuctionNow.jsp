@@ -14,7 +14,7 @@
 		} else {
 			alert(data);
 		}
-	} 
+	}
 	/**
 	 * 显示时间
 	 * 
@@ -31,7 +31,7 @@
 			var msg = hour + ":" + minutes + ":" + seconds;
 			document.all[id].innerHTML = msg;
 			var userid = document.getElementById("user" + did).value;
-			bidingRomet.find(tid,userid,did, showMsg);
+			bidingRomet.find(tid, userid, did, showMsg);
 		} else {
 			var obj = document.getElementById("button" + did);
 			obj.style.display = "none";
@@ -69,14 +69,14 @@
 	function callBackMsg(data) {
 		var s = data.split(":");
 		if (s[0] == "add") {
-			eval("time" + s[1] + "=" + parseInt(s[2])*1000);
+			eval("time" + s[1] + "=" + parseInt(s[2]) * 1000);
 		} else if (s[0] == "success") {
 			//alert("竞拍成功");
 		} else {
 			//alert(data);
 		}
 	}
-	function showAll() { 
+	function showAll() {
 		//form1.action="bidingSearch.action";
 		//form1.submit();
 		//alert("【请注意】该功能目前没有提供！");
@@ -85,7 +85,8 @@
 <form action="bidingSearch.action" method="post" name="form1">
 	<input type="hidden" name="id" value="${id }">
 </form>
-<table width="790" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="790" border="0" align="center" cellpadding="0"
+	cellspacing="0">
 	<tr>
 		<td colspan="4" height="20" align="center"
 			background="images/r_top.gif">
@@ -137,7 +138,8 @@
 											<td width="90" align="center" valign="middle"
 												background="images/imgb.gif">
 												<s:if test="image[1] != null">
-													<img height="80" width="80" src="viewImage.action?id=${image[1] }">
+													<img height="80" width="80"
+														src="viewImage.action?id=${image[1] }">
 												</s:if>
 												<s:else>
                     		&nbsp;
@@ -146,7 +148,8 @@
 											<td width="90" align="center" valign="middle"
 												background="images/imgb.gif">
 												<s:if test="image[2] != null">
-													<img height="80" width="80" src="viewImage.action?id=${image[2] }">
+													<img height="80" width="80"
+														src="viewImage.action?id=${image[2] }">
 												</s:if>
 												<s:else>
                     		&nbsp;
@@ -155,7 +158,8 @@
 											<td width="90" align="center" valign="middle"
 												background="images/imgb.gif">
 												<s:if test="image[3] != null">
-													<img height="80" width="80" src="viewImage.action?id=${image[3] }">
+													<img height="80" width="80"
+														src="viewImage.action?id=${image[3] }">
 												</s:if>
 												<s:else>
                     		&nbsp;
@@ -204,11 +208,13 @@
 								<td colspan="2" align="center">
 									<div id="div0" class="jptime" style="color: red">
 										<script type="text/javascript">
-						var div0 = null;
-						var time0 = ${remaining};
-						div0 = setInterval("displayTime('div0', time0, div0, '${id}', '0')", 1000);
-						
-					</script>
+	var div0 = null;
+	var time0 = $
+	{
+		remaining
+	};
+	div0 = setInterval("displayTime('div0', time0, div0, '${id}', '0')", 1000);
+</script>
 									</div>
 									<br>
 									每次竞价商品价格增加￥${markup }&nbsp;&nbsp;时间增加${addtime }秒
@@ -228,9 +234,7 @@
 											<td width="200" height="37" align="center"
 												background="images/jgb.gif">
 												<a href="#" onclick="buyTrade('${id}')"><strong><font
-														color="#FFFFFF">现在购买￥${buyprices }</font>
-												</strong>
-												</a>
+														color="#FFFFFF">现在购买￥${buyprices }</font> </strong> </a>
 											</td>
 										</tr>
 									</table>
@@ -246,7 +250,9 @@
 									<strong>竞价记录</strong>
 								</td>
 								<td width="48%" align="right" bgcolor="#CCCCCC">
-									<a href="#" onclick="showAll()">查看全部>></a>
+									<a href="#" onclick=
+	showAll();
+>查看全部>></a>
 								</td>
 							</tr>
 							<tr>
@@ -285,7 +291,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" valign="top" align="center" background="images/hr.gif" height="1">
+					<td colspan="2" valign="top" align="center"
+						background="images/hr.gif" height="1">
 					</td>
 				</tr>
 				<tr>
