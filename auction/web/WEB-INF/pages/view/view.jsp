@@ -71,13 +71,9 @@
 			}
 		}
 	}
-	function doSubmit(id) {
-		var price = document.getElementById(id+"_price").value;//不知道为什么还要从前台去取价格
-		if (price == "") {
-			price = "0";
-		}
+	function doSubmit(id, isLogin) {
 		var uid = document.getElementById(id+'_user').value;
-		auctionRomet.auction(id, price, uid, "", callBackMsg);
+		auctionRomet.auction(id, "", uid, "", callBackMsg);
 	}
 	function callBackMsg(data) {
 		var obj = eval('('+data+')');
@@ -103,6 +99,16 @@
 	}
 	function showAll() {
 		trade.submit();
+	}
+
+	function btnMouseOn(id, status, obj){
+		if(status != 'Y'){
+			obj.src="images/wydl.png";
+		}
+	}
+
+	function btnMouseAway(obj){
+		obj.src="images/wyjp.gif";
 	}
 </script>
 
@@ -130,11 +136,11 @@
 			</td>
 		</tr>
 		<tr height="1">
-			<td colspan="2" height="1" background="images/hr.gif">
+			<td colspan="4" height="1" background="images/hr.gif">
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" valign="top" bgcolor="#FFFFFF">
+			<td colspan="4" valign="top" bgcolor="#FFFFFF">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0"
 					height="100%">
 					<tr>
@@ -203,8 +209,9 @@
 									<td height="27" align="center" valign="top">
 										<div id="${data.id }_auction_div">
 											<img src="images/wyjp.gif" width="104" height="27"
-												style="display: bolck"
-												onclick="doSubmit('${data.id}');" />
+												style="display: bolck" onmousemove="btnMouseOn('${data.id}', '${user_login }', this);" 
+												onmouseout="btnMouseAway(this);"
+												onclick="doSubmit('${data.id}','${user_login }');" />
 										</div>
 									</td>
 								</tr>
