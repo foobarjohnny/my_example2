@@ -1,6 +1,8 @@
 package org.auction.module.admin.base.data;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.mobile.common.action.GeneralData;
 
@@ -12,6 +14,8 @@ public class DoohickeyData extends GeneralData {
 	private Date addtime;
 	private String remark;
 	private String title;
+
+	private List<DoohickeyData> dataList = new ArrayList<DoohickeyData>();
 
 	public String getId() {
 		return id;
@@ -59,5 +63,13 @@ public class DoohickeyData extends GeneralData {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public List<DoohickeyData> getDataList() {
+		return dataList;
+	}
+
+	public void setDataList(List<DoohickeyData> dataList) {
+		this.dataList = dataList;
 	}
 }

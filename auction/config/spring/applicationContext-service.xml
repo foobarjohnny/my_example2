@@ -114,4 +114,8 @@
 		class="org.auction.module.admin.commodity.service.impl.ShowcomServiceImpl">
 		<property name="generalDao" ref="generalDao" />
 	</bean>
+	<bean id="doohickeyService"
+		class="org.auction.module.admin.base.service.impl.DoohickeyServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
 </beans>

@@ -132,5 +132,28 @@
 		<action name="proSave" class="problemAction" method="proSave">
 			<result type="chain">proForward</result>
 		</action>
+		<!-- 后台心得与窍门 -->
+		<action name="doohickeyList" class="doohickeyAction" method="list">
+			<result>WEB-INF/pages/admin/base/admin_doohickey.jsp</result>
+		</action>
+		<action name="doohickeyDelete" class="doohickeyAction" method="delete">
+			<result type="chain">doohickeyList</result>
+		</action>
+		<action name="doohickeyView" class="doohickeyAction" method="view">
+			<result>WEB-INF/pages/admin/base/admin_doohickey_view.jsp</result>
+		</action>
+		<!-- 前台心得与窍门 -->
+		<action name="doohickeyShow" class="doohickeyAction" method="show">
+			<result>WEB-INF/pages/view/info/view_doohickey_list.jsp</result>
+		</action>
+		<action name="doohickeyShowView" class="doohickeyAction" method="view">
+			<result>WEB-INF/pages/view/info/view_doohickey_view.jsp</result>
+		</action>
+		<action name="doohickeyForward" class="doohickeyAction" method="forward">
+			<result>WEB-INF/pages/view/info/view_doohickey_form.jsp</result>
+		</action>
+		<action name="doohickeySave" class="doohickeyAction" method="save">
+			<result>WEB-INF/pages/view/info/view_doohickey_form.jsp</result>
+		</action>
 	</package>
 </struts>

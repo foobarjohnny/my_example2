@@ -104,4 +104,8 @@
 		scope="prototype">
 		<property name="showcomService" ref="showcomService" />
 	</bean>
+	<bean id="doohickeyAction" class="org.auction.module.admin.base.action.DoohickeyAction"
+		scope="prototype">
+		<property name="doohickeyService" ref="doohickeyService" />
+	</bean>
 </beans>

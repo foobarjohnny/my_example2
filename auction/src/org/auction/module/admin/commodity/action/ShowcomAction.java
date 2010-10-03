@@ -59,6 +59,12 @@ public class ShowcomAction extends GeneralAction<ShowcomData> {
 		showcomService.viewList(model);
 		return SUCCESS;
 	}
+	
+	public String showList() throws Exception {
+		this.setPage(model);
+		showcomService.showList(model);
+		return SUCCESS;
+	}
 
 	public ShowcomData getModel() {
 		return model;

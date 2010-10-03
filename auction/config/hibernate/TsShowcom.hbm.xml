@@ -28,5 +28,8 @@
         <property name="creattime" type="java.util.Date">
             <column name="CREATTIME" length="19"  />
         </property>
+        <property name="adde" type="java.lang.Integer">
+            <column name="ADDE" />
+        </property>
     </class>
 </hibernate-mapping>

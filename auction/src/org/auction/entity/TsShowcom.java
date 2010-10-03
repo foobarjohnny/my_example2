@@ -18,6 +18,7 @@ public class TsShowcom implements java.io.Serializable {
 	private String remark;
 	private String aut;
 	private Date creattime;
+	private Integer adde;
 
 	// Constructors
 
@@ -97,6 +98,14 @@ public class TsShowcom implements java.io.Serializable {
 
 	public void setCreattime(Date creattime) {
 		this.creattime = creattime;
+	}
+
+	public Integer getAdde() {
+		return adde;
+	}
+
+	public void setAdde(Integer adde) {
+		this.adde = adde;
 	}
 
 }

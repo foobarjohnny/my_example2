@@ -61,6 +61,40 @@ public class LoginHandler {
 		return "success";
 	}
 
+	/**
+	 * 检查Email是否被注册
+	 * 
+	 * @param email
+	 * @return
+	 * @throws Exception
+	 */
+	public String checkedEmail(String email) throws Exception {
+		UserData model = new UserData();
+		model.setEmail(email);
+		model.setMethodName("email");
+		if (userService.checkedUser(model)) {
+			return "邮箱已被使用！";
+		}
+		return "success";
+	}
+
+	/**
+	 * 检查用户名是否被注册
+	 * 
+	 * @param email
+	 * @return
+	 * @throws Exception
+	 */
+	public String checkedUser(String username) throws Exception {
+		UserData model = new UserData();
+		model.setEmail(username);
+		model.setMethodName("username");
+		if (userService.checkedUser(model)) {
+			return "用户名被使用！";
+		}
+		return "success";
+	}
+
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
