@@ -21,6 +21,7 @@ public class ShowcomData extends GeneralData {
 	private String bidId;
 	private BigDecimal price = new BigDecimal(0);
 	private Integer count;
+	private Integer adde;
 
 	private BigDecimal mprice = new BigDecimal(0);
 
@@ -146,5 +147,13 @@ public class ShowcomData extends GeneralData {
 
 	public void setJs(BigDecimal js) {
 		this.js = js;
+	}
+
+	public Integer getAdde() {
+		return adde;
+	}
+
+	public void setAdde(Integer adde) {
+		this.adde = adde;
 	}
 }

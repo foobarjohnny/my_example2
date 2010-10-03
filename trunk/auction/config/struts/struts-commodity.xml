@@ -270,5 +270,11 @@
 			<result>WEB-INF/pages/view/trade/show.jsp
 			</result>
 		</action>
+		
+		<!-- 前台用户秀宝 -->
+		<action name="showcomsUsrList" class="showcomAction" method="showList">
+			<result>WEB-INF/pages/view/user/showList.jsp
+			</result>
+		</action>
 	</package>
 </struts>

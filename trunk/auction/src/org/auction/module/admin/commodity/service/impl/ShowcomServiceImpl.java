@@ -188,4 +188,61 @@ public class ShowcomServiceImpl extends GeneralService implements
 		}
 	}
 
+	/**
+	 * 前台用户我的秀宝
+	 */
+	@SuppressWarnings("unchecked")
+	public void showList(ShowcomData model) throws Exception {
+		GeneralManager gm = GeneralManager.getCurrentManager();
+		LoginBean lb = SessionManager.getLoginInfo(gm.getSessionId());
+		if (lb != null) {
+			List<SearchBean> sbs = new ArrayList<SearchBean>();
+			sbs.add(new SearchBean("tsUser.id", "eq", "string", lb.getId()));
+			// 获得该用户秀宝商品
+			List list = generalDao.search(TsShowcom.class, sbs, model
+					.getPageBean(), null);
+			if (list != null && list.size() > 0) {
+				for (int i = 0; i < list.size(); i++) {
+					TsShowcom tsShowcom = (TsShowcom) list.get(i);
+					ShowcomData data = new ShowcomData();
+					BeanProcessUtils.copyProperties(data, tsShowcom);
+					data.setTradeId(tsShowcom.getTsCommodity().getId());
+					data.setTradename(tsShowcom.getTsCommodity().getTradename());
+					data.setUsername(tsShowcom.getTsUser().getUsername());
+					data.setCreattime(tsShowcom.getCreattime());
+					data.setMprice(tsShowcom.getTsCommodity().getPrices());
+					// 商品竞拍
+					List<SearchBean> search = new ArrayList<SearchBean>();
+					search.add(new SearchBean("tsCommodity.id", "eq", "string",
+							tsShowcom.getTsCommodity().getId()));
+					List bing_list = generalDao.search(TsBingcur.class, search, null,
+							null);
+					if (bing_list != null && bing_list.size() > 0) {
+						TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
+						data.setBidId(tsBingcur.getId());
+						// 节约
+						if (tsBingcur.getTsUser().getId().equals(
+								tsShowcom.getTsUser().getId())) {
+							data.setPrice(tsBingcur.getPrice());
+							BigDecimal bg = tsBingcur.getPrice().add(
+									new BigDecimal(tsBingcur.getAmount() * 2));
+							data.setJs(((data.getMprice().subtract(bg)).divide(data
+									.getMprice(), BigDecimal.ROUND_HALF_DOWN))
+									.multiply(new BigDecimal(100)));
+						} else {
+							data
+									.setPrice(tsShowcom.getTsCommodity()
+											.getPurchasePrice());
+							data.setJs(((data.getMprice().subtract(tsShowcom
+									.getTsCommodity().getPurchasePrice())).divide(data
+									.getMprice(), BigDecimal.ROUND_HALF_DOWN))
+									.multiply(new BigDecimal(100)));
+						}
+					}
+					model.getDataList().add(data);
+				}
+			}
+		}
+	}
+
 }

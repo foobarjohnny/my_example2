@@ -27,8 +27,12 @@ public class UserData extends GeneralData {
 	private Date lasttimeip;
 	private Integer paycur;
 	private Integer freecur;
+	
+	private String regId;
 
 	private String methodName;
+	
+	private String info;
 
 	private List<UserData> dataList = new ArrayList<UserData>();
 
@@ -198,6 +202,22 @@ public class UserData extends GeneralData {
 
 	public void setMethodName(String methodName) {
 		this.methodName = methodName;
+	}
+
+	public String getRegId() {
+		return regId;
+	}
+
+	public void setRegId(String regId) {
+		this.regId = regId;
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
 	}
 
 }

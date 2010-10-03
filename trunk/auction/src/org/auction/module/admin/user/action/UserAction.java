@@ -53,6 +53,16 @@ public class UserAction extends GeneralAction<UserData> {
 		userService.regedit(model);
 		return SUCCESS;
 	}
+	
+	public String regForward() throws Exception {
+		userService.regForward(model);
+		return SUCCESS;
+	}
+	
+	public String reg() throws Exception {
+		userService.reg(model);
+		return SUCCESS;
+	}
 
 	public String view() throws GeneralException {
 		userService.view(model);
@@ -73,6 +83,9 @@ public class UserAction extends GeneralAction<UserData> {
 	}
 
 	public String viewUser() throws GeneralException {
+		if (!checkedLogin()) {
+			return "login";
+		}
 		userService.forward(model);
 		return SUCCESS;
 	}

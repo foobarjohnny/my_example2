@@ -19,4 +19,6 @@ public interface ShowcomService {
 	public void forward(ShowcomData model) throws Exception;
 
 	public void viewList(ShowcomData model) throws Exception;
+	
+	public void showList(ShowcomData model) throws Exception;
 }

@@ -17,11 +17,17 @@ public interface UserService {
 	public boolean login(UserData model) throws GeneralException;
 
 	public void regedit(UserData model) throws GeneralException;
+	
+	public void reg(UserData model) throws GeneralException;
 
 	public void view(UserData model) throws GeneralException;
 
 	public void update(UserData model) throws GeneralException;
 
 	public LoginBean loginDwr(UserData model) throws GeneralException;
+	
+	public void regForward(UserData model) throws Exception;
+	
+	public boolean checkedUser(UserData model) throws Exception;
 
 }
