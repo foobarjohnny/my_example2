@@ -49,7 +49,10 @@
 		<pattern>/showImage.action*</pattern>
 		<pattern>/coolForward.action*</pattern>
 		<pattern>/viewAuctionNow.action*</pattern>
-		
+		<pattern>/doohickeyShow.action*</pattern>
+		<pattern>/doohickeyShowView.action*</pattern>
+		<pattern>/userReg.action*</pattern>
+		<pattern>/reg.action*</pattern>
 		<pattern>/WEB-INF/pages/view/*</pattern>
 		<pattern>/WEB-INF/pages/view/trade/*</pattern>
 	</decorator>
@@ -67,6 +70,9 @@
 		<pattern>/searchUserPayE.action*</pattern>
 		<pattern>/orderForward.action*</pattern>
 		<pattern>/forwardShowcom.action*</pattern>
+		<pattern>/showcomsUsrList.action*</pattern>
+		<pattern>/doohickeyForward.action*</pattern>
+		<pattern>/doohickeySave.action*</pattern>
 		<!-- 
 		<pattern>WEB-INF/pages/view/user/user.jsp</pattern>
 		<pattern>/WEB-INF/pages/user/admin_user_account.jsp*</pattern>
