@@ -86,7 +86,7 @@
 								<td align="center" colspan="2">
 									<img src="images/dl.gif" width="40" height="22" onclick="login();"/>
 									<img src="images/hr.gif" width="1" height="1">
-									<a href="userlogin.htm"><img src="images/zc.gif" width="41"
+									<a href="reg.action"><img src="images/zc.gif" width="41"
 											height="22" border="0"> </a>
 								</td>
 							</tr>
