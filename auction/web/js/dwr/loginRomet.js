@@ -12,6 +12,12 @@ loginRomet.login = function(p0, p1, callback) {
 loginRomet.loginOut = function(callback) {
   dwr.engine._execute(loginRomet._path, 'loginRomet', 'loginOut', callback);
 }
+loginRomet.checkedEmail = function(p0, callback) {
+  dwr.engine._execute(loginRomet._path, 'loginRomet', 'checkedEmail', p0, callback);
+}
+loginRomet.checkedUser = function(p0, callback) {
+  dwr.engine._execute(loginRomet._path, 'loginRomet', 'checkedUser', p0, callback);
+}
 loginRomet.setUserService = function(p0, callback) {
   dwr.engine._execute(loginRomet._path, 'loginRomet', 'setUserService', p0, callback);
 }
