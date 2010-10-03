@@ -68,7 +68,7 @@
 					<img src="images/sx.gif" width="1" height="57">
 				</td>
 				<td width="123" align="center">
-					<a href="#" onclick="alert('还未实现');"><span class="indextitle"><br>
+					<a href="doohickeyShow.action"><span class="indextitle"><br>
 							心得与窍门</span> </a>&nbsp;&nbsp;&nbsp;&nbsp;
 				</td>
 			</tr>
