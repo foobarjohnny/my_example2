@@ -49,35 +49,31 @@
 	<table width="795" border="0" align="center" cellpadding="0"
 		cellspacing="0">
 		<tr>
-			<td colspan="4" width="795" height="20" background="images/r_top.gif">
+			<td colspan="3" width="795" height="20" background="images/r_top.gif">
 			</td>
 		</tr>
 		<tr>
 			<td width="10" rowspan="3" background="images/r_left.gif">
 				<img src="images/r_left.gif" width="10" height="1">
 			</td>
-			<td width="387" valign="top" bgcolor="#FFFFFF">
-				&nbsp;&nbsp;
-				<img src="images/lsjp.gif" width="99" height="28">
-			</td>
-			<td width="388" align="right" bgcolor="#FFFFFF">
-				&nbsp;&nbsp;
+			<td width="775" height="40" align="center" bgcolor="#FFFFFF"
+				class="admin_title1">
+				E拍币消费明细
 			</td>
 			<td width="10" rowspan="3" background="images/r_right.gif">
 				<img src="images/r_right.gif" width="10" height="1">
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" valign="top" background="images/hr.gif" height="1">
+			<td colspan="3" valign="top" background="images/hr.gif" height="1">
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" valign="top" bgcolor="#FFFFFF">
-				<table width="100%" border="0" align="center" cellpadding="0"
-					cellspacing="0">
-					<tr>
+			<td valign="top" bgcolor="#FFFFFF">
+				<table width="100%" border="0" align="center" cellspacing="2" cellpadding="5">
+					<tr height="20">
 						<td width="20%" align="center" bgcolor="#E8E8E8"
-							class="admin_title2">
+							class="admin_title2" colspan="2">
 							<strong>商品描述</strong>
 						</td>
 						<td width="41%" align="center" bgcolor="#E8E8E8"
@@ -91,6 +87,7 @@
 					</tr>
 					<s:iterator value="dataList" id="data" status="status">
 						<tr>
+							<td width="15%" align="center"><a href="#"><img width="100" height="100" border="0" src="showImage.action?id=${data.id }"></a></td>
 							<td align="center">
 								${data.comname }
 							</td>
@@ -116,7 +113,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4">
+			<td colspan="3">
 				<img src="images/r_dow.gif" width="795" height="20">
 			</td>
 		</tr>

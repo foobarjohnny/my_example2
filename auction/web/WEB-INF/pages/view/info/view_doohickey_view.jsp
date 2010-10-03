@@ -1,0 +1,45 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ include file="/resources/taglib.jsp"%>
+<table width="795" border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="4" align="center" background="images/r_top.gif">
+			&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td width="10" rowspan="3" background="images/r_left.gif">
+			<img src="images/r_left.gif" width="10" height="1">
+		</td>
+		<td width="387" valign="top" bgcolor="#FFFFFF">
+			&nbsp;&nbsp;
+			<img src="images/xdyqm.gif" width="123" height="28">
+		</td>
+		<td width="388" align="right" bgcolor="#FFFFFF">
+			&nbsp;&nbsp;
+		</td>
+		<td width="10" rowspan="3" background="images/r_right.gif">
+			<img src="images/r_right.gif" width="10" height="1">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" valign="top" background="images/hr.gif" height="1">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" valign="top" bgcolor="#FFFFFF">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+	            	<td width="74%" align="center" class="indexjg">${title }</td>
+	            </tr>
+		        <tr>
+		            <td>${remark }</td>
+		        </tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="4" height="20" align="center" background="images/r_dow.gif">
+			&nbsp;
+		</td>
+	</tr>
+</table>

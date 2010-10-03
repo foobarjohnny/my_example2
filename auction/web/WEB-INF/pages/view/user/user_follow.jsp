@@ -46,6 +46,11 @@
 			help.action = "orderForward.action";
 			help.submit();
 		}
+		function pay(id) {
+			help.id.value = id;
+			help.action = "orderPay.action";
+			help.submit();
+		}
 		</script>
 <table width="795" border="0" align="center" cellpadding="0"
 	cellspacing="0">
@@ -128,18 +133,16 @@
 							</td>
 							<td align="center">
 								<s:if test="state == '未付款'">
-									<a href="#" onclick="viewOrd('${data.orderId}')">付款</a>
+									<a href="#" onclick="pay('${data.orderId}')">付款</a>
 								</s:if>
 								<s:if test="state == '已发货'">
-				              		交易完成
+				              		已发货
 				              	</s:if>
 								<s:if test="state == '交易完成'">
-				              		我要秀宝
+				              		
 				              	</s:if>
-								<!--  
-				              	<a href="#" onclick="viewCom('${data.id}')">我要秀宝</a><br>
 				              	<a href="#" onclick="viewOrd('${data.orderId}')">查看订单</a>
-				              	-->
+				              	<a href="forwardShowcom.action?tradeId=${data.id }" >我要秀宝</a><br>
 							</td>
 						</tr>
 					</s:iterator>
