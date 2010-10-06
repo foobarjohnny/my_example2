@@ -1,6 +1,7 @@
 package org.auction.module.admin.commodity.service.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.auction.module.admin.commodity.data.BidingData;
@@ -19,8 +20,7 @@ public class BidingServiceImpl extends GeneralService implements BidingService {
 		TradeData tradeData = TradeManager.get(model.getCommpityId());
 		if (tradeData != null) {
 			String uid = tradeData.getUid();
-			if (uid != null && !uid.equals("")
-					&& !uid.equals(model.getUserId())) {
+			if (uid != null && !uid.equals("") && !uid.equals(model.getUserId())) {
 				BidingData data = new BidingData();
 				data.setUserId(uid);
 				data.setUsername(tradeData.getUsername());
@@ -31,20 +31,32 @@ public class BidingServiceImpl extends GeneralService implements BidingService {
 		}
 		return newList;
 	}
-	
+
 	/**
 	 * 返回所有的竞拍的产品
 	 */
-	public List<BidingData> getAll(String id) throws GeneralException{
+	public List<BidingData> getAll(String id) throws GeneralException {
 		List<BidingData> list = new ArrayList<BidingData>();
 		List<TradeData> tradeList = TradeManager.getTradeData(id);
-		for(TradeData bean : tradeList){
+		for (TradeData bean : tradeList) {
 			BidingData data = new BidingData();
 			data.setUserId(bean.getUid());
 			data.setId(bean.getId());
 			data.setUsername(bean.getUsername());
 			data.setPrice(bean.getMarketPrice());
 			data.setTime(bean.getAddtimes());
+			int hour = 0;
+			int minute = 0;
+			int second = 0;
+			long time = bean.getOvertime().getTime() - bean.getStarttime().getTime();
+			var maxtime = time / 1000;
+			hour = Math.floor(maxtime / 3600);
+			if(hour<10){hour = "0"+hour;}
+			minutes = Math.floor((maxtime - hour * 3600) / 60);
+			if(minutes < 10){minutes = "0" + minutes;}
+			seconds = Math.floor(maxtime % 60);
+			if(seconds < 10){seconds = "0" + seconds;}
+			var msg = hour + ":" + minutes + ":" + seconds;
 			list.add(data);
 		}
 		return list;
