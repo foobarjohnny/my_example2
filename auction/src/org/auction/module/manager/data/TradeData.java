@@ -9,7 +9,7 @@ import java.util.Date;
  * @author ThinkPad
  * 
  */
-public class TradeData {
+public class TradeData  {
 	// 商品信息
 	private String id;
 	private String tradename;
@@ -36,10 +36,10 @@ public class TradeData {
 
 	// 增加时间
 	private boolean isAdd;
-	//  竞拍结束
+	// 竞拍结束
 	private boolean finshed = false;
-	
-	//  是否生成订单 
+
+	// 是否生成订单
 	private boolean order = false;
 
 	private boolean over = false;
@@ -235,4 +235,5 @@ public class TradeData {
 	public void setOrder(boolean order) {
 		this.order = order;
 	}
+
 }

@@ -32,10 +32,13 @@ public class Job {
 	 * @throws GeneralException
 	 */
 	public void addComtity() throws GeneralException {
+		// 加入到时商品
 		List<TradeData> dataList = jobService.getNewComtity(TradeManager.getId());
 		for (int i = 0; i < dataList.size(); i++) {
 			TradeManager.add(dataList.get(i));
 		}
+		// 移除已经竞拍完成的商品
+		jobService.remove();
 	}
 
 	/**

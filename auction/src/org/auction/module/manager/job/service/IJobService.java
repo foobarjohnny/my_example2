@@ -9,6 +9,7 @@ public interface IJobService {
 
 	/**
 	 * 得到新的竞拍的产品信息
+	 * 
 	 * @param ids
 	 * @return
 	 * @throws GeneralException
@@ -17,7 +18,15 @@ public interface IJobService {
 
 	/**
 	 * 对于竞拍结束的产品进行处理
+	 * 
 	 * @throws GeneralException
 	 */
 	public void finish() throws GeneralException;
+
+	/**
+	 * 移除竞拍结束的商品
+	 * 
+	 * @throws GeneralException
+	 */
+	public void remove() throws GeneralException;
 }

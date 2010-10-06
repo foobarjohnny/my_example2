@@ -72,6 +72,21 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 	}
 
 	/**
+	 * 移除竞拍结束的商品
+	 */
+	public void remove() throws GeneralException {
+		List<TradeData> list = TradeManager.getTradeData(null);
+		if (list != null && list.size() > 0) { 
+			for (int i = 0; i < list.size(); i++) {
+				TradeData tradeData = list.get(i);
+				if (tradeData.isFinshed()) {
+					TradeManager.remove(tradeData.getId());
+				}
+			}
+		}
+	}
+
+	/**
 	 * 对于竞拍完成的商品进行处理， 
 	 */
 	public void finish() throws GeneralException {
