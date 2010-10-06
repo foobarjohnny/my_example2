@@ -21,6 +21,17 @@ public class UserAction extends GeneralAction<UserData> {
 		return SUCCESS;
 	}
 
+	/**
+	 * 后台用户管理用户添加界面
+	 * 
+	 * @return
+	 * @throws GeneralException
+	 */
+	public String forwardAdmin() throws GeneralException {
+		userService.forwardAdmin(model);
+		return SUCCESS;
+	}
+
 	public String save() throws GeneralException {
 		userService.save(model);
 		if (model.getMethodName().equals("1")) {
@@ -53,12 +64,12 @@ public class UserAction extends GeneralAction<UserData> {
 		userService.regedit(model);
 		return SUCCESS;
 	}
-	
+
 	public String regForward() throws Exception {
 		userService.regForward(model);
 		return SUCCESS;
 	}
-	
+
 	public String reg() throws Exception {
 		userService.reg(model);
 		return SUCCESS;
@@ -97,6 +108,47 @@ public class UserAction extends GeneralAction<UserData> {
 
 	public String viewPass() throws GeneralException {
 		userService.forward(model);
+		return SUCCESS;
+	}
+
+	/**
+	 * 重新发送邮件
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public String send() throws Exception {
+		userService.send(model);
+		return SUCCESS;
+	}
+
+	/**
+	 * 邮箱邀请用户界面
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public String invitePage() throws Exception {
+		// 判断用户是否登录
+		if (!userService.checkedUser(model)) {
+			return "login";
+		}
+		userService.invitePage(model);
+		return SUCCESS;
+	}
+
+	/**
+	 * 发送邀请
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public String invite() throws Exception {
+		// 判断用户是否登录
+		if (!userService.checkedUser(model)) {
+			return "login";
+		}
+		userService.invite(model);
 		return SUCCESS;
 	}
 

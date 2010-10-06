@@ -42,7 +42,9 @@ public class EcurrAction extends GeneralAction<EcurrData> {
 	}
 
 	public String buyEcurr() throws GeneralException {
-		isLogin();
+		if (!checkedLogin()) {
+			return "login";
+		}
 		ecurrService.buy(model);
 		url = model.getUrl();
 		return SUCCESS;

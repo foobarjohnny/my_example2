@@ -8,13 +8,14 @@ import java.util.List;
 import org.auction.entity.TsBidding;
 import org.auction.entity.TsBingcur;
 import org.auction.entity.TsCommodity;
-import org.auction.entity.TsImages;
 import org.auction.entity.TsOrder;
 import org.auction.entity.TsUser;
 import org.auction.module.admin.commodity.data.BidingData;
 import org.auction.module.admin.user.data.UserAuctionData;
 import org.auction.module.admin.user.service.UserAuctionService;
 import org.auction.module.admin.view.data.ViewData;
+import org.auction.module.manager.TradeManager;
+import org.auction.module.manager.data.TradeData;
 import org.mobile.common.bean.LoginBean;
 import org.mobile.common.bean.OrderByBean;
 import org.mobile.common.bean.PageBean;
@@ -24,10 +25,13 @@ import org.mobile.common.manager.GeneralManager;
 import org.mobile.common.service.GeneralService;
 import org.mobile.common.session.SessionManager;
 import org.mobile.common.util.BeanProcessUtils;
+import org.mobile.common.util.Constant;
 
-public class UserAuctionServiceImpl extends GeneralService implements
-		UserAuctionService {
+public class UserAuctionServiceImpl extends GeneralService implements UserAuctionService {
 
+	/**
+	 * 前台用户赢得的竞拍商品列表
+	 */
 	@SuppressWarnings("unchecked")
 	public void auction(UserAuctionData model) throws GeneralException {
 		// 获得登陆用户信息
@@ -39,8 +43,7 @@ public class UserAuctionServiceImpl extends GeneralService implements
 			List<SearchBean> sb = new ArrayList<SearchBean>();
 			sb.add(new SearchBean("tsUser.id", "eq", "string", tsUser.getId()));
 			sb.add(new SearchBean("ordertype", "eq", "string", "1"));
-			List orderList = generalDao.search(TsOrder.class, sb, model
-					.getPageBean(), null);
+			List orderList = generalDao.search(TsOrder.class, sb, model.getPageBean(), null);
 			for (int i = 0; i < orderList.size(); i++) {
 				TsOrder tsOrder = (TsOrder) orderList.get(i);
 				String state = null;
@@ -70,11 +73,11 @@ public class UserAuctionServiceImpl extends GeneralService implements
 				data.setBinddate(tsOrder.getOrdertime());
 				data.setId(tsCommodity.getId());
 				data.setOrderId(tsOrder.getId());
+				// 商品显示图片
+				data.setImagesPath(generalDao.searchImages(tsCommodity.getId(), Constant.TRADE_IMAGES));
 				List<SearchBean> search = new ArrayList<SearchBean>();
-				search.add(new SearchBean("tsCommodity.id", "eq", "string",
-						tsCommodity.getId()));
-				List bing_list = generalDao.search(TsBingcur.class, search,
-						null, null);
+				search.add(new SearchBean("tsCommodity.id", "eq", "string", tsCommodity.getId()));
+				List bing_list = generalDao.search(TsBingcur.class, search, null, null);
 				if (bing_list != null && bing_list.size() > 0) {
 					TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
 					data.setBidId(tsBingcur.getId());
@@ -96,10 +99,21 @@ public class UserAuctionServiceImpl extends GeneralService implements
 			while (iterator.hasNext()) {
 				// 商品信息
 				TsCommodity tsCommodity = (TsCommodity) iterator.next();
+				TradeData td = TradeManager.get(tsCommodity.getId());
 				ViewData vd = new ViewData();
 				vd.setId(tsCommodity.getId());
 				vd.setTradename(tsCommodity.getTradename());
 				vd.setDescript(tsCommodity.getSummary());
+				// 竞拍价格
+				if (td.getPrice() != null && td.getPrice().compareTo(td.getMarketPrice()) > 0) {
+					vd.setMarketPrice(td.getPrice());
+				} else {
+					vd.setMarketPrice(td.getMarketPrice());
+				}
+
+				// 获得图片
+				vd.setImagesPath(generalDao.searchImages(tsCommodity.getId(), Constant.TRADE_IMAGES));
+
 				// 计算时间
 				Calendar endTime = Calendar.getInstance();
 				endTime.setTime(tsCommodity.getOvertime());
@@ -113,6 +127,9 @@ public class UserAuctionServiceImpl extends GeneralService implements
 		}
 	}
 
+	/**
+	 * 用户购买的商品
+	 */
 	@SuppressWarnings("unchecked")
 	public void follow(UserAuctionData model) throws GeneralException {
 		// 获得登陆人员信息
@@ -124,8 +141,7 @@ public class UserAuctionServiceImpl extends GeneralService implements
 			List<SearchBean> sb = new ArrayList<SearchBean>();
 			sb.add(new SearchBean("tsUser.id", "eq", "string", tsUser.getId()));
 			sb.add(new SearchBean("ordertype", "eq", "string", "2"));
-			List orderList = generalDao.search(TsOrder.class, sb, model
-					.getPageBean(), null);
+			List orderList = generalDao.search(TsOrder.class, sb, model.getPageBean(), null);
 			for (int i = 0; i < orderList.size(); i++) {
 				TsOrder tsOrder = (TsOrder) orderList.get(i);
 				String state = null;
@@ -148,6 +164,7 @@ public class UserAuctionServiceImpl extends GeneralService implements
 				// 赋值
 				UserAuctionData data = new UserAuctionData();
 				data.setState(state);
+				data.setTradeState(tsCommodity.getState());
 				data.setUser(tsUser.getUsername());
 				data.setComityName(tsCommodity.getTradename());
 				data.setSummary(tsCommodity.getSummary());
@@ -155,11 +172,11 @@ public class UserAuctionServiceImpl extends GeneralService implements
 				data.setBinddate(tsOrder.getOrdertime());
 				data.setId(tsCommodity.getId());
 				data.setOrderId(tsOrder.getId());
+				// 商品显示图片
+				data.setImagesPath(generalDao.searchImages(tsCommodity.getId(), Constant.TRADE_IMAGES));
 				List<SearchBean> search = new ArrayList<SearchBean>();
-				search.add(new SearchBean("tsCommodity.id", "eq", "string",
-						tsCommodity.getId()));
-				List bing_list = generalDao.search(TsBingcur.class, search,
-						null, null);
+				search.add(new SearchBean("tsCommodity.id", "eq", "string", tsCommodity.getId()));
+				List bing_list = generalDao.search(TsBingcur.class, search, null, null);
 				if (bing_list != null && bing_list.size() > 0) {
 					TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
 					data.setBidId(tsBingcur.getId());
@@ -178,8 +195,7 @@ public class UserAuctionServiceImpl extends GeneralService implements
 	@SuppressWarnings("unchecked")
 	public void viewAuctionNow(UserAuctionData model) throws GeneralException {
 		// 查找商品
-		TsCommodity tsCommodity = (TsCommodity) generalDao.get(
-				TsCommodity.class, model.getId());
+		TsCommodity tsCommodity = (TsCommodity) generalDao.get(TsCommodity.class, model.getId());
 		model.setTradename(tsCommodity.getTradename());
 		model.setSummary(tsCommodity.getSummary());
 		model.setPrices(tsCommodity.getPrices());
@@ -204,31 +220,17 @@ public class UserAuctionServiceImpl extends GeneralService implements
 			model.setUser(tsBidding.getTsUser().getUsername());
 			model.setMarkprices(tsBidding.getPrice());
 		}
+
 		// 获得商品图片ID
-		List<SearchBean> searchBean = new ArrayList<SearchBean>();
-		searchBean
-				.add(new SearchBean("imageid", "eq", "string", model.getId()));
-		searchBean.add(new SearchBean("tablename", "eq", "string",
-				"TS_COMMODITY"));
-		List imagelist = generalDao.search(TsImages.class, searchBean, null,
-				null);
-		String[] images = new String[4];
-		for (int i = 0; i < imagelist.size(); i++) {
-			if (i < 4) {
-				TsImages tsImages = (TsImages) imagelist.get(i);
-				images[i] = tsImages.getId();
-			}
-		}
-		model.setImage(images);
+		model.setImagesPath(generalDao.searchImages(tsCommodity.getId(), Constant.TRADE_IMAGES));
+
 		// 竞拍历史
 		PageBean pageBean = new PageBean();
 		List<OrderByBean> orderBean = new ArrayList<OrderByBean>();
 		orderBean.add(new OrderByBean("", "biddate", "desc"));
 		List<SearchBean> searchBeans = new ArrayList<SearchBean>();
-		searchBeans.add(new SearchBean("tsCommodity.id", "eq", "string", model
-				.getId()));
-		List lists = generalDao.search(TsBidding.class, searchBeans, pageBean,
-				orderBean);
+		searchBeans.add(new SearchBean("tsCommodity.id", "eq", "string", model.getId()));
+		List lists = generalDao.search(TsBidding.class, searchBeans, pageBean, orderBean);
 		if (lists != null && lists.size() > 0) {
 			for (int i = 0; i < lists.size(); i++) {
 				TsBidding tsBidding = (TsBidding) lists.get(i);

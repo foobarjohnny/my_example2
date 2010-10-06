@@ -35,9 +35,9 @@ public class BidingServiceImpl extends GeneralService implements BidingService {
 	/**
 	 * 返回所有的竞拍的产品
 	 */
-	public List<BidingData> getAll() throws GeneralException{
+	public List<BidingData> getAll(String id) throws GeneralException{
 		List<BidingData> list = new ArrayList<BidingData>();
-		List<TradeData> tradeList = TradeManager.getTradeData();
+		List<TradeData> tradeList = TradeManager.getTradeData(id);
 		for(TradeData bean : tradeList){
 			BidingData data = new BidingData();
 			data.setUserId(bean.getUid());

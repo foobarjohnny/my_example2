@@ -2,7 +2,6 @@ package org.auction.module.manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -40,17 +39,29 @@ public class TradeManager {
 		tradeDataMap.remove(id);
 	}
 
-	@SuppressWarnings("unchecked")
-	public static List<TradeData> getTradeData() {
+	/**
+	 * 查询缓存中的竞拍商品
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public static List<TradeData> getTradeData(String id) {
 		List<TradeData> list = new ArrayList<TradeData>();
-		list.addAll(tradeDataMap.values());
-//		if (tradeDataMap != null && tradeDataMap.size() > 0) {
-//			Iterator it = tradeDataMap.keySet().iterator();
-//			while (it.hasNext()) {
-//				String key = it.next().toString();
-//				list.add(tradeDataMap.get(key));
-//			}
-//		}
+		if (id != null && !id.equals("")) {
+			TradeData data = tradeDataMap.get(id);
+			if (data != null) {				
+				list.add(data);
+			}
+		} else {
+			list.addAll(tradeDataMap.values());
+		}
+		// if (tradeDataMap != null && tradeDataMap.size() > 0) {
+		// Iterator it = tradeDataMap.keySet().iterator();
+		// while (it.hasNext()) {
+		// String key = it.next().toString();
+		// list.add(tradeDataMap.get(key));
+		// }
+		// }
 		return list;
 	}
 

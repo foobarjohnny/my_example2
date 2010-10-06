@@ -21,15 +21,15 @@ public class TypeConvert {
 	 * @return
 	 */
 	public static Object convert(String type, String value) {
-		if (type.equals("int")) {
+		if (type.equals("int") && !value.equals("")) {
 			return Integer.parseInt(value);
-		} else if (type.equals("decimal")) {
+		} else if (type.equals("decimal") && !value.equals("")) {
 			return new BigDecimal(value);
-		} else if (type.equals("date")) {
+		} else if (type.equals("date") && !value.equals("")) {
 			return formatDate(value, "yyyy-MM-dd");
-		} else if (type.equals("timestamp")) {
+		} else if (type.equals("timestamp") && !value.equals("")) {
 			return formatDate(value, "yyyy-MM-dd hh:mm:ss");
-		} else if (type.equals("long")) {
+		} else if (type.equals("long") && !value.equals("")) {
 			return new Long(value);
 		} else {
 			return value;

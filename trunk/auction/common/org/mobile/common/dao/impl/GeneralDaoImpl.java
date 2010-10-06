@@ -156,8 +156,7 @@ public class GeneralDaoImpl implements IGeneralDao {
 	protected void setCondition(Criteria criteria, List<SearchBean> searchBeans) {
 		getLinked(criteria, searchBeans);
 		for (SearchBean searchBean : searchBeans) {
-			if (searchBean.getValue() != null
-					&& !searchBean.getValue().equals("")) {
+			if (searchBean.getValue() != null) {
 				Object value = TypeConvert.convert(searchBean.getType(),
 						searchBean.getValue());
 				if (searchBean.getSignl().equals("like")) {
@@ -279,12 +278,13 @@ public class GeneralDaoImpl implements IGeneralDao {
 	public List<Object> auction(String[] ids) {
 		Criteria criteria = getSession().createCriteria(TsCommodity.class);
 		criteria.add(Restrictions.le("starttime", new Date()));
-		criteria.add(Restrictions.not(Restrictions.in("state", new String[] { "2", "3" })));
+		criteria.add(Restrictions.not(Restrictions.in("state", new String[] {
+				"2", "3" })));
 
 		if (ids.length > 0) {
 			criteria.add(Restrictions.not(Restrictions.in("id", ids)));
 		}
-		
+
 		return criteria.list();
 	}
 
@@ -361,5 +361,15 @@ public class GeneralDaoImpl implements IGeneralDao {
 	public List executeQueryList(String hql) {
 		Query query = getSession().createQuery(hql);
 		return query.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List searchImages(String id, String table) {
+		String hql = "select filepath from TsImages where imageid=:id and tablename=:tablename";
+		Query query = getSession().createQuery(hql);
+		query.setString("id", id);
+		query.setString("tablename", table);
+		List list = query.list();
+		return list;
 	}
 }

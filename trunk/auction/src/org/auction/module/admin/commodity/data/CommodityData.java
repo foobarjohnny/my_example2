@@ -40,6 +40,9 @@ public class CommodityData extends GeneralData {
 	private List<CommodityData> dataList = new ArrayList<CommodityData>();
 	private List<SortData> sortList = new ArrayList<SortData>();
 
+	@SuppressWarnings("unchecked")
+	private List imagesPath;
+
 	public String getBidId() {
 		return bidId;
 	}
@@ -270,6 +273,16 @@ public class CommodityData extends GeneralData {
 
 	public void setFcount(Integer fcount) {
 		this.fcount = fcount;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List getImagesPath() {
+		return imagesPath;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void setImagesPath(List imagesPath) {
+		this.imagesPath = imagesPath;
 	}
 
 }

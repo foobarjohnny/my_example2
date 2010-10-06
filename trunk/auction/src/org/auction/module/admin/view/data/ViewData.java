@@ -22,6 +22,9 @@ public class ViewData extends GeneralData {
 	private int minute;
 	private int second;
 	private long temp;
+	
+	@SuppressWarnings("unchecked")
+	private List imagesPath;
 
 	private List<ViewData> dataList = new ArrayList<ViewData>();
 
@@ -137,6 +140,16 @@ public class ViewData extends GeneralData {
 
 	public void setDescript(String descript) {
 		this.descript = descript;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List getImagesPath() {
+		return imagesPath;
+	}
+
+	@SuppressWarnings("unchecked")
+	public void setImagesPath(List imagesPath) {
+		this.imagesPath = imagesPath;
 	}
 
 }

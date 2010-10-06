@@ -21,6 +21,7 @@ public class GeneralManager {
 
 	public static final String GENERAL_MANAGER = "GeneralManager";
 	public static final String UPLOAD_IMAGE = "/upload/images";
+	public static final String UPLOAD_IMAGE_OTHER = "upload/images";
 	public static final String IMAGE = "/images";
 	private static ThreadLocal<GeneralManager> local = new ThreadLocal<GeneralManager>();
 	private GeneralLog logger = GeneralLog.getInstance();

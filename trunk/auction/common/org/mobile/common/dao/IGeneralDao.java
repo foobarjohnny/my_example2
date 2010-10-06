@@ -145,4 +145,7 @@ public interface IGeneralDao {
 	public List executeQueryList(String hql);
 
 	public int countF(String id, String uid);
+	
+	@SuppressWarnings("unchecked")
+	public List searchImages(String id, String table);
 }

@@ -4,6 +4,7 @@ import org.auction.module.admin.commodity.data.CommodityData;
 import org.auction.module.admin.commodity.service.CommodityService;
 import org.mobile.common.action.GeneralAction;
 import org.mobile.common.exception.GeneralException;
+import org.mobile.common.util.Constant.COMMODITY_STATE;
 
 public class CommodityAction extends GeneralAction<CommodityData> {
 
@@ -18,6 +19,12 @@ public class CommodityAction extends GeneralAction<CommodityData> {
 		return SUCCESS;
 	}
 
+	/**
+	 * 新增产品
+	 * 
+	 * @return
+	 * @throws GeneralException
+	 */
 	public String save() throws GeneralException {
 		try {
 			commodityService.save(model);
@@ -42,20 +49,32 @@ public class CommodityAction extends GeneralAction<CommodityData> {
 		return SUCCESS;
 	}
 
+	/**
+	 * 查询产品
+	 * 
+	 * @return
+	 * @throws GeneralException
+	 */
 	public String search() throws GeneralException {
 		this.setPage(model);
-		if (model.getSearchName() != null && model.getSearchName().equals("1")) {
+		// 
+		if (model.getSearchName() != null
+				&& model.getSearchName().equals(COMMODITY_STATE.AUCTION_STATE)) {
+			// 正在竞拍商品
 			commodityService.searchProgress(model);
 			return "progress";
 		} else if (model.getSearchName() != null
-				&& model.getSearchName().equals("2")) {
+				&& model.getSearchName().equals(COMMODITY_STATE.CANCEL_STATE)) {
+			// 流拍商品
 			commodityService.searchLot(model);
 			return "lot";
 		} else if (model.getSearchName() != null
-				&& model.getSearchName().equals("3")) {
+				&& model.getSearchName().equals(COMMODITY_STATE.SUCCESS_STATE)) {
+			// 成交商品
 			commodityService.searchReach(model);
 			return "reach";
 		} else {
+			// 显示产品列表
 			commodityService.search(model);
 			return SUCCESS;
 		}

@@ -31,6 +31,13 @@ public class BuyTradeHandler {
 		return result;
 	}
 
+	/**
+	 * 购买商品
+	 * 
+	 * @param id
+	 * @return
+	 * @throws GeneralException
+	 */
 	public String buyTrad(String id) throws Exception {
 		String result = "success";
 		HttpServletRequest req = WebContextFactory.get()

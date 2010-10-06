@@ -13,13 +13,15 @@ import org.mobile.common.service.GeneralService;
 
 import org.mobile.common.util.Constant;
 
-public class ViewCommodityServiceImpl extends GeneralService implements
-		ViewCommodityService {
+public class ViewCommodityServiceImpl extends GeneralService implements ViewCommodityService {
 
+	/**
+	 * 首页面获得可以竞拍的商品
+	 */
 	public void show(ViewData model) throws GeneralException {
 		// 首页显示竞拍商品显示十条记录
-		List<TradeData> list = TradeManager.getTradeData();
-		int size = list.size() >= Constant.SIZE_PER_PAGE?Constant.SIZE_PER_PAGE : list.size();
+		List<TradeData> list = TradeManager.getTradeData(null);
+		int size = list.size() >= Constant.SIZE_PER_PAGE ? Constant.SIZE_PER_PAGE : list.size();
 		for (int i = 0; i < size; i++) {
 			TradeData td = list.get(i);
 			ViewData vd = new ViewData();
@@ -30,6 +32,10 @@ public class ViewCommodityServiceImpl extends GeneralService implements
 			} else {
 				vd.setMarketPrice(td.getMarketPrice());
 			}
+
+			// 商品图片资源
+			vd.setImagesPath(generalDao.searchImages(td.getId(), Constant.TRADE_IMAGES));
+
 			// 计算时间
 			Calendar endTime = Calendar.getInstance();
 			endTime.setTime(td.getOvertime());
@@ -44,7 +50,7 @@ public class ViewCommodityServiceImpl extends GeneralService implements
 
 	public void showAll(ViewData model) throws GeneralException {
 		// 获得所有参与竞拍的商品
-		List<TradeData> list = TradeManager.getTradeData();
+		List<TradeData> list = TradeManager.getTradeData(null);
 		// 竞拍商品数量
 		int size = list.size();
 		// 分页信息处理
@@ -67,12 +73,15 @@ public class ViewCommodityServiceImpl extends GeneralService implements
 			vd.setId(td.getId());
 			vd.setTradename(td.getTradename());
 			// 查看商品是否有竞拍有使用竞拍价格
-			if (td.getPrice() != null
-					&& td.getPrice().compareTo(td.getMarketPrice()) > 0) {
+			if (td.getPrice() != null && td.getPrice().compareTo(td.getMarketPrice()) > 0) {
 				vd.setMarketPrice(td.getPrice());
 			} else {
 				vd.setMarketPrice(td.getMarketPrice());
 			}
+			
+			// 商品图片资源
+			vd.setImagesPath(generalDao.searchImages(td.getId(), Constant.TRADE_IMAGES));
+			
 			// 计算时间
 			Calendar endTime = Calendar.getInstance();
 			endTime.setTime(td.getOvertime());

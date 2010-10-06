@@ -12,7 +12,7 @@
 			<result>WEB-INF/pages/admin/user/admin_user.jsp
 			</result>
 		</action>
-		<action name="userForward" class="userAction" method="forward">
+		<action name="userForward" class="userAction" method="forwardAdmin">
 			<result>WEB-INF/pages/admin/user/admin_user_form.jsp
 			</result>
 		</action>
@@ -91,6 +91,18 @@
 		</action>
 		<action name="reg" class="userAction" method="regForward">
 			<result>WEB-INF/pages/user/reg.jsp
+			</result>
+		</action>
+		<action name="send" class="userAction" method="send">
+			<result>WEB-INF/pages/user/regSuccess.jsp
+			</result>
+		</action>
+		<action name="invitePage" class="userAction" method="invitePage">
+			<result>WEB-INF/pages/user/invitePage.jsp
+			</result>
+		</action>
+		<action name="invite" class="userAction" method="invite">
+			<result>WEB-INF/pages/user/inviteSuccess.jsp
 			</result>
 		</action>
 	</package>

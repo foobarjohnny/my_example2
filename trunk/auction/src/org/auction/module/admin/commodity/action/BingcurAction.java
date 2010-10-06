@@ -32,6 +32,12 @@ public class BingcurAction extends GeneralAction<BingcurData> {
 		return SUCCESS;
 	}
 
+	/**
+	 * 产品竞拍记录
+	 * 
+	 * @return
+	 * @throws GeneralException
+	 */
 	public String searchBiding() throws GeneralException {
 		setPage(model);
 		bingcurService.searchBiding(model);

@@ -20,6 +20,9 @@ public class PublisData extends GeneralData {
 	private String[] ids;
 	private File[] files;
 	private String[] filesFileName;
+	
+	@SuppressWarnings("unchecked")
+	private List imagesPath;
 
 	private List<PublisData> dataList = new ArrayList<PublisData>();
 
@@ -109,5 +112,15 @@ public class PublisData extends GeneralData {
 
 	public void setFilesFileName(String[] filesFileName) {
 		this.filesFileName = filesFileName;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List getImagesPath() {
+		return imagesPath;
+	}
+
+	@SuppressWarnings("unchecked")
+	public void setImagesPath(List imagesPath) {
+		this.imagesPath = imagesPath;
 	}
 }

@@ -21,4 +21,6 @@ public interface ShowcomService {
 	public void viewList(ShowcomData model) throws Exception;
 	
 	public void showList(ShowcomData model) throws Exception;
+	
+	public void show(ShowcomData model) throws Exception;
 }

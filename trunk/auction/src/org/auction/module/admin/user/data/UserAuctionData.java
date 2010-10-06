@@ -30,7 +30,11 @@ public class UserAuctionData extends GeneralData {
 	private String[] image;
 	private String type;
 	private Long remaining;
+	private String tradeState;
 	private BigDecimal buyprices = new BigDecimal(0);
+	@SuppressWarnings("unchecked")
+	private List imagesPath;
+
 	private List<UserAuctionData> dataList = new ArrayList<UserAuctionData>();
 
 	private List<ViewData> tradeData = new ArrayList<ViewData>();
@@ -219,6 +223,24 @@ public class UserAuctionData extends GeneralData {
 
 	public void setRemaining(Long remaining) {
 		this.remaining = remaining;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List getImagesPath() {
+		return imagesPath;
+	}
+
+	@SuppressWarnings("unchecked")
+	public void setImagesPath(List imagesPath) {
+		this.imagesPath = imagesPath;
+	}
+
+	public String getTradeState() {
+		return tradeState;
+	}
+
+	public void setTradeState(String tradeState) {
+		this.tradeState = tradeState;
 	}
 
 }

@@ -21,6 +21,14 @@ public class LoginHandler {
 
 	private UserService userService;
 
+	/**
+	 * 用户登陆
+	 * 
+	 * @param username
+	 * @param password
+	 * @return
+	 * @throws GeneralException
+	 */
 	public String login(String username, String password)
 			throws GeneralException {
 
@@ -29,9 +37,11 @@ public class LoginHandler {
 		model.setPassword(password);
 		LoginBean bean = userService.loginDwr(model);
 		if (bean != null) {
+			// 登陆成功，将用户信息放入session中
 			HttpServletRequest req = WebContextFactory.get()
 					.getHttpServletRequest();
 			req.getSession().setAttribute("login", bean);
+			// 用户登陆标识
 			req.getSession().setAttribute("user_login", "Y");
 			SessionManager.setLoginInfo(req.getSession().getId(), bean);
 			return bean.getWorkNo() + "," + bean.getId() + ","
@@ -62,24 +72,43 @@ public class LoginHandler {
 	}
 
 	/**
-	 * 检查Email是否被注册
+	 * 检查Email,username是否被注册
 	 * 
 	 * @param email
 	 * @return
 	 * @throws Exception
 	 */
-	public String checkedEmail(String email) throws Exception {
+	public String checkedEmail(String email, String username) throws Exception {
 		UserData model = new UserData();
 		model.setEmail(email);
 		model.setMethodName("email");
+		String msg = "";
+		boolean is = true;
 		if (userService.checkedUser(model)) {
-			return "邮箱已被使用！";
+			msg = "邮箱已被使用,";
+			is = false;
+		} else {
+			msg = ",";
 		}
-		return "success";
+		model.setEmail(username);
+		model.setMethodName("username");
+		if (userService.checkedUser(model)) {
+			msg += "用户名被使用";
+			is = false;
+		} else {
+			msg += ",";
+		}
+		if (is) {
+			return "success";
+
+		} else {
+			return msg;
+		}
+
 	}
 
 	/**
-	 * 检查用户名是否被注册
+	 * 检查用户名是否被注册(废弃掉)
 	 * 
 	 * @param email
 	 * @return
@@ -89,6 +118,7 @@ public class LoginHandler {
 		UserData model = new UserData();
 		model.setEmail(username);
 		model.setMethodName("username");
+
 		if (userService.checkedUser(model)) {
 			return "用户名被使用！";
 		}

@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.auction.entity.TsBidding;
 import org.auction.entity.TsBingcur;
-import org.auction.entity.TsImages;
 import org.auction.module.admin.commodity.data.BidingData;
 import org.auction.module.admin.commodity.data.BingcurData;
 import org.auction.module.admin.commodity.service.BingcurService;
@@ -16,20 +15,22 @@ import org.mobile.common.bean.SearchBean;
 import org.mobile.common.exception.GeneralException;
 import org.mobile.common.service.GeneralService;
 import org.mobile.common.util.BeanProcessUtils;
+import org.mobile.common.util.Constant;
 
-public class BingcurServiceImpl extends GeneralService implements
-		BingcurService {
+public class BingcurServiceImpl extends GeneralService implements BingcurService {
 
 	public String delete(BingcurData model) throws GeneralException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * 竞拍商品显示信息
+	 */
 	@SuppressWarnings("unchecked")
 	public String forward(BingcurData model) throws GeneralException {
 		// 查询竞拍商品
-		TsBingcur tsBingcur = (TsBingcur) generalDao.get(TsBingcur.class, model
-				.getId());
+		TsBingcur tsBingcur = (TsBingcur) generalDao.get(TsBingcur.class, model.getId());
 		BeanProcessUtils.copyProperties(model, tsBingcur);
 		model.setUser(tsBingcur.getTsUser().getUsername());
 		model.setComityName(tsBingcur.getTsCommodity().getTradename());
@@ -39,10 +40,8 @@ public class BingcurServiceImpl extends GeneralService implements
 		model.setTradeId(tsBingcur.getTsCommodity().getId());
 		model.setFree(tsBingcur.getFree());
 		if (model.getPrices().compareTo(new BigDecimal(0)) > 0) {
-			BigDecimal total = (model.getPrices().subtract(model.getPrice())
-					.subtract(new BigDecimal(tsBingcur.getAmount() * 1)));
-			BigDecimal percents = total.divide(model.getPrices(),
-					BigDecimal.ROUND_HALF_DOWN);
+			BigDecimal total = (model.getPrices().subtract(model.getPrice()).subtract(new BigDecimal(tsBingcur.getAmount() * 1)));
+			BigDecimal percents = total.divide(model.getPrices(), BigDecimal.ROUND_HALF_DOWN);
 			model.setPercents(percents);
 		}
 		// 竞拍历史
@@ -50,10 +49,8 @@ public class BingcurServiceImpl extends GeneralService implements
 		List<OrderByBean> orderBean = new ArrayList<OrderByBean>();
 		orderBean.add(new OrderByBean("", "biddate", "desc"));
 		List<SearchBean> searchBeans = new ArrayList<SearchBean>();
-		searchBeans.add(new SearchBean("tsCommodity.id", "eq", "string",
-				tsBingcur.getTsCommodity().getId()));
-		List list = generalDao.search(TsBidding.class, searchBeans, pageBean,
-				orderBean);
+		searchBeans.add(new SearchBean("tsCommodity.id", "eq", "string", tsBingcur.getTsCommodity().getId()));
+		List list = generalDao.search(TsBidding.class, searchBeans, pageBean, orderBean);
 		if (list != null && list.size() > 0) {
 			for (int i = 0; i < list.size(); i++) {
 				TsBidding tsBidding = (TsBidding) list.get(i);
@@ -63,22 +60,24 @@ public class BingcurServiceImpl extends GeneralService implements
 				model.getBidingList().add(bidingData);
 			}
 		}
-		// 获得商品图片ID
-		List<SearchBean> searchBean = new ArrayList<SearchBean>();
-		searchBean.add(new SearchBean("imageid", "eq", "string", tsBingcur
-				.getTsCommodity().getId()));
-		searchBean.add(new SearchBean("tablename", "eq", "string",
-				"TS_COMMODITY"));
-		List imagelist = generalDao.search(TsImages.class, searchBean, null,
-				null);
-		String[] images = new String[4];
-		for (int i = 0; i < imagelist.size(); i++) {
-			if (i < 4) {
-				TsImages tsImages = (TsImages) imagelist.get(i);
-				images[i] = tsImages.getId();
-			}
-		}
-		model.setImage(images);
+		// 商品图片
+		model.setImagesPath(generalDao.searchImages(tsBingcur.getTsCommodity().getId(), Constant.TRADE_IMAGES));
+		// // 获得商品图片ID
+		// List<SearchBean> searchBean = new ArrayList<SearchBean>();
+		// searchBean.add(new SearchBean("imageid", "eq", "string",
+		// tsBingcur.getTsCommodity().getId()));
+		// searchBean.add(new SearchBean("tablename", "eq", "string",
+		// "TS_COMMODITY"));
+		// List imagelist = generalDao.search(TsImages.class, searchBean, null,
+		// null);
+		// String[] images = new String[4];
+		// for (int i = 0; i < imagelist.size(); i++) {
+		// if (i < 4) {
+		// TsImages tsImages = (TsImages) imagelist.get(i);
+		// images[i] = tsImages.getId();
+		// }
+		// }
+		// model.setImage(images);
 		return null;
 	}
 
@@ -87,13 +86,15 @@ public class BingcurServiceImpl extends GeneralService implements
 		return null;
 	}
 
+	/**
+	 * 竞拍历史列表
+	 */
 	@SuppressWarnings("unchecked")
 	public String search(BingcurData model) throws GeneralException {
 		PageBean pageBean = model.getPageBean();
 		List<OrderByBean> orderByBeans = new ArrayList<OrderByBean>();
 		orderByBeans.add(new OrderByBean("", "binddate", "desc"));
-		List list = generalDao.search(TsBingcur.class, null, pageBean,
-				orderByBeans);
+		List list = generalDao.search(TsBingcur.class, null, pageBean, orderByBeans);
 		for (int i = 0; i < list.size(); i++) {
 			TsBingcur tsBingcur = (TsBingcur) list.get(i);
 			BingcurData data = new BingcurData();
@@ -104,28 +105,30 @@ public class BingcurServiceImpl extends GeneralService implements
 			data.setSummary(tsBingcur.getTsCommodity().getSummary());
 			data.setPrices(tsBingcur.getTsCommodity().getPrices());
 			if (data.getPrices().compareTo(new BigDecimal(0)) > 0) {
-				BigDecimal total = (data.getPrices().subtract(data.getPrice())
-						.subtract(new BigDecimal(tsBingcur.getAmount() * 1)));
-				BigDecimal percents = total.divide(data.getPrices(),
-						BigDecimal.ROUND_HALF_DOWN);
+				BigDecimal total = (data.getPrices().subtract(data.getPrice()).subtract(new BigDecimal(tsBingcur.getAmount() * 1)));
+				BigDecimal percents = total.divide(data.getPrices(), BigDecimal.ROUND_HALF_DOWN);
 				data.setPercents(percents);
 			}
+			
+			//商品图片
+			data.setImagesPath(generalDao.searchImages(tsBingcur.getTsCommodity().getId(), Constant.TRADE_IMAGES));
 			model.getDataList().add(data);
 		}
 		return null;
 	}
 
+	/**
+	 * 商品竞拍出价历史记录
+	 */
 	@SuppressWarnings("unchecked")
 	public String searchBiding(BingcurData model) throws GeneralException {
-		TsBingcur tsBingcur = (TsBingcur) generalDao.get(TsBingcur.class, model
-				.getId());
+		// TsBidding tsBingcur = (TsBidding) generalDao.get(TsBidding.class,
+		// model.getId());
 		List<SearchBean> searchBeans = new ArrayList<SearchBean>();
-		searchBeans.add(new SearchBean("tsCommodity.id", "eq", "string",
-				tsBingcur.getTsCommodity().getId()));
+		searchBeans.add(new SearchBean("tsCommodity.id", "eq", "string", model.getId()));
 		List<OrderByBean> orderBean = new ArrayList<OrderByBean>();
 		orderBean.add(new OrderByBean("", "biddate", "desc"));
-		List list = generalDao.search(TsBidding.class, searchBeans, model
-				.getPageBean(), orderBean);
+		List list = generalDao.search(TsBidding.class, searchBeans, model.getPageBean(), orderBean);
 		if (list != null && list.size() > 0) {
 			for (int i = 0; i < list.size(); i++) {
 				TsBidding tsBidding = (TsBidding) list.get(i);
