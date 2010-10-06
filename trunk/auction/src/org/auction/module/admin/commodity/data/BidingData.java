@@ -17,6 +17,7 @@ public class BidingData extends GeneralData {
 	private String username;
 	private String commpityId;
 	private String displayTime;
+	public String isFinish;
 
 	private int time;
 

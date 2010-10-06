@@ -36,29 +36,45 @@ public class BidingServiceImpl extends GeneralService implements BidingService {
 	 * 返回所有的竞拍的产品
 	 */
 	public List<BidingData> getAll(String id) throws GeneralException {
-		List<BidingData> list = new ArrayList<BidingData>();
-		List<TradeData> tradeList = TradeManager.getTradeData(id);
+		
+		List<BidingData> list = new ArrayList<BidingData>();	//装载与竞拍产品对应的最新的竞拍信息
+		
+		List<TradeData> tradeList = TradeManager.getTradeData(id);//所有的竞拍产品的列表， 目前存在缓存中。
+		
 		for (TradeData bean : tradeList) {
 			BidingData data = new BidingData();
 			data.setUserId(bean.getUid());
 			data.setId(bean.getId());
 			data.setUsername(bean.getUsername());
 			data.setPrice(bean.getMarketPrice());
-			data.setTime(bean.getAddtimes());
-			int hour = 0;
-			int minute = 0;
-			int second = 0;
-			long time = bean.getOvertime().getTime() - bean.getStarttime().getTime();
-			var maxtime = time / 1000;
-			hour = Math.floor(maxtime / 3600);
-			if(hour<10){hour = "0"+hour;}
-			minutes = Math.floor((maxtime - hour * 3600) / 60);
-			if(minutes < 10){minutes = "0" + minutes;}
-			seconds = Math.floor(maxtime % 60);
-			if(seconds < 10){seconds = "0" + seconds;}
-			var msg = hour + ":" + minutes + ":" + seconds;
+			
+			if(bean.isFinshed()){
+				data.isFinish = "" + bean.isFinshed();
+				data.setDisplayTime( "00:00:00" );
+			}else{
+			
+				long hour = 0;
+				long minute = 0;
+				long second = 0;
+				
+				long time = bean.getOvertime().getTime() - Calendar.getInstance().getTimeInMillis();
+				if(time > 0){
+					long maxtime = time / 1000;
+					hour = maxtime / 3600;
+					minute = (maxtime - hour * 3600) / 60; 
+					second = maxtime % 60;
+					String displayTime = hour < 10? ("0" + hour) : "" + hour;
+					displayTime = displayTime + ":" +  (minute < 10? ("0" + minute) : "" + minute);
+					displayTime = displayTime + ":" +  (second < 10? ("0" + second) : "" + second);
+					data.setDisplayTime( displayTime );
+				}else{
+					data.setDisplayTime( "00:00:00" );
+				}
+				data.isFinish = "" + bean.isFinshed();
+			}
 			list.add(data);
 		}
+		
 		return list;
 	}
 
@@ -82,4 +98,14 @@ public class BidingServiceImpl extends GeneralService implements BidingService {
 		return null;
 	}
 
+	public static void main(String[] args){
+		long a = 234238989 ;
+		long b = 8889759645L;
+		System.out.println(a /1000);
+		System.out.println(b /1000);
+		
+		System.out.println(a %1000);
+		System.out.println(b %1000);
+		
+	}
 }

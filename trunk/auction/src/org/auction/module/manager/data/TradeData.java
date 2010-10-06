@@ -36,6 +36,11 @@ public class TradeData {
 
 	// 增加时间
 	private boolean isAdd;
+	//  竞拍结束
+	private boolean finshed = false;
+	
+	//  是否生成订单 
+	private boolean order = false;
 
 	private boolean over = false;
 
@@ -213,5 +218,21 @@ public class TradeData {
 
 	public void setOver(boolean over) {
 		this.over = over;
+	}
+
+	public boolean isFinshed() {
+		return finshed;
+	}
+
+	public void setFinshed(boolean finshed) {
+		this.finshed = finshed;
+	}
+
+	public boolean isOrder() {
+		return order;
+	}
+
+	public void setOrder(boolean order) {
+		this.order = order;
 	}
 }
