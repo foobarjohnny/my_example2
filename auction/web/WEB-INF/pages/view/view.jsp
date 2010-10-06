@@ -61,8 +61,9 @@
 					document.getElementById(bean.id+"_user").value=bean.userId;
 					document.getElementById(bean.id+"_price").value=bean.price;
 					document.getElementById(bean.id+"_price_div").innerHTML="￥" + bean.price;
+					document.getElementById(bean.id+"_price_div").style.backgroundcolor="red";
 					var sourceTime = parseInt(document.getElementById(bean.id+'_remaining').value);
-					var addTime    = parseInt(bean.add)*1000;
+					var addTime = parseInt(bean.add)*1000;
 					if(sourceTime < addTime){
 						document.getElementById(bean.id+'_remaining').value = addTime;
 						document.getElementById(bean.id+'_sign').value = "1";
@@ -176,7 +177,7 @@
 						<td width="154" valign="top" align="left">
 							<table width="98%" border="0" align="center" cellpadding="3"
 								cellspacing="0">
-								<tr>
+								<tr height="60">
 									<td width="100%" valign="top">
 										<img src="images/title_l.gif" width="3" height="12">
 										&nbsp;
@@ -185,14 +186,14 @@
 										</a>
 									</td>
 								</tr>
-								<tr>
+								<tr height="90">
 									<td align="center" valign="top">
 										<a href="viewAuctionNow.action?id=${data.id }">
 											<s:if test="imagesPath != null && imagesPath.size > 0">
 												<img alt="" src="${imagesPath[0] }" border="0" width="90" height="90" /> 
 											</s:if>
 											<s:else>
-												<img alt="" src="images/imgb.gif" border="0" width="120" height="120" /> 
+												<img alt="" src="images/imgb.gif" border="0" width="90" height="90" /> 
 											</s:else>
 										</a>
 									</td>
@@ -200,24 +201,26 @@
 								<tr height="30" valign="middle">
 									<td align="center" class="indextime">
 										<div id="${data.id }_time_div"
-											style="color: red; font-size: 24px; font-weight: bold;">
+											style=" font-size: 24px; font-weight: bold;">
 											--:--:--
 										</div>
 										<!-- 这是一个信号量， 用来标识时间价格是否有变化 -->
 										<input type="hidden" id="${data.id }_sign" value="0" />
 										<input type="hidden" id="${data.id}_remaining" value="${data.remaining }" />
+										<!-- 商品的ID -->
+										<input type="hidden" name="tradeId" value="${data.id }" />
 									</td>
 								</tr>
 								<tr height="30" valign="middle">
 									<td align="center">
 										<div id="${data.id}_user_div" class="indexjg">
 										</div>
-										<input type="hidden" id="${data.id }_user" value="">
+										<input type="hidden" id="${data.id }_user" name="displayUser" value="">
 									</td>
 								</tr>
 								<tr height="30" valign="middle">
 									<td align="center">
-										<div id="${data.id }_price_div" class="indexjg">
+										<div id="${data.id }_price_div" class="indexjg" style="color:black;">
 											￥${data.marketPrice }
 										</div>
 										<input type="hidden" id="${data.id}_price"
@@ -228,7 +231,7 @@
 									<td height="27" align="center" valign="top">
 										<div id="${data.id }_auction_div">
 											<img src="images/wyjp.gif" width="104" height="27"
-												style="display: bolck" onmousemove="btnMouseOn('${data.id}', '${user_login }', this);" 
+												style="display: bolck;cursor: hand;" onmousemove="btnMouseOn('${data.id}', '${user_login }', this);" 
 												onmouseout="btnMouseAway(this);"
 												onclick="doSubmit('${data.id}','${user_login }');" />
 										</div>
