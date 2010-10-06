@@ -14,7 +14,7 @@
 		</td>
 		<td width="387" valign="top" bgcolor="#FFFFFF">
 			&nbsp;&nbsp;
-			<img src="images/gg.gif" width="99" height="28">
+			<img src="images/gg.gif" width="123" height="28">
 		</td>
 		<td width="388" align="right" bgcolor="#FFFFFF">
 			&nbsp;&nbsp;
@@ -28,23 +28,16 @@
 		</td>
 	</tr>
 	<tr>
-		<td colspan="4" valign="top" bgcolor="#FFFFFF">
-			<table width="775" border="0" cellspacing="0" cellpadding="0">
+		<td colspan="2" valign="top" bgcolor="#FFFFFF">
+			<table width="765" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="74%" align="center" class="indexjg">
+						${model.title }
+					</td>
+				</tr>
 				<tr>
 					<td>
-						<table width="100%" border="0" align="center" cellpadding="10"
-							cellspacing="0">
-							<tr>
-								<td width="74%" align="center" class="indexjg">
-									${model.title }
-								</td>
-							</tr>
-							<tr>
-								<td>
-									${model.info }
-								</td>
-							</tr>
-						</table>
+						${model.info }
 					</td>
 				</tr>
 			</table>

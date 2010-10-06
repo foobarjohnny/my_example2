@@ -5,8 +5,13 @@
 		form1.action = "bidingSearch.action";
 		form1.submit();
 	}
-	function buyTrade(id) {
-		buyRomet.buyTrad(id, callBackMethod);
+	function buyTrade(id, status) {
+		if (status == 'Y') {		
+			buyRomet.buyTrad(id, callBackMethod);
+		} else {
+			// 以后变换成登陆页
+			alert('登陆后购买商品');
+		}
 	}
 	function callBackMethod(data) {
 		if (data == "success") {
@@ -20,75 +25,113 @@
 	 * 
 	 * @return
 	 */
-	function displayTime(id, time, timer, tid, did) {
-		var maxtime = time / 1000;
-		if (maxtime >= 0) {
+	function displayTime(obj) {
+		var d = eval('('+obj+')');
+		var t = parseInt(d.time);
+		var maxtime = t / 1000;
+		if (maxtime < 0) {
+			var auctionDiv = document.getElementById(d.id+"_auction_div");
+			auctionDiv.style.display = "none";
+			document.getElementById(d.id+"_time_div").innerHTML = "竞拍结束";
+		}else{
+			if(document.getElementById(d.id+"_sign").value == "1"){
+				document.getElementById(d.id+"_sign").value = "0";
+				t = parseInt(document.getElementById(d.id + "_remaining").value);
+			}
+			
+			d.time = t - 1000;
+			
 			hour = Math.floor(maxtime / 3600);
+			if(hour<10){hour = "0"+hour;}
 			minutes = Math.floor((maxtime - hour * 3600) / 60);
+			if(minutes < 10){minutes = "0" + minutes;}
 			seconds = Math.floor(maxtime % 60);
-			--maxtime;
-			eval("time" + did + "=time" + did + "-1000");
+			if(seconds < 10){seconds = "0" + seconds;}
 			var msg = hour + ":" + minutes + ":" + seconds;
-			document.all[id].innerHTML = msg;
-			var userid = document.getElementById("user" + did).value;
-			bidingRomet.find(tid, userid, did, showMsg);
-		} else {
-			var obj = document.getElementById("button" + did);
-			obj.style.display = "none";
-			clearInterval(timer);
-			document.all[id].innerHTML = "竞拍结束";
+			document.getElementById(d.id+"_time_div").innerHTML = msg;
+			document.getElementById(d.id+"_remaining").value=d.time;
+			var newValue = JSON.stringify(d,"");
+			setTimeout("displayTime('"+newValue+"')", 1000);
 		}
 	}
+	
+	/**
+	 * 检查竞拍的价格
+	 */
+	function checkAuction(){
+		bidingRomet.find("${id}","","", showMsg);
+		setTimeout("checkAuction()",1000);
+	}
+
+	/**
+	 * 获取了最新的价格之后的回调方法
+	 */
 	function showMsg(data) {
-		if (data != "no") {
-			var s = data.split(",");
-			var index = (s[0].split(":"))[1];
-			var uid = (s[1].split(":"))[1];
-			var uname = (s[2].split(":"))[1];
-			var price = (s[3].split(":"))[1];
-			var add = (s[4].split(":"))[1];
-			document.getElementById("user" + index).value = uid;
-			document.getElementById("price" + index).value = price;
-			document.getElementById("userdisplay" + index).innerHTML = uname;
-			document.getElementById("display" + index).innerHTML = "￥" + price;
-			var overtime = eval("time" + index);
-			var lasttime = parseInt(add) * 1000;
-			if (overtime - lasttime < 0) {
-				eval("time" + index + "=" + lasttime);
+		var obj = eval('(' + data +')');
+		for(i = 0; i < obj.length; i++){
+			var bean = obj[i];
+			//检查是否是空对象
+			if(typeof(bean.id) != 'undefined'){//首先检查是否有指定产品编号
+				if(typeof(bean.username) != 'undefined' && bean.username != ""){//再检查是否有客户对该产品进行竞拍，如果没有，则不处理，继续走时
+					document.getElementById(bean.id+"_user_div").innerHTML=""+bean.username;
+					document.getElementById(bean.id+"_user").value=bean.userId;
+					document.getElementById(bean.id+"_price").value=bean.price;
+					document.getElementById(bean.id+"_price_div").innerHTML="￥" + bean.price;
+					var sourceTime = parseInt(document.getElementById(bean.id+'_remaining').value);
+					var addTime    = parseInt(bean.add)*1000;
+					if(sourceTime < addTime){
+						document.getElementById(bean.id+'_remaining').value = addTime;
+						document.getElementById(bean.id+'_sign').value = "1";
+					}
+				}
 			}
 		}
 	}
-	function doSubmit(id, htmlId) {
-		var price = document.getElementById("price" + htmlId).value;
-		if (price == "") {
-			price = "0";
+	
+	function doSubmit(id, htmlId, status) {
+		if (status == 'Y') {		
+			var uid = document.getElementById(id+'_user').value;
+			auctionRomet.auction(id, "", uid, "", callBackMsg);
+		} else {
+			// 以后变换成登陆页
+			alert('登陆后购买商品');
 		}
-		var uid = document.getElementById("user" + htmlId).value;
-		auctionRomet.auction(id, price, uid, htmlId, callBackMsg);
 	}
 	function callBackMsg(data) {
+		var obj = eval('('+data+')');
+		if(typeof(obj.operator) != 'undefined' && obj.operator == "success"){
+			if(typeof(obj.add) != 'undefined' && obj.add != ""){//时间发生变化了，价格的变化，是另外一个函数获取
+				document.getElementById(obj.id+'_sign').value="1";
+				document.getElementById(obj.id+'_remaining').value=obj.add;
+			}
+		}else{
+			alert(obj.msg);
+		}
+		/**
 		var s = data.split(":");
 		if (s[0] == "add") {
-			eval("time" + s[1] + "=" + parseInt(s[2]) * 1000);
+			eval("time" + s[1] + "=" + parseInt(s[2])*1000);
 		} else if (s[0] == "success") {
 			//alert("竞拍成功");
 		} else {
 			//alert(data);
+			//document.getElementById("showMsg").style.display = "block";
 		}
+		*/
 	}
 	function showAll() {
-		//form1.action="bidingSearch.action";
-		//form1.submit();
+		form1.action="bidingSearch.action";
+		form1.submit();
 		//alert("【请注意】该功能目前没有提供！");
 	}
 </script>
 <form action="bidingSearch.action" method="post" name="form1">
 	<input type="hidden" name="id" value="${id }">
 </form>
-<table width="790" border="0" align="center" cellpadding="0"
+<table width="100%" border="0" align="center" cellpadding="0"
 	cellspacing="0">
 	<tr>
-		<td colspan="4" height="20" align="center"
+		<td colspan="3" height="20" align="center"
 			background="images/r_top.gif">
 			&nbsp;
 		</td>
@@ -105,19 +148,24 @@
 		</td>
 	</tr>
 	<tr>
-		<td colspan="4" valign="top" background="images/hr.gif" height="1">
+		<td colspan="3" valign="top" background="images/hr.gif" height="1">
+			
 		</td>
 	</tr>
 	<tr>
-		<td colspan="4" valign="top" bgcolor="#FFFFFF">
+		<td valign="top" bgcolor="#FFFFFF">
 			<table width="99%" border="0" cellpadding="0" cellspacing="0">
 				<tr>
 					<td width="48%" height="454" valign="top">
 						<table width="362" border="0" cellspacing="0">
 							<tr>
 								<td width="360" align="center" valign="top">
-									<img height="350" width="350" border="0"
-										src="showImage.action?id=${id }">
+									<s:if test="imagesPath != null && imagesPath.size > 0">
+										<img height="360" width="360" border="0" src="${imagesPath[0] }">
+									</s:if>
+									<s:else>
+										<img height="350" width="350" border="0" >
+									</s:else>
 								</td>
 							</tr>
 							<tr>
@@ -125,46 +173,28 @@
 									<table width="360" height="90" border="0" cellpadding="0"
 										cellspacing="0">
 										<tr>
-											<td width="90" height="90" align="center" valign="middle"
-												background="images/imgb.gif">
-												<s:if test="image[0] != null">
-													<img height="80" width="80"
-														src="viewImage.action?id=${image[0] }">
-												</s:if>
-												<s:else>
-                    		&nbsp;
-                    	</s:else>
-											</td>
-											<td width="90" align="center" valign="middle"
-												background="images/imgb.gif">
-												<s:if test="image[1] != null">
-													<img height="80" width="80"
-														src="viewImage.action?id=${image[1] }">
-												</s:if>
-												<s:else>
-                    		&nbsp;
-                    	</s:else>
-											</td>
-											<td width="90" align="center" valign="middle"
-												background="images/imgb.gif">
-												<s:if test="image[2] != null">
-													<img height="80" width="80"
-														src="viewImage.action?id=${image[2] }">
-												</s:if>
-												<s:else>
-                    		&nbsp;
-                    	</s:else>
-											</td>
-											<td width="90" align="center" valign="middle"
-												background="images/imgb.gif">
-												<s:if test="image[3] != null">
-													<img height="80" width="80"
-														src="viewImage.action?id=${image[3] }">
-												</s:if>
-												<s:else>
-                    		&nbsp;
-                    	</s:else>
-											</td>
+											<%
+												int i = 0;
+											 %>
+											<s:iterator id="img" value="imagesPath">
+												<%
+													i++;
+												 %>
+												<td width="90" height="90" align="center" valign="middle"
+													background="images/imgb.gif">
+													<img height="80" width="80" src="${img }">
+												</td>
+											</s:iterator>
+											<%
+												for (int j = i; j < 4; j++) {
+											%>
+												<td width="90" height="90" align="center" valign="middle"
+													background="images/imgb.gif">
+													
+												</td>
+											<%		
+												}
+											 %>
 										</tr>
 									</table>
 								</td>
@@ -178,11 +208,11 @@
 									<strong>当前竞拍价格：</strong>
 								</td>
 								<td width="41%" class="indexjg">
-									<p class="indexjg" id="display0">
-										￥${markprices }
-									</p>
-
-									<input type="hidden" id="price0" value="${markprices }">
+									<div id="${id }_price_div" class="indexjg">
+											￥${marketPrice }
+									</div>
+									<input type="hidden" id="${id}_price"
+										   value="${marketPrice }" />
 								</td>
 							</tr>
 							<tr>
@@ -190,10 +220,9 @@
 									竞拍者：
 								</td>
 								<td>
-									<p class="indexjg" id="userdisplay0">
-										${user }
-									</p>
-									<input type="hidden" id="user0" value="${user }">
+									<div id="${id}_user_div" class="indexjg">
+									</div>
+									<input type="hidden" id="${id }_user" value="">
 								</td>
 							</tr>
 							<tr>
@@ -206,16 +235,17 @@
 							</tr>
 							<tr>
 								<td colspan="2" align="center">
-									<div id="div0" class="jptime" style="color: red">
-										<script type="text/javascript">
-	var div0 = null;
-	var time0 = $
-	{
-		remaining
-	};
-	div0 = setInterval("displayTime('div0', time0, div0, '${id}', '0')", 1000);
-</script>
+									<div id="${id }_time_div"
+											style="color: red; font-size: 24px; font-weight: bold;">
+											--:--:--
 									</div>
+									<!-- 这是一个信号量， 用来标识时间价格是否有变化 -->
+									<input type="hidden" id="${id }_sign" value="0" />
+									<input type="hidden" id="${id}_remaining" value="${remaining }" />
+									<script type="text/javascript">
+		    							var obj_${id}='{"id":"${id}","time":${remaining}}';
+		    							displayTime(obj_${id});
+		    						</script>
 									<br>
 									每次竞价商品价格增加￥${markup }&nbsp;&nbsp;时间增加${addtime }秒
 									<br>
@@ -229,11 +259,11 @@
 										<tr>
 											<td width="104" height="37">
 												<img src="images/wyjp.gif" width="104" height="27"
-													onclick="doSubmit('${id}', '0');">
+													onclick="doSubmit('${id}', '0',  '${user_login }');">
 											</td>
 											<td width="200" height="37" align="center"
 												background="images/jgb.gif">
-												<a href="#" onclick="buyTrade('${id}')"><strong><font
+												<a href="#" onclick="buyTrade('${id}', '${user_login }')"><strong><font
 														color="#FFFFFF">现在购买￥${buyprices }</font> </strong> </a>
 											</td>
 										</tr>
@@ -250,9 +280,7 @@
 									<strong>竞价记录</strong>
 								</td>
 								<td width="48%" align="right" bgcolor="#CCCCCC">
-									<a href="#" onclick=
-	showAll();
->查看全部>></a>
+									<a href="#" onclick="showAll();">查看全部>></a>
 								</td>
 							</tr>
 							<tr>
@@ -310,9 +338,11 @@
 		</td>
 	</tr>
 	<tr>
-		<td colspan="4" height="20" align="center"
-			background="images/r_dow.gif">
+		<td colspan="3" height="20" align="center" background="images/r_dow.gif">
 			&nbsp;
 		</td>
 	</tr>
 </table>
+<script type="text/javascript">
+	checkAuction();
+</script> 

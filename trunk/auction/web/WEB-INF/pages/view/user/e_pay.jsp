@@ -72,31 +72,38 @@
 			<td valign="top" bgcolor="#FFFFFF">
 				<table width="100%" border="0" align="center" cellspacing="2" cellpadding="5">
 					<tr height="20">
-						<td width="20%" align="center" bgcolor="#E8E8E8"
+						<td  align="center" bgcolor="#E8E8E8"
 							class="admin_title2" colspan="2">
 							<strong>商品描述</strong>
 						</td>
-						<td width="41%" align="center" bgcolor="#E8E8E8"
+						<td  align="center" bgcolor="#E8E8E8"
 							class="admin_title2">
 							<strong>价格</strong>
 						</td>
-						<td width="18%" align="center" bgcolor="#E8E8E8"
+						<td  align="center" bgcolor="#E8E8E8"
 							class="admin_title2">
 							<strong>数量</strong>
 						</td>
 					</tr>
 					<s:iterator value="dataList" id="data" status="status">
 						<tr>
-							<td width="15%" align="center"><a href="#"><img width="100" height="100" border="0" src="showImage.action?id=${data.id }"></a></td>
-							<td align="center">
+							<td  align="center">
+							<s:if test="imagesPath != null && imagesPath.size > 0">
+								<img alt="" src="${imagesPath[0] }" border="0" width="120" height="120" /> 
+							</s:if>
+							<s:else>
+								<img alt="" src="images/imgb.gif" border="0" width="120" height="120" /> 
+							</s:else>
+							</td>
+							<td align="center" width="40%">
 								${data.comname }
 							</td>
-							<td align="center">
+							<td  width="20%" align="center">
 								<SPAN class="indexjg">￥${data.price}</SPAN>
 								<BR>
 								市场价 ￥${data.markPrice}
 							</td>
-							<td align="center">
+							<td align="center" width="20%">
 								-${data.amount }
 							</td>
 						</tr>

@@ -116,16 +116,18 @@
 
 					<tr>
 						<td width="130" height="130" align="center">
-							<img width="120" height="120" border="0"
-								src="showImage.action?id=${data.id }">
+							<s:if test="imagesPath != null && imagesPath.size > 0">
+								<img alt="" src="${imagesPath[0] }" border="0" width="120" height="120" /> 
+							</s:if>
+							<s:else>
+								<img alt="" src="images/imgb.gif" border="0" width="120" height="120" /> 
+							</s:else>
 						</td>
 						<td width="274">
-							<strong><a
-								href="bingcurForward.action?model.id=${data.bidId }"
+							<strong><a href="bingcurForward.action?model.id=${data.bidId }"
 								target="_blank">${data.comityName }</a>
 							</strong>
 							<br>
-
 						</td>
 						<td align="center">
 							<p class="indexjg">
@@ -151,8 +153,7 @@
 							<s:if test="state == '交易完成'">
 			              		<a href="forwardShowcom.action?tradeId=${data.id }">我要秀宝</a>
 			              	</s:if>
-								<a href="#" onclick="viewOrd('${data.orderId}')">查看订单</a>
-								
+							<a href="#" onclick="viewOrd('${data.orderId}')">查看订单</a>
 						</td>
 					</tr>
 				</s:iterator>

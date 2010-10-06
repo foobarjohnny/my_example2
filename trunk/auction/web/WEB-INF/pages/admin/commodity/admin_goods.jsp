@@ -59,7 +59,14 @@
 						<td align="center" valign="middle">
 							<table>
 								<tr>
-									<td><img src="showImage.action?id=${data.id }" height="80" width="80" border="0"/></td>
+									<td>
+										<s:if test="imagesPath != null && imagesPath.size > 0">
+											<img src="${imagesPath[0] }" height="80" width="80" border="0"/>
+										</s:if>
+										<s:else>
+											<img src="images/imgb.gif" height="80" width="80" border="0"/>
+										</s:else>
+									</td>
 									<td><s:property value="tradename"/></td>
 								</tr>
 							</table>
