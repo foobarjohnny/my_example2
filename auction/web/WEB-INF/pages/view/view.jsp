@@ -110,6 +110,20 @@
 	function btnMouseAway(obj){
 		obj.src="images/wyjp.gif";
 	}
+	function vote(id) {
+		publisRomet.vote(id,changeValue);
+	}
+	function changeValue(data) {
+		if (data != "error") {
+			var s = data.split(",");
+			document.all["d" + s[0]].innerHTML = s[1];			
+		}
+	}
+	function view(id) {
+		help.id.value = id;
+		help.action = "coolForward.action";
+		help.submit();
+	}
 </script>
 
 <form action="showAll.action" method="post" name="trade">
@@ -140,7 +154,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4" valign="top" bgcolor="#FFFFFF">
+			<td colspan="2" valign="top" bgcolor="#FFFFFF">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0"
 					height="100%">
 					<tr>
@@ -240,11 +254,95 @@
 		</tr>
 	</table>
 </form>
+<table width="795" border="0" align="center" cellpadding="0"
+	cellspacing="0">
+	<tr>
+			<td colspan="3" height="20" align="center" background="images/r_top.gif">
+				&nbsp;
+			</td>
+	</tr>
+	<tr>
+		<td width="10" rowspan="3" background="images/r_left.gif">
+			<img src="images/r_left.gif" width="10" height="1">
+		</td>
+		<td width="775" valign="top" bgcolor="#FFFFFF">&nbsp;&nbsp;<img src="images/kptp.gif" width="99" height="28"> </td>
+		<td width="10" rowspan="3" background="images/r_right.gif">
+			<img src="images/r_right.gif" width="10" height="1">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3" valign="top" background="images/hr.gif" height="1">
+		</td>
+	</tr>
+	<tr>
+		<td  valign="top" bgcolor="#FFFFFF">
+			<form method="post" name="help" action="coolSearch.action">
+				<s:hidden name="pageBean.currentPage" />
+				<s:hidden name="pageBean.totalPage" />
+				<input type="hidden" name="id">
+				<table width="760" border="0" align="center" cellpadding="0"
+					cellspacing="3">
+					<tr>
+						<td height="30" colspan="2" align="center">
+							<p class="admin_title1">
+								商品描述
+							</p>
+						</td>
+						<td width="139" align="center">
+							<p class="admin_title1">
+								市场价
+							</p>
+						</td>
+						<td width="104" align="center">
+							<p class="admin_title1">
+								投票
+							</p>
+						</td>
+					</tr>
+					<s:iterator id="data" value="publisList" status="status">
+
+						<tr>
+							<td width="130" height="130" align="center">
+								<a href="#" onclick="view('${data.id }')">
+									<s:if test="imagesPath != null && imagesPath.size > 0">
+										<img alt="" src="${imagesPath[0] }" border="0" width="120" height="120" /> 
+									</s:if>
+									<s:else>
+										<img alt="" src="images/imgb.gif" border="0" width="120" height="120" /> 
+									</s:else>
+								</a>
+							</td>
+							<td width="274">
+								<strong>${data.tradename }</strong>
+								<br>
+
+							</td>
+							<td align="center">
+								￥${data.price }
+							</td>
+							<td align="center">
+								<div id="d${data.id }">
+									${data.amount }
+								</div>
+								<input type="button" value="酷一下" onclick="vote('${data.id }')">
+							</td>
+						</tr>
+					</s:iterator>
+				</table>
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3" height="20" align="center" background="images/r_dow.gif">
+			&nbsp;
+		</td>
+	</tr>
+</table>
 <table width="100%" border="0" align="left" valign="top"
 		cellpadding="0" cellspacing="0">
 	<tr>
 		<td align="left">
-			<textarea cols=100 rows=20 id="result" style="display:none;">
+			<textarea cols="100" rows="20" id="result" style="display:none;">
 			</textarea>
 		</td>
 	</tr>

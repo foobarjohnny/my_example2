@@ -170,7 +170,7 @@ function last() {
 		</td>
 	</tr>
 	<tr>
-		<td colspan="4" valign="top" bgcolor="#FFFFFF">
+		<td colspan="2" valign="top" bgcolor="#FFFFFF">
 			<table width="765" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 	              <td height="30" colspan="2" align="center"><p class="indexjg">商品描述</p></td>
