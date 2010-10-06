@@ -53,6 +53,10 @@
 		<pattern>/doohickeyShowView.action*</pattern>
 		<pattern>/userReg.action*</pattern>
 		<pattern>/reg.action*</pattern>
+		<pattern>/send.action*</pattern>
+		<pattern>/invitePage.action*</pattern>
+		<pattern>/invite.action*</pattern>
+		<pattern>/viewShowcomsUsr.action*</pattern>
 		<pattern>/WEB-INF/pages/view/*</pattern>
 		<pattern>/WEB-INF/pages/view/trade/*</pattern>
 	</decorator>
@@ -70,6 +74,7 @@
 		<pattern>/searchUserPayE.action*</pattern>
 		<pattern>/orderForward.action*</pattern>
 		<pattern>/forwardShowcom.action*</pattern>
+		<pattern>/saveShowcom.action*</pattern>
 		<pattern>/showcomsUsrList.action*</pattern>
 		<pattern>/doohickeyForward.action*</pattern>
 		<pattern>/doohickeySave.action*</pattern>
