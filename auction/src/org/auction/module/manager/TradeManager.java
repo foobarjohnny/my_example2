@@ -38,6 +38,16 @@ public class TradeManager {
 	public static void remove(String id) {
 		tradeDataMap.remove(id);
 	}
+	
+	/**
+	 * 已经竞拍的商品
+	 * 
+	 * @param tradeData
+	 */
+	public static void finshed(String id) {
+		tradeDataMap.get(id).setFinshed(true);
+		tradeDataMap.get(id).setOrder(true);
+	}
 
 	/**
 	 * 查询缓存中的竞拍商品

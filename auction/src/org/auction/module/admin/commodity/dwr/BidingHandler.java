@@ -45,21 +45,24 @@ public class BidingHandler {
 //				returnStr += ",add:" + data.getTime();
 //			}
 //		}
-		System.out.println(json);
+		
+		/**
+		 * 根据后台的所有竞拍商品的信息， 每秒钟将所有的信息向前台输出一次
+		 */
 		StringBuffer buffer = new StringBuffer();
 		
 		List<BidingData> list = bidingService.getAll(commpityId);
 		if(list != null && list.size() > 0){
 			buffer.append("[");
 			for(BidingData bean : list){
-				if(bean != null && bean.getUserId() != null ){
+				if(bean != null){
 					buffer.append("{");
 					buffer.append("'id':'" + bean.getId());
 					buffer.append("','userId':'"+StringUtil.wrap(bean.getUserId()));
 					buffer.append("','username':'"+StringUtil.wrap(bean.getUsername()));
 					buffer.append("','price':"+StringUtil.wrapDecimal(bean.getPrice()));
-					buffer.append(",'time':" + StringUtil.wrapDate(bean.getBiddate()));
-					buffer.append(",'add':"+StringUtil.wrapInt(""+bean.getTime()));
+					buffer.append(",'time':'" + StringUtil.wrap(bean.getDisplayTime()));
+					buffer.append("','isFinish':"+StringUtil.wrap(""+bean.isFinish));
 					buffer.append("},");
 				}
 			}

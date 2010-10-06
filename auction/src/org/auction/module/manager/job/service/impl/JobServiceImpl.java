@@ -86,7 +86,10 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 				long time = endTime.getTimeInMillis() - today.getTimeInMillis();
 				// 商品竞拍结束处理
 				if (time < 0) {
-					createItem(tradeData);
+					//商品是否已生产订单
+					if (!tradeData.isOrder()) {
+						createItem(tradeData);
+					}
 				}
 			}
 		}
@@ -167,7 +170,7 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 		// 更新商品状态
 		generalDao.update(tsCommodity);
 		// 删除TradeManager无用的信息
-		TradeManager.remove(tsCommodity.getId());
+		TradeManager.finshed(tsCommodity.getId());
 	}
 
 	public static void main(String[] args) {
