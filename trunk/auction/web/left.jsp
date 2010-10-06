@@ -39,6 +39,12 @@
 		//为了刷新右侧的页面的状态， 这个在部署的时候需要修改。
 		window.location="http://localhost/auction/show.action";
 	}
+	function invite() {
+		window.location.href = "invitePage.action"; 
+	}
+	function searchSort() {
+		sort.submit();
+	}
 </script>
 
 <table width="179" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -52,8 +58,10 @@
 		</td>
 		<td width="169" height="40" align="center" valign="top"
 			bgcolor="#FFFFFF">
-			<s:select list="sortDataList" listKey="id" listValue="sortname"
-				headerKey="" headerValue="按类别查找商品"></s:select>
+			<form action="showAll.action" method="post" name="sort">
+			<s:select name="sort" list="sortDataList" listKey="id" listValue="sortname"
+				headerKey="" headerValue="按类别查找商品" onchange="searchSort()"></s:select>
+			</form>
 		</td>
 		<td width="5" rowspan="9" background="images/l_right.gif">
 			<img src="images/l_right.gif" width="5" height="1">
@@ -135,7 +143,7 @@
 							</tr>
 							<tr>
 								<td>
-									<input type="button" value="邀请好友" alt="送10枚易拍币">
+									<input type="button" value="邀请好友" alt="送20枚易拍币" onclick="invite()">
 								</td>
 								<td>
 									<input type="button" value="退&nbsp;&nbsp;&nbsp;&nbsp;出" onclick="loginout();">
@@ -219,7 +227,12 @@
 				<s:iterator id="bing" value="bingcurDataList">
 					<tr>
 						<td width="33%">
-							<img height="50" width="50">
+							<s:if test="imagesPath != null && imagesPath.size > 0">
+								<img height="50" width="50" border="0" src="${imagesPath[0] }">
+							</s:if>
+							<s:else>
+								<img height="50" width="50" border="0" >
+							</s:else>
 						</td>
 						<td width="67%">
 							<a href="bingcurForward.action?model.id=${bing.id}">${bing.user}以${bing.price
