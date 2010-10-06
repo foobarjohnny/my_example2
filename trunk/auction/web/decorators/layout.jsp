@@ -21,7 +21,7 @@
 			});
 		</script>
 	</head>
-
+	
 	<body leftmargin="0" topmargin="0" style="filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr='#6daf2f', endColorStr='#ffffff', gradientType='0')">		
 		<div id="container" style="margin:0 auto; width:100%;">
 			<!-- 这是头部的导航条 -->
