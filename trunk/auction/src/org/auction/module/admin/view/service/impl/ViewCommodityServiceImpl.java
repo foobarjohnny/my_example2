@@ -1,16 +1,21 @@
 package org.auction.module.admin.view.service.impl;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.auction.entity.TsPublis;
+import org.auction.module.admin.commodity.data.PublisData;
 import org.auction.module.admin.view.data.ViewData;
 import org.auction.module.admin.view.service.ViewCommodityService;
 import org.auction.module.manager.TradeManager;
 import org.auction.module.manager.data.TradeData;
 import org.mobile.common.bean.PageBean;
+import org.mobile.common.bean.SearchBean;
 import org.mobile.common.exception.GeneralException;
 import org.mobile.common.service.GeneralService;
 
+import org.mobile.common.util.BeanProcessUtils;
 import org.mobile.common.util.Constant;
 
 public class ViewCommodityServiceImpl extends GeneralService implements ViewCommodityService {
@@ -18,6 +23,7 @@ public class ViewCommodityServiceImpl extends GeneralService implements ViewComm
 	/**
 	 * 首页面获得可以竞拍的商品
 	 */
+	@SuppressWarnings("unchecked")
 	public void show(ViewData model) throws GeneralException {
 		// 首页显示竞拍商品显示十条记录
 		List<TradeData> list = TradeManager.getTradeData(null);
@@ -45,6 +51,20 @@ public class ViewCommodityServiceImpl extends GeneralService implements ViewComm
 			if (time > 0) {
 				model.getDataList().add(vd);
 			}
+		}
+		//酷品界面
+		List<SearchBean> search = new ArrayList<SearchBean>();
+		PageBean bean = new PageBean();
+		bean.setPageRec(6);
+		List alist = generalDao.search(TsPublis.class, search, bean, null);
+		
+		for (int i = 0; i < alist.size(); i++) {
+			TsPublis tsCommodity = (TsPublis) alist.get(i);
+			PublisData data = new PublisData();
+			BeanProcessUtils.copyProperties(data, tsCommodity);
+			// 设置酷品图片
+			data.setImagesPath(generalDao.searchImages(tsCommodity.getId(), "TS_PUBLIS"));
+			model.getPublisList().add(data);
 		}
 	}
 
