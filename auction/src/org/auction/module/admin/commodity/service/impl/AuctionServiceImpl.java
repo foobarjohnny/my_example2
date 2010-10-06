@@ -143,6 +143,7 @@ public class AuctionServiceImpl extends GeneralService implements
 			long over = cal.getTimeInMillis();
 			long curren = today.getTimeInMillis();
 			long time = (over - curren) / 1000;
+			//如果时间小于商品的增加时间，正价商品的时间
 			if (time < tradeData.getAddtimes()) {
 				long add = tradeData.getAddtimes() - time;
 				cal.add(Calendar.SECOND, (int) add);

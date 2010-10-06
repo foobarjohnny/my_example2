@@ -55,13 +55,6 @@ public class TradeManager {
 		} else {
 			list.addAll(tradeDataMap.values());
 		}
-		// if (tradeDataMap != null && tradeDataMap.size() > 0) {
-		// Iterator it = tradeDataMap.keySet().iterator();
-		// while (it.hasNext()) {
-		// String key = it.next().toString();
-		// list.add(tradeDataMap.get(key));
-		// }
-		// }
 		return list;
 	}
 

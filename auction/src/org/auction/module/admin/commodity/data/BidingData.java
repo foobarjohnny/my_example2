@@ -16,6 +16,7 @@ public class BidingData extends GeneralData {
 	private String userId;
 	private String username;
 	private String commpityId;
+	private String displayTime;
 
 	private int time;
 
@@ -94,6 +95,14 @@ public class BidingData extends GeneralData {
 
 	public void setTime(int time) {
 		this.time = time;
+	}
+
+	public String getDisplayTime() {
+		return displayTime;
+	}
+
+	public void setDisplayTime(String displayTime) {
+		this.displayTime = displayTime;
 	}
 
 }

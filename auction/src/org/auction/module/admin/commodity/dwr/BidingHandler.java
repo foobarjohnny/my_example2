@@ -18,14 +18,14 @@ public class BidingHandler {
 	private BidingService bidingService;
 
 	/**
-	 * 产品编号， 用户编号， 商品编号
+	 * 前台异步实时交互，通过json获得当前商品竞拍信息
 	 * @param commpityId
-	 * @param userId
+	 * @param json 
 	 * @param did
 	 * @return
 	 * @throws GeneralException
 	 */
-	public String find(String commpityId, String userId, String did)
+	public String find(String commpityId, String json, String did)
 			throws GeneralException {
 		
 		//这是之前实现的算法， 根据产品编号， 用户编号和前台的序号， 查询指定的产品。由于前台的产品数量多， 导致竞争，会造成页面的阻塞。
@@ -45,6 +45,7 @@ public class BidingHandler {
 //				returnStr += ",add:" + data.getTime();
 //			}
 //		}
+		System.out.println(json);
 		StringBuffer buffer = new StringBuffer();
 		
 		List<BidingData> list = bidingService.getAll(commpityId);
