@@ -65,7 +65,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="3" valign="top" background="images/hr.gif" height="1">
+			<td valign="top" background="images/hr.gif" height="1">
 			</td>
 		</tr>
 		<tr>
@@ -120,8 +120,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="3">
-				<img src="images/r_dow.gif" width="795" height="20">
+			<td colspan="3"  width="795" height="20"  background="images/r_dow.gif">
 			</td>
 		</tr>
 	</table>

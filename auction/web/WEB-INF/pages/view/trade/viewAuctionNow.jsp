@@ -21,41 +21,6 @@
 		}
 	}
 	/**
-	 * 显示时间
-	 * 
-	 * @return
-	 */
-	function displayTime(obj) {
-		var d = eval('('+obj+')');
-		var t = parseInt(d.time);
-		var maxtime = t / 1000;
-		if (maxtime < 0) {
-			var auctionDiv = document.getElementById(d.id+"_auction_div");
-			auctionDiv.style.display = "none";
-			document.getElementById(d.id+"_time_div").innerHTML = "竞拍结束";
-		}else{
-			if(document.getElementById(d.id+"_sign").value == "1"){
-				document.getElementById(d.id+"_sign").value = "0";
-				t = parseInt(document.getElementById(d.id + "_remaining").value);
-			}
-			
-			d.time = t - 1000;
-			
-			hour = Math.floor(maxtime / 3600);
-			if(hour<10){hour = "0"+hour;}
-			minutes = Math.floor((maxtime - hour * 3600) / 60);
-			if(minutes < 10){minutes = "0" + minutes;}
-			seconds = Math.floor(maxtime % 60);
-			if(seconds < 10){seconds = "0" + seconds;}
-			var msg = hour + ":" + minutes + ":" + seconds;
-			document.getElementById(d.id+"_time_div").innerHTML = msg;
-			document.getElementById(d.id+"_remaining").value=d.time;
-			var newValue = JSON.stringify(d,"");
-			setTimeout("displayTime('"+newValue+"')", 1000);
-		}
-	}
-	
-	/**
 	 * 检查竞拍的价格
 	 */
 	function checkAuction(){
@@ -67,25 +32,30 @@
 	 * 获取了最新的价格之后的回调方法
 	 */
 	function showMsg(data) {
+		//document.getElementById('result').value=data;
+		
 		var obj = eval('(' + data +')');
+		
 		for(i = 0; i < obj.length; i++){
 			var bean = obj[i];
 			//检查是否是空对象
 			if(typeof(bean.id) != 'undefined'){//首先检查是否有指定产品编号
-				if(typeof(bean.username) != 'undefined' && bean.username != ""){//再检查是否有客户对该产品进行竞拍，如果没有，则不处理，继续走时
+				if(!bean.isFinish){
 					document.getElementById(bean.id+"_user_div").innerHTML=""+bean.username;
+					if( document.getElementById(bean.id+"_user").value != bean.userId){
+						document.getElementById(bean.id+"_price_div").style.color = '#F0F';
+					}
 					document.getElementById(bean.id+"_user").value=bean.userId;
 					document.getElementById(bean.id+"_price").value=bean.price;
+					document.getElementById(bean.id+"_time_div").innerHTML=bean.time;
 					document.getElementById(bean.id+"_price_div").innerHTML="￥" + bean.price;
-					var sourceTime = parseInt(document.getElementById(bean.id+'_remaining').value);
-					var addTime    = parseInt(bean.add)*1000;
-					if(sourceTime < addTime){
-						document.getElementById(bean.id+'_remaining').value = addTime;
-						document.getElementById(bean.id+'_sign').value = "1";
-					}
+					document.getElementById(bean.id+"_price_div").style.backgroundcolor="red";
+				}else{//该商品的竞拍结束， 提示秒杀客户竞拍的结果。
+					//TODO  仿照大家点用来提示客户中奖信息
+					
 				}
 			}
-		}
+		}		
 	}
 	
 	function doSubmit(id, htmlId, status) {
@@ -101,8 +71,7 @@
 		var obj = eval('('+data+')');
 		if(typeof(obj.operator) != 'undefined' && obj.operator == "success"){
 			if(typeof(obj.add) != 'undefined' && obj.add != ""){//时间发生变化了，价格的变化，是另外一个函数获取
-				document.getElementById(obj.id+'_sign').value="1";
-				document.getElementById(obj.id+'_remaining').value=obj.add;
+				
 			}
 		}else{
 			alert(obj.msg);
@@ -239,13 +208,6 @@
 											style="color: red; font-size: 24px; font-weight: bold;">
 											--:--:--
 									</div>
-									<!-- 这是一个信号量， 用来标识时间价格是否有变化 -->
-									<input type="hidden" id="${id }_sign" value="0" />
-									<input type="hidden" id="${id}_remaining" value="${remaining }" />
-									<script type="text/javascript">
-		    							var obj_${id}='{"id":"${id}","time":${remaining}}';
-		    							displayTime(obj_${id});
-		    						</script>
 									<br>
 									每次竞价商品价格增加￥${markup }&nbsp;&nbsp;时间增加${addtime }秒
 									<br>

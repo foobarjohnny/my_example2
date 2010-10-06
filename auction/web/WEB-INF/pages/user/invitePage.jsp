@@ -34,6 +34,7 @@
 		<td valign="top" bgcolor="#FFFFFF">
 			<form action="invite.action" method="post" name="formy">
 			<s:hidden name="regId"></s:hidden>
+			<s:hidden name="url"></s:hidden>
 			<table width="100%" border="0" cellspacing="0" cellpadding="10">
               <tr>
                 <td  align="right" valign="top"><p>邀请好友：</p></td>
