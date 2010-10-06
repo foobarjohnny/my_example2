@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.auction.module.admin.commodity.data.PublisData;
 import org.auction.module.manager.data.TradeData;
 import org.mobile.common.action.GeneralData;
 
@@ -27,6 +28,8 @@ public class ViewData extends GeneralData {
 	private List imagesPath;
 
 	private List<ViewData> dataList = new ArrayList<ViewData>();
+	
+	private List<PublisData> publisList = new ArrayList<PublisData>();
 
 	private List<TradeData> tradeList = new ArrayList<TradeData>();
 
@@ -150,6 +153,14 @@ public class ViewData extends GeneralData {
 	@SuppressWarnings("unchecked")
 	public void setImagesPath(List imagesPath) {
 		this.imagesPath = imagesPath;
+	}
+
+	public List<PublisData> getPublisList() {
+		return publisList;
+	}
+
+	public void setPublisList(List<PublisData> publisList) {
+		this.publisList = publisList;
 	}
 
 }
