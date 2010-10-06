@@ -9,7 +9,7 @@ public interface BidingService {
 
 	public String forward(BidingData model) throws GeneralException;
 	
-	public List<BidingData> getAll() throws GeneralException;
+	public List<BidingData> getAll(String id) throws GeneralException;
 
 	public String save(BidingData model) throws GeneralException;
 

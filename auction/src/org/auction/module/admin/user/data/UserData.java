@@ -27,12 +27,17 @@ public class UserData extends GeneralData {
 	private Date lasttimeip;
 	private Integer paycur;
 	private Integer freecur;
-	
+	// 邀请用户的ID
 	private String regId;
 
 	private String methodName;
-	
+
 	private String info;
+	// 生成的URL
+	private String url;
+	// 收件人账户
+	private String recAcout;
+	// 
 
 	private List<UserData> dataList = new ArrayList<UserData>();
 
@@ -218,6 +223,22 @@ public class UserData extends GeneralData {
 
 	public void setInfo(String info) {
 		this.info = info;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getRecAcout() {
+		return recAcout;
+	}
+
+	public void setRecAcout(String recAcout) {
+		this.recAcout = recAcout;
 	}
 
 }

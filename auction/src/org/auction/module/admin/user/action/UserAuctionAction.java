@@ -14,18 +14,33 @@ public class UserAuctionAction extends GeneralAction<UserAuctionData> {
 	private UserAuctionService userAuctionService;
 
 	public String auction() throws GeneralException {
+		if (!checkedLogin()) {
+			return "login";
+		}
 		this.setPage(model);
 		userAuctionService.auction(model);
 		return SUCCESS;
 	}
 
+	/**
+	 * 用户正在参与竞拍商品
+	 * 
+	 * @return
+	 * @throws GeneralException
+	 */
 	public String now() throws GeneralException {
+		if (!checkedLogin()) {
+			return "login";
+		}
 		this.setPage(model);
 		userAuctionService.now(model);
 		return SUCCESS;
 	}
 
 	public String follow() throws GeneralException {
+		if (!checkedLogin()) {
+			return "login";
+		}
 		this.setPage(model);
 		userAuctionService.follow(model);
 		return SUCCESS;

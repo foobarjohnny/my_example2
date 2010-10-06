@@ -30,4 +30,5 @@ public class Constant {
 	public static String NEQ = "neq";
 	public static String NULL = "null";
 	public static String NOTNULL = "notnull";
+	public static String TRADE_IMAGES = "TS_COMMODITY";
 }

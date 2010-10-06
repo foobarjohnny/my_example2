@@ -31,6 +31,11 @@ public class OrderData extends GeneralData {
 	private String methodName;
 	private Integer ecount;
 	private BigDecimal comPrice = new BigDecimal(0);
+	
+	private String tradeState;
+	
+	@SuppressWarnings("unchecked")
+	private List imagesPath;
 
 	private String url;
 
@@ -226,5 +231,23 @@ public class OrderData extends GeneralData {
 
 	public void setEcount(Integer ecount) {
 		this.ecount = ecount;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List getImagesPath() {
+		return imagesPath;
+	}
+
+	@SuppressWarnings("unchecked")
+	public void setImagesPath(List imagesPath) {
+		this.imagesPath = imagesPath;
+	}
+
+	public String getTradeState() {
+		return tradeState;
+	}
+
+	public void setTradeState(String tradeState) {
+		this.tradeState = tradeState;
 	}
 }

@@ -7,6 +7,8 @@ import org.mobile.common.exception.GeneralException;
 public interface UserService {
 
 	public void forward(UserData model) throws GeneralException;
+	
+	public void forwardAdmin(UserData model) throws GeneralException;
 
 	public void save(UserData model) throws GeneralException;
 
@@ -27,6 +29,12 @@ public interface UserService {
 	public LoginBean loginDwr(UserData model) throws GeneralException;
 	
 	public void regForward(UserData model) throws Exception;
+	
+	public void send(UserData model) throws Exception;
+	
+	public void invitePage(UserData model) throws Exception;
+	
+	public void invite(UserData model) throws Exception;
 	
 	public boolean checkedUser(UserData model) throws Exception;
 

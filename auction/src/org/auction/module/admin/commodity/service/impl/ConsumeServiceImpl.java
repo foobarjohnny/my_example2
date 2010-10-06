@@ -17,23 +17,18 @@ import org.mobile.common.manager.GeneralManager;
 import org.mobile.common.service.GeneralService;
 import org.mobile.common.session.SessionManager;
 import org.mobile.common.util.BeanProcessUtils;
+import org.mobile.common.util.Constant;
 
-public class ConsumeServiceImpl extends GeneralService implements
-		ConsumeService {
+public class ConsumeServiceImpl extends GeneralService implements ConsumeService {
 
 	public void delete(ConsumeData model) throws GeneralException {
-		String hql = " update TsConsume t set t.state = '1' where t.tsCommodity.id='"
-				+ model.getComId()
-				+ "' and t.tsUser.id='"
-				+ model.getUserId()
-				+ "'";
+		String hql = " update TsConsume t set t.state = '1' where t.tsCommodity.id='" + model.getComId() + "' and t.tsUser.id='" + model.getUserId() + "'";
 		generalDao.executeHql(hql);
 	}
 
 	public void forward(ConsumeData model) throws GeneralException {
 		if (model.getId() != null && !model.getId().equals("")) {
-			TsConsume tsConsume = (TsConsume) generalDao.get(TsConsume.class,
-					model.getId());
+			TsConsume tsConsume = (TsConsume) generalDao.get(TsConsume.class, model.getId());
 			BeanProcessUtils.copyProperties(model, tsConsume);
 		}
 	}
@@ -95,15 +90,13 @@ public class ConsumeServiceImpl extends GeneralService implements
 	public void searchCom(ConsumeData model) throws GeneralException {
 		List<SearchBean> list = new ArrayList<SearchBean>();
 		list.add(new SearchBean("state", "eq", "string", "3"));
-		List dataList = generalDao.search(TsCommodity.class, list, model
-				.getPageBean(), null);
+		List dataList = generalDao.search(TsCommodity.class, list, model.getPageBean(), null);
 		if (dataList != null && dataList.size() > 0) {
 			for (int i = 0; i < dataList.size(); i++) {
 				TsCommodity tsCommodity = (TsCommodity) dataList.get(i);
 				// 免费查询
 				String h1 = "select count(id) from TsBidding c where c.bidtype='1' and c.tsCommodity.id='" + tsCommodity.getId() + "'";
-				if (model.getSearchBeans() != null
-						&& model.getSearchBeans().size() > 0) {
+				if (model.getSearchBeans() != null && model.getSearchBeans().size() > 0) {
 					if (model.getSearchBeans().get(0) != null) {
 						SearchBean s = model.getSearchBeans().get(0);
 						h1 += " and c.tsUser.username='" + s.getValue() + "'";
@@ -111,8 +104,7 @@ public class ConsumeServiceImpl extends GeneralService implements
 				}
 				// 收费查询
 				String h2 = "select count(id) from TsBidding c where c.bidtype='2' and c.tsCommodity.id='" + tsCommodity.getId() + "'";
-				if (model.getSearchBeans() != null
-						&& model.getSearchBeans().size() > 0) {
+				if (model.getSearchBeans() != null && model.getSearchBeans().size() > 0) {
 					if (model.getSearchBeans().get(0) != null) {
 						SearchBean s = model.getSearchBeans().get(0);
 						h2 += " and c.tsUser.username='" + s.getValue() + "'";
@@ -127,7 +119,7 @@ public class ConsumeServiceImpl extends GeneralService implements
 				data.setAmount(Integer.parseInt((String.valueOf(o2))));
 				data.setFree(Integer.parseInt((String.valueOf(o1))));
 				data.setComId(tsCommodity.getId());
-				
+
 				Iterator it = tsCommodity.getTsBingcurs().iterator();
 				if (it.hasNext()) {
 					TsBingcur tsBingcur = (TsBingcur) it.next();
@@ -145,13 +137,11 @@ public class ConsumeServiceImpl extends GeneralService implements
 	 */
 	@SuppressWarnings("unchecked")
 	public void searchPayE(ConsumeData model) throws GeneralException {
-		LoginBean loginBean = SessionManager.getLoginInfo(GeneralManager
-				.getCurrentManager().getSessionId());
+		LoginBean loginBean = SessionManager.getLoginInfo(GeneralManager.getCurrentManager().getSessionId());
 		if (loginBean != null) {
-			String hql = "select c.tsCommodity,sum(c.amount) from TsConsume c where c.tsUser.id='"
-					+ loginBean.getId() + "' group by c.tsCommodity";
-			String pageTotal = "select count(id) from TsConsume c where c.tsUser.id='"
-					+ loginBean.getId() + "' ";
+			// 分组统计用户商品E拍币使用数量
+			String hql = "select c.tsCommodity,sum(c.amount) from TsConsume c where c.tsUser.id='" + loginBean.getId() + "' group by c.tsCommodity";
+			String pageTotal = "select count(id) from TsConsume c where c.tsUser.id='" + loginBean.getId() + "' ";
 			List list = generalDao.search(hql, pageTotal, model.getPageBean());
 			if (list != null && list.size() > 0) {
 				for (int i = 0; i < list.size(); i++) {
@@ -163,6 +153,8 @@ public class ConsumeServiceImpl extends GeneralService implements
 					data.setDescript(tsCommodity.getSummary());
 					data.setComId(tsCommodity.getId());
 					data.setMarkPrice(tsCommodity.getPrices());
+					// 商品显示图片
+					data.setImagesPath(generalDao.searchImages(tsCommodity.getId(), Constant.TRADE_IMAGES));
 					Iterator it = tsCommodity.getTsBingcurs().iterator();
 					if (it.hasNext()) {
 						TsBingcur tsBingcur = (TsBingcur) it.next();

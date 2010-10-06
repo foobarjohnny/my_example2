@@ -25,7 +25,6 @@ public class BidingHandler {
 	 * @return
 	 * @throws GeneralException
 	 */
-	@SuppressWarnings("unchecked")
 	public String find(String commpityId, String userId, String did)
 			throws GeneralException {
 		
@@ -48,7 +47,7 @@ public class BidingHandler {
 //		}
 		StringBuffer buffer = new StringBuffer();
 		
-		List<BidingData> list = bidingService.getAll();
+		List<BidingData> list = bidingService.getAll(commpityId);
 		if(list != null && list.size() > 0){
 			buffer.append("[");
 			for(BidingData bean : list){

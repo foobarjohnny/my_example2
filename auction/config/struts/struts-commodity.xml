@@ -247,7 +247,7 @@
 		</action>
 		<!-- 前台秀宝发布 -->
 		<action name="saveShowcom" class="showcomAction" method="save">
-			<result>WEB-INF/pages/view/user/view.jsp
+			<result type="chain">showcomsUsrList
 			</result>
 		</action>
 		<!-- 后台秀宝审核 -->
@@ -275,6 +275,10 @@
 		<action name="showcomsUsrList" class="showcomAction" method="showList">
 			<result>WEB-INF/pages/view/user/showList.jsp
 			</result>
+		</action>
+		<!-- 用户秀宝详情 -->
+		<action name="viewShowcomsUsr" class="showcomAction" method="show">
+			<result>WEB-INF/pages/view/trade/viewShowcoms.jsp</result>
 		</action>
 	</package>
 </struts>

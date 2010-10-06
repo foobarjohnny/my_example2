@@ -41,6 +41,9 @@ public class ConsumeAction extends GeneralAction<ConsumeData> {
 	}
 
 	public String searchUserPayE() throws GeneralException {
+		if (!checkedLogin()) {
+			return "login";
+		}
 		this.setPage(model);
 		consumeService.searchPayE(model);
 		return SUCCESS;

@@ -25,6 +25,9 @@ public class BingcurData extends GeneralData {
 	private List<BingcurData> dataList = new ArrayList<BingcurData>();
 	private List<BidingData> bidingList = new ArrayList<BidingData>();
 
+	@SuppressWarnings("unchecked")
+	private List imagesPath;
+
 	public String getId() {
 		return id;
 	}
@@ -143,6 +146,16 @@ public class BingcurData extends GeneralData {
 
 	public void setImage(String[] image) {
 		this.image = image;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List getImagesPath() {
+		return imagesPath;
+	}
+
+	@SuppressWarnings("unchecked")
+	public void setImagesPath(List imagesPath) {
+		this.imagesPath = imagesPath;
 	}
 
 }

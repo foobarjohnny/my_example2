@@ -23,6 +23,9 @@ public class ConsumeData extends GeneralData {
 	private BigDecimal markPrice = new BigDecimal(0);
 	private BigDecimal price = new BigDecimal(0);
 	private String bidId;
+	
+	@SuppressWarnings("unchecked")
+	private List imagesPath;
 
 	private List<ConsumeData> dataList = new ArrayList<ConsumeData>();
 
@@ -144,5 +147,15 @@ public class ConsumeData extends GeneralData {
 
 	public void setFree(Integer free) {
 		this.free = free;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List getImagesPath() {
+		return imagesPath;
+	}
+
+	@SuppressWarnings("unchecked")
+	public void setImagesPath(List imagesPath) {
+		this.imagesPath = imagesPath;
 	}
 }

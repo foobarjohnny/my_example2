@@ -1,6 +1,6 @@
 package org.auction.module.view.show.service.impl;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -24,36 +24,40 @@ import org.mobile.common.dao.IGeneralDao;
 import org.mobile.common.manager.GeneralManager;
 import org.mobile.common.session.SessionManager;
 import org.mobile.common.util.BeanProcessUtils;
+import org.mobile.common.util.Constant;
 
 public class ShowServiceImpl implements IShowService {
-	
+
 	private static Logger log = Logger.getLogger(ShowServiceImpl.class);
 
 	private IGeneralDao generalDao;
 
+	/**
+	 * 前台界面左侧显示信息
+	 */
 	@SuppressWarnings("unchecked")
 	public void show(ShowData model) throws Exception {
-		
-		//获取用户是否登录
+
+		// 获取用户是否登录
 		GeneralManager manager = GeneralManager.getCurrentManager();
-		if(SessionManager.isLogin(manager.getSessionId())){
+		if (SessionManager.isLogin(manager.getSessionId())) {
 			LoginBean login = SessionManager.getLoginInfo(manager.getSessionId());
-			
+
 			log.info("check the user is login :" + login);
-			
-			if(login != null){
+
+			if (login != null) {
 				model.setUsername(login.getWorkNo());
 				model.setPayNum(login.getPaycur());
 				model.setFreeNum(login.getFreecur());
-				model.setIsLogin("Y");	//用户已经登录
-			}else{
-				model.setIsLogin("N");	//用户未登录
+				model.setIsLogin("Y"); // 用户已经登录
+			} else {
+				model.setIsLogin("N"); // 用户未登录
 			}
 		}
-		
+
 		// 商品分类
 		List<SearchBean> search = new ArrayList<SearchBean>();
-		search.add(new SearchBean("isValid","eq","string","Y"));
+		search.add(new SearchBean("isValid", "eq", "string", "Y"));
 		List list = generalDao.search(TsSort.class, search, null, null);
 		for (int i = 0; i < list.size(); i++) {
 			TsSort tsSort = (TsSort) list.get(i);
@@ -64,7 +68,7 @@ public class ShowServiceImpl implements IShowService {
 		// 竞拍历史
 		PageBean pageBean = new PageBean();
 		List<OrderByBean> orderList = new ArrayList<OrderByBean>();
-		orderList.add(new OrderByBean("","binddate","desc"));
+		orderList.add(new OrderByBean("", "binddate", "desc"));
 		search = null;
 		list = generalDao.search(TsBingcur.class, search, pageBean, orderList);
 		for (int i = 0; i < list.size(); i++) {
@@ -74,6 +78,8 @@ public class ShowServiceImpl implements IShowService {
 			data.setUser(tsSort.getTsUser().getUsername());
 			data.setComityName(tsSort.getTsCommodity().getTradename());
 			data.setTradeId(tsSort.getTsCommodity().getId());
+			// 商品图片
+			data.setImagesPath(generalDao.searchImages(tsSort.getTsCommodity().getId(), Constant.TRADE_IMAGES));
 			model.getBingcurDataList().add(data);
 		}
 		// 网站公告

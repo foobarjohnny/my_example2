@@ -29,6 +29,9 @@ public class ShowcomAction extends GeneralAction<ShowcomData> {
 	}
 
 	public String forward() throws Exception {
+		if (!checkedLogin()) {
+			return "login";
+		}
 		showcomService.forward(model);
 		return SUCCESS;
 	}
@@ -61,8 +64,16 @@ public class ShowcomAction extends GeneralAction<ShowcomData> {
 	}
 	
 	public String showList() throws Exception {
+		if (!checkedLogin()) {
+			return "login";
+		}
 		this.setPage(model);
 		showcomService.showList(model);
+		return SUCCESS;
+	}
+	
+	public String show() throws Exception {
+		showcomService.show(model);
 		return SUCCESS;
 	}
 

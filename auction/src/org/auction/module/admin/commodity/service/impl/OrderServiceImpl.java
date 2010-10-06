@@ -21,29 +21,27 @@ import org.mobile.common.bean.SearchBean;
 import org.mobile.common.exception.GeneralException;
 import org.mobile.common.service.GeneralService;
 import org.mobile.common.util.BeanProcessUtils;
+import org.mobile.common.util.Constant;
 
 public class OrderServiceImpl extends GeneralService implements OrderService {
 
 	public void delete(OrderData model) throws GeneralException {
 		// 获得订单
-		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model
-				.getId());
+		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model.getId());
 		tsOrder.setState("6");
 		generalDao.update(tsOrder);
 	}
 
 	public void channel(OrderData model) throws GeneralException {
 		// 获得订单
-		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model
-				.getId());
+		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model.getId());
 		tsOrder.setState("5");
 		generalDao.update(tsOrder);
 	}
 
 	public void view(OrderData model) throws GeneralException {
 		// 获得订单
-		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model
-				.getId());
+		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model.getId());
 		BeanProcessUtils.copyProperties(model, tsOrder);
 		model.setCommodityName(tsOrder.getTsCommodity().getTradename());
 	}
@@ -51,8 +49,7 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 	@SuppressWarnings("unchecked")
 	public void orderView(OrderData model) throws GeneralException {
 		// 获得订单
-		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model
-				.getId());
+		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model.getId());
 		BeanProcessUtils.copyProperties(model, tsOrder);
 		model.setCommodityName(tsOrder.getTsCommodity().getTradename());
 		model.setComId(tsOrder.getTsCommodity().getId());
@@ -76,8 +73,7 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 
 		// 查询该商品成交用户
 		List<SearchBean> search = new ArrayList<SearchBean>();
-		search.add(new SearchBean("tsCommodity.id", "eq", "string", tsOrder
-				.getTsCommodity().getId()));
+		search.add(new SearchBean("tsCommodity.id", "eq", "string", tsOrder.getTsCommodity().getId()));
 		List bing_list = generalDao.search(TsBingcur.class, search, null, null);
 		if (bing_list != null && bing_list.size() > 0) {
 			TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
@@ -87,8 +83,7 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 
 	public void forward(OrderData model) throws GeneralException {
 		// 获得订单
-		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model
-				.getId());
+		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model.getId());
 		BeanProcessUtils.copyProperties(model, tsOrder);
 		model.setCommodityName(tsOrder.getTsCommodity().getTradename());
 	}
@@ -96,8 +91,7 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 	@SuppressWarnings("unchecked")
 	public void pay(OrderData model) throws GeneralException {
 		// 获得订单
-		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model
-				.getId());
+		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model.getId());
 		// 生成参数
 		Map params = new HashMap();
 		params.put("service", AlipayConfig.service);
@@ -119,14 +113,16 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 
 	}
 
+	/**
+	 * 查询订单
+	 */
 	@SuppressWarnings("unchecked")
 	public void search(OrderData model) throws GeneralException {
 		List<SearchBean> search = new ArrayList<SearchBean>();
-		search.add(new SearchBean("ordertype", "eq", "string", model
-				.getOrdertype()));
+		// 订单类型
+		search.add(new SearchBean("ordertype", "eq", "string", model.getOrdertype()));
 		search.add(new SearchBean("state", "eq", "string", model.getState()));
-		List list = generalDao.search(TsOrder.class, search, model
-				.getPageBean(), null);
+		List list = generalDao.search(TsOrder.class, search, model.getPageBean(), null);
 		for (int i = 0; i < list.size(); i++) {
 			TsOrder tsOrder = (TsOrder) list.get(i);
 			OrderData data = new OrderData();
@@ -136,14 +132,16 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 			// 获得竞拍表记录
 			// 查询该商品成交用户
 			search = new ArrayList<SearchBean>();
-			search.add(new SearchBean("tsCommodity.id", "eq", "string", tsOrder
-					.getTsCommodity().getId()));
-			List bing_list = generalDao.search(TsBingcur.class, search, null,
-					null);
+			search.add(new SearchBean("tsCommodity.id", "eq", "string", tsOrder.getTsCommodity().getId()));
+			List bing_list = generalDao.search(TsBingcur.class, search, null, null);
 			if (bing_list != null && bing_list.size() > 0) {
 				TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
 				data.setBidId(tsBingcur.getId());
 			}
+			// 商品状态
+			data.setTradeState(tsOrder.getTsCommodity().getState());
+			// 商品图片
+			data.setImagesPath(generalDao.searchImages(tsOrder.getTsCommodity().getId(), Constant.TRADE_IMAGES));
 			model.getDataList().add(data);
 		}
 	}
@@ -163,10 +161,8 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 		// 判断用户是否获得该产品竞拍,如果获得商品竞拍按商品购买价生成订单
 		List<SearchBean> search = new ArrayList<SearchBean>();
 		search.add(new SearchBean("tsUser.id", "eq", "string", userId));
-		search.add(new SearchBean("tsCommodity.id", "eq", "string", tsCommodity
-				.getId()));
-		List bingcurList = generalDao.search(TsBingcur.class, search, null,
-				null);
+		search.add(new SearchBean("tsCommodity.id", "eq", "string", tsCommodity.getId()));
+		List bingcurList = generalDao.search(TsBingcur.class, search, null, null);
 		if (bingcurList != null && bingcurList.size() > 0) {
 			BigDecimal total = tsCommodity.getPurchasePrice();
 			saveOrder(tsUser, tsCommodity, 0, total);
@@ -175,12 +171,10 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 		}
 
 		// 判断用户是否参与该商品竞拍,如果没有不允许购买
-		List bidingList = generalDao
-				.search(TsBidding.class, search, null, null);
+		List bidingList = generalDao.search(TsBidding.class, search, null, null);
 		if (bidingList != null && bidingList.size() > 0) {
 			// 判断用户是否购买过该商品，如果购买过按购买价
-			List orderList = generalDao.search(TsOrder.class, search, null,
-					null);
+			List orderList = generalDao.search(TsOrder.class, search, null, null);
 			if (orderList != null && orderList.size() > 0) {
 				BigDecimal total = tsCommodity.getPurchasePrice();
 				saveOrder(tsUser, tsCommodity, 0, total);
@@ -188,8 +182,7 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 				// 该用户参加竞拍次数
 				int count = bidingList.size();
 				// 保存订单
-				BigDecimal total = tsCommodity.getPurchasePrice().subtract(
-						new BigDecimal(count * 1));
+				BigDecimal total = tsCommodity.getPurchasePrice().subtract(new BigDecimal(count * 1));
 				saveOrder(tsUser, tsCommodity, count, total);
 			}
 			result = "success";
@@ -203,58 +196,58 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 	}
 
 	/**
-	 * 生成用户购买订单
+	 * 用户购买产品
 	 */
 	@SuppressWarnings("unchecked")
-	public String createOrders(String id, String userId)
-			throws GeneralException {
+	public String createOrders(String id, String userId) throws GeneralException {
 		String result = "success";
 		// 商品信息
-		TsCommodity tsCommodity = (TsCommodity) generalDao.get(
-				TsCommodity.class, id);
+		TsCommodity tsCommodity = (TsCommodity) generalDao.get(TsCommodity.class, id);
 		// 用户信息
 		TsUser tsUser = (TsUser) generalDao.get(TsUser.class, userId);
 		// 判断用户是否参与该商品竞拍,如果没有不允许购买
 		List<SearchBean> search = new ArrayList<SearchBean>();
 		search.add(new SearchBean("tsUser.id", "eq", "string", userId));
-		search.add(new SearchBean("tsCommodity.id", "eq", "string", tsCommodity
-				.getId()));
+		search.add(new SearchBean("tsCommodity.id", "eq", "string", tsCommodity.getId()));
 		// 判断用户是否参与该商品竞拍,如果没有不允许购买
-		List bidingList = generalDao
-				.search(TsBidding.class, search, null, null);
+		List bidingList = generalDao.search(TsBidding.class, search, null, null);
 		if (bidingList != null && bidingList.size() > 0) {
-			// 判断用户是否购买过该商品，如果购买过按购买价
-			List orderList = generalDao.search(TsOrder.class, search, null,
-					null);
+			// 判断用户是否购买过该商品，如果购买过不允许在购买
+			search.add(new SearchBean("ordertype", "eq", "string", "2"));
+			List orderList = generalDao.search(TsOrder.class, search, null, null);
 			if (orderList != null && orderList.size() > 0) {
-				BigDecimal total = tsCommodity.getPurchasePrice();
-				saveOrder(tsUser, tsCommodity, 0, total);
+				result = "该商品不允许重复购买";
 			} else {
 				// 该用户参加竞拍次数
 				int count = bidingList.size();
 				// 保存订单
-				BigDecimal total = tsCommodity.getPurchasePrice().subtract(
-						new BigDecimal(count * 1));
+				BigDecimal total = tsCommodity.getPurchasePrice().subtract(new BigDecimal(count * 1));
 				saveOrder(tsUser, tsCommodity, count, total);
+				result = "success";
 			}
-			result = "success";
 		} else {
-			BigDecimal total = tsCommodity.getPurchasePrice();
-			saveOrder(tsUser, tsCommodity, 0, total);
-			result = "success";
+			// BigDecimal total = tsCommodity.getPurchasePrice();
+			// saveOrder(tsUser, tsCommodity, 0, total);
+			result = "请参与竞拍在购买";
 			return result;
 		}
 		return result;
 	}
 
+	/**
+	 * 保存订单
+	 * 
+	 * @param tsUser
+	 * @param tsCommodity
+	 * @param count
+	 * @param total
+	 */
 	@SuppressWarnings("unchecked")
-	private void saveOrder(TsUser tsUser, TsCommodity tsCommodity,
-			Integer count, BigDecimal total) {
+	private void saveOrder(TsUser tsUser, TsCommodity tsCommodity, Integer count, BigDecimal total) {
 		TsOrder tsOrder = new TsOrder();
 		// 生成订单号
 		List<SearchBean> searchBeans = new ArrayList<SearchBean>();
-		searchBeans
-				.add(new SearchBean("tablename", "eq", "string", "TS_ORDER"));
+		searchBeans.add(new SearchBean("tablename", "eq", "string", "TS_ORDER"));
 		List list = generalDao.search(TsNum.class, searchBeans, null, null);
 		if (list != null && list.size() > 0) {
 			TsNum tsNum = (TsNum) list.get(0);
@@ -276,7 +269,7 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 		tsOrder.setReceiver(tsUser.getRealname());
 		tsOrder.setTelphone(tsUser.getTelphone());
 		tsOrder.setState("1");
-		tsOrder.setFare(new BigDecimal(20));
+		tsOrder.setFare(new BigDecimal(0));
 		tsOrder.setOrdertype("2");
 		tsOrder.setEcount(count);
 		tsOrder.setAmount(total);
@@ -284,14 +277,15 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 		generalDao.save(tsOrder);
 	}
 
+	/**
+	 * 订单作废列表
+	 */
 	@SuppressWarnings("unchecked")
 	public void searchChannel(OrderData model) throws GeneralException {
 		List<SearchBean> search = new ArrayList<SearchBean>();
-		search.add(new SearchBean("ordertype", "eq", "string", model
-				.getOrdertype()));
+		search.add(new SearchBean("ordertype", "eq", "string", model.getOrdertype()));
 		search.add(new SearchBean("state", "eq", "string", model.getState()));
-		List list = generalDao.search(TsOrder.class, search, model
-				.getPageBean(), null);
+		List list = generalDao.search(TsOrder.class, search, model.getPageBean(), null);
 		for (int i = 0; i < list.size(); i++) {
 			TsOrder tsOrder = (TsOrder) list.get(i);
 			OrderData data = new OrderData();
@@ -301,14 +295,16 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 			// 获得竞拍表记录
 			// 查询该商品成交用户
 			search = new ArrayList<SearchBean>();
-			search.add(new SearchBean("tsCommodity.id", "eq", "string", tsOrder
-					.getTsCommodity().getId()));
-			List bing_list = generalDao.search(TsBingcur.class, search, null,
-					null);
+			search.add(new SearchBean("tsCommodity.id", "eq", "string", tsOrder.getTsCommodity().getId()));
+			List bing_list = generalDao.search(TsBingcur.class, search, null, null);
 			if (bing_list != null && bing_list.size() > 0) {
 				TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
 				data.setBidId(tsBingcur.getId());
 			}
+			//商品状态
+			data.setTradeState(tsOrder.getTsCommodity().getState());
+			// 商品图片
+			data.setImagesPath(generalDao.searchImages(tsOrder.getTsCommodity().getId(), Constant.TRADE_IMAGES));
 			model.getDataList().add(data);
 		}
 	}

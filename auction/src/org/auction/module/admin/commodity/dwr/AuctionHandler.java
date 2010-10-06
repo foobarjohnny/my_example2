@@ -1,7 +1,5 @@
 package org.auction.module.admin.commodity.dwr;
 
-import java.math.BigDecimal;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.auction.module.admin.commodity.data.AuctionData;
