@@ -1,10 +1,12 @@
 package org.auction.module.manager;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.auction.module.manager.data.TradeComparator;
 import org.auction.module.manager.data.TradeData;
 
 public class TradeManager {
@@ -65,6 +67,8 @@ public class TradeManager {
 		} else {
 			list.addAll(tradeDataMap.values());
 		}
+		//对商品信息按结束时间排序
+		Collections.sort(list,new TradeComparator());
 		return list;
 	}
 
