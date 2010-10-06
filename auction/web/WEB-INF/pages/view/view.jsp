@@ -173,9 +173,14 @@
 								</tr>
 								<tr>
 									<td align="center" valign="top">
-										<a href="viewAuctionNow.action?id=${data.id }"> <img
-												alt="" src="showImage.action?id=${data.id }" border="0"
-												width="120" height="120" /> </a>
+										<a href="viewAuctionNow.action?id=${data.id }">
+											<s:if test="imagesPath != null && imagesPath.size > 0">
+												<img alt="" src="${imagesPath[0] }" border="0" width="90" height="90" /> 
+											</s:if>
+											<s:else>
+												<img alt="" src="images/imgb.gif" border="0" width="120" height="120" /> 
+											</s:else>
+										</a>
 									</td>
 								</tr>
 								<tr height="30" valign="middle">

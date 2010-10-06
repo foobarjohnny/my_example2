@@ -6,8 +6,7 @@
 <table width="795" border="0" align="center" cellpadding="0"
 	cellspacing="0">
 	<tr>
-		<td colspan="3">
-			<img src="images/r_top.gif" width="795" height="20">
+		<td colspan="3" width="795" height="20" background="images/r_top.gif">
 		</td>
 	</tr>
 	<tr>
@@ -16,10 +15,10 @@
 		</td>
 		<td width="775" height="40" align="center" bgcolor="#FFFFFF"
 			class="admin_title1">
-			发表秀宝
+			秀宝发布
 		</td>
 		<td width="10" rowspan="3" background="images/r_right.gif">
-			&nbsp;
+			<img src="images/r_right.gif" width="10" height="1">
 		</td>
 	</tr>
 	<tr>

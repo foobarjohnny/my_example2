@@ -1,6 +1,15 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ include file="/resources/taglib.jsp"%>
-
+<script>
+	function send() {
+		var email = formx.email.value;
+		if (email == "") {
+			$("#formError_userEmail").html('<div id="formError_deny_username">邮箱不能为空</div>');
+		} else {
+			formx.submit();
+		}
+	}
+</script>
 <table width="795" border="0" align="center" cellpadding="0"
 	cellspacing="0">
 	<tr>
@@ -35,14 +44,24 @@
               </tr>
               <tr>
                 <td align="right" valign="top">&nbsp;</td>
+                <!-- 
                 <td><img src="images/loginemail.gif" width="166" height="49">&nbsp;</td>
+                 -->
               </tr>
               <tr>
                 <td colspan="2" align="center" valign="top"><p>如果10分钟还未收到邮件，请您更换邮箱试试！</p>
+                    <form action="send.action" method="post" name="formx">
+                    <s:hidden name="id"></s:hidden>
+                    <s:hidden name="username"></s:hidden>
+                    <s:hidden name="password"></s:hidden>
                     <p>
-                      <input name="textfield3" type="text" size="30">
-                      <input type="submit" name="Submit3" value="发送">
-                  </p></td>
+                      <input name="email" type="text" size="30">
+                      
+                      <input type="button" name="Submit3" value="发送" onclick="send()">
+                  	</p>
+                  	<p id="formError_userEmail" style="color: red;"></p>
+                  	</form>
+                  </td>
               </tr>
           </table>
 		</td>

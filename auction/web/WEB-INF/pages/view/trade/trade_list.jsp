@@ -74,7 +74,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4" valign="top" bgcolor="#FFFFFF">
+			<td colspan="2" valign="top" bgcolor="#FFFFFF">
 				<table width="775" border="0" align="center" cellpadding="0" cellspacing="0">
 					<tr>
 						<td height="30" colspan="2" align="center">
@@ -105,9 +105,14 @@
 						</tr>
 						<tr>
 							<td width="130" height="130" align="center">
-								<a href="#" onclick="view('${data.id}')"><img width="120"
-										height="120" border="0"
-										src="showImage.action?id=${data.tradeId }"> </a>
+								<a href="#" onclick="view('${data.id}')">
+								<s:if test="imagesPath != null && imagesPath.size > 0">
+									<img height="120" width="120" border="0" src="${imagesPath[0] }">
+								</s:if>
+								<s:else>
+									<img height="120" width="120" border="0" >
+								</s:else>
+								</a>
 							</td>
 							<td width="274">
 								<strong><a href="#" onclick="view('${data.id}')">${data.comityName
@@ -121,7 +126,7 @@
 								</p>
 								市场价￥${data.prices }
 								<br>
-								节省${data.percents }
+								节省<f:formatNumber value="${data.percents }" type="percent"></f:formatNumber>
 							</td>
 							<td align="center">
 								${data.user }

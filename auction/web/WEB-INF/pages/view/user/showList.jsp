@@ -99,14 +99,16 @@
 									</tr>
 									<tr>
 										<td width="130" height="130" align="center">
-											<a href="bingcurForward.action?model.id=${bidId }"
-												target="_blank"><img width="120" height="120" border="0"
-													src="showImage.action?id=${data.tradeId }">
-											</a>
+											<s:if test="imagesPath != null && imagesPath.size > 0">
+												<img alt="" src="${imagesPath[0] }" border="0" width="120" height="120" /> 
+											</s:if>
+											<s:else>
+												<img alt="" src="images/imgb.gif" border="0" width="120" height="120" /> 
+											</s:else>
 										</td>
 										<td width="274">
-											<strong><a
-												href="bingcurForward.action?model.id=${bidId }"
+											<strong>
+											<a href="viewShowcomsUsr.action?id=${data.id }"
 												target="_blank">${data.tradename }</a>
 											</strong>
 											<br>

@@ -54,11 +54,17 @@
 						<td align="center" valign="middle">
 							<table>
 								<tr>
-									<td><img src="showImage.action?id=${data.tradeId }" height="80" width="80" border="0"/></td>
 									<td>
-										<a href="bingcurForward.action?model.id=${data.bidId }" target="_blank">
-										<s:property value="tradename"/>
-										</a>
+									<s:if test="imagesPath != null && imagesPath.size > 0">
+										<img alt="" src="${imagesPath[0] }" border="0" width="120" height="120" /> 
+									</s:if>
+									<s:else>
+										<img alt="" src="images/imgb.gif" border="0" width="120" height="120" /> 
+									</s:else>
+									</td>
+									<td>
+										<a href="viewShowcomsUsr.action?id=${data.id }"
+												target="_blank">${data.tradename }</a>
 									</td>
 								</tr>
 							</table>

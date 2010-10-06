@@ -59,9 +59,9 @@
 		</td>
 	</tr>
 	<tr>
-				<td width="10" rowspan="3" background="images/r_left.gif">
-					<img src="images/r_left.gif" width="10" height="1">
-				</td>
+		<td width="10" rowspan="3" background="images/r_left.gif">
+			<img src="images/r_left.gif" width="10" height="1">
+		</td>
 		<td width="775" height="40" align="center" bgcolor="#FFFFFF"
 			class="admin_title1">
 			我购买的商品
@@ -83,25 +83,25 @@
 				<table width="760" border="0" align="center" cellpadding="0"
 					cellspacing="3">
 					<tr>
-						<td height="30" colspan="2" align="center">
+						<td  colspan="2" align="center">
 							<p class="admin_title1">
 								商品描述
 							</p>
 						</td>
-						<td width="139" align="center">
+						<td  align="center">
 							<p class="admin_title1">
 								价格
 							</p>
 						</td>
-						<td width="104" align="center">
+						<td  align="center">
 							<p class="admin_title1">
 								购买时间
 							</p>
 						</td>
-						<td width="88" align="center" class="admin_title1">
+						<td  align="center" class="admin_title1">
 							状态
 						</td>
-						<td width="76" align="center">
+						<td  align="center">
 							<p class="admin_title1">
 								操作
 							</p>
@@ -111,13 +111,23 @@
 
 						<tr>
 							<td width="130" height="130" align="center">
-								<img width="120" height="120" border="0"
-									src="showImage.action?id=${data.id }">
+								<s:if test="imagesPath != null && imagesPath.size > 0">
+									<img alt="" src="${imagesPath[0] }" border="0" width="120" height="120" /> 
+								</s:if>
+								<s:else>
+									<img alt="" src="images/imgb.gif" border="0" width="120" height="120" /> 
+								</s:else>
 							</td>
 							<td width="274">
-								<strong><a
-									href="bingcurForward.action?model.id=${data.bidId }"
+								<strong>
+								<s:if test="tradeState == 1">
+								<a href="viewAuctionNow.action?model.id=${data.id }"
 									target="_blank">${data.comityName }</a>
+								</s:if>
+								<s:if test="tradeState == 3">
+								<a href="bingcurForward.action?model.id=${data.bidId }"
+									target="_blank">${data.comityName }</a>
+								</s:if>
 								</strong>
 								<br>
 
@@ -133,7 +143,7 @@
 							</td>
 							<td align="center">
 								<s:if test="state == '未付款'">
-									<a href="#" onclick="pay('${data.orderId}')">付款</a>
+									<a href="#" onclick="pay('${data.orderId}')">付款</a><br>
 								</s:if>
 								<s:if test="state == '已发货'">
 				              		已发货
@@ -141,7 +151,7 @@
 								<s:if test="state == '交易完成'">
 				              		
 				              	</s:if>
-				              	<a href="#" onclick="viewOrd('${data.orderId}')">查看订单</a>
+				              	<a href="#" onclick="viewOrd('${data.orderId}')">查看订单</a><br>
 				              	<a href="forwardShowcom.action?tradeId=${data.id }" >我要秀宝</a><br>
 							</td>
 						</tr>

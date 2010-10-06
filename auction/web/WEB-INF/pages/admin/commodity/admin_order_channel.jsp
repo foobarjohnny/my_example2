@@ -38,22 +38,22 @@
 			<table width="100%" border="1" cellpadding="10" cellspacing="0"
 				bordercolor="#FFFFFF" bgcolor="#EEEEEE">
 				<tr>
-					<td width="10%" align="center" valign="middle">
+					<td  align="center" valign="middle">
 						<strong>订单编号</strong>
 					</td>
-					<td width="10%" align="center" valign="middle">
+					<td  align="center" valign="middle">
 						<strong>竞拍商品</strong>
 					</td>
-					<td width="10%" align="center" valign="middle">
+					<td  align="center" valign="middle">
 						<strong>时间</strong>
 					</td>
-					<td width="10%" align="center" valign="middle">
+					<td  align="center" valign="middle">
 						<strong>竞拍者</strong>
 					</td>
-					<td width="10%" align="center" valign="middle">
+					<td  align="center" valign="middle">
 						<strong>原因</strong>
 					</td>
-					<td width="12%" align="center">
+					<td  align="center">
 						<strong>操作</strong>
 					</td>
 				</tr>
@@ -65,11 +65,23 @@
 						<td align="center" valign="middle">
 							<table>
 								<tr>
-									<td><img src="showImage.action?id=${data.comId }" height="80" width="80" border="0"/></td>
 									<td>
-										<a href="bingcurForward.action?model.id=${bidId }" target="_blank">
-										<s:property value="commodityName"/>
-										</a>
+										<s:if test="imagesPath != null && imagesPath.size > 0">
+											<img alt="" src="${imagesPath[0] }" border="0" width="120" height="120" /> 
+										</s:if>
+										<s:else>
+											<img alt="" src="images/imgb.gif" border="0" width="120" height="120" /> 
+										</s:else>
+									</td>
+									<td>
+										<s:if test="tradeState == 1">
+										<a href="viewAuctionNow.action?model.id=${data.comId }"
+											target="_blank">${data.commodityName }</a>
+										</s:if>
+										<s:if test="tradeState == 3">
+										<a href="bingcurForward.action?model.id=${data.bidId }"
+											target="_blank">${data.commodityName }</a>
+										</s:if>
 									</td>
 								</tr>
 							</table>

@@ -70,10 +70,7 @@
 		if(username == '') {
 			$("#formError_username").html('<div id="formError_deny_username">会员名不能为空</div>');
 			return false;
-		} else {
-			loginRomet.checkedUser(username, callUser);
-			
-		}
+		} 
 		var password = registerForm.password.value;
 		if(password == ''){
 			$("#formError_password").html('<div id="formError_deny_username">密码不能为空</div>');
@@ -88,19 +85,17 @@
 		if(userEmail == ''){
 			$("#formError_userEmail").html('<div id="formError_deny_username">邮箱不能为空</div>');
 			return false;
-		} else {
-			loginRomet.checkedUser(userEmail, callEmail);
 		}
-		registerForm.submit();
-	}
-	function callUser(data) {
-		if (data != "success") {
-			$("#formError_username").html('<div id="formError_deny_username">用户名存在</div>');
-		}
+		loginRomet.checkedEmail(userEmail,username, callEmail);
 	}
 	function callEmail(data) {
 		if (data != "success") {
-			$("#formError_username").html('<div id="formError_deny_username">邮箱存在</div>');
+			var msg = data.split(",");
+			$("#formError_userEmail").html('<div id="formError_deny_username">' + msg[0] + '</div>');
+			$("#formError_username").html('<div id="formError_deny_username">' + msg[1] + '</div>');
+			return false;
+		} else {
+			registerForm.submit();
 		}
 	}
 </script>

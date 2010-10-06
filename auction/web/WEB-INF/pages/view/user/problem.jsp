@@ -24,8 +24,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td colspan="2" valign="top" background="images/hr.gif">
-			<img src="images/hr.gif" width="1" height="1">
+		<td colspan="2" valign="top" background="images/hr.gif" height="1">
 		</td>
 	</tr>
 	<tr>

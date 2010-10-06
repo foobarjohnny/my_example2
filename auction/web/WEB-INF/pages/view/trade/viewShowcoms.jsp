@@ -33,7 +33,7 @@
 			<img src="images/r_left.gif" width="10" height="1">
 		</td>
 		<td width="775" height="40" align="center" bgcolor="#FFFFFF">
-			<span class="admin_title1">${comityName }</span>&nbsp;
+			<span class="admin_title1">${tradename }</span>&nbsp;
 		</td>
 		<td width="10" rowspan="3" background="images/r_right.gif">
 			<img src="images/r_right.gif" width="10" height="1">
@@ -100,7 +100,7 @@
 									<strong>成交价格：</strong>
 								</td>
 								<td width="41%" class="indexjg">
-									￥${price }
+									￥${markprices }
 								</td>
 							</tr>
 							<tr>
@@ -108,7 +108,7 @@
 									竞拍者：
 								</td>
 								<td>
-									${user }
+									${username }
 								</td>
 							</tr>
 							<tr>
@@ -124,7 +124,7 @@
 									收费E拍币：
 								</td>
 								<td>
-									${amount }枚（￥${amount*2 }）
+									${pay }枚（￥${pay*2 }）
 								</td>
 							</tr>
 							<tr>
@@ -140,7 +140,7 @@
 									节省了：
 								</td>
 								<td class="indexsp">
-									￥${prices-price-amount*2 }
+									￥${percents }
 								</td>
 							</tr>
 							<tr>
@@ -149,7 +149,7 @@
 										竞拍已经结束
 									</div>
 									<br>
-									结束时间：${binddate }
+									结束时间：${creattime }
 								</td>
 							</tr>
 							<tr>
@@ -159,8 +159,8 @@
 										<tr>
 											<td width="200" height="37" align="center"
 												background="images/jgb.gif">
-												<a href="#" onclick="buyTrade('${id}')"><strong><font
-														color="#FFFFFF">现在购买￥${markprices }</font> </strong> </a>
+												<a href="#" onclick="buyTrade('${tradeId}')"><strong><font
+														color="#FFFFFF">现在购买￥${price }</font> </strong> </a>
 											</td>
 										</tr>
 									</table>
@@ -220,13 +220,24 @@
 				</tr>
 				<tr>
 					<td height="31" colspan="2">
-						<p>
-							${summary }
-						</p>
-						<p>
-							<font color="#FF0000">声明：
-								易拍得网保证网站上所有的竞拍商品(淘宝岛栏目除外)均为全新的原装正品，质量可靠支持专柜验货及验证码验货。品牌产品信息以官方网站提供为准，由于产品的批次问题，实际产品的包装、产地以及附件等可能会与网站资料有细微差别，敬请大家谅解！</font>
-						</p>
+						<p>${summary }</p>
+					</td>
+				</tr>
+				<tr>
+					<td height="30" colspan="2">
+						&nbsp;
+						<img src="images/title_l.gif" width="3" height="12">
+						&nbsp;
+						<span class="admin_title1">赢家秀宝</span>
+					</td>
+				</tr>
+				<tr>
+					<td height="1" colspan="2" align="center" background="images/hr.gif">
+					</td>
+				</tr>
+				<tr>
+					<td height="31" colspan="2">
+						<p>${remark }</p>
 					</td>
 				</tr>
 			</table>

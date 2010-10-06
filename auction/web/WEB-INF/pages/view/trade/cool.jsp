@@ -1,56 +1,56 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ include file="/resources/taglib.jsp"%>
 <script type="text/javascript">
-		function previous() {
-			var currentPage = document.getElementById("pageBean.currentPage").value;
-			var totalPage = document.getElementById("pageBean.totalPage").value;
-			if (parseInt(currentPage) != 1 && parseInt(totalPage) > 0) {
-				document.getElementById("pageBean.currentPage").value = parseInt(currentPage) - 1;
-				help.action = "coolSearch.action";
-				help.submit();
-			}
-		}
-		function next() {
-			var currentPage = document.getElementById("pageBean.currentPage").value;
-			var totalPage = document.getElementById("pageBean.totalPage").value;
-			if (parseInt(currentPage) != (totalPage) && parseInt(totalPage) > 0) {
-				document.getElementById("pageBean.currentPage").value = parseInt(currentPage) + 1;
-				help.action = "coolSearch.action";
-				help.submit();
-			}
-		}
-		function first() {
-			var currentPage = document.getElementById("pageBean.currentPage").value;
-			if (parseInt(currentPage) >1) {
-				document.getElementById("pageBean.currentPage").value = 1;
-				help.action = "coolSearch.action";
-				help.submit();
-			}
-		}
-		function last() {
-			var currentPage = document.getElementById("pageBean.currentPage").value;
-			var totalPage = document.getElementById("pageBean.totalPage").value;
-			if (parseInt(currentPage) < totalPage) {
-				document.getElementById("pageBean.currentPage").value = parseInt(totalPage);
-				help.action = "coolSearch.action";
-				help.submit();
-			}
-		}
-		function view(id) {
-			help.id.value = id;
-			help.action = "coolForward.action";
-			help.submit();
-		}
-		function vote(id) {
-			publisRomet.vote(id,changeValue);
-		}
-		function changeValue(data) {
-			if (data != "error") {
-				var s = data.split(",");
-				document.all["d" + s[0]].innerHTML = s[1];			
-			}
-		}
-		</script>
+function previous() {
+	var currentPage = document.getElementById("pageBean.currentPage").value;
+	var totalPage = document.getElementById("pageBean.totalPage").value;
+	if (parseInt(currentPage) != 1 && parseInt(totalPage) > 0) {
+		document.getElementById("pageBean.currentPage").value = parseInt(currentPage) - 1;
+		help.action = "coolSearch.action";
+		help.submit();
+	}
+}
+function next() {
+	var currentPage = document.getElementById("pageBean.currentPage").value;
+	var totalPage = document.getElementById("pageBean.totalPage").value;
+	if (parseInt(currentPage) != (totalPage) && parseInt(totalPage) > 0) {
+		document.getElementById("pageBean.currentPage").value = parseInt(currentPage) + 1;
+		help.action = "coolSearch.action";
+		help.submit();
+	}
+}
+function first() {
+	var currentPage = document.getElementById("pageBean.currentPage").value;
+	if (parseInt(currentPage) >1) {
+		document.getElementById("pageBean.currentPage").value = 1;
+		help.action = "coolSearch.action";
+		help.submit();
+	}
+}
+function last() {
+	var currentPage = document.getElementById("pageBean.currentPage").value;
+	var totalPage = document.getElementById("pageBean.totalPage").value;
+	if (parseInt(currentPage) < totalPage) {
+		document.getElementById("pageBean.currentPage").value = parseInt(totalPage);
+		help.action = "coolSearch.action";
+		help.submit();
+	}
+}
+function view(id) {
+	help.id.value = id;
+	help.action = "coolForward.action";
+	help.submit();
+}
+function vote(id) {
+	publisRomet.vote(id,changeValue);
+}
+function changeValue(data) {
+	if (data != "error") {
+		var s = data.split(",");
+		document.all["d" + s[0]].innerHTML = s[1];			
+	}
+}
+</script>
 <table width="795" border="0" align="center" cellpadding="0"
 	cellspacing="0">
 	<tr>
@@ -72,7 +72,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td colspan="3" valign="top" bgcolor="#FFFFFF">
+		<td  valign="top" bgcolor="#FFFFFF">
 			<form method="post" name="help" action="coolSearch.action">
 				<s:hidden name="pageBean.currentPage" />
 				<s:hidden name="pageBean.totalPage" />
@@ -100,9 +100,13 @@
 
 						<tr>
 							<td width="130" height="130" align="center">
-								<a href="#" onclick="view('${data.id }')"><img width="120"
-										height="120" border="0"
-										src="showImage.action?id=${data.id }&type=TS_PUBLIS">
+								<a href="#" onclick="view('${data.id }')">
+									<s:if test="imagesPath != null && imagesPath.size > 0">
+										<img alt="" src="${imagesPath[0] }" border="0" width="120" height="120" /> 
+									</s:if>
+									<s:else>
+										<img alt="" src="images/imgb.gif" border="0" width="120" height="120" /> 
+									</s:else>
 								</a>
 							</td>
 							<td width="274">
