@@ -14,7 +14,7 @@
 	 * 获取了最新的价格之后的回调方法
 	 */
 	function showMsg(data) {
-		document.getElementById('result').value=data;
+		//document.getElementById('result').value=data;
 		
 		var obj = eval('(' + data +')');
 		
@@ -297,7 +297,7 @@
 		cellpadding="0" cellspacing="0">
 	<tr>
 		<td align="left">
-			<textarea cols="100" rows="20" id="result" style="">
+			<textarea cols="100" rows="20" id="result" style="display:none">
 			</textarea>
 		</td>
 	</tr>

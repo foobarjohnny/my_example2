@@ -93,6 +93,35 @@
 		form1.submit();
 		//alert("【请注意】该功能目前没有提供！");
 	}
+	function doAid() {
+		var start = aid.startPirce.value;
+		var end = aid.endPrice.value;
+		var count = aid.ecount.value;
+		var partten_1 = /^\d+$/;
+		var partten_2 = /^\d+(\.\d+)?$/;
+		if (!partten_2.test(start)) {
+			alert('开始价格数值型');
+			return false;
+		}
+		if (!partten_2.test(end)) {
+			alert('结束价格数值型');
+			return false;
+		}
+		if (!partten_1.test(count)) {
+			alert('E拍币数量数值型');
+			return false;
+		}
+		var id = aid.cmid.value;
+		loginRomet.checkedUser(id,start,end,count,'ins','',callAid);
+		
+	}
+	function callAid(data) {
+		if (data == 'success') {
+			window.location.href = 'aidsearch.action';
+		} else {
+			alert(data);
+		}
+	}
 </script>
 <form action="bidingSearch.action" method="post" name="form1">
 	<input type="hidden" name="id" value="${id }">
@@ -123,9 +152,52 @@
 	</tr>
 	<tr>
 		<td valign="top" bgcolor="#FFFFFF">
+			<c:if test="${user_login == 'Y'}">
+				<table width="100%" border="1" cellpadding="0" cellspacing="0"
+					bordercolor="#CCCCCC">
+					<tr>
+						<td colspan="2" bgcolor="#CCCCCC">
+							<strong>竞拍助理设置</strong>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<form action="aidSave.action" method="post" name="aid">
+							<input type="hidden" name="comId" value="${id }" id="cmid" size="10" maxlength="10"/>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td align="center">
+										<strong>开始价格：</strong>
+									</td>
+									<td>
+										<input type="text" name="startPirce" value="${marketPrice }" size="10" maxlength="10"/>
+									</td>
+									<td align="center">
+										<strong>终止价格：</strong>
+									</td>
+									<td>
+										<input type="text" name="endPrice" size="10"/>
+									</td>
+									<td align="center">
+										<strong>竞拍E拍币数：</strong>
+									</td>
+									<td>
+										<input type="text" name="ecount" maxlength="8" size="10"/>
+									</td>
+									<td align="center" colspan="2">
+										<input type="button" value="设置竞拍助理" onclick="doAid()"/>
+									</td>
+								</tr>
+							</table>
+						</form>
+						</td>
+					</tr>
+				</table>
+			</c:if>
 			<table width="99%" border="0" cellpadding="0" cellspacing="0">
 				<tr>
 					<td width="48%" height="454" valign="top">
+						
 						<table width="362" border="0" cellspacing="0">
 							<tr>
 								<td width="360" align="center" valign="top">
@@ -232,9 +304,9 @@
 									</table>
 								</td>
 							</tr>
-
-
 						</table>
+						
+						
 						<table width="100%" border="1" cellpadding="0" cellspacing="0"
 							bordercolor="#CCCCCC">
 							<tr>
