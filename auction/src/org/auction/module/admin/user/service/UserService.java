@@ -37,5 +37,9 @@ public interface UserService {
 	public void invite(UserData model) throws Exception;
 	
 	public boolean checkedUser(UserData model) throws Exception;
+	
+	public String checkedECount(UserData model) throws Exception;
+	
+	public String deleteCount(UserData model) throws Exception;
 
 }

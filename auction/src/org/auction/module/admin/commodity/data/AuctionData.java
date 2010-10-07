@@ -3,6 +3,7 @@ package org.auction.module.admin.commodity.data;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.auction.module.manager.data.TradeAid;
 import org.mobile.common.action.GeneralData;
 
 public class AuctionData extends GeneralData {
@@ -11,6 +12,10 @@ public class AuctionData extends GeneralData {
 	private String comptyId;
 	private BigDecimal price = new BigDecimal(0);
 	private Date data;
+	// 是否是竞拍助理1标识竞拍助理
+	private String isAid;
+	
+	private TradeAid tradeAid;
 
 	private boolean isAdd = false;
 
@@ -62,6 +67,34 @@ public class AuctionData extends GeneralData {
 
 	public void setTime(int time) {
 		this.time = time;
+	}
+
+	/**
+	 * @return the isAid
+	 */
+	public String getIsAid() {
+		return isAid;
+	}
+
+	/**
+	 * @param isAid the isAid to set
+	 */
+	public void setIsAid(String isAid) {
+		this.isAid = isAid;
+	}
+
+	/**
+	 * @return the tradeAid
+	 */
+	public TradeAid getTradeAid() {
+		return tradeAid;
+	}
+
+	/**
+	 * @param tradeAid the tradeAid to set
+	 */
+	public void setTradeAid(TradeAid tradeAid) {
+		this.tradeAid = tradeAid;
 	}
 
 }

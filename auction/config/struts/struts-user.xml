@@ -105,5 +105,10 @@
 			<result>WEB-INF/pages/user/inviteSuccess.jsp
 			</result>
 		</action>
+		<!-- 用户竞拍助理 -->
+		<action name="aidsearch" class="aidAction" method="search">
+			<result>WEB-INF/pages/user/aidList.jsp
+			</result>
+		</action>
 	</package>
 </struts>

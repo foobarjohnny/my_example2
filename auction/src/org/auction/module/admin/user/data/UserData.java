@@ -1,5 +1,6 @@
 package org.auction.module.admin.user.data;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -37,7 +38,14 @@ public class UserData extends GeneralData {
 	private String url;
 	// 收件人账户
 	private String recAcout;
-	// 
+	// 商品ID
+	private String comId;
+	//竞拍点
+	private Integer ecount;
+	
+	private BigDecimal start;
+	
+	private BigDecimal end;
 
 	private List<UserData> dataList = new ArrayList<UserData>();
 
@@ -239,6 +247,62 @@ public class UserData extends GeneralData {
 
 	public void setRecAcout(String recAcout) {
 		this.recAcout = recAcout;
+	}
+
+	/**
+	 * @return the comId
+	 */
+	public String getComId() {
+		return comId;
+	}
+
+	/**
+	 * @param comId the comId to set
+	 */
+	public void setComId(String comId) {
+		this.comId = comId;
+	}
+
+	/**
+	 * @return the ecount
+	 */
+	public Integer getEcount() {
+		return ecount;
+	}
+
+	/**
+	 * @param ecount the ecount to set
+	 */
+	public void setEcount(Integer ecount) {
+		this.ecount = ecount;
+	}
+
+	/**
+	 * @return the start
+	 */
+	public BigDecimal getStart() {
+		return start;
+	}
+
+	/**
+	 * @param start the start to set
+	 */
+	public void setStart(BigDecimal start) {
+		this.start = start;
+	}
+
+	/**
+	 * @return the end
+	 */
+	public BigDecimal getEnd() {
+		return end;
+	}
+
+	/**
+	 * @param end the end to set
+	 */
+	public void setEnd(BigDecimal end) {
+		this.end = end;
 	}
 
 }

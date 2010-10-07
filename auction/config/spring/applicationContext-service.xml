@@ -93,6 +93,7 @@
 	<bean id="jobService"
 		class="org.auction.module.manager.job.service.impl.JobServiceImpl">
 		<property name="generalDao" ref="generalDao" />
+		<property name="auctionService" ref="auctionService" />
 	</bean>
 	<bean id="bingcurService"
 		class="org.auction.module.admin.commodity.service.impl.BingcurServiceImpl">
@@ -116,6 +117,10 @@
 	</bean>
 	<bean id="doohickeyService"
 		class="org.auction.module.admin.base.service.impl.DoohickeyServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="aidService"
+		class="org.auction.module.admin.commodity.service.impl.AidServiceImpl">
 		<property name="generalDao" ref="generalDao" />
 	</bean>
 </beans>

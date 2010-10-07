@@ -2,6 +2,8 @@ package org.auction.module.manager.data;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 上架竞拍商品，数据保存在缓存中
@@ -9,7 +11,7 @@ import java.util.Date;
  * @author ThinkPad
  * 
  */
-public class TradeData  {
+public class TradeData {
 	// 商品信息
 	private String id;
 	private String tradename;
@@ -33,6 +35,9 @@ public class TradeData  {
 	// 当前竞拍用户信息
 	private String uid;
 	private String username;
+
+	// 产品使用的竞拍助理
+	private Map<String, TradeAid> aidMap = new HashMap<String, TradeAid>();
 
 	// 增加时间
 	private boolean isAdd;
@@ -234,6 +239,24 @@ public class TradeData  {
 
 	public void setOrder(boolean order) {
 		this.order = order;
+	}
+
+	/**
+	 * @return the aidMap
+	 */
+	public Map<String, TradeAid> getAidMap() {
+		return aidMap;
+	}
+
+	/**
+	 * @param aidMap the aidMap to set
+	 */
+	public void setAidMap(Map<String, TradeAid> aidMap) {
+		this.aidMap = aidMap;
+	}
+	
+	public void remove(String id) {
+		aidMap.remove(id);
 	}
 
 }
