@@ -123,7 +123,7 @@
 		<td width="5" height="25" background="images/l_left.gif">
 		</td>
 		<td width="169" height="25" bgcolor="#FFFFFF">
-			<a href="#" onclick="alert('暂时未实现')">我的竞拍助理</a>
+			<a href="aidsearch.action" >我的竞拍助理</a>
 		</td>
 		<td width="5" height="25" background="images/l_right.gif">
 		</td>
