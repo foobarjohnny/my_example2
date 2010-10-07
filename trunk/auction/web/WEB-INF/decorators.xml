@@ -80,6 +80,7 @@
 		<pattern>/showcomsUsrList.action*</pattern>
 		<pattern>/doohickeyForward.action*</pattern>
 		<pattern>/doohickeySave.action*</pattern>
+		<pattern>/aidsearch.action*</pattern>
 		<!-- 
 		<pattern>WEB-INF/pages/view/user/user.jsp</pattern>
 		<pattern>/WEB-INF/pages/user/admin_user_account.jsp*</pattern>
