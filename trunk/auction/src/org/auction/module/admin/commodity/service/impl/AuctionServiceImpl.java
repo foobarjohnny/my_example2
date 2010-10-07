@@ -17,7 +17,7 @@ import org.mobile.common.service.GeneralService;
 
 public class AuctionServiceImpl extends GeneralService implements AuctionService {
 
-	public boolean auction(AuctionData data) {
+	public synchronized boolean auction(AuctionData data) {
 		// 获得竞拍商品
 		TradeData tradeData = TradeManager.get(data.getComptyId());
 		if (tradeData == null) {
