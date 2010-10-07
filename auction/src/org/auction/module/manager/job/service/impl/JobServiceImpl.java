@@ -36,7 +36,7 @@ import org.mobile.common.util.Constant;
 public class JobServiceImpl extends GeneralService implements IJobService {
 
 	private static Logger logger = Logger.getLogger(JobServiceImpl.class);
-	
+
 	private AuctionService auctionService;
 
 	/**
@@ -75,7 +75,7 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 				searchs.add(new SearchBean("state", "eq", "string", "1"));
 				List aidList = generalDao.search(TsAid.class, searchs, null, null);
 				for (int j = 0; j < aidList.size(); j++) {
-					TsAid tsAid = (TsAid)aidList.get(j);
+					TsAid tsAid = (TsAid) aidList.get(j);
 					// 将竞拍助理保存到商品竞拍的缓冲中
 					TradeAid aids = new TradeAid();
 					aids.setId(tsAid.getId());
@@ -123,10 +123,10 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 				long time = endTime.getTimeInMillis() - today.getTimeInMillis();
 				// 当竞拍商品结束时间小于5秒启动机器人
 				boolean isCreate = false; //
-				if (time / 1000 < 5) {
-					// 启动助理
-					isCreate = startAid(tradeData);
-				}
+				 if (time / 1000 < 5) {
+					 // 启动助理
+					 isCreate = startAid(tradeData);
+				 }
 				// 商品竞拍结束处理
 				if (time / 1000 < 0 && isCreate) {
 					// 商品是否已生产订单
@@ -153,11 +153,11 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 			BigDecimal prices = data.getPrice() == null ? new BigDecimal(0) : data.getPrice();
 			for (TradeAid d : list) {
 				// 判断是否在竞拍助理价格范围之内
-				if (prices.compareTo(d.getStart()) > 0 && prices.compareTo(d.getEnd()) < 0) {
+				if (prices.compareTo(d.getStart()) >= 0 && prices.compareTo(d.getEnd()) < 0) {
 					// 竞拍助理的E币数量
 					Integer total = (d.getFree() == null ? 0 : d.getFree()) + (d.getPay() == null ? 0 : d.getPay());
 					// 商品的当前用户
-					String uId = data.getUid();
+					String uId = data.getUid() == null ? "" : data.getUid();
 					String userID = d.getUId();
 					// 判断E拍币数量及是否为当前用户
 					if (total > 0 && !uId.equals(userID)) {
@@ -280,7 +280,8 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 	}
 
 	/**
-	 * @param auctionService the auctionService to set
+	 * @param auctionService
+	 *            the auctionService to set
 	 */
 	public void setAuctionService(AuctionService auctionService) {
 		this.auctionService = auctionService;
