@@ -288,7 +288,10 @@ public class UserServiceImpl extends GeneralService implements UserService {
 		if (model.getMethodName().equals("ins")) {
 			// 该用户是否为该商品设置了竞拍助理
 			if (list != null && list.size() > 0) {
-				return "已设置竞拍助理.";
+				TsAid t = (TsAid) list.get(0);
+				if (t.getState().equals("1")) {
+					return "已设置竞拍助理.";
+				}
 			}
 			tsAid = new TsAid();
 			isSave = true;
