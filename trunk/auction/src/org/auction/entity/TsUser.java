@@ -36,6 +36,7 @@ public class TsUser implements java.io.Serializable {
 	private Set tsBuies = new HashSet(0);
 	private Set tsConsumes = new HashSet(0);
 	private Set tsOrders = new HashSet(0);
+	private Set tsAids = new HashSet(0);
 
 	// Constructors
 
@@ -265,5 +266,19 @@ public class TsUser implements java.io.Serializable {
 
 	public void setTsOrders(Set tsOrders) {
 		this.tsOrders = tsOrders;
+	}
+
+	/**
+	 * @return the tsAids
+	 */
+	public Set getTsAids() {
+		return tsAids;
+	}
+
+	/**
+	 * @param tsAids the tsAids to set
+	 */
+	public void setTsAids(Set tsAids) {
+		this.tsAids = tsAids;
 	}
 }

@@ -1,5 +1,7 @@
 package org.auction.module.admin.commodity.dwr;
 
+import java.math.BigDecimal;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.auction.module.admin.user.data.UserData;
@@ -29,8 +31,7 @@ public class LoginHandler {
 	 * @return
 	 * @throws GeneralException
 	 */
-	public String login(String username, String password)
-			throws GeneralException {
+	public String login(String username, String password) throws GeneralException {
 
 		UserData model = new UserData();
 		model.setUsername(username);
@@ -38,15 +39,12 @@ public class LoginHandler {
 		LoginBean bean = userService.loginDwr(model);
 		if (bean != null) {
 			// 登陆成功，将用户信息放入session中
-			HttpServletRequest req = WebContextFactory.get()
-					.getHttpServletRequest();
+			HttpServletRequest req = WebContextFactory.get().getHttpServletRequest();
 			req.getSession().setAttribute("login", bean);
 			// 用户登陆标识
 			req.getSession().setAttribute("user_login", "Y");
 			SessionManager.setLoginInfo(req.getSession().getId(), bean);
-			return bean.getWorkNo() + "," + bean.getId() + ","
-					+ bean.getFreecur() + "," + bean.getPaycur() + ","
-					+ bean.getAmount();
+			return bean.getWorkNo() + "," + bean.getId() + "," + bean.getFreecur() + "," + bean.getPaycur() + "," + bean.getAmount();
 		} else {
 			return "error";
 		}
@@ -59,8 +57,7 @@ public class LoginHandler {
 	 * @throws GeneralException
 	 */
 	public String loginOut() throws GeneralException {
-		HttpServletRequest req = WebContextFactory.get()
-				.getHttpServletRequest();
+		HttpServletRequest req = WebContextFactory.get().getHttpServletRequest();
 		LoginBean bean = (LoginBean) req.getSession().getAttribute("login");
 		String sessionId = req.getSession().getId();
 		if (bean != null) {
@@ -104,25 +101,51 @@ public class LoginHandler {
 		} else {
 			return msg;
 		}
-
 	}
 
 	/**
-	 * 检查用户名是否被注册(废弃掉)
+	 * 用户设置竞拍助理
 	 * 
-	 * @param email
+	 * @param comId
+	 *            商品ID
+	 * @param count
+	 *            E币数量
 	 * @return
 	 * @throws Exception
 	 */
-	public String checkedUser(String username) throws Exception {
-		UserData model = new UserData();
-		model.setEmail(username);
-		model.setMethodName("username");
-
-		if (userService.checkedUser(model)) {
-			return "用户名被使用！";
+	public String checkedUser(String comId,BigDecimal start,BigDecimal end, Integer count, String method, String id) throws Exception {
+		HttpServletRequest req = WebContextFactory.get().getHttpServletRequest();
+		LoginBean bean = (LoginBean) req.getSession().getAttribute("login");
+		if (bean != null) {
+			UserData model = new UserData();
+			model.setId(bean.getId());
+			model.setComId(comId);
+			model.setEcount(count);
+			model.setMethodName(method);
+			model.setRegId(id);
+			model.setStart(start);
+			model.setEnd(end);
+			return userService.checkedECount(model);
+		} else {
+			return "请登陆";
 		}
-		return "success";
+	}
+	
+	/**
+	 * 删除用户竞拍助理
+	 * @param id
+	 * @return
+	 */
+	public String deleteAid(String id) throws Exception {
+		HttpServletRequest req = WebContextFactory.get().getHttpServletRequest();
+		LoginBean bean = (LoginBean) req.getSession().getAttribute("login");
+		if (bean != null) {
+			UserData model = new UserData();
+			model.setId(id);
+			return userService.deleteCount(model);
+		} else {
+			return "请登陆";
+		}
 	}
 
 	public void setUserService(UserService userService) {

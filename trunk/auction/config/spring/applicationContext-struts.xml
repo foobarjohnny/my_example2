@@ -108,4 +108,8 @@
 		scope="prototype">
 		<property name="doohickeyService" ref="doohickeyService" />
 	</bean>
+	<bean id="aidAction" class="org.auction.module.admin.commodity.action.AidAction"
+		scope="prototype">
+		<property name="aidService" ref="aidService" />
+	</bean>
 </beans>

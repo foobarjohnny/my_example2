@@ -34,6 +34,7 @@ public class TsCommodity implements java.io.Serializable {
 	private Set tsRebotcoms = new HashSet(0);
 	private Set tsBiddings = new HashSet(0);
 	private Set tsConsumes = new HashSet(0);
+	private Set tsAids = new HashSet(0);
 
 	// Constructors
 
@@ -214,6 +215,20 @@ public class TsCommodity implements java.io.Serializable {
 
 	public void setTsConsumes(Set tsConsumes) {
 		this.tsConsumes = tsConsumes;
+	}
+
+	/**
+	 * @return the tsAids
+	 */
+	public Set getTsAids() {
+		return tsAids;
+	}
+
+	/**
+	 * @param tsAids the tsAids to set
+	 */
+	public void setTsAids(Set tsAids) {
+		this.tsAids = tsAids;
 	}
 
 }

@@ -91,5 +91,11 @@
             </key>
             <one-to-many class="org.auction.entity.TsConsume" />
         </set>
+        <set name="tsAids" inverse="true">
+            <key>
+                <column name="COMID" length="32" />
+            </key>
+            <one-to-many class="org.auction.entity.TsAid" />
+        </set>
     </class>
 </hibernate-mapping>
