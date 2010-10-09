@@ -38,7 +38,7 @@ public class Job {
 			TradeManager.add(dataList.get(i));
 		}
 		// 移除已经竞拍完成的商品
-		jobService.remove();
+		// jobService.remove();
 	}
 
 	/**
