@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.auction.module.admin.base.data.ManagerData;
+import org.auction.module.admin.base.service.ManagerService;
 import org.auction.module.admin.user.data.UserData;
 import org.auction.module.admin.user.service.UserService;
 import org.directwebremoting.WebContextFactory;
@@ -22,6 +24,8 @@ import org.mobile.common.session.SessionManager;
 public class LoginHandler {
 
 	private UserService userService;
+	
+	private ManagerService managerService;
 
 	/**
 	 * 用户登陆
@@ -35,7 +39,7 @@ public class LoginHandler {
 
 		UserData model = new UserData();
 		model.setUsername(username);
-		model.setPassword(password);
+		model.setPassword(password); 
 		LoginBean bean = userService.loginDwr(model);
 		if (bean != null) {
 			// 登陆成功，将用户信息放入session中
@@ -45,6 +49,32 @@ public class LoginHandler {
 			req.getSession().setAttribute("user_login", "Y");
 			SessionManager.setLoginInfo(req.getSession().getId(), bean);
 			return bean.getWorkNo() + "," + bean.getId() + "," + bean.getFreecur() + "," + bean.getPaycur() + "," + bean.getAmount();
+		} else {
+			return "error";
+		}
+	}
+
+	/**
+	 * 管理登录后台
+	 * @param username
+	 * @param password
+	 * @return
+	 * @throws GeneralException
+	 */
+	public String managerLogin(String account, String password) throws GeneralException {
+
+		ManagerData model = new ManagerData();
+		model.setAccount(account);
+		model.setPassword(password);
+		LoginBean bean = managerService.loginDwr(model);
+		if (bean != null) {
+			// 登陆成功，将用户信息放入session中
+			HttpServletRequest req = WebContextFactory.get().getHttpServletRequest();
+			req.getSession().setAttribute("MLogin", bean);
+			// 用户登陆标识
+			req.getSession().setAttribute("manager_login", "Y");
+			///SessionManager.setLoginInfo(req.getSession().getId(), bean);
+			return "success";
 		} else {
 			return "error";
 		}
@@ -63,6 +93,23 @@ public class LoginHandler {
 		if (bean != null) {
 			req.getSession().removeAttribute("login");
 			req.getSession().removeAttribute("user_login");
+			SessionManager.removeSession(sessionId);
+		}
+		return "success";
+	}
+
+	/**
+	 * 管理登出系统
+	 * @return
+	 * @throws GeneralException
+	 */
+	public String managerLogout() throws GeneralException {
+		HttpServletRequest req = WebContextFactory.get().getHttpServletRequest();
+		LoginBean bean = (LoginBean) req.getSession().getAttribute("login");
+		String sessionId = req.getSession().getId();
+		if (bean != null) {
+			req.getSession().removeAttribute("MLogin");
+			req.getSession().removeAttribute("manager_login");
 			SessionManager.removeSession(sessionId);
 		}
 		return "success";
@@ -150,5 +197,9 @@ public class LoginHandler {
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
+	}
+
+	public void setManagerService(ManagerService managerService) {
+		this.managerService = managerService;
 	}
 }
