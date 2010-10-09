@@ -41,21 +41,36 @@
 			//检查是否是空对象
 			if(typeof(bean.id) != 'undefined'){//首先检查是否有指定产品编号
 				if(!bean.isFinish){
-					document.getElementById(bean.id+"_user_div").innerHTML=""+bean.username;
-					if( document.getElementById(bean.id+"_user").value != bean.userId){
-						document.getElementById(bean.id+"_price_div").style.color = '#F0F';
+					if (document.getElementById(bean.id+"_user_div")) {
+						document.getElementById(bean.id+"_user_div").innerHTML=""+bean.username;
+						if( document.getElementById(bean.id+"_user").value != bean.userId){
+							document.getElementById(bean.id+"_price_div").style.color = '#F0F';
+							var o = bean.id;
+							setTimeout("displayStyle('" + o + "')",500);
+						}
+						document.getElementById(bean.id+"_user").value=bean.userId;
+						document.getElementById(bean.id+"_price").value=bean.price;
+						document.getElementById(bean.id+"_time_div").innerHTML=bean.time;
+						document.getElementById(bean.id+"_price_div").innerHTML="￥" + bean.price;
+						document.getElementById(bean.id+"_price_div").style.backgroundcolor="red";
 					}
-					document.getElementById(bean.id+"_user").value=bean.userId;
-					document.getElementById(bean.id+"_price").value=bean.price;
-					document.getElementById(bean.id+"_time_div").innerHTML=bean.time;
-					document.getElementById(bean.id+"_price_div").innerHTML="￥" + bean.price;
-					document.getElementById(bean.id+"_price_div").style.backgroundcolor="red";
 				}else{//该商品的竞拍结束， 提示秒杀客户竞拍的结果。
-					//TODO  仿照大家点用来提示客户中奖信息
-					
+					// 商品竞拍成功提示
+					if (document.getElementById(bean.id+"_user_div")) {
+						document.getElementById(bean.id+"_time_div").innerHTML= "恭喜：" + bean.username;
+						document.getElementById(bean.id+"_user_div").innerHTML="成交价：￥" + bean.price;
+						document.getElementById(bean.id+"_price_div").innerHTML="";
+					}
 				}
 			}
 		}		
+	}
+	
+	/**
+	* 价格变化显示
+	*/
+	function displayStyle(id) {
+		document.getElementById(id+"_price_div").style.color = "black";
 	}
 	
 	function doSubmit(id, htmlId, status) {
