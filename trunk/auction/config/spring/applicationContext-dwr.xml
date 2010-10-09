@@ -11,6 +11,7 @@
 	</bean>
 	<bean id="loginRomet" class="org.auction.module.admin.commodity.dwr.LoginHandler">
 		<property name="userService" ref="userService" />
+		<property name="managerService" ref="managerService" />
 		<dwr:remote javascript="loginRomet"></dwr:remote>
 	</bean>
 	<bean id="auctionRomet" class="org.auction.module.admin.commodity.dwr.AuctionHandler">
