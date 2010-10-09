@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ include file="/resources/taglib.jsp"%>
-
+<%@ include file="/resources/resources.jsp"%>
 <form action="LoginForm.action" method="post" name="LoginBean">
 	<table width="795" border="0" align="center" valign="top" cellpadding="0" cellspacing="0">
 		<tr>
@@ -82,23 +82,14 @@
 			document.getElementById("loginPassword").focus();
 			return false;
 		}
-		loginRomet.login(username, password, callBackHandlerSystem);
+		loginRomet.managerLogin(username, password, callBackHandlerSystem);
 	}
 	function callBackHandlerSystem(data) {
-		var s = data.split(",");
-		if (data != "error") {
-			document.getElementById("userLogin").style.display = "none";
-			document.getElementById("displayUser").style.display = "block";
-			document.getElementById("userId").value = s[1];
-			document.getElementById("user").innerHTML = s[0];
-			document.getElementById("payNum").innerHTML=s[3];
-			document.getElementById("freeNum").innerHTML=s[2];
-			document.getElementById("winGoods").innerHTML=s[4];
-			//为了刷新右侧的页面的状态
-			window.location="./show.action";
+		if(data != '' &&  data != "error"){
+			window.location="./index.action";
 		}else{
 			alert("您的用户名或者密码不正确，请重新输入！");
-			window.location="./login.action";
+			window.location="./managerLogin.action";
 		}
 	}
 	
