@@ -123,10 +123,10 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 				long time = endTime.getTimeInMillis() - today.getTimeInMillis();
 				// 当竞拍商品结束时间小于5秒启动机器人
 				boolean isCreate = false; //
-				 if (time / 1000 < 5) {
-					 // 启动助理
-					 isCreate = startAid(tradeData);
-				 }
+				if (time / 1000 < 5) {
+					// 启动助理
+					isCreate = startAid(tradeData);
+				}
 				// 商品竞拍结束处理
 				if (time / 1000 < 0 && isCreate) {
 					// 商品是否已生产订单
