@@ -37,5 +37,17 @@
 			<result>WEB-INF/pages/view/index.jsp
 			</result>
 		</action>
+		
+		<action name="login">
+			<result>WEB-INF/pages/login.jsp
+			</result>
+		</action>
+		<action name="managerLogin">
+			<result>WEB-INF/pages/managerLogin.jsp</result>
+		</action>
+		
+		<action name="mangerLogout">
+			<result>WEB-INF/pages/managerLogout.jsp</result>
+		</action>
 	</package>
 </struts>
