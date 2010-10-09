@@ -15,9 +15,6 @@
 		 -->
 		<pattern>/test.jsp*</pattern>
 		<pattern>/showView.action</pattern>
-		<pattern>/WEB-INF/pages/login.jsp</pattern>
-		
-		
 	</excludes>
 	
 	<!-- 定义一些常用的导航，广告，左侧导航条等等内容 -->
@@ -33,6 +30,7 @@
 	
 	<!-- 装饰首页的内容，包括登录商品展现 -->
 	<decorator name="main" page="layout.jsp">
+		<pattern>/login.action*</pattern>
 		<pattern>/show.action*</pattern>
 		<pattern>/showAll.action*</pattern>
 		<pattern>/infoView.action*</pattern>

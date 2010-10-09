@@ -20,15 +20,21 @@
 				</td>
 				<td width="49%" bgcolor="#E3E3E3">
 					<div align="center" class="admin_title1">
-						<strong>当前管理员：****，您的级别：网站管理员！</strong>
+						<strong>当前管理员：${MLogin.workNo }，您的级别：网站管理员！</strong>
 					</div>
 				</td>
 				<td width="25%" align="center" bgcolor="#E3E3E3">
 					[
-					<a href="#">网站首页</a>]&nbsp;&nbsp;&nbsp;&nbsp;[
-					<a href="#">退出系统</a>]
+					<a href="#" onclick="openFirst();">网站首页</a>]&nbsp;&nbsp;&nbsp;&nbsp;[
+					<a href="./mangerLogout.action">退出系统</a>]
 				</td>
 			</tr>
 		</table>
 	</body>
+	<script type="text/javascript">
+		function openFirst(){
+			//parent.window.location="./show.action";
+			window.open("./show.action",'target');
+		}
+	</script>
 </html>

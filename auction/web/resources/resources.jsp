@@ -13,8 +13,10 @@
 <script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="js/engine.js"></script>
 <script type="text/javascript" src="js/json2.js"></script>
+<!-- 
 <script type="text/javascript" src="js/winAlert.js"></script>
-
+ -->
+ 
 <script type="text/javascript" src="js/util.js"></script>
 <script type="text/javascript" src="js/dwr/bidingRomet.js"></script>
 <script type="text/javascript" src="js/dwr/auctionRomet.js"></script>
