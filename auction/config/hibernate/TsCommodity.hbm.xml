@@ -28,6 +28,9 @@
         <property name="prices" type="java.math.BigDecimal">
             <column name="PRICES" precision="10" scale="2" />
         </property>
+        <property name="fare" type="java.math.BigDecimal">
+            <column name="FARE" precision="10" scale="2" />
+        </property>
         <property name="consume" type="java.lang.Long">
             <column name="CONSUME" precision="10" scale="0" />
         </property>

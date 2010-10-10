@@ -160,7 +160,8 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 					String uId = data.getUid() == null ? "" : data.getUid();
 					String userID = d.getUId();
 					// 判断E拍币数量及是否为当前用户
-					if (total > 0 && !uId.equals(userID)) {
+					Long consume = data.getConsume();
+					if (total > 0 && !uId.equals(userID) && total < consume) {
 						is = false;
 						// 商品ID,用户ID
 						String comID = d.getCmId();
@@ -170,6 +171,8 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 						auctionData.setIsAid("1");
 						auctionData.setTradeAid(d);
 						auctionService.auction(auctionData);
+					} else {
+						data.remove(d.getId());
 					}
 				}
 			}
@@ -206,7 +209,7 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 			int e = generalDao.countE(tsCommodity.getId(), tsUser.getId());
 			tsBingcur.setAmount(e * tsCommodity.getConsume().intValue());
 			int f = generalDao.countF(tsCommodity.getId(), tsUser.getId());
-			tsBingcur.setAmount(f * tsCommodity.getConsume().intValue());
+			tsBingcur.setFree(f * tsCommodity.getConsume().intValue());
 			generalDao.save(tsBingcur);
 			// 生成订单
 			TsOrder tsOrder = new TsOrder();
@@ -238,7 +241,7 @@ public class JobServiceImpl extends GeneralService implements IJobService {
 			tsOrder.setFare(new BigDecimal(20));
 			tsOrder.setAmount(tsBingcur.getPrice());
 			tsOrder.setEcount(tsBingcur.getAmount());
-			BigDecimal total = tsOrder.getFare().add(tsBingcur.getPrice()).add(new BigDecimal(tsBingcur.getAmount() * 1));
+			BigDecimal total = tsOrder.getFare().add(tsBingcur.getPrice());
 			tsOrder.setTotalPrices(total);
 			generalDao.save(tsOrder);
 		} else {

@@ -24,6 +24,7 @@ public class UserAuctionData extends GeneralData {
 	private BigDecimal prices = new BigDecimal(0);
 	private BigDecimal percents = new BigDecimal(0);
 	private BigDecimal markprices = new BigDecimal(0);
+	private BigDecimal purprices = new BigDecimal(0);
 	private String state;
 	private String orderId;
 	private String bidId;
@@ -241,6 +242,14 @@ public class UserAuctionData extends GeneralData {
 
 	public void setTradeState(String tradeState) {
 		this.tradeState = tradeState;
+	}
+
+	public BigDecimal getPurprices() {
+		return purprices;
+	}
+
+	public void setPurprices(BigDecimal purprices) {
+		this.purprices = purprices;
 	}
 
 }

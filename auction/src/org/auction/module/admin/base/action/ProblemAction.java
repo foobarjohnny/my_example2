@@ -30,6 +30,9 @@ public class ProblemAction extends GeneralAction<ProblemData> {
 	}
 
 	public String proForward() throws Exception {
+		if (!checkedLogin()) {
+			return "login";
+		}
 		problemService.proForward(model);
 		return SUCCESS;
 	}

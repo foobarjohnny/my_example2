@@ -54,22 +54,23 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 		model.setCommodityName(tsOrder.getTsCommodity().getTradename());
 		model.setComId(tsOrder.getTsCommodity().getId());
 		model.setEcount(tsOrder.getEcount());
-		// 商品价格
-		model.setAmount(tsOrder.getAmount());
-		BigDecimal bd = new BigDecimal(0);
-		// 总价格
-		BigDecimal total = new BigDecimal(0);
-		if (tsOrder.getFare() != null) {
-			total = tsOrder.getAmount().add(tsOrder.getFare());
-			bd = tsOrder.getAmount().add(tsOrder.getFare());
-		}
-		if (tsOrder.getEcount() != null) {
-			total = total.add(new BigDecimal(tsOrder.getEcount() * 2));
-			bd = bd.subtract(new BigDecimal(tsOrder.getEcount() * 2));
-		}
-		model.setComprice(total);
-		// 应付价格
-		model.setTotalPrices(bd);
+		model.setComPrice(tsOrder.getTsCommodity().getPurchasePrice());
+//		// 商品价格
+//		model.setAmount(tsOrder.getAmount());
+//		BigDecimal bd = new BigDecimal(0);
+//		// 总价格
+//		BigDecimal total = new BigDecimal(0);
+//		if (tsOrder.getFare() != null) {
+//			total = tsOrder.getAmount().add(tsOrder.getFare());
+//			bd = tsOrder.getAmount().add(tsOrder.getFare());
+//		}
+//		if (tsOrder.getEcount() != null) {
+//			total = total.add(new BigDecimal(tsOrder.getEcount() * 2));
+//			bd = bd.subtract(new BigDecimal(tsOrder.getEcount() * 2));
+//		}
+//		model.setComprice(total);
+//		// 应付价格
+//		model.setTotalPrices(bd);
 
 		// 查询该商品成交用户
 		List<SearchBean> search = new ArrayList<SearchBean>();
@@ -86,6 +87,7 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 		TsOrder tsOrder = (TsOrder) this.generalDao.get(TsOrder.class, model.getId());
 		BeanProcessUtils.copyProperties(model, tsOrder);
 		model.setCommodityName(tsOrder.getTsCommodity().getTradename());
+		model.setComPrice(tsOrder.getTsCommodity().getPurchasePrice());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -218,17 +220,17 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 			if (orderList != null && orderList.size() > 0) {
 				result = "该商品不允许重复购买";
 			} else {
-				// 该用户参加竞拍次数
-				int count = bidingList.size();
+				// 该用户参加竞拍使用收费E拍币数
+				int count = generalDao.countE(id, userId);
 				// 保存订单
-				BigDecimal total = tsCommodity.getPurchasePrice().subtract(new BigDecimal(count * 1));
+				BigDecimal total = tsCommodity.getPurchasePrice().subtract(new BigDecimal(count * 2));
 				saveOrder(tsUser, tsCommodity, count, total);
 				result = "success";
 			}
 		} else {
-			// BigDecimal total = tsCommodity.getPurchasePrice();
-			// saveOrder(tsUser, tsCommodity, 0, total);
-			result = "请参与竞拍在购买";
+			BigDecimal total = tsCommodity.getPurchasePrice();
+			saveOrder(tsUser, tsCommodity, 0, total);
+			result = "success";
 			return result;
 		}
 		return result;
@@ -269,7 +271,7 @@ public class OrderServiceImpl extends GeneralService implements OrderService {
 		tsOrder.setReceiver(tsUser.getRealname());
 		tsOrder.setTelphone(tsUser.getTelphone());
 		tsOrder.setState("1");
-		tsOrder.setFare(new BigDecimal(0));
+		tsOrder.setFare(tsCommodity.getFare());
 		tsOrder.setOrdertype("2");
 		tsOrder.setEcount(count);
 		tsOrder.setAmount(total);
