@@ -137,6 +137,12 @@
 			alert(data);
 		}
 	}
+
+	function changePic(obj){
+		if(obj){
+			document.getElementById('bigPic').src=obj.src;
+		}
+	}
 </script>
 <form action="bidingSearch.action" method="post" name="form1">
 	<input type="hidden" name="id" value="${id }">
@@ -217,7 +223,7 @@
 							<tr>
 								<td width="360" align="center" valign="top">
 									<s:if test="imagesPath != null && imagesPath.size > 0">
-										<img height="360" width="360" border="0" src="${imagesPath[0] }">
+										<img id="bigPic" height="360" width="360" border="0" src="${imagesPath[0] }">
 									</s:if>
 									<s:else>
 										<img height="350" width="350" border="0" >
@@ -238,7 +244,7 @@
 												 %>
 												<td width="90" height="90" align="center" valign="middle"
 													background="images/imgb.gif">
-													<img height="80" width="80" src="${img }">
+													<img height="80" width="80" src="${img }" onclick="changePic(this);">
 												</td>
 											</s:iterator>
 											<%
@@ -298,7 +304,10 @@
 									<br>
 									每次竞价商品价格增加￥${markup }&nbsp;&nbsp;时间增加${addtime }秒
 									<br>
+									<s:if test="type != null">
 									此${type }
+									</s:if>
+									
 								</td>
 							</tr>
 							<tr>

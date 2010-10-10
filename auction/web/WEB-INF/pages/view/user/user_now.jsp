@@ -2,69 +2,58 @@
 <%@ include file="/resources/taglib.jsp"%>
 <script type="text/javascript">
 /**
- * 显示时间
- * 
- * @return
- */
-function displayTime(obj) {
-	var d = eval('('+obj+')');
-	var t = parseInt(d.time);
-	var maxtime = t / 1000;
-	if (maxtime < 0) {
-		var auctionDiv = document.getElementById(d.id+"_auction_div");
-		auctionDiv.style.display = "none";
-		document.getElementById(d.id+"_time_div").innerHTML = "竞拍结束";
-	}else{
-		if(document.getElementById(d.id+"_sign").value == "1"){
-			document.getElementById(d.id+"_sign").value = "0";
-			t = parseInt(document.getElementById(d.id + "_remaining").value);
-		}
-		d.time = t - 1000;
-		hour = Math.floor(maxtime / 3600);
-		if(hour<10){hour = "0"+hour;}
-		minutes = Math.floor((maxtime - hour * 3600) / 60);
-		if(minutes < 10){minutes = "0" + minutes;}
-		seconds = Math.floor(maxtime % 60);
-		if(seconds < 10){seconds = "0" + seconds;}
-		var msg = hour + ":" + minutes + ":" + seconds;
-		document.getElementById(d.id+"_time_div").innerHTML = msg;
-		document.getElementById(d.id+"_remaining").value=d.time;
-		var newValue = JSON.stringify(d,"");
-		setTimeout("displayTime('"+newValue+"')", 1000);
+	 * 检查竞拍的价格,相当于从服务端去读取信息的过程， 从而将所有变化了的竞拍产品的信息更新的过程
+	 */
+	function checkAuction(){
+		bidingRomet.find("","","", showMsg);
+		setTimeout("checkAuction()",100);
 	}
-}
-/**
- * 检查竞拍的价格
- */
-function checkAuction(){
-	bidingRomet.find("","","", showMsg);
-	setTimeout("checkAuction()",1000);
-}
 
-/**
- * 获取了最新的价格之后的回调方法
- */
-function showMsg(data) {
-	var obj = eval('(' + data +')');
-	for(i = 0; i < obj.length; i++){
-		var bean = obj[i];
-		//检查是否是空对象
-		if(typeof(bean.id) != 'undefined'){//首先检查是否有指定产品编号
-			if(typeof(bean.username) != 'undefined' && bean.username != ""){//再检查是否有客户对该产品进行竞拍，如果没有，则不处理，继续走时
-				document.getElementById(bean.id+"_user_div").innerHTML=""+bean.username;
-				document.getElementById(bean.id+"_user").value=bean.userId;
-				document.getElementById(bean.id+"_price").value=bean.price;
-				document.getElementById(bean.id+"_price_div").innerHTML="￥" + bean.price;
-				var sourceTime = parseInt(document.getElementById(bean.id+'_remaining').value);
-				var addTime    = parseInt(bean.add)*1000;
-				if(sourceTime < addTime){
-					document.getElementById(bean.id+'_remaining').value = addTime;
-					document.getElementById(bean.id+'_sign').value = "1";
+	/**
+	 * 获取了最新的价格之后的回调方法
+	 */
+	function showMsg(data) {
+		//document.getElementById('result').value=data;
+		
+		var obj = eval('(' + data +')');
+		
+		for(i = 0; i < obj.length; i++){
+			var bean = obj[i];
+			//检查是否是空对象
+			if(typeof(bean.id) != 'undefined'){//首先检查是否有指定产品编号
+				if(!bean.isFinish){
+					if (document.getElementById(bean.id+"_user_div")) {
+						document.getElementById(bean.id+"_user_div").innerHTML=""+bean.username;
+						if( document.getElementById(bean.id+"_user").value != bean.userId){
+							document.getElementById(bean.id+"_price_div").style.color = '#F0F';
+							var o = bean.id;
+							setTimeout("displayStyle('" + o + "')",500);
+						}
+						document.getElementById(bean.id+"_user").value=bean.userId;
+						document.getElementById(bean.id+"_price").value=bean.price;
+						document.getElementById(bean.id+"_time_div").innerHTML=bean.time;
+						document.getElementById(bean.id+"_price_div").innerHTML="￥" + bean.price;
+						//document.getElementById(bean.id+"_price_div").style.backgroundcolor="red";
+					}
+				}else{//该商品的竞拍结束， 提示秒杀客户竞拍的结果。
+					// 商品竞拍成功提示
+					if (document.getElementById(bean.id+"_user_div")) {
+						document.getElementById(bean.id+"_time_div").innerHTML= "恭喜：" + bean.username;
+						document.getElementById(bean.id+"_user_div").innerHTML="成交价：￥" + bean.price;
+						document.getElementById(bean.id+"_price_div").innerHTML="";
+					}
 				}
 			}
-		}
+		}		
 	}
-}
+
+	/**
+	* 价格变化显示
+	*/
+	function displayStyle(id) {
+		document.getElementById(id+"_price_div").style.color = "black";
+	}
+
 function doSubmit(id, htmlId, status) {
 	if (status == 'Y') {		
 		var uid = document.getElementById(id+'_user').value;

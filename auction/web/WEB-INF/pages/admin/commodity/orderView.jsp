@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div align="center" class="admin_title1">
-			——竞拍订单详情
+			——订单详情
 			<a name="竞拍订单详情" id="竞拍订单详情"></a>——
 		</div>
 		<hr />
@@ -37,7 +37,7 @@
 					订单总金额：
 				</td>
 				<td colspan="3">
-					${comprice }
+					${totalPrices }
 				</td>
 			</tr>
 			<tr>
@@ -87,7 +87,20 @@
 					商品价格：
 				</td>
 				<td>
-					${amount }元+${ecount }枚E拍币
+	            	<s:if test="ordertype == \"2\"">
+	            		${comPrice }元 -
+	            		
+	            	</s:if>
+	            	<s:else>
+	            		${amount }元 +
+	            	</s:else>
+	            	<s:if test="ecount != null">
+            			${ecount }
+            		</s:if>
+            		<s:else>
+            			0
+            		</s:else>
+	            		枚收费E拍币
 				</td>
 				<td align="right">
 					运费：
@@ -99,7 +112,7 @@
 					总价
 				</td>
 				<td>
-					${comprice }
+					${totalPrices }
 				</td>
 				<td align="right">
 					应付
