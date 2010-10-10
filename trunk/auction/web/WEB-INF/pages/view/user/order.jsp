@@ -52,7 +52,7 @@
 	            </s:if>
 	            </TD>
 	            <TD align="right">订单总金额：</TD>
-	            <TD>${amount }</TD>
+	            <TD>${totalPrices }</TD>
 	          </TR>
 	          <TR>
 	            <TD align="right">收货人：</TD>
@@ -74,10 +74,25 @@
 	          </TR>
 	          <TR>
 	            <TD align="right">商品价格：</TD>
-	            <TD width="13%">${amount }</TD>
+	            <TD width="13%">
+	            	<s:if test="ordertype == \"2\"">
+	            		${comPrice }元 -
+	            		
+	            	</s:if>
+	            	<s:else>
+	            		${amount }元 +
+	            	</s:else>
+	            	<s:if test="ecount != null">
+            			${ecount }
+            		</s:if>
+            		<s:else>
+            			0
+            		</s:else>
+	            		枚收费E拍币
+	            </TD>
 	            <TD width="8%" align="right">运费：</TD>
 	            <TD width="10%">${fare }</TD>
-	            <TD align="right">总价</TD>
+	            <TD align="right">应付</TD>
 	            <TD>${totalPrices }</TD>
 	          </TR>
 	          <!--  

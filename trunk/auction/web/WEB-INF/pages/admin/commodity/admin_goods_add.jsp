@@ -60,6 +60,15 @@
 				</tr>
 				<tr>
 					<td align="right">
+						运费：
+					</td>
+					<td>
+						<s:textfield name="fare" />
+						元
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
 						竞拍上浮价：
 					</td>
 					<td>

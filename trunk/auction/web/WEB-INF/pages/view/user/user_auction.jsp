@@ -133,7 +133,7 @@
 							<p class="indexjg">
 								￥${data.price }
 							</p>
-							市场价￥${data.prices }
+							市场价￥${data.purprices }
 							<br>
 							节省${data.percents * 100}%
 						</td>

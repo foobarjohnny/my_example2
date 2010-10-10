@@ -70,29 +70,29 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4" valign="top" background="images/hr.gif" height="1">
+			<td colspan="2" valign="top" background="images/hr.gif" height="1">
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" valign="top" bgcolor="#FFFFFF">
-				<table width="775" border="0" align="center" cellpadding="0" cellspacing="0">
+				<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 					<tr>
-						<td height="30" colspan="2" align="center">
+						<td height="30" colspan="2" align="center" valign="bottom">
 							<p class="indexjg">
 								商品描述
 							</p>
 						</td>
-						<td width="131" align="center">
+						<td width="131" align="center" valign="bottom">
 							<p class="indexjg">
 								价格
 							</p>
 						</td>
-						<td width="108" align="center">
+						<td width="108" align="center" valign="bottom">
 							<p class="indexjg">
 								竞拍人
 							</p>
 						</td>
-						<td align="center">
+						<td align="center" valign="bottom">
 							<p class="indexjg">
 								结束时间
 							</p>

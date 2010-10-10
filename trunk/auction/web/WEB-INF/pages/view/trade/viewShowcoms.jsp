@@ -7,13 +7,18 @@
 		form1.submit();
 	}
 	function buyTrade(id) {
-		buyRomet.buyTradm(id, callBackMethod);
+		buyRomet.buyTrad(id, callBackMethod);
 	}
 	function callBackMethod(data) {
 		if (data == "success") {
 			alert("已经购买查看购买订单");
 		} else {
 			alert(data);
+		}
+	}
+	function changePic(obj){
+		if(obj){
+			document.getElementById('bigPic').src=obj.src;
 		}
 	}
 </script>
@@ -53,7 +58,7 @@
 							<tr>
 								<td width="360" align="center" valign="top">
 									<s:if test="imagesPath != null && imagesPath.size > 0">
-										<img height="360" width="360" border="0" src="${imagesPath[0] }">
+										<img height="360" width="360" border="0" src="${imagesPath[0] }" id="bigPic">
 									</s:if>
 									<s:else>
 										<img height="350" width="350" border="0" >
@@ -68,13 +73,13 @@
 											<%
 												int i = 0;
 											 %>
-											<s:iterator id="img" value="imagesPath">
+											<s:iterator id="img" value="imagesPath" >
 												<%
 													i++;
 												 %>
 												<td width="90" height="90" align="center" valign="middle"
 													background="images/imgb.gif">
-													<img height="80" width="80" src="${img }">
+													<img height="80" width="80" src="${img }" onclick="changePic(this);">
 												</td>
 											</s:iterator>
 											<%

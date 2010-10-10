@@ -10,38 +10,41 @@
 			</td>
 		</tr>
 		<tr height="20">
-			<td width="10" rowspan="3" background="images/r_left.gif">
+			<td width="10" rowspan="4" background="images/r_left.gif">
 				&nbsp;
 			</td>
 			<td width="387" valign="top" align="left" bgcolor="#FFFFFF">
-				<img src="images/login.gif" width="99" height="28">
+				<img src="images/user.gif" width="123" height="28">
 			</td>
 			<td width="388" align="right" bgcolor="#FFFFFF">
 			</td>
-			<td width="10" rowspan="3" background="images/r_right.gif">
+			<td width="10" rowspan="4" background="images/r_right.gif">
 				&nbsp;
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" height="20" align="center"  bgcolor="#FFFFFF">
-				<table width="100%" border="0" cellspacing="0" cellpadding="5">
+				<table width="200" border="0" cellspacing="0" cellpadding="5">
 	            <tr>
-	              <td width="20%" align="center">用户名：</td>
-	              <td width="80%" align="left">
+	              <td width="40%" align="right">用户名：</td>
+	              <td align="left">
 	                <input name="loginUser" type="text" value="请输入登录帐号"  onfocus="clearThis(this);" size="12">
 	              </td>
 	            </tr>
 	            <tr>
-	              <td width="20%" align="center">密&nbsp;&nbsp;码：</td>
-	              <td width="80%" align="left">
+	              <td width="40%" align="right">密&nbsp;&nbsp;码：</td>
+	              <td align="left">
 	                <input name="loginPassword" type="password" value="请输入登录的密码" onfocus="clearThis(this);" size="12"></td>
 	            </tr>
 	            </table>
 			</td>
 		</tr>
 		<tr>
+			<td colspan="2" height="20" bgcolor="#FFFFFF">&nbsp;</td>
+		</tr>
+		<tr>
 			<td colspan="2" height="20" align="center"  bgcolor="#FFFFFF">
-				<table width="100%" border="0" cellspacing="0" cellpadding="5">
+				<table width="200" border="0" cellspacing="0" cellpadding="5">
 				<tr>
 	              <td align="center">
 	              	<img src="images/dl.gif" width="40" height="22" onclick="loginSys();"/>

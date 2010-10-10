@@ -7,7 +7,7 @@
 	 */
 	function checkAuction(){
 		bidingRomet.find("","","", showMsg);
-		setTimeout("checkAuction()",1000);
+		setTimeout("checkAuction()",100);
 	}
 
 	/**
@@ -82,6 +82,9 @@
 	function btnMouseOn(id, status, obj){
 		if(status != 'Y'){
 			obj.src="images/wydl.png";
+			obj.onclick=function(){
+				window.location = 'login.action';
+			}
 		}
 	}
 
