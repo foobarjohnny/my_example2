@@ -20,6 +20,7 @@ public class TsCommodity implements java.io.Serializable {
 	private BigDecimal purchasePrice = new BigDecimal(0);
 	private BigDecimal markUp = new BigDecimal(0);
 	private BigDecimal prices = new BigDecimal(0);
+	private BigDecimal fare = new BigDecimal(0);
 	private Long consume;
 	private String restricts;
 	private Date starttime;
@@ -229,6 +230,14 @@ public class TsCommodity implements java.io.Serializable {
 	 */
 	public void setTsAids(Set tsAids) {
 		this.tsAids = tsAids;
+	}
+
+	public BigDecimal getFare() {
+		return fare;
+	}
+
+	public void setFare(BigDecimal fare) {
+		this.fare = fare;
 	}
 
 }

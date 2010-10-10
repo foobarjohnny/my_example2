@@ -58,6 +58,7 @@ public class AuctionServiceImpl extends GeneralService implements AuctionService
 						tsConsume.setBuytype("2");
 						type = "2";
 					} else {
+						tradeData.remove(tsAid.getId());
 						return false;
 					}
 				} else if (tsCommodity.getRestricts().equals("3")) {
@@ -69,6 +70,7 @@ public class AuctionServiceImpl extends GeneralService implements AuctionService
 						tsConsume.setBuytype("3");
 						type = "3";
 					} else {
+						tradeData.remove(tsAid.getId());
 						return false;
 					}
 				} else {
@@ -91,6 +93,7 @@ public class AuctionServiceImpl extends GeneralService implements AuctionService
 						tsConsume.setBuytype("2");
 						type = "2";
 					} else {
+						tradeData.remove(tsAid.getId());
 						return false;
 					}
 				}

@@ -1,6 +1,9 @@
 package org.mobile.common.action;
 
+import javax.servlet.http.HttpSession;
 
+import org.apache.struts2.ServletActionContext;
+import org.mobile.common.bean.LoginBean;
 import org.mobile.common.bean.PageBean;
 import org.mobile.common.exception.GeneralException;
 import org.mobile.common.manager.GeneralManager;
@@ -46,15 +49,19 @@ public abstract class GeneralAction<T> extends ActionSupport implements
 			throw new GeneralException("用户没有登录！");
 		}
 	}
-	
+
 	/**
 	 * 判断用户是否登录
 	 * 
 	 * @return
 	 */
 	protected boolean checkedLogin() throws GeneralException {
-		boolean isLogin = SessionManager.isLogin(GeneralManager
-				.getCurrentManager().getSessionId());
-		return isLogin;
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		LoginBean lb = (LoginBean) session.getAttribute("login");
+		if (lb != null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

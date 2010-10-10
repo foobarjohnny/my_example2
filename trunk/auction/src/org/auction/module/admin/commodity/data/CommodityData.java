@@ -16,6 +16,8 @@ public class CommodityData extends GeneralData {
 	private BigDecimal prices = new BigDecimal(0);
 	private BigDecimal purchasePrice = new BigDecimal(0);
 	private BigDecimal markUp = new BigDecimal(0);
+	//运费
+	private BigDecimal fare = new BigDecimal(0);
 	private Long consume;
 	private String restricts;
 	private Date starttime;
@@ -283,6 +285,14 @@ public class CommodityData extends GeneralData {
 	@SuppressWarnings("unchecked")
 	public void setImagesPath(List imagesPath) {
 		this.imagesPath = imagesPath;
+	}
+
+	public BigDecimal getFare() {
+		return fare;
+	}
+
+	public void setFare(BigDecimal fare) {
+		this.fare = fare;
 	}
 
 }
