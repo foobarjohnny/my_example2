@@ -1,5 +1,19 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 
+<%
+	response.setHeader("Pragma","No-cache"); 
+	response.setHeader("Cache-Control","no-cache"); 
+	response.setDateHeader("Expires", 0);
+%>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+		<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Expires" CONTENT="0">
+	</head>
+	<body>
 <%@ include file="/resources/taglib.jsp"%>
 <script type="text/javascript" src="js/dwr/loginRomet.js"></script>
 <script type="text/javascript">
@@ -179,7 +193,7 @@
 			<table width="100%" border="0" cellspacing="0" cellpadding="3">
 				<s:iterator id="post" value="postDataList">
 					<tr>
-						<td>
+						<td height="20">
 							<img src="images/dian.gif" width="5" height="5">
 							<a href="infoView.action?model.nettype=5&model.id=${post.id }">${post.title
 								}</a>
@@ -204,7 +218,7 @@
 			<table width="100%" border="0" cellspacing="0" cellpadding="3">
 				<s:iterator id="help" value="helpDataList">
 					<tr>
-						<td>
+						<td height="20">
 							<img src="images/dian.gif" width="5" height="5">
 							<a href="infoView.action?model.nettype=3&model.id=${help.id}">${help.title
 								}</a>
@@ -291,3 +305,5 @@ target="_blank" title="在线客服"><img id="comm100_ButtonImage"
 		document.getElementById("displayUser").style.display = "block";
 	}
 </script>
+</body>
+</html>

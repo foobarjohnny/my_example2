@@ -157,7 +157,7 @@
 						<td width="154" valign="top" align="left">
 							<table width="98%" border="0" align="center" cellpadding="3"
 								cellspacing="0">
-								<tr height="60">
+								<tr height="30">
 									<td width="100%" valign="top">
 										<img src="images/title_l.gif" width="3" height="12">
 										&nbsp;
@@ -253,7 +253,7 @@
 				<s:hidden name="pageBean.currentPage" />
 				<s:hidden name="pageBean.totalPage" />
 				<input type="hidden" name="id">
-				<table width="760" border="0" align="center" cellpadding="0"
+				<table width="760" border="1" align="center" cellpadding="0"
 					cellspacing="3">
 					<tr>
 						<td height="30" colspan="2" align="center">
@@ -294,9 +294,10 @@
 								￥${data.price }
 							</td>
 							<td align="center">
-								<div id="d${data.id }">
+								<div id="d${data.id }" style=" font-size: 24px; font-weight: bold;line-height:30px;">
 									${data.amount }
 								</div>
+								<br/>
 								<input type="button" value="酷一下" onclick="vote('${data.id }')">
 							</td>
 						</tr>

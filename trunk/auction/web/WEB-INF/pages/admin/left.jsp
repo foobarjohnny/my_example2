@@ -131,6 +131,7 @@
 					</table>
 				</td>
 			</tr>
+<!-- 			
 			<tr>
 				<td>
 					<img height="7" src="">
@@ -148,13 +149,11 @@
 					<table width="100%" border="0" cellspacing="0" cellpadding="5">
 						<tr>
 							<td class="admin_title2">
-								<!-- <a target="mainFrame" href="rebotForward.action?methodName=1">增加机器人</a>  -->
 								<a href="#" onclick="alert('未实现');">增加机器人</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="admin_title2">
-								<!-- <a target="mainFrame" href="admin_jqr_edit.htm">修改机器人</a> -->
 								<a href="#"  onclick="alert('未实现');">修改机器人</a>
 							</td>
 						</tr>
@@ -162,6 +161,7 @@
 					</table>
 				</td>
 			</tr>
+ -->
 			<tr>
 				<td>
 					<img height="7" src="">

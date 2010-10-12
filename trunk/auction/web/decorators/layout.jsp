@@ -13,6 +13,11 @@
 <html>
 	<head>
 		<title><decorator:title default="易拍得网站" /></title>
+		<meta http-equiv="Content-Type" content="text/html">
+		<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Expires" CONTENT="0">
+				
 		<%@ include file="/resources/resources.jsp"%>
 		
 		<script type="text/javascript">

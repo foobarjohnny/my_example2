@@ -49,10 +49,8 @@
 	              <td align="center">
 	              	<img src="images/dl.gif" width="40" height="22" onclick="loginSys();"/>
 					<img src="images/hr.gif" width="1" height="1">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="reg.action">
-						<img src="images/hr.gif" width="1" height="1"><img src="images/zc.gif" width="41" height="22" border="0"> 
-					</a>
+					&nbsp;&nbsp;&nbsp;
+					<img src="images/hr.gif" width="1" height="1"><img src="images/zc.gif" width="41" height="22" border="0" onclick="regSys();"> 
 	              </td>
 	            </tr>
 				</table>
@@ -70,6 +68,10 @@
 <script type="text/javascript">
 	function clearThis(obj){
 		obj.value = "";
+	}
+
+	function regSys(){
+		window.location="reg.action";
 	}
 
 	function loginSys(){
