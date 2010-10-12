@@ -173,48 +173,6 @@
 	</tr>
 	<tr>
 		<td valign="top" bgcolor="#FFFFFF">
-			<c:if test="${user_login == 'Y'}">
-				<table width="100%" border="1" cellpadding="0" cellspacing="0"
-					bordercolor="#CCCCCC">
-					<tr>
-						<td colspan="2" bgcolor="#CCCCCC">
-							<strong>竞拍助理设置</strong>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-						<form action="aidSave.action" method="post" name="aid">
-							<input type="hidden" name="comId" value="${id }" id="cmid" size="10" maxlength="10"/>
-							<table width="100%" border="0" cellspacing="0" cellpadding="0">
-								<tr>
-									<td align="center">
-										<strong>开始价格：</strong>
-									</td>
-									<td>
-										<input type="text" name="startPirce" value="${marketPrice }" size="10" maxlength="10"/>
-									</td>
-									<td align="center">
-										<strong>终止价格：</strong>
-									</td>
-									<td>
-										<input type="text" name="endPrice" size="10"/>
-									</td>
-									<td align="center">
-										<strong>竞拍E拍币数：</strong>
-									</td>
-									<td>
-										<input type="text" name="ecount" maxlength="8" size="10"/>
-									</td>
-									<td align="center" colspan="2">
-										<input type="button" value="设置竞拍助理" onclick="doAid()"/>
-									</td>
-								</tr>
-							</table>
-						</form>
-						</td>
-					</tr>
-				</table>
-			</c:if>
 			<table width="99%" border="0" cellpadding="0" cellspacing="0">
 				<tr>
 					<td width="48%" height="454" valign="top">
@@ -330,42 +288,55 @@
 							</tr>
 						</table>
 						
+						<c:if test="${user_login == 'Y'}">
+				<table width="100%" border="1" cellpadding="0" cellspacing="0"
+					bordercolor="#CCCCCC">
+					<tr>
+						<td colspan="2" bgcolor="#CCCCCC">
+							<strong>竞拍助理设置</strong>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<form action="aidSave.action" method="post" name="aid">
+							<input type="hidden" name="comId" value="${id }" id="cmid" size="10" maxlength="10"/>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td align="right" width="50%">
+										<strong>开始价格：</strong>
+									</td>
+									<td>
+										<input type="text" name="startPirce" value="${marketPrice }" size="10" maxlength="10"/>
+									</td>
+								</tr>
+								<tr>
+									<td align="right">
+										<strong>终止价格：</strong>
+									</td>
+									<td>
+										<input type="text" name="endPrice" size="10"/>
+									</td>
+								</tr>
+								<tr>
+									<td align="right">
+										<strong>竞拍E拍币数：</strong>
+									</td>
+									<td>
+										<input type="text" name="ecount" maxlength="8" size="10"/>
+									</td>
+								</tr>
+								<tr>
+									<td align="center" colspan="2" height="40">
+										<input type="button" value="设置竞拍助理" onclick="doAid()"/>
+									</td>
+								</tr>
+							</table>
+						</form>
+						</td>
+					</tr>
+				</table>
+			</c:if>
 						
-						<table width="100%" border="1" cellpadding="0" cellspacing="0"
-							bordercolor="#CCCCCC">
-							<tr>
-								<td width="52%" bgcolor="#CCCCCC">
-									<strong>竞价记录</strong>
-								</td>
-								<td width="48%" align="right" bgcolor="#CCCCCC">
-									<a href="#" onclick="showAll();">查看全部>></a>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<table width="100%" border="0" cellspacing="0" cellpadding="0">
-										<tr>
-											<td width="50%" height="25" align="center">
-												<strong>价格</strong>
-											</td>
-											<td width="50%" align="center">
-												<strong>竞价者</strong>
-											</td>
-										</tr>
-										<s:iterator id="data" value="bidingList">
-											<tr>
-												<td align="center">
-													￥${data.price }
-												</td>
-												<td align="center">
-													${data.username }
-												</td>
-											</tr>
-										</s:iterator>
-									</table>
-								</td>
-							</tr>
-						</table>
 					</td>
 				</tr>
 				<tr>
