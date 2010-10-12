@@ -1,4 +1,11 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+
+<%
+	response.setHeader("Pragma","No-cache"); 
+	response.setHeader("Cache-Control","no-cache"); 
+	response.setDateHeader("Expires", 0);
+%>
+
 <%@ include file="/resources/taglib.jsp"%>
 
 <script type="text/javascript">
@@ -133,11 +140,21 @@
 		</td>
 		<td width="169" height="25" bgcolor="#FFFFFF">
 			<a href="showcomsUsrList.action" onclick="">我的秀宝</a>
+		</td>
+		<td width="5" height="25" background="images/l_right.gif">
+		</td>
+	</tr>
+	<tr>
+		<td width="5" height="25" background="images/l_left.gif">
+		</td>
+		<td width="169" height="25" bgcolor="#FFFFFF">
+			<a href="doohickeyForward.action">发布心得与窍门</a>
 			<hr size="1">
 		</td>
 		<td width="5" height="25" background="images/l_right.gif">
 		</td>
 	</tr>
+	
 	<!--  
 	<tr>
 		<td width="5" height="25" background="images/l_left.gif">
@@ -242,15 +259,6 @@
 		</td>
 		<td width="169" height="25" bgcolor="#FFFFFF">
 			<a href="searchUserPayE.action">消费明细</a>
-		</td>
-		<td width="5" height="25" background="images/l_right.gif">
-		</td>
-	</tr>
-	<tr>
-		<td width="5" height="25" background="images/l_left.gif">
-		</td>
-		<td width="169" height="25" bgcolor="#FFFFFF">
-			<a href="doohickeyForward.action">发布心得与窍门</a>
 		</td>
 		<td width="5" height="25" background="images/l_right.gif">
 		</td>

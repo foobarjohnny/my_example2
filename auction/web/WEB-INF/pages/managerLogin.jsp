@@ -16,7 +16,7 @@
 			<td width="387" valign="top" align="left" bgcolor="#FFFFFF">
 				<img src="images/login.gif" width="99" height="28">
 			</td>
-			<td width="388" align="right" bgcolor="#FFFFFF">
+			<td width="388" align="right" bgcolor="#FFFFFF">&nbsp;
 			</td>
 			<td width="10" rowspan="3" background="images/r_right.gif">
 				&nbsp;
@@ -24,7 +24,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" height="20" align="center"  bgcolor="#FFFFFF">
-				<table width="100%" border="0" cellspacing="0" cellpadding="5">
+				<table width="240" border="0" cellspacing="0" cellpadding="5">
 	            <tr>
 	              <td width="20%" align="center">用户名：</td>
 	              <td width="80%" align="left">
@@ -32,24 +32,14 @@
 	              </td>
 	            </tr>
 	            <tr>
-	              <td width="20%" align="center">密&nbsp;&nbsp;码：</td>
-	              <td width="80%" align="left">
+	              <td width="30%" align="center">密&nbsp;&nbsp;码：</td>
+	              <td width="70%" align="left">
 	                <input name="loginPassword" type="password" value="请输入登录的密码" onfocus="clearThis(this);" size="12"></td>
 	            </tr>
-	            </table>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2" height="20" align="center"  bgcolor="#FFFFFF">
-				<table width="100%" border="0" cellspacing="0" cellpadding="5">
 				<tr>
-	              <td align="center">
+	              <td align="center" colspan="2">
 	              	<img src="images/dl.gif" width="40" height="22" onclick="loginSys();"/>
 					<img src="images/hr.gif" width="1" height="1">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="reg.action">
-						<img src="images/hr.gif" width="1" height="1"><img src="images/zc.gif" width="41" height="22" border="0"> 
-					</a>
 	              </td>
 	            </tr>
 				</table>
