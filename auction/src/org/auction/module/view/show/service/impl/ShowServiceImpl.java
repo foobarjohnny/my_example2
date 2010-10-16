@@ -85,7 +85,10 @@ public class ShowServiceImpl implements IShowService {
 		// 网站公告
 		search = new ArrayList<SearchBean>();
 		search.add(new SearchBean("nettype", "eq", "string", "5"));
-		list = generalDao.search(TsInfo.class, search, pageBean, null);
+		orderList = new ArrayList<OrderByBean>();
+		orderList.add(new OrderByBean("", "releasedate", "desc"));
+		list = generalDao.search(TsInfo.class, search, pageBean, orderList);
+		
 		for (int i = 0; i < list.size(); i++) {
 			TsInfo tsSort = (TsInfo) list.get(i);
 			InfoData data = new InfoData();
@@ -95,7 +98,7 @@ public class ShowServiceImpl implements IShowService {
 		// 帮助中心
 		search = new ArrayList<SearchBean>();
 		search.add(new SearchBean("nettype", "eq", "string", "3"));
-		list = generalDao.search(TsInfo.class, search, pageBean, null);
+		list = generalDao.search(TsInfo.class, search, pageBean, orderList);
 		for (int i = 0; i < list.size(); i++) {
 			TsInfo tsSort = (TsInfo) list.get(i);
 			InfoData data = new InfoData();
