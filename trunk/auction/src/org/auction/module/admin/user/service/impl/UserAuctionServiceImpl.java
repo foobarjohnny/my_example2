@@ -177,13 +177,13 @@ public class UserAuctionServiceImpl extends GeneralService implements UserAuctio
 				data.setOrderId(tsOrder.getId());
 //				// 商品显示图片
 				data.setImagesPath(generalDao.searchImages(tsCommodity.getId(), Constant.TRADE_IMAGES));
-//				List<SearchBean> search = new ArrayList<SearchBean>();
-//				search.add(new SearchBean("tsCommodity.id", "eq", "string", tsCommodity.getId()));
-//				List bing_list = generalDao.search(TsBingcur.class, search, null, null);
-//				if (bing_list != null && bing_list.size() > 0) {
-//					TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
-//					data.setBidId(tsBingcur.getId());
-//				}
+				List<SearchBean> search = new ArrayList<SearchBean>();
+				search.add(new SearchBean("tsCommodity.id", "eq", "string", tsCommodity.getId()));
+				List bing_list = generalDao.search(TsBingcur.class, search, null, null);
+				if (bing_list != null && bing_list.size() > 0) {
+					TsBingcur tsBingcur = (TsBingcur) bing_list.get(0);
+					data.setBidId(tsBingcur.getId());
+				}
 				if (!state.equals("作废") && !state.equals("删除")) {
 					model.getDataList().add(data);
 				}
