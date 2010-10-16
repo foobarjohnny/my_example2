@@ -146,13 +146,14 @@
 									<a href="#" onclick="pay('${data.orderId}')">付款</a><br>
 								</s:if>
 								<s:if test="state == '已发货'">
+									<a href="forwardShowcom.action?tradeId=${data.id }" >我要秀宝</a><br>
 				              		已发货
 				              	</s:if>
 								<s:if test="state == '交易完成'">
 				              		
 				              	</s:if>
 				              	<a href="#" onclick="viewOrd('${data.orderId}')">查看订单</a><br>
-				              	<a href="forwardShowcom.action?tradeId=${data.id }" >我要秀宝</a><br>
+				              	
 							</td>
 						</tr>
 					</s:iterator>

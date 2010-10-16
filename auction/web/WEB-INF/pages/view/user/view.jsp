@@ -27,7 +27,7 @@
 	</tr>
 	<tr>
 		<td valign="top" bgcolor="#FFFFFF">
-			<table width="69%" border="0" align="center" cellpadding="10"
+			<table width="100%" border="0" align="center" cellpadding="10"
 				cellspacing="0">
 				<tr>
 					<td width="23%">
@@ -58,11 +58,12 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
-						秀宝内容：
-					</td>
-					<td>
-						<textarea rows="10" cols="50" name="remark"></textarea>
+					<td height="750" colspan="2">
+						<s:hidden name="remark" id="remark"></s:hidden>
+						<fck:editor instanceName="remark" height="100%">
+							<jsp:attribute name="value">&nbsp;
+							</jsp:attribute>
+						</fck:editor>
 					</td>
 				</tr>
 				<tr>
