@@ -263,7 +263,7 @@
 									每次竞价商品价格增加￥${markup }&nbsp;&nbsp;时间增加${addtime }秒
 									<br>
 									<s:if test="type != null">
-									此${type }
+										此${type }
 									</s:if>
 									
 								</td>

@@ -13,8 +13,6 @@
 	 * 获取了最新的价格之后的回调方法
 	 */
 	function showMsg(data) {
-		//document.getElementById('result').value=data;
-		
 		var obj = eval('(' + data +')');
 		
 		for(i = 0; i < obj.length; i++){

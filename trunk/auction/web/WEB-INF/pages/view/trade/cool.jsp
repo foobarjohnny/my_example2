@@ -118,7 +118,7 @@ function changeValue(data) {
 								￥${data.price }
 							</td>
 							<td align="center">
-								<div id="d${data.id }">
+								<div id="d${data.id }" style=" font-size: 24px; font-weight: bold;line-height:30px;">
 									${data.amount }
 								</div>
 								<input type="button" value="酷一下" onclick="vote('${data.id }')">

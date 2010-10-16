@@ -253,7 +253,7 @@
 				<s:hidden name="pageBean.currentPage" />
 				<s:hidden name="pageBean.totalPage" />
 				<input type="hidden" name="id">
-				<table width="760" border="1" align="center" cellpadding="0"
+				<table width="760" border="0" align="center" cellpadding="0"
 					cellspacing="3">
 					<tr>
 						<td height="30" colspan="2" align="center">
