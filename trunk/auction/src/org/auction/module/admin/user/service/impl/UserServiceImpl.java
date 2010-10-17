@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.auction.entity.TsAid;
 import org.auction.entity.TsCommodity;
 import org.auction.entity.TsInfo;
+import org.auction.entity.TsNetwork;
 import org.auction.entity.TsUser;
 import org.auction.module.admin.user.data.UserData;
 import org.auction.module.admin.user.service.UserService;
@@ -16,6 +17,7 @@ import org.auction.module.manager.TradeManager;
 import org.auction.module.manager.data.TradeAid;
 import org.auction.module.manager.data.TradeData;
 import org.mobile.common.bean.LoginBean;
+import org.mobile.common.bean.OrderByBean;
 import org.mobile.common.bean.SearchBean;
 import org.mobile.common.exception.GeneralException;
 import org.mobile.common.manager.GeneralManager;
@@ -151,6 +153,13 @@ public class UserServiceImpl extends GeneralService implements UserService {
 		TsUser tsUser = new TsUser();
 		BeanProcessUtils.copyProperties(tsUser, model);
 		tsUser.setHouroflogon(new Date());
+		//如果用户注册成功的话，那么就要给用户一些免费的竞拍币去。这个竞拍币的数量需要从网站设置中去获取。
+		List<SearchBean> search = new ArrayList<SearchBean>();
+		List<OrderByBean> orders = new ArrayList<OrderByBean>();
+		orders.add(new OrderByBean("createTime","createTime","desc"));
+		List networkConfigs = (List)generalDao.search(TsNetwork.class, search, null, orders);
+		TsNetwork netConfig = (TsNetwork)networkConfigs.get(0);
+		tsUser.setFreecur(netConfig.getGiveEcur());
 		generalDao.save(tsUser);
 		model.setId(tsUser.getId());
 		LoginBean bean = new LoginBean();
@@ -159,7 +168,7 @@ public class UserServiceImpl extends GeneralService implements UserService {
 		// 用户邀请注册
 		if (model.getRegId() != null && !model.getRegId().equals("")) {
 			TsUser user = (TsUser) generalDao.get(TsUser.class, model.getRegId());
-			user.setFreecur(user.getFreecur() + 20);
+			user.setFreecur(user.getFreecur() + netConfig.getInviteEcur());
 		}
 		// 发送邮件
 		ResourceManager resourceManager = ResourceManager.getInstance();
