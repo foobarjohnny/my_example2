@@ -1,5 +1,7 @@
 package org.auction.entity;
 
+import java.util.Date;
+
 /**
  * TsNetwork entity. @author MyEclipse Persistence Tools
  */
@@ -17,11 +19,13 @@ public class TsNetwork implements java.io.Serializable {
 	private String isReg;
 	private String isEmail;
 	private String isPhone;
-	private Integer giveEcur;
+	private Integer giveEcur;	//注册者可以获取的免费竞拍币的数量
+	private Integer inviteEcur;	//邀请者可以获取的免费竞拍币的数量
 	private Integer outName;
 	private String copyright;
 	private String metaKey;
 	private String metaDes;
+	private Date createTime;
 
 	// Constructors
 
@@ -122,6 +126,14 @@ public class TsNetwork implements java.io.Serializable {
 		this.giveEcur = giveEcur;
 	}
 
+	public Integer getInviteEcur() {
+		return inviteEcur;
+	}
+
+	public void setInviteEcur(Integer inviteEcur) {
+		this.inviteEcur = inviteEcur;
+	}
+
 	public Integer getOutName() {
 		return this.outName;
 	}
@@ -152,6 +164,14 @@ public class TsNetwork implements java.io.Serializable {
 
 	public void setMetaDes(String metaDes) {
 		this.metaDes = metaDes;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
 }

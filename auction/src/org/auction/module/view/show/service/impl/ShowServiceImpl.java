@@ -86,7 +86,7 @@ public class ShowServiceImpl implements IShowService {
 		search = new ArrayList<SearchBean>();
 		search.add(new SearchBean("nettype", "eq", "string", "5"));
 		orderList = new ArrayList<OrderByBean>();
-		orderList.add(new OrderByBean("", "releasedate", "desc"));
+		orderList.add(new OrderByBean("releasedate", "releasedate", "desc"));
 		list = generalDao.search(TsInfo.class, search, pageBean, orderList);
 		
 		for (int i = 0; i < list.size(); i++) {

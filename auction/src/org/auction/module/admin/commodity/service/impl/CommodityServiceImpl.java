@@ -122,7 +122,9 @@ public class CommodityServiceImpl extends GeneralService implements CommoditySer
 	@SuppressWarnings("unchecked")
 	public void search(CommodityData model) throws GeneralException {
 		List<SearchBean> search = new ArrayList<SearchBean>();
-		List list = generalDao.search(TsCommodity.class, search, model.getPageBean(), null);
+		List<OrderByBean> orders = new ArrayList<OrderByBean>();
+		orders.add(new OrderByBean("starttime","starttime","desc"));
+		List list = generalDao.search(TsCommodity.class, search, model.getPageBean(), orders);
 		for (int i = 0; i < list.size(); i++) {
 			TsCommodity tsCommodity = (TsCommodity) list.get(i);
 			CommodityData data = new CommodityData();

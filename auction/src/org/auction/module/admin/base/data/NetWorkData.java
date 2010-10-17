@@ -16,6 +16,7 @@ public class NetWorkData extends GeneralData {
 	private String isEmail;
 	private String isPhone;
 	private Integer giveEcur;
+	private Integer inviteEcur;
 	private Integer outName;
 	private String copyright;
 	private String metaKey;
@@ -99,6 +100,14 @@ public class NetWorkData extends GeneralData {
 
 	public void setGiveEcur(Integer giveEcur) {
 		this.giveEcur = giveEcur;
+	}
+
+	public Integer getInviteEcur() {
+		return inviteEcur;
+	}
+
+	public void setInviteEcur(Integer inviteEcur) {
+		this.inviteEcur = inviteEcur;
 	}
 
 	public Integer getOutName() {

@@ -7,6 +7,7 @@ import java.util.List;
 import org.auction.entity.TsInfo;
 import org.auction.module.admin.base.data.InfoData;
 import org.auction.module.admin.base.service.InfoService;
+import org.mobile.common.bean.OrderByBean;
 import org.mobile.common.bean.SearchBean;
 import org.mobile.common.exception.GeneralException;
 import org.mobile.common.service.GeneralService;
@@ -73,13 +74,17 @@ public class InfoServiceImpl extends GeneralService implements InfoService {
 	@SuppressWarnings("unchecked")
 	public void search(InfoData model) throws GeneralException {
 		List<SearchBean> search = new ArrayList<SearchBean>();
+		
 		if (model.getNettype().equals("3")) {
 			search.add(new SearchBean("nettype", "eq", "string", "3"));
 		} else if (model.getNettype().equals("5")) {
 			search.add(new SearchBean("nettype", "eq", "string", "5"));
 		}
+		
+		List<OrderByBean> orders = new ArrayList<OrderByBean>();
+		orders.add(new OrderByBean("releasedate","releasedate","desc"));
 		List list = generalDao.search(TsInfo.class, search,
-				model.getPageBean(), null);
+				model.getPageBean(), orders);
 		for (int i = 0; i < list.size(); i++) {
 			TsInfo tsInfo = (TsInfo) list.get(i);
 			InfoData data = new InfoData();
