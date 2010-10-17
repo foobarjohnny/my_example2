@@ -27,23 +27,23 @@
 				<s:hidden name="regId"></s:hidden>
 				<table width="100%" border="0" cellspacing="0" cellpadding="10">
 					<tr>
-		              <td width="27%" align="right" valign="top">用户名：</td>
+		              <td width="27%" align="right" valign="top"><b>注册名称：</b></td>
 		              <td width="40%"><input name="username" id="username" type="text" size="30" maxlength="12"></td>
 		              <td id="formError_username" >&nbsp;
 					  </td>
 		            </tr>
 		            <tr>
-		              <td align="right" valign="top">密码：</td>
-		              <td><input name="password" type="password" id="password" size="30" maxlength="12"></td>
+		              <td align="right" valign="top"><b>密&nbsp;&nbsp;&nbsp;&nbsp;码：</b></td>
+		              <td><input name="password" type="password" id="password" size="32" maxlength="12"></td>
 		              <td id="formError_password" valign="top">&nbsp;</td>
 		            </tr>
 		            <tr>
-		              <td align="right" valign="top">密码确认：</td>
-		              <td><input name="password1" type="password" size="30" id="passwordTwo" maxlength="12"></td>
+		              <td align="right" valign="top"><b>密码确认：</b></td>
+		              <td><input name="password1" type="password" size="32" id="passwordTwo" maxlength="12"></td>
 		              <td id="formError_passwordTwo" valign="top">&nbsp;</td>
 		            </tr>
 		            <tr>
-		              <td align="right" valign="top">邮箱：</td>
+		              <td align="right" valign="top"><b>注册邮箱：</b></td>
 		              <td><input name="email" type="text" size="30" maxlength="30" id="userEmail"></td>
 		              <td id="formError_userEmail" valign="top">&nbsp;</td>
 		            </tr>

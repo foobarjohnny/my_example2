@@ -29,7 +29,8 @@
 	</tr>
 	<tr>
 		<td colspan="2" valign="top" bgcolor="#FFFFFF">
-			<table width="765" border="0" cellspacing="0" cellpadding="0">
+			<table width="99%" border="0" align="center" cellpadding="10"
+							cellspacing="0">
 				<tr>
 					<td width="74%" align="center" class="indexjg">
 						${model.title }

@@ -17,6 +17,7 @@
 					var phone       = $("[name=model.isPhone]");
 					var reg         = $("[name=model.isReg]");
 					var giveEcur    = $("[name=model.giveEcur]");
+					var inviteEcur    = $("[model.inviteEcur]");
 					var outName     = $("[name=model.outName]");
 					var copyright   = $("[name=model.copyright]");
 					var meta        = $("[name=model.metaKey]");
@@ -158,6 +159,15 @@
 					</td>
 					<td>
 						<s:textfield name="model.giveEcur" size="10"/>
+						枚
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						邀请者赠送E拍币数：
+					</td>
+					<td>
+						<s:textfield name="model.inviteEcur" size="10"/>
 						枚
 					</td>
 				</tr>

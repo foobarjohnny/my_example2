@@ -50,6 +50,11 @@ function modifyValue(data) {
 		document.all["d" + s[0]].innerHTML = s[1];			
 	}
 }
+	function changePic(obj){
+		if(obj){
+			document.getElementById('bigPic').src=obj.src;
+		}
+	}
 </script>
 <table width="795" border="0" align="center" cellpadding="0"
 	cellspacing="0">
@@ -83,7 +88,7 @@ function modifyValue(data) {
 		              <tr>
 		                <td width="360" align="center" valign="top">
 		                	<s:if test="imagesPath != null && imagesPath.size > 0">
-								<img height="360" width="360" border="0" src="${imagesPath[0] }">
+								<img id="bigPic" height="360" width="360" border="0" src="${imagesPath[0] }">
 							</s:if>
 							<s:else>
 								<img height="350" width="350" border="0" >
@@ -103,7 +108,7 @@ function modifyValue(data) {
 									 %>
 									<td width="90" height="90" align="center" valign="middle"
 										background="images/imgb.gif">
-										<img height="80" width="80" src="${img }">
+										<img height="80" width="80" src="${img }"  onclick="changePic(this);">
 									</td>
 								</s:iterator>
 								<%
@@ -129,13 +134,13 @@ function modifyValue(data) {
 		                <td width="40%">&nbsp;</td>
 		              </tr>
 		             <tr>
-		                <td width="60%">市场价：</td>
-		                <td width="40%">￥${price }</td>
+		                <td width="60%" style=" font-size: 18px; font-weight: bold;line-height:30px;">市场价：</td>
+		                <td width="40%" style=" font-size: 18px; font-weight: bold;line-height:30px;">￥${price }</td>
 		              </tr>
 		              <tr>
-		                <td>酷品投票：</td>
+		                <td style=" font-size: 18px; font-weight: bold;line-height:30px;">酷品投票：</td>
 		                <td width="40%">
-		                	<div id="d${id }">
+		                	<div id="d${id }" style=" font-size: 18px; font-weight: bold;line-height:30px;">
 			              		${amount }
 			              	</div>
 		                </td>

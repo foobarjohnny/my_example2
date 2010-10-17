@@ -38,30 +38,23 @@
                 </tr>
               <tr>
                 <td width="27%" align="right" valign="top"><img src="images/_pigeon_icon.gif" width="64" height="62"></td>
-                <td width="73%"><p class="indexjg">您的注册信息已经注册成功！激活邮件已经发至您的邮箱</p>
-                    <p>请查收邮件。并点击邮件中的激活链接，完成激活。</p>
-                  <p> ${email } 重新发送 </p></td>
+                <td width="73%">
+                	<p class="indexjg">
+                		您已经注册成功
+					</p>
+					<p  class="indexjg">
+						您的用户名和密码已经发至您的邮箱请妥善保管。
+					</p>
+					<p  class="indexjg">
+						接下来体验全新的购物吧>>>
+                	</p>
+                  <p> 您当前的邮件地址是: ${email }  </p></td>
               </tr>
               <tr>
                 <td align="right" valign="top">&nbsp;</td>
                 <!-- 
                 <td><img src="images/loginemail.gif" width="166" height="49">&nbsp;</td>
                  -->
-              </tr>
-              <tr>
-                <td colspan="2" align="center" valign="top"><p>如果10分钟还未收到邮件，请您更换邮箱试试！</p>
-                    <form action="send.action" method="post" name="formx">
-                    <s:hidden name="id"></s:hidden>
-                    <s:hidden name="username"></s:hidden>
-                    <s:hidden name="password"></s:hidden>
-                    <p>
-                      <input name="email" type="text" size="30">
-                      
-                      <input type="button" name="Submit3" value="发送" onclick="send()">
-                  	</p>
-                  	<p id="formError_userEmail" style="color: red;"></p>
-                  	</form>
-                  </td>
               </tr>
           </table>
 		</td>

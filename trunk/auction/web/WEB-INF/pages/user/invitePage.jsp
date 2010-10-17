@@ -1,14 +1,9 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ include file="/resources/taglib.jsp"%>
 <script>
-	function send() {
-		///var email = formy.recAcout.value;
-		//if (email == "") {
-		//	$("#formError_userEmail").html('<div id="formError_deny_username">邮箱不能为空</div>');
-		//} else {
-		//	formy.submit();
-		//}
-		
+	function copyURLEvent(){
+		var regUrl = document.getElementById("copyURL");
+		window.clipboardData.setData("Text",regUrl.value);
 	}
 </script>
 <table width="795" border="0" align="center" cellpadding="0"
@@ -41,7 +36,7 @@
                 <td  align="right" valign="top"><p>邀请好友：</p></td>
                 <td  align="left" valign="top">
                 	<p>
-                	<a href="${url }">${url }</a>
+                	<input id="copyURL" type="text" name="signRegiste" value="${url }" size="100"/>
                 	
                 	<!--  
                 	<input name="recAcout" type="text" size="50">(多个邮箱用分号分隔开)
@@ -53,7 +48,7 @@
               <tr>
                 <td colspan="2" align="center" valign="top">
                     <p>
-                      <input type="button" name="Submit3" value="返回" onclick="history.go(-1)">
+                      <input type="button" name="Submit3" value="复制链接" onclick="copyURLEvent();">
                   	</p>
                 </td>
               </tr>

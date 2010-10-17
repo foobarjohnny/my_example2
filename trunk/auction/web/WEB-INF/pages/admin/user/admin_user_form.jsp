@@ -19,7 +19,7 @@
 						用户名称：
 					</td>
 					<td width="78%">
-						<s:textfield name="username" />
+						<s:textfield name="username" size="30"/>
 					</td>
 				</tr>
 				<tr>
@@ -27,15 +27,7 @@
 						密码：
 					</td>
 					<td width="78%">
-						<s:password name="password" />
-					</td>
-				</tr>
-				<tr>
-					<td width="22%" align="right" valign="middle">
-						密码确认：
-					</td>
-					<td width="78%">
-						<s:password name="password1" />
+						<s:textfield name="password"  size="30"/>
 					</td>
 				</tr>
 				<tr>
@@ -43,7 +35,7 @@
 						姓名：
 					</td>
 					<td width="78%">
-						<s:textfield name="realname" />
+						<s:textfield name="realname"  size="30"/>
 					</td>
 				</tr>
 				<tr>
@@ -51,7 +43,7 @@
 						邮箱：
 					</td>
 					<td width="78%">
-						<s:textfield name="email" />
+						<s:textfield name="email"  size="30"/>
 					</td>
 				</tr>
 				<tr>
@@ -59,7 +51,7 @@
 						联系电话：
 					</td>
 					<td width="78%">
-						<s:textfield name="telphone" />
+						<s:textfield name="telphone"  size="30"/>
 					</td>
 				</tr>
 				<tr>
@@ -67,7 +59,23 @@
 						联系地址：
 					</td>
 					<td width="78%">
-						<s:textfield name="address" />
+						<s:textfield name="address"  size="30"/>
+					</td>					
+				</tr>
+				<tr>
+					<td align="right" valign="middle">
+						免费易拍币：	
+					</td>
+					<td>
+						<s:textfield name="freecur"  size="30"/>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" valign="middle">
+						收费易拍币：	
+					</td>
+					<td>
+						<s:textfield name="paycur"  size="30"/>
 					</td>
 				</tr>
 				<tr align="right">
