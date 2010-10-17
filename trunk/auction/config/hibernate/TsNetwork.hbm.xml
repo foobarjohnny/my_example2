@@ -34,6 +34,9 @@
         <property name="giveEcur" type="java.lang.Integer">
             <column name="GIVE_ECUR" />
         </property>
+        <property name="inviteEcur" type="java.lang.Integer">
+            <column name="INVITE_ECUR" />
+        </property>
         <property name="outName" type="java.lang.Integer">
             <column name="OUT_NAME" />
         </property>
@@ -45,6 +48,9 @@
         </property>
         <property name="metaDes" type="java.lang.String">
             <column name="META_DES" length="1000" />
+        </property>
+        <property name="createTime" type="java.util.Date">
+            <column name="CREATE_TIME" length="19"/>
         </property>
     </class>
 </hibernate-mapping>
