@@ -11,7 +11,7 @@
 			cellspacing="0">
 			<tr>
 				<td width="197">
-					<img src="images/logo.png" width="200" height="80" />
+					<img src="images/logo.jpg" width="200" height="80" />
 				</td>
 				<td width="33" align="center" valign="middle">&nbsp;
 					

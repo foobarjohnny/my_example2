@@ -18,7 +18,7 @@
 						商品名称：
 					</td>
 					<td width="78%">
-						<s:textfield name="tradename" />
+						<s:textfield name="tradename" size="100"/>
 					</td>
 				</tr>
 				<tr>
@@ -64,7 +64,7 @@
 					</td>
 					<td width="78%">
 						<s:hidden name="remark" id="remark"/>
-						<fck:editor instanceName="remark" height="100%">
+						<fck:editor instanceName="remark" height="500" width="100%">
 							<jsp:attribute name="value">&nbsp;
 							</jsp:attribute>
 						</fck:editor>

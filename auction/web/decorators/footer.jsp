@@ -7,8 +7,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="center">
-					关于我们&nbsp;|&nbsp;商业合作&nbsp;|&nbsp;用户协议&nbsp;|&nbsp;免责声明&nbsp;|&nbsp;帮助中心&nbsp;|&nbsp;问题与建议&nbsp;|&nbsp;联系我们&nbsp;
+				<td align="center"> 
+					关于我们&nbsp;|&nbsp;商业合作&nbsp;|&nbsp;用户协议&nbsp;|&nbsp;<a href="infoViewList.action?model.nettype=3">帮助中心</a>&nbsp;|&nbsp;<a href="proForward.action">问题与建议</a>&nbsp;&nbsp; 
 				</td>
 
 			</tr>

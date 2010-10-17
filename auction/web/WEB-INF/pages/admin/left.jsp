@@ -131,37 +131,7 @@
 					</table>
 				</td>
 			</tr>
-<!-- 			
-			<tr>
-				<td>
-					<img height="7" src="">
-				</td>
-			</tr>
-			<tr>
-				<td height="28" background="images/admin_title.jpg">
-					<div class="admin_title1">
-						&nbsp;机器人设置
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td bgcolor="#D2D2D2">
-					<table width="100%" border="0" cellspacing="0" cellpadding="5">
-						<tr>
-							<td class="admin_title2">
-								<a href="#" onclick="alert('未实现');">增加机器人</a>
-							</td>
-						</tr>
-						<tr>
-							<td class="admin_title2">
-								<a href="#"  onclick="alert('未实现');">修改机器人</a>
-							</td>
-						</tr>
 
-					</table>
-				</td>
-			</tr>
- -->
 			<tr>
 				<td>
 					<img height="7" src="">
