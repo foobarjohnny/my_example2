@@ -130,7 +130,7 @@
 			<result>WEB-INF/pages/view/user/problem.jsp</result>
 		</action>
 		<action name="proSave" class="problemAction" method="proSave">
-			<result type="chain">proForward</result>
+			<result type="chain">show.action</result>
 		</action>
 		<!-- 后台心得与窍门 -->
 		<action name="doohickeyList" class="doohickeyAction" method="list">
