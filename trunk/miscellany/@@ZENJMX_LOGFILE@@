@@ -1,0 +1,89 @@
+[2011-05-25 08:27:10,114] [INFO ] [Main Thread] org.hibernate.cfg.Environment:500 - Hibernate 3.2.1
+[2011-05-25 08:27:10,160] [INFO ] [Main Thread] org.hibernate.cfg.Environment:518 - loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=com.mysql.jdbc.Driver, hibernate.cache.provider_class=org.hibernate.cache.HashtableCacheProvider, hibernate.max_fetch_depth=1, hibernate.dialect=org.hibernate.dialect.MySQLDialect, hibernate.jdbc.use_streams_for_binary=true, hibernate.format_sql=true, hibernate.query.substitutions=yes 'Y', no 'N', hibernate.proxool.pool_alias=pool1, hibernate.connection.username=root, hibernate.cache.region_prefix=hibernate.test, hibernate.connection.url=jdbc:mysql:///hibernate, hibernate.bytecode.use_reflection_optimizer=false, hibernate.connection.password=****, hibernate.jdbc.batch_versioned_data=true, hibernate.connection.pool_size=1}
+[2011-05-25 08:27:10,165] [INFO ] [Main Thread] org.hibernate.cfg.Environment:549 - using java.io streams to persist binary types
+[2011-05-25 08:27:10,166] [INFO ] [Main Thread] org.hibernate.cfg.Environment:667 - Bytecode provider name : cglib
+[2011-05-25 08:27:10,171] [INFO ] [Main Thread] org.hibernate.cfg.Environment:584 - using JDK 1.4 java.sql.Timestamp handling
+[2011-05-25 08:27:10,333] [INFO ] [Main Thread] org.hibernate.connection.DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+[2011-05-25 08:27:10,333] [INFO ] [Main Thread] org.hibernate.connection.DriverManagerConnectionProvider:42 - Hibernate connection pool size: 1
+[2011-05-25 08:27:10,334] [INFO ] [Main Thread] org.hibernate.connection.DriverManagerConnectionProvider:45 - autocommit mode: false
+[2011-05-25 08:27:10,371] [INFO ] [Main Thread] org.hibernate.connection.DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql:///hibernate
+[2011-05-25 08:27:10,373] [INFO ] [Main Thread] org.hibernate.connection.DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+[2011-05-25 08:27:11,058] [WARN ] [Main Thread] org.hibernate.cfg.SettingsFactory:109 - Could not obtain connection metadata
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1074)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2214)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:781)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:46)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:352)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:284)
+	at java.sql.DriverManager.getConnection(DriverManager.java:582)
+	at java.sql.DriverManager.getConnection(DriverManager.java:154)
+	at org.hibernate.connection.DriverManagerConnectionProvider.getConnection(DriverManagerConnectionProvider.java:110)
+	at org.hibernate.cfg.SettingsFactory.buildSettings(SettingsFactory.java:76)
+	at org.hibernate.cfg.Configuration.buildSettings(Configuration.java:2006)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1289)
+	at org.paragon.hibernate.c01.Helloworld.main(Helloworld.java:14)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1074)
+	at com.mysql.jdbc.MysqlIO.readPacket(MysqlIO.java:675)
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1078)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2142)
+	... 16 more
+Caused by: java.io.EOFException: Can not read response from server. Expected to read 4 bytes, read 0 bytes before connection was unexpectedly lost.
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:2497)
+	at com.mysql.jdbc.MysqlIO.readPacket(MysqlIO.java:599)
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1078)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2142)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:781)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:48)
+	... 14 more
+[2011-05-25 08:27:11,102] [INFO ] [Main Thread] org.hibernate.dialect.Dialect:151 - Using dialect: org.hibernate.dialect.MySQLDialect
+[2011-05-25 08:27:11,153] [INFO ] [Main Thread] org.hibernate.transaction.TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+[2011-05-25 08:27:11,157] [INFO ] [Main Thread] org.hibernate.transaction.TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+[2011-05-25 08:27:11,157] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:134 - Automatic flush during beforeCompletion(): disabled
+[2011-05-25 08:27:11,157] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:138 - Automatic session close at end of transaction: disabled
+[2011-05-25 08:27:11,159] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:153 - Scrollable result sets: disabled
+[2011-05-25 08:27:11,159] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:161 - JDBC3 getGeneratedKeys(): disabled
+[2011-05-25 08:27:11,160] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:169 - Connection release mode: auto
+[2011-05-25 08:27:11,162] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:193 - Maximum outer join fetch depth: 1
+[2011-05-25 08:27:11,162] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:196 - Default batch fetch size: 1
+[2011-05-25 08:27:11,162] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:200 - Generate SQL with comments: disabled
+[2011-05-25 08:27:11,163] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:204 - Order SQL updates by primary key: disabled
+[2011-05-25 08:27:11,164] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:369 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+[2011-05-25 08:27:11,166] [INFO ] [Main Thread] org.hibernate.hql.ast.ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+[2011-05-25 08:27:11,167] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:212 - Query language substitutions: {yes='Y', no='N'}
+[2011-05-25 08:27:11,168] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:217 - JPA-QL strict compliance: disabled
+[2011-05-25 08:27:11,168] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:222 - Second-level cache: enabled
+[2011-05-25 08:27:11,168] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:226 - Query cache: disabled
+[2011-05-25 08:27:11,169] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:356 - Cache provider: org.hibernate.cache.HashtableCacheProvider
+[2011-05-25 08:27:11,170] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:241 - Optimize cache for minimal puts: disabled
+[2011-05-25 08:27:11,171] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:246 - Cache region prefix: hibernate.test
+[2011-05-25 08:27:11,171] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:250 - Structured second-level cache entries: disabled
+[2011-05-25 08:27:11,178] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:277 - Statistics: disabled
+[2011-05-25 08:27:11,178] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:281 - Deleted entity synthetic identifier rollback: disabled
+[2011-05-25 08:27:11,180] [INFO ] [Main Thread] org.hibernate.cfg.SettingsFactory:296 - Default entity-mode: pojo
+[2011-05-25 08:27:11,245] [INFO ] [Main Thread] org.hibernate.impl.SessionFactoryImpl:161 - building session factory
+[2011-05-25 08:27:11,259] [INFO ] [Main Thread] org.hibernate.impl.SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+[2011-05-25 08:27:11,328] [WARN ] [Main Thread] org.hibernate.util.JDBCExceptionReporter:77 - SQL Error: 0, SQLState: 08S01
+[2011-05-25 08:27:11,329] [ERROR] [Main Thread] org.hibernate.util.JDBCExceptionReporter:78 - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
