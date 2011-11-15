@@ -1,10 +1,5 @@
-package ilife.song.controller;
+package ilife.music.controller;
 
-import ilife.song.model.Album;
-import ilife.song.model.Song;
-import ilife.song.service.SongService;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,19 +12,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class SongController {
 
-	@Autowired
-	private SongService songService;
+//	@Autowired
+//	private SongService songService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String index() {
-		Song song = new Song();
-		song.setName("Java");
-		song.setLyric("ddddd");
-		song.setTags("shanqing");
-		Album a = songService.addAlbum(new Album("wu"));
-		song.setAlbum(a);
-		System.out.println(a.getId()+"=====================================");
-		songService.addSong(song);
+//		Song song = new Song();
+//		song.setName("Java");
+//		song.setLyric("ddddd");
+//		song.setTags("shanqing");
+//		Album a = songService.addAlbum(new Album("wu"));
+//		song.setAlbum(a);
+//		System.out.println(a.getId()+"=====================================");
+//		songService.addSong(song);
 		return "index";
 	}
 

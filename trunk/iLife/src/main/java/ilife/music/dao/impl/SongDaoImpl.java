@@ -1,9 +1,9 @@
-package ilife.song.dao.impl;
+package ilife.music.dao.impl;
 
-import ilife.song.dao.SongDao;
-import ilife.song.model.Album;
-import ilife.song.model.Artist;
-import ilife.song.model.Song;
+import ilife.music.dao.SongDao;
+import ilife.music.model.Album;
+import ilife.music.model.Artist;
+import ilife.music.model.Song;
 
 import java.util.List;
 

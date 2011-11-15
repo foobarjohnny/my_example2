@@ -1,10 +1,10 @@
-package ilife.song.service.impl;
+package ilife.music.service.impl;
 
-import ilife.song.dao.SongDao;
-import ilife.song.model.Album;
-import ilife.song.model.Artist;
-import ilife.song.model.Song;
-import ilife.song.service.SongService;
+import ilife.music.dao.SongDao;
+import ilife.music.model.Album;
+import ilife.music.model.Artist;
+import ilife.music.model.Song;
+import ilife.music.service.SongService;
 
 import java.util.List;
 
