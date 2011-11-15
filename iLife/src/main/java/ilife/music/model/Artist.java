@@ -1,27 +1,29 @@
-package ilife.song.model;
+package ilife.music.model;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 /**
- * 歌曲风格
- * 例如，rock，说唱
- * @author liujijun
- *
+ * 
+ * 艺术家
  */
 @Entity
-public class Genre {
+public class Artist {
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String name;
-	@ManyToMany(mappedBy="genres")
-	private List<Song> songs=new ArrayList<Song>();
+	@Transient
+	private Set<String> images;
+	@ManyToMany(mappedBy="artists")
+	private List<Song> songs;
+	private String description;
 
 	public Long getId() {
 		return id;
@@ -37,6 +39,22 @@ public class Genre {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Set<String> getImages() {
+		return images;
+	}
+
+	public void setImages(Set<String> images) {
+		this.images = images;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public List<Song> getSongs() {

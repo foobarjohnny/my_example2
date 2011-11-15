@@ -1,8 +1,8 @@
-package ilife.song.service;
+package ilife.music.service;
 
-import ilife.song.model.Album;
-import ilife.song.model.Artist;
-import ilife.song.model.Song;
+import ilife.music.model.Album;
+import ilife.music.model.Artist;
+import ilife.music.model.Song;
 
 import java.util.List;
 

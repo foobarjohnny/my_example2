@@ -1,4 +1,4 @@
-package ilife.song.model;
+package ilife.music.model;
 
 import java.util.Collection;
 
