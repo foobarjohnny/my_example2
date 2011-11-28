@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
 	<persistence-unit name="ilife" transaction-type="RESOURCE_LOCAL">
 
-		<class>ilife.song.model.Song</class>
-		<class>ilife.song.model.Artist</class>
-		<class>ilife.song.model.Genre</class>
-		<class>ilife.song.model.Album</class>
+		<class>ilife.music.model.Song</class>
+		<class>ilife.music.model.Artist</class>
+		<class>ilife.music.model.Genre</class>
+		<class>ilife.music.model.Album</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	</persistence-unit>
 </persistence>
