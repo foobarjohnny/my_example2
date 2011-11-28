@@ -28,7 +28,7 @@
 					</div>
 				</div>
 				<div id='sign'>
-					已经有帐号了？<a href='signin' class='underline white'>登录</a><br />
+					已经有帐号了？<a href='login' class='underline white'>登录</a><br />
 					Or 免费 <a href='signup' class='underline white'>注册</a>
 				</div>	
 			</div>
