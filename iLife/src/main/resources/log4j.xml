@@ -15,14 +15,12 @@
 			<param name="ConversionPattern" value="%d [%t] %-5p %C{6} (%F:%L) - %m%n" />
 		</layout>
 	</appender>
-	
+
 	<root>
 		<priority value="info" />
 		<appender-ref ref="stdout" />
-		<!-- 
-			<appender-ref ref="server.rolling.file"/>
-		 -->
-		
+		<!-- <appender-ref ref="server.rolling.file"/> -->
+
 	</root>
 
 </log4j:configuration>
