@@ -23,13 +23,11 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
 
 	protected final Logger log = LoggerFactory.getLogger(getClass());
 
-	public static final String PERSISTENCE_UNIT_NAME = "ApplicationEntityManager";
-
 	/**
 	 * Entity manager, injected by Spring using @PersistenceContext annotation
 	 * on setEntityManager()
 	 */
-	@PersistenceContext(unitName = PERSISTENCE_UNIT_NAME)
+	@PersistenceContext
 	private EntityManager entityManager;
 
 	private Class<T> persistentClass;
