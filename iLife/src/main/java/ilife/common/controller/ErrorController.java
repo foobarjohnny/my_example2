@@ -9,5 +9,5 @@ public class ErrorController {
 	public String accessDenied() {
 		return "error/403";
 	}
-	
+
 }
