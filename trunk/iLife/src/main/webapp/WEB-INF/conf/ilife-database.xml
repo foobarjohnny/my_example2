@@ -21,6 +21,7 @@
 		<property name="minPoolSize" value="${pool.minPoolSize}" />
 		<property name="maxIdleTime" value="${pool.maxIdleTime}" />
 		<property name="initialPoolSize" value="${pool.initialPoolSize}" />
+		<property name="preferredTestQuery" value="${pool.preferredTestQuery}"/>
 		<property name="idleConnectionTestPeriod" value="${pool.idleConnectionTestPeriod}" />
 	</bean>
 
