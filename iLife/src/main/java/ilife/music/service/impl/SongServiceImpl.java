@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service;
  * 
  */
 @Service
-public class SongServiceImpl  extends {
+public class SongServiceImpl   {
 
 }

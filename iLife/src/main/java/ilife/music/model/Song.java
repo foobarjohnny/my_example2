@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * 
@@ -20,6 +22,11 @@ import javax.persistence.ManyToOne;
  * 
  */
 @Entity
+@NamedQueries({
+	@NamedQuery(name="searchSong",query="select s from Song s where s.name ")
+	
+	
+})
 public class Song {
 	@Id
 	@GeneratedValue
@@ -47,8 +54,6 @@ public class Song {
 	private String lyric;
 
 	private String md5;
-
-	private int time;
 
 	public Long getId() {
 		return id;
@@ -120,14 +125,6 @@ public class Song {
 
 	public void setTags(String tags) {
 		this.tags = tags;
-	}
-
-	public int getTime() {
-		return time;
-	}
-
-	public void setTime(int time) {
-		this.time = time;
 	}
 
 	public String getMd5() {
