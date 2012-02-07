@@ -10,4 +10,14 @@ public class ErrorController {
 		return "error/403";
 	}
 
+	@RequestMapping(value = "/resource_not_found")
+	public String resourceNotFound() {
+		return "error/404";
+	}
+
+	@RequestMapping("/service_not_available")
+	public String serverError() {
+		return "error/500";
+	}
+
 }
