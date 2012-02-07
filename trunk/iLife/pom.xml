@@ -7,11 +7,6 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>iLife Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<scm>
-		<connection>https://selfexample.googlecode.com/svn/trunk/iLife</connection>
-		<developerConnection>https://selfexample.googlecode.com/svn/trunk/iLife</developerConnection>
-		<url>https://selfexample.googlecode.com/svn/trunk/iLife</url>
-	</scm>
 
 	<properties>
 		<java.version>1.6</java.version>
@@ -33,7 +28,20 @@
 		<jpa.persistenceUnitName>ApplicationUnit</jpa.persistenceUnitName>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<scm.tag>
+			scm:svn:https://selfexample.googlecode.com/svn/tags
+		</tag>
+			<scm.trunk>
+				scm:svn:https://selfexample.googlecode.com/svn/trunk
+			</trunk>
+				<scm.url>https://selfexample.googlecode.com/svn/trunk/iLife</scm.url>
 	</properties>
+	<scm>
+		<connection>scm:svn:https://selfexample.googlecode.com/svn/trunk/iLife</connection>
+		<developerConnection>${scm.trunk}</developerConnection>
+		<tag>${scm.tag}</tag>
+		<url>https://selfexample.googlecode.com/svn/trunk/iLife</url>
+	</scm>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -212,7 +220,15 @@
 					</archive>
 				</configuration>
 			</plugin>
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.2.2</version>
+				<configuration>
+					<tagBase></tagBase>
+					<branchBase></branchBase>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
@@ -262,7 +278,6 @@
 		</repository>
 	</repositories>
 	<profiles>
-
 		<profile>
 			<id>dev</id>
 			<activation>
