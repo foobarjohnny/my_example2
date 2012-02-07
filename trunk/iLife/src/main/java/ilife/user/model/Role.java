@@ -64,7 +64,7 @@ public class Role implements Serializable, GrantedAuthority {
 		return this.name;
 	}
 
-	@Column(length = 64)
+	@Column(length = 100)
 	public String getDescription() {
 		return this.description;
 	}
