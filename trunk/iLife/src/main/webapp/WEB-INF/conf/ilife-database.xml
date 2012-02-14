@@ -17,12 +17,13 @@
 		<property name="jdbcUrl" value="${jdbc.url}" />
 		<property name="user" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
-		<property name="maxPoolSize" value="${pool.maxPoolSize}" />
-		<property name="minPoolSize" value="${pool.minPoolSize}" />
-		<property name="maxIdleTime" value="${pool.maxIdleTime}" />
-		<property name="initialPoolSize" value="${pool.initialPoolSize}" />
-		<property name="preferredTestQuery" value="${pool.preferredTestQuery}"/>
-		<property name="idleConnectionTestPeriod" value="${pool.idleConnectionTestPeriod}" />
+		
+		<property name="maxPoolSize" value="${c3p0.maxPoolSize}" />
+		<property name="minPoolSize" value="${c3p0.minPoolSize}" />
+		<property name="maxIdleTime" value="${c3p0.maxIdleTime}" />
+		<property name="initialPoolSize" value="${c3p0.initialPoolSize}" />
+		<property name="preferredTestQuery" value="${c3p0.preferredTestQuery}"/>
+		<property name="idleConnectionTestPeriod" value="${c3p0.idleConnectionTestPeriod}" />
 	</bean>
 
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
