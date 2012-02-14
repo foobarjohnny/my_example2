@@ -22,10 +22,8 @@ import javax.persistence.NamedQuery;
  * 
  */
 @Entity
-@NamedQueries({
-	@NamedQuery(name="searchSong",query="select s from Song s where s.name ")
-	
-	
+@NamedQueries({ 
+	@NamedQuery(name = "searchSong", query = "select s from Song s where UPPER(s.name) LIKE :keyword") 
 })
 public class Song {
 	@Id
