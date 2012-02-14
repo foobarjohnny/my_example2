@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/search")
-public class MusicController {
+public class SearchController {
 
 	@Autowired
 	private SongService songService;
@@ -22,6 +22,7 @@ public class MusicController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String search(@RequestParam("keywords") String keywords, ModelMap model) {
 		model.addAttribute("songlist", songService.search(keywords));
+		model.addAttribute("title",keywords);
 		return "song/list";
 	}
 }
