@@ -1,10 +1,13 @@
 package ilife.music.service;
 
-import ilife.common.service.GenericService;
 import ilife.music.model.Song;
 
-public interface SongService extends GenericService<Song, Long>{
+import java.util.List;
 
+
+public interface SongService {
+
+	public List<Song> search(String keywords);
 
 	
 	
