@@ -28,13 +28,9 @@
 		<jpa.persistenceUnitName>ApplicationUnit</jpa.persistenceUnitName>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<scm.tag>
-			scm:svn:https://selfexample.googlecode.com/svn/tags
-		</tag>
-			<scm.trunk>
-				scm:svn:https://selfexample.googlecode.com/svn/trunk
-			</trunk>
-				<scm.url>https://selfexample.googlecode.com/svn/trunk/iLife</scm.url>
+		<scm.tag>scm:svn:https://selfexample.googlecode.com/svn/tags</scm.tag>
+		<scm.trunk>scm:svn:https://selfexample.googlecode.com/svn/trunk</scm.trunk>
+		<scm.url>https://selfexample.googlecode.com/svn/trunk/iLife</scm.url>
 	</properties>
 	<scm>
 		<connection>scm:svn:https://selfexample.googlecode.com/svn/trunk/iLife</connection>
