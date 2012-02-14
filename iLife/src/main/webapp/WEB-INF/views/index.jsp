@@ -15,7 +15,7 @@
 		</div>
 		
 		<div id="container" class="container" >
-			<img src="resources/images/logo.jpg" alt="logo" width="240px" height="200px;" />
+			<img src="resources/images/logo.png" alt="logo" width="240px" height="200px;" />
 			<form action="search" method="get">
 				<input type="text" name="keywords" class="keywords" maxlength="100"/>
 				<input type="button" value="搜一下"/>
