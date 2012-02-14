@@ -134,7 +134,6 @@ public class LabelValue implements Comparable, Serializable {
         } else {
             return this.getValue().equals(bean.getValue());
         }
-
     }
 
     /**
