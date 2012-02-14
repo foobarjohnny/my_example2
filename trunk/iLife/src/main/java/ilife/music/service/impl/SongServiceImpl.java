@@ -2,6 +2,7 @@ package ilife.music.service.impl;
 
 import ilife.music.dao.SongDao;
 import ilife.music.model.Song;
+import ilife.music.service.SongService;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
  * 
  */
 @Service("songService")
-public class SongServiceImpl {
+public class SongServiceImpl implements SongService {
 	@Autowired
 	private SongDao songDao;
 
