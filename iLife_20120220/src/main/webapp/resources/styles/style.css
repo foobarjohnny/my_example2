@@ -1,0 +1,28 @@
+BODY {
+	POSITION: relative;
+	TEXT-ALIGN: center;
+	PADDING-BOTTOM: 3em;
+	MARGIN: 0px auto;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: Arial, Helvetica, Verdana, sans-serif;
+	BACKGROUND: #5c6c7c repeat-x left top;
+	COLOR: #444;
+	FONT-SIZE: 12px;
+	WORD-BREAK: break-all;
+	PADDING-TOP: 0px
+}
+.header{
+	top: 0;
+}
+
+.container {
+	margin-top: 30px;
+}
+
+.container .keywords {
+	text-align: center;
+	width: 405px;
+	height: 22px;
+	padding: 0;
+}
