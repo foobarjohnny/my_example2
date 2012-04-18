@@ -1,0 +1,255 @@
+O:9:"MagpieRSS":23:{s:6:"parser";i:0;s:12:"current_item";a:0:{}s:5:"items";a:15:{i:0;a:14:{s:5:"title";s:31:"Holo - The New Look of Android ";s:4:"link";s:82:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/SeRMJaVcof0/holo-new-look-android";s:11:"description";s:501:"Google introduced Holo theme
+ with the Honeycomb (Android 3.0). They improved it in ICS (Android 4.0)
+ release. With ICS Google also added a requirement to OEMs to include an
+ unmodified Holo theme with their Android releases to comply with 
+Android compatibility test and gain access to the Google apps like the 
+Play store and Gmail.
+
+
+
+
+      Preview Text:&nbsp;
+    
+            
+               ...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/SeRMJaVcof0" height="1" width="1"/>";s:8:"comments";s:61:"http://java.dzone.com/articles/holo-new-look-android#comments";s:8:"category";s:15:"FrameworkMobile";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63261";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Tue, 17 Apr 2012 00:54:49 -0400";s:9:"readcount";s:3:"898";s:12:"commentcount";s:1:"0";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:8:"pjlehtim";s:19:"submitter_userimage";s:64:"http://java.dzone.com/sites/all/files/avatars/picture-870219.jpg";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Tue, 17 Apr 2012 04:54:49 +0000";s:2:"dc";a:1:{s:7:"creator";s:8:"pjlehtim";}s:4:"guid";s:30:"63261 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:52:"http://java.dzone.com/articles/holo-new-look-android";}s:7:"summary";s:501:"Google introduced Holo theme
+ with the Honeycomb (Android 3.0). They improved it in ICS (Android 4.0)
+ release. With ICS Google also added a requirement to OEMs to include an
+ unmodified Holo theme with their Android releases to comply with 
+Android compatibility test and gain access to the Google apps like the 
+Play store and Gmail.
+
+
+
+
+      Preview Text:&nbsp;
+    
+            
+               ...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/SeRMJaVcof0" height="1" width="1"/>";s:14:"date_timestamp";i:1334638489;}i:1;a:14:{s:5:"title";s:59:"Are Static Imports Becoming Increasingly Accepted in Java? ";s:4:"link";s:88:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/-dAESHPVUeY/are-static-imports-becoming";s:11:"description";s:492:"There was a time when the use of the word ain't
+ was widely considered unacceptable, at least in polite society. Indeed,
+ at that time (and perhaps still today), many people did (and do) not 
+consider ain't to be a real word.
+      Preview Text:&nbsp;
+    
+            
+                    There is no question that overuse of static import might actually lead to less readable code even if...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/-dAESHPVUeY" height="1" width="1"/>";s:8:"comments";s:67:"http://java.dzone.com/articles/are-static-imports-becoming#comments";s:8:"category";s:11:"JavaOpinion";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63259";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Tue, 17 Apr 2012 00:52:34 -0400";s:9:"readcount";s:3:"884";s:12:"commentcount";s:1:"0";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:7:"java_dm";s:19:"submitter_userimage";s:64:"http://java.dzone.com/sites/all/files/avatars/picture-293462.jpg";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Tue, 17 Apr 2012 04:52:34 +0000";s:2:"dc";a:1:{s:7:"creator";s:7:"java_dm";}s:4:"guid";s:30:"63259 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:58:"http://java.dzone.com/articles/are-static-imports-becoming";}s:7:"summary";s:492:"There was a time when the use of the word ain't
+ was widely considered unacceptable, at least in polite society. Indeed,
+ at that time (and perhaps still today), many people did (and do) not 
+consider ain't to be a real word.
+      Preview Text:&nbsp;
+    
+            
+                    There is no question that overuse of static import might actually lead to less readable code even if...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/-dAESHPVUeY" height="1" width="1"/>";s:14:"date_timestamp";i:1334638354;}i:2;a:14:{s:5:"title";s:41:"IntelliJIDEA Tip: Configuration Profiles ";s:4:"link";s:91:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/lAhU52oWaac/intellijidea-tip-configuration";s:11:"description";s:500:"How many plugins do you have installed in your IntelliJIDEA instance?
+ How many of the plugins are actually active? Do you need all the 
+plugins to be active at once? This might be a quite realistic 
+scenario that you have a fairly large number of plugins activated but 
+you need only a some of them to be active while working on some 
+particular project.
+      Preview Text:&nbsp;
+    
+           ...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/lAhU52oWaac" height="1" width="1"/>";s:8:"comments";s:70:"http://java.dzone.com/articles/intellijidea-tip-configuration#comments";s:8:"category";s:23:"IDEsJavaTips and Tricks";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63057";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Tue, 17 Apr 2012 00:25:21 -0400";s:9:"readcount";s:3:"503";s:12:"commentcount";s:1:"0";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:5:"arhan";s:19:"submitter_userimage";s:64:"http://java.dzone.com/sites/all/files/avatars/picture-399050.jpg";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Tue, 17 Apr 2012 04:25:21 +0000";s:2:"dc";a:1:{s:7:"creator";s:5:"arhan";}s:4:"guid";s:30:"63057 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:61:"http://java.dzone.com/articles/intellijidea-tip-configuration";}s:7:"summary";s:500:"How many plugins do you have installed in your IntelliJIDEA instance?
+ How many of the plugins are actually active? Do you need all the 
+plugins to be active at once? This might be a quite realistic 
+scenario that you have a fairly large number of plugins activated but 
+you need only a some of them to be active while working on some 
+particular project.
+      Preview Text:&nbsp;
+    
+           ...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/lAhU52oWaac" height="1" width="1"/>";s:14:"date_timestamp";i:1334636721;}i:3;a:14:{s:5:"title";s:40:"Cretaceous COBOL Can Spawn Jurassic Java";s:4:"link";s:87:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/uNIXDt2xxCI/cretaceous-cobol-can-spawn";s:11:"description";s:498:"FORTRESS COBOL
+
+
+
+For many people
+working on mainframe sites, it was impossible to predict the demise of COBOL. 
+
+One minute, it was in the top three
+programming languages (for around 30 years) then suddenly it is around 30th. 
+      Preview Text:&nbsp;
+    
+            
+                    Converting existing procedural code to Java is also NO solution and any decent Java programmer will tell...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/uNIXDt2xxCI" height="1" width="1"/>";s:8:"comments";s:66:"http://java.dzone.com/articles/cretaceous-cobol-can-spawn#comments";s:8:"category";s:17:"COBOLjavaIndustry";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63143";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Tue, 17 Apr 2012 00:20:29 -0400";s:9:"readcount";s:3:"692";s:12:"commentcount";s:1:"0";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:9:"pdashwood";s:19:"submitter_userimage";s:65:"http://java.dzone.com/sites/all/files/avatars/picture-1009453.png";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Tue, 17 Apr 2012 04:20:29 +0000";s:2:"dc";a:1:{s:7:"creator";s:9:"pdashwood";}s:4:"guid";s:30:"63143 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:57:"http://java.dzone.com/articles/cretaceous-cobol-can-spawn";}s:7:"summary";s:498:"FORTRESS COBOL
+
+
+
+For many people
+working on mainframe sites, it was impossible to predict the demise of COBOL. 
+
+One minute, it was in the top three
+programming languages (for around 30 years) then suddenly it is around 30th. 
+      Preview Text:&nbsp;
+    
+            
+                    Converting existing procedural code to Java is also NO solution and any decent Java programmer will tell...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/uNIXDt2xxCI" height="1" width="1"/>";s:14:"date_timestamp";i:1334636429;}i:4;a:14:{s:5:"title";s:21:"Respecting 'The Zone'";s:4:"link";s:76:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/DMFead8wKTE/respecting-zone";s:11:"description";s:497:"Respect when someone is &quot;in the zone&quot;! Don't disturb him if it's not 
+necessary. The &quot;context switch problem&quot; is a known issue in the software
+ development process. Zach Holman particularly mentioned this during his
+ talk at this year's QCon. So what is it about? What's the &quot;zone&quot;??
+You're coding, right? Do you know those times when 
+you're extremely productive??...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/DMFead8wKTE" height="1" width="1"/>";s:8:"comments";s:55:"http://java.dzone.com/articles/respecting-zone#comments";s:8:"category";s:15:"OpinionOpinions";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63047";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Tue, 17 Apr 2012 00:11:34 -0400";s:9:"readcount";s:3:"396";s:12:"commentcount";s:1:"0";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:7:"juristr";s:19:"submitter_userimage";s:64:"http://java.dzone.com/sites/all/files/avatars/picture-999973.png";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Tue, 17 Apr 2012 04:11:34 +0000";s:2:"dc";a:1:{s:7:"creator";s:7:"juristr";}s:4:"guid";s:30:"63047 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:46:"http://java.dzone.com/articles/respecting-zone";}s:7:"summary";s:497:"Respect when someone is &quot;in the zone&quot;! Don't disturb him if it's not 
+necessary. The &quot;context switch problem&quot; is a known issue in the software
+ development process. Zach Holman particularly mentioned this during his
+ talk at this year's QCon. So what is it about? What's the &quot;zone&quot;??
+You're coding, right? Do you know those times when 
+you're extremely productive??...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/DMFead8wKTE" height="1" width="1"/>";s:14:"date_timestamp";i:1334635894;}i:5;a:14:{s:5:"title";s:57:"How to Use Three.js, a Lightweight 3D Library, with Neo4j";s:4:"link";s:82:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/ypO2TSmcyCM/how-use-threejs-neo4j";s:11:"description";s:480:"Last week we saw Sigma.js, and as promised here is a graph visualization with Three.js and Neo4j.  Three.js is a lightweight 3D library, written by Mr. Doob and a small army of contributors.
+      Preview Text:&nbsp;
+    
+            
+                    Last week&#039;s post was on Sigma.js and Neo4j.  This time, Max De Marzi focuses on using Three.js, a lightweight 3D library.<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/ypO2TSmcyCM" height="1" width="1"/>";s:8:"comments";s:67:"http://architects.dzone.com/articles/how-use-threejs-neo4j#comments";s:8:"category";s:21:"javaNoSQLSinatraNoSQL";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63571";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Mon, 16 Apr 2012 15:25:08 -0400";s:9:"readcount";s:4:"2343";s:12:"commentcount";s:1:"0";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:10:"maxdemarzi";s:19:"submitter_userimage";s:64:"http://java.dzone.com/sites/all/files/avatars/picture-973809.png";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Mon, 16 Apr 2012 19:25:08 +0000";s:2:"dc";a:1:{s:7:"creator";s:10:"maxdemarzi";}s:4:"guid";s:30:"63571 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:58:"http://architects.dzone.com/articles/how-use-threejs-neo4j";}s:7:"summary";s:480:"Last week we saw Sigma.js, and as promised here is a graph visualization with Three.js and Neo4j.  Three.js is a lightweight 3D library, written by Mr. Doob and a small army of contributors.
+      Preview Text:&nbsp;
+    
+            
+                    Last week&#039;s post was on Sigma.js and Neo4j.  This time, Max De Marzi focuses on using Three.js, a lightweight 3D library.<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/ypO2TSmcyCM" height="1" width="1"/>";s:14:"date_timestamp";i:1334604308;}i:6;a:14:{s:5:"title";s:60:"I Ain't Afraid of No Downtime! Scaling Continuous Deployment";s:4:"link";s:86:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/tUXFMvK_Hn0/i-aint-afraid-no-downtime";s:11:"description";s:499:"I was recently at the 
+DevOpsDays conference, where I got into a conversation about build 
+automation.  I mentioned how we practice continuous deployment, so we 
+may deploy to production 20 times a day.  The guy replied, &quot;That sounds 
+great for some tiny startup, but what would happen if you had actual 
+users?&quot;
+      Preview Text:&nbsp;
+    
+            
+                    We&#039;ve...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/tUXFMvK_Hn0" height="1" width="1"/>";s:8:"comments";s:65:"http://java.dzone.com/articles/i-aint-afraid-no-downtime#comments";s:8:"category";s:20:"DevOpsInfrastructure";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63565";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Mon, 16 Apr 2012 13:53:18 -0400";s:9:"readcount";s:3:"922";s:12:"commentcount";s:1:"1";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:6:"codypo";s:19:"submitter_userimage";s:64:"http://java.dzone.com/sites/all/files/avatars/picture-953467.jpg";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Mon, 16 Apr 2012 17:53:18 +0000";s:2:"dc";a:1:{s:7:"creator";s:6:"codypo";}s:4:"guid";s:30:"63565 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:56:"http://java.dzone.com/articles/i-aint-afraid-no-downtime";}s:7:"summary";s:499:"I was recently at the 
+DevOpsDays conference, where I got into a conversation about build 
+automation.  I mentioned how we practice continuous deployment, so we 
+may deploy to production 20 times a day.  The guy replied, &quot;That sounds 
+great for some tiny startup, but what would happen if you had actual 
+users?&quot;
+      Preview Text:&nbsp;
+    
+            
+                    We&#039;ve...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/tUXFMvK_Hn0" height="1" width="1"/>";s:14:"date_timestamp";i:1334598798;}i:7;a:14:{s:5:"title";s:59:"Why Poor Data Classification in Government Will Impact BYOD";s:4:"link";s:91:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/qgyVafMMJr8/why-poor-data-classification-0";s:11:"description";s:501:"In recent discussions with IT leaders from both federal and 
+Department of Defense sides of US government, representatives stated 
+that they are having a heck of a time accommodating expansive growth in 
+mobile computing. This is critical given that today, in most cases, 
+agencies and departments still have control over which mobile devices 
+can be used.
+      Preview Text:&nbsp;
+    
+           ...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/qgyVafMMJr8" height="1" width="1"/>";s:8:"comments";s:76:"http://architects.dzone.com/articles/why-poor-data-classification-0#comments";s:8:"category";s:16:"CloudOpinionpaas";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63563";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Mon, 16 Apr 2012 13:38:35 -0400";s:9:"readcount";s:3:"924";s:12:"commentcount";s:1:"0";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:12:"jpmorgenthal";s:19:"submitter_userimage";s:64:"http://java.dzone.com/sites/all/files/avatars/picture-417102.jpg";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Mon, 16 Apr 2012 17:38:35 +0000";s:2:"dc";a:1:{s:7:"creator";s:12:"jpmorgenthal";}s:4:"guid";s:30:"63563 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:67:"http://architects.dzone.com/articles/why-poor-data-classification-0";}s:7:"summary";s:501:"In recent discussions with IT leaders from both federal and 
+Department of Defense sides of US government, representatives stated 
+that they are having a heck of a time accommodating expansive growth in 
+mobile computing. This is critical given that today, in most cases, 
+agencies and departments still have control over which mobile devices 
+can be used.
+      Preview Text:&nbsp;
+    
+           ...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/qgyVafMMJr8" height="1" width="1"/>";s:14:"date_timestamp";i:1334597915;}i:8;a:14:{s:5:"title";s:54:"Developer Productivity is Important - Reality or Myth?";s:4:"link";s:83:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/-P5GXYWv4xg/developer-productivity";s:11:"description";s:500:"A while back, I read a post by Rob Conery
+ in which he discussed both his thoughts on developer productivity in 
+relation to the creation of a new OS project (ASP MVP), and how he may 
+have thought that in some instances hiding behind WebForms and not 
+touching MVC was really just laziness or ignorance mistaken for 
+productivity.
+      Preview Text:&nbsp;
+    
+            
+                    If...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/-P5GXYWv4xg" height="1" width="1"/>";s:8:"comments";s:61:"http://css.dzone.com/articles/developer-productivity#comments";s:8:"category";s:29:"ASP.NETOpinionCareersIndustry";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63527";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Mon, 16 Apr 2012 08:07:34 -0400";s:9:"readcount";s:4:"3191";s:12:"commentcount";s:1:"0";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:12:"dougrathbone";s:19:"submitter_userimage";s:64:"http://java.dzone.com/sites/all/files/avatars/picture-738775.jpg";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Mon, 16 Apr 2012 12:07:34 +0000";s:2:"dc";a:1:{s:7:"creator";s:12:"dougrathbone";}s:4:"guid";s:30:"63527 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:52:"http://css.dzone.com/articles/developer-productivity";}s:7:"summary";s:500:"A while back, I read a post by Rob Conery
+ in which he discussed both his thoughts on developer productivity in 
+relation to the creation of a new OS project (ASP MVP), and how he may 
+have thought that in some instances hiding behind WebForms and not 
+touching MVC was really just laziness or ignorance mistaken for 
+productivity.
+      Preview Text:&nbsp;
+    
+            
+                    If...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/-P5GXYWv4xg" height="1" width="1"/>";s:14:"date_timestamp";i:1334578054;}i:9;a:14:{s:5:"title";s:49:"Breaking Into Automated Infrastructure Management";s:4:"link";s:79:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/Qri29oOZQ6c/breaking-automated";s:11:"description";s:501:"Automated management of infrastructure is 
+vital for delivering highly effective IT services. But although there 
+are plenty of tools available to help implement automation, it’s still 
+common to see operations teams manually installing and managing their 
+servers, which leads to a high-maintenance infrastructure, which soaks 
+up the team’s time on firefighting and other reactive tasks.
+
+
+   ...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/Qri29oOZQ6c" height="1" width="1"/>";s:8:"comments";s:60:"http://server.dzone.com/articles/breaking-automated#comments";s:8:"category";s:30:"AutomationDevOpsInfrastructure";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63409";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Mon, 16 Apr 2012 01:56:44 -0400";s:9:"readcount";s:4:"1935";s:12:"commentcount";s:1:"0";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:4:"kief";s:19:"submitter_userimage";s:64:"http://java.dzone.com/sites/all/files/avatars/picture-473342.jpg";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Mon, 16 Apr 2012 05:56:44 +0000";s:2:"dc";a:1:{s:7:"creator";s:4:"kief";}s:4:"guid";s:30:"63409 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:51:"http://server.dzone.com/articles/breaking-automated";}s:7:"summary";s:501:"Automated management of infrastructure is 
+vital for delivering highly effective IT services. But although there 
+are plenty of tools available to help implement automation, it’s still 
+common to see operations teams manually installing and managing their 
+servers, which leads to a high-maintenance infrastructure, which soaks 
+up the team’s time on firefighting and other reactive tasks.
+
+
+   ...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/Qri29oOZQ6c" height="1" width="1"/>";s:14:"date_timestamp";i:1334555804;}i:10;a:14:{s:5:"title";s:35:"Lucene and Solr 3.6 Compared to 3.5";s:4:"link";s:91:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/-DHRJ-RvpCk/lucene-and-solr-36-compared-35";s:11:"description";s:500:"Apache Lucene and Solr PMC announced another version of Apache Lucene library and Apache Solr search server numbred 3.6. When comparing to the 3.5 there were some major changes introduced about which you can read in the rest of the post.
+Some of the changes in version 3.6 compared to 3.5:
+      Preview Text:&nbsp;
+    
+            
+                    Apache Lucene and Solr PMC announced another...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/-DHRJ-RvpCk" height="1" width="1"/>";s:8:"comments";s:70:"http://java.dzone.com/articles/lucene-and-solr-36-compared-35#comments";s:8:"category";s:16:"ApacheluceneSolr";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63367";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Mon, 16 Apr 2012 01:56:44 -0400";s:9:"readcount";s:4:"2370";s:12:"commentcount";s:1:"0";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:3:"gr0";s:19:"submitter_userimage";s:64:"http://java.dzone.com/sites/all/files/avatars/picture-903853.jpg";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Mon, 16 Apr 2012 05:56:44 +0000";s:2:"dc";a:1:{s:7:"creator";s:3:"gr0";}s:4:"guid";s:30:"63367 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:61:"http://java.dzone.com/articles/lucene-and-solr-36-compared-35";}s:7:"summary";s:500:"Apache Lucene and Solr PMC announced another version of Apache Lucene library and Apache Solr search server numbred 3.6. When comparing to the 3.5 there were some major changes introduced about which you can read in the rest of the post.
+Some of the changes in version 3.6 compared to 3.5:
+      Preview Text:&nbsp;
+    
+            
+                    Apache Lucene and Solr PMC announced another...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/-DHRJ-RvpCk" height="1" width="1"/>";s:14:"date_timestamp";i:1334555804;}i:11;a:14:{s:5:"title";s:38:"The Intersection of IPv6 and the Cloud";s:4:"link";s:89:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/pYaPuxWkIro/intersection-ipv67-and-cloud";s:11:"description";s:413:"The Cloudcast - Eps.25 - &quot;The Intersection of IPv6 and Cloud&quot;
+Date: D
+      Preview Text:&nbsp;
+    
+            
+                    Dr. Chip Popoviciu of Nephos6 and Shannon McFarland of Cisco joined the Cloudcast for a discussion of how cloud computing will be affected by the shift from IPv4 to IPv6.<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/pYaPuxWkIro" height="1" width="1"/>";s:8:"comments";s:74:"http://architects.dzone.com/articles/intersection-ipv67-and-cloud#comments";s:8:"category";s:26:"CiscoCloudIaaSIPv6paasSaaS";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63419";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Mon, 16 Apr 2012 00:52:31 -0400";s:9:"readcount";s:4:"1607";s:12:"commentcount";s:1:"0";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:8:"bgracely";s:19:"submitter_userimage";s:64:"http://java.dzone.com/sites/all/files/avatars/picture-884743.png";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Mon, 16 Apr 2012 04:52:31 +0000";s:2:"dc";a:1:{s:7:"creator";s:8:"bgracely";}s:4:"guid";s:30:"63419 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:65:"http://architects.dzone.com/articles/intersection-ipv67-and-cloud";}s:7:"summary";s:413:"The Cloudcast - Eps.25 - &quot;The Intersection of IPv6 and Cloud&quot;
+Date: D
+      Preview Text:&nbsp;
+    
+            
+                    Dr. Chip Popoviciu of Nephos6 and Shannon McFarland of Cisco joined the Cloudcast for a discussion of how cloud computing will be affected by the shift from IPv4 to IPv6.<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/pYaPuxWkIro" height="1" width="1"/>";s:14:"date_timestamp";i:1334551951;}i:12;a:14:{s:5:"title";s:33:"Naked Javascript - Object Basics ";s:4:"link";s:91:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/r4XW64h12ag/naked-javascript-object-basics";s:11:"description";s:501:"In this series- Naked JavaScript,
+ we are going to delve into the gory details of javascript and 
+extensively elaborate on its features like objects, functions, classes, 
+inheritance, prototypes and closures.
+      Preview Text:&nbsp;
+    
+            
+                    JavaScript deals heavily with objects. It deals with them at so many levels that sometimes its unfathomable if you are used to...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/r4XW64h12ag" height="1" width="1"/>";s:8:"comments";s:70:"http://java.dzone.com/articles/naked-javascript-object-basics#comments";s:8:"category";s:18:"TutorialJavascript";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63191";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Mon, 16 Apr 2012 00:43:02 -0400";s:9:"readcount";s:4:"1812";s:12:"commentcount";s:1:"0";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:10:"ryansukale";s:19:"submitter_userimage";s:64:"http://java.dzone.com/sites/all/files/avatars/picture-439429.jpg";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Mon, 16 Apr 2012 04:43:02 +0000";s:2:"dc";a:1:{s:7:"creator";s:10:"ryansukale";}s:4:"guid";s:30:"63191 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:61:"http://java.dzone.com/articles/naked-javascript-object-basics";}s:7:"summary";s:501:"In this series- Naked JavaScript,
+ we are going to delve into the gory details of javascript and 
+extensively elaborate on its features like objects, functions, classes, 
+inheritance, prototypes and closures.
+      Preview Text:&nbsp;
+    
+            
+                    JavaScript deals heavily with objects. It deals with them at so many levels that sometimes its unfathomable if you are used to...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/r4XW64h12ag" height="1" width="1"/>";s:14:"date_timestamp";i:1334551382;}i:13;a:14:{s:5:"title";s:30:"The Visitor Pattern Re-visited";s:4:"link";s:87:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/Vl7Ubgv4MTA/visitor-pattern-re-visited";s:11:"description";s:499:"The visitor pattern is one of the most overrated and yet 
+underestimated patterns in object-oriented design. Overrated, because it
+ is often chosen too quickly (possibly by an architecture astronaut),
+ and then bloats an otherwise very simple design, when added in the 
+wrong way. Underestimated, because it can be very powerful, if you don’t
+ follow the school-book example. Let’s have a look...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/Vl7Ubgv4MTA" height="1" width="1"/>";s:8:"comments";s:66:"http://java.dzone.com/articles/visitor-pattern-re-visited#comments";s:8:"category";s:12:"JavaPatterns";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63185";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Mon, 16 Apr 2012 00:35:35 -0400";s:9:"readcount";s:4:"2410";s:12:"commentcount";s:1:"1";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:20:"lukas.eder@gmail.com";s:19:"submitter_userimage";s:64:"http://java.dzone.com/sites/all/files/avatars/picture-845183.jpg";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Mon, 16 Apr 2012 04:35:35 +0000";s:2:"dc";a:1:{s:7:"creator";s:20:"lukas.eder@gmail.com";}s:4:"guid";s:30:"63185 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:57:"http://java.dzone.com/articles/visitor-pattern-re-visited";}s:7:"summary";s:499:"The visitor pattern is one of the most overrated and yet 
+underestimated patterns in object-oriented design. Overrated, because it
+ is often chosen too quickly (possibly by an architecture astronaut),
+ and then bloats an otherwise very simple design, when added in the 
+wrong way. Underestimated, because it can be very powerful, if you don’t
+ follow the school-book example. Let’s have a look...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/Vl7Ubgv4MTA" height="1" width="1"/>";s:14:"date_timestamp";i:1334550935;}i:14;a:14:{s:5:"title";s:46:"Evaluating an Open Source Project’s Security";s:4:"link";s:83:"http://feeds.dzone.com/~r/javalobby/frontpage/~3/Y4jmghfAxrE/evaluating-open-source";s:11:"description";s:500:"Last week I wrote about how important it is to pay attention
+ to the security of the OSS projects you depend on.  This isn’t just a 
+one-time responsibility when you are trying to choose which component to
+ depend on, this is an ongoing requirement.   Even if you use the most 
+secure OSS projects out there, if you don’t pay attention to security 
+updates, it is all for nothing.
+      Preview...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/Y4jmghfAxrE" height="1" width="1"/>";s:8:"comments";s:62:"http://java.dzone.com/articles/evaluating-open-source#comments";s:8:"category";s:18:"OpinionOpen Source";s:3:"wfw";a:1:{s:10:"commentrss";s:37:"http://java.dzone.com/crss/node/63183";}s:2:"dz";a:6:{s:10:"submitdate";s:31:"Mon, 16 Apr 2012 00:33:06 -0400";s:9:"readcount";s:4:"1014";s:12:"commentcount";s:1:"0";s:9:"submitter";s:1:" ";s:18:"submitter_username";s:5:"tmo9d";s:19:"submitter_userimage";s:64:"http://java.dzone.com/sites/all/files/avatars/picture-157981.jpg";}s:9:"submitter";s:3:"
+ 
+";s:7:"pubdate";s:31:"Mon, 16 Apr 2012 04:33:06 +0000";s:2:"dc";a:1:{s:7:"creator";s:5:"tmo9d";}s:4:"guid";s:30:"63183 at http://java.dzone.com";s:10:"feedburner";a:1:{s:8:"origlink";s:53:"http://java.dzone.com/articles/evaluating-open-source";}s:7:"summary";s:500:"Last week I wrote about how important it is to pay attention
+ to the security of the OSS projects you depend on.  This isn’t just a 
+one-time responsibility when you are trying to choose which component to
+ depend on, this is an ongoing requirement.   Even if you use the most 
+secure OSS projects out there, if you don’t pay attention to security 
+updates, it is all for nothing.
+      Preview...<img src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/Y4jmghfAxrE" height="1" width="1"/>";s:14:"date_timestamp";i:1334550786;}}s:7:"channel";a:5:{s:5:"title";s:53:"Javalobby - The heart of the Java developer community";s:4:"link";s:22:"http://java.dzone.com/";s:8:"language";s:2:"en";s:10:"feedburner";a:1:{s:9:"feedflare";s:162:"Subscribe with My Yahoo!Subscribe with NewsGatorSubscribe with My AOLSubscribe with BloglinesSubscribe with NetvibesSubscribe with GoogleSubscribe with Pageflakes";}s:7:"tagline";N;}s:9:"textinput";a:0:{}s:5:"image";a:0:{}s:9:"feed_type";s:3:"RSS";s:12:"feed_version";s:3:"2.0";s:8:"encoding";s:5:"UTF-8";s:16:"_source_encoding";s:0:"";s:5:"ERROR";s:0:"";s:7:"WARNING";s:0:"";s:19:"_CONTENT_CONSTRUCTS";a:6:{i:0;s:7:"content";i:1;s:7:"summary";i:2;s:4:"info";i:3;s:5:"title";i:4;s:7:"tagline";i:5;s:9:"copyright";}s:16:"_KNOWN_ENCODINGS";a:3:{i:0;s:5:"UTF-8";i:1;s:8:"US-ASCII";i:2;s:10:"ISO-8859-1";}s:5:"stack";a:0:{}s:9:"inchannel";b:0;s:6:"initem";b:0;s:9:"incontent";b:0;s:11:"intextinput";b:0;s:7:"inimage";b:0;s:17:"current_namespace";b:0;s:4:"etag";s:29:"Ogkv+yJbMsdS2qUfllOqlDaVL4E
+";s:13:"last_modified";s:31:"Tue, 17 Apr 2012 09:13:56 GMT
+";}
