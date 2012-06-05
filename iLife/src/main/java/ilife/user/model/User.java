@@ -3,6 +3,8 @@ package ilife.user.model;
 import ilife.common.model.LabelValue;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -33,10 +35,11 @@ import org.springframework.security.core.userdetails.UserDetails;
  * 
  */
 @Entity
-@Table(name = "user")
+@Table(name = "t_user")
 @NamedQueries({
 		@NamedQuery(name = "findUserByName", query = "select obj from User obj where obj.username=:username"),
 		@NamedQuery(name = "findPasswordByName", query = "select obj.password from User obj where obj.username=:username") })
+	
 public class User implements UserDetails {
 
 	private static final long serialVersionUID = 1586548162553407141L;
@@ -51,19 +54,35 @@ public class User implements UserDetails {
 	private String email; // required; unique
 	private String phoneNumber;
 	private String website;
-	private Integer version;
 	private Set<Role> roles = new HashSet<Role>();
 	private boolean enabled;
 	private boolean accountExpired;
 	private boolean accountLocked;
 	private boolean credentialsExpired;
 
+	private Set<Group> groups = new HashSet<Group>();
+	
 	/**
 	 * Default constructor - creates a new instance with no values set.
 	 */
 	public User() {
 	}
 
+    public User(String username, String password, boolean enabled, boolean accountExpired,
+            boolean credentialsExpired, boolean accountLocked, Set<? extends Role> authorities) {
+
+        if (((username == null) || "".equals(username)) || (password == null)) {
+            throw new IllegalArgumentException("Cannot pass null or empty values to constructor");
+        }
+
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+        this.accountExpired = accountExpired;
+        this.credentialsExpired = credentialsExpired;
+        this.accountLocked = accountLocked;
+        this.roles = Collections.unmodifiableSet(authorities);
+    }
 	/**
 	 * Create a new instance and set the username.
 	 * 
@@ -180,11 +199,6 @@ public class User implements UserDetails {
 		return authorities;
 	}
 
-	@Version
-	public Integer getVersion() {
-		return version;
-	}
-
 	@Column(name = "account_enabled")
 	public boolean isEnabled() {
 		return enabled;
@@ -221,6 +235,12 @@ public class User implements UserDetails {
 	@Column(name = "credentials_expired", nullable = false)
 	public boolean isCredentialsExpired() {
 		return credentialsExpired;
+	}
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "user_group", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = @JoinColumn(name = "group_id"))
+	public Set<Group> getGroups() {
+		return groups;
 	}
 
 	/**
@@ -276,10 +296,6 @@ public class User implements UserDetails {
 		this.roles = roles;
 	}
 
-	public void setVersion(Integer version) {
-		this.version = version;
-	}
-
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
@@ -294,6 +310,11 @@ public class User implements UserDetails {
 
 	public void setCredentialsExpired(boolean credentialsExpired) {
 		this.credentialsExpired = credentialsExpired;
+	}
+
+
+	public void setGroups(Set<Group> groups) {
+		this.groups = groups;
 	}
 
 	/**
