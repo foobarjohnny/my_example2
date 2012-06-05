@@ -8,6 +8,10 @@
 		<class>ilife.music.model.Artist</class>
 		<class>ilife.music.model.Genre</class>
 		<class>ilife.music.model.Album</class>
+		<class>ilife.user.model.User</class>
+		<class>ilife.user.model.Role</class>
+		<class>ilife.user.model.Group</class>
+		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	</persistence-unit>
 </persistence>
