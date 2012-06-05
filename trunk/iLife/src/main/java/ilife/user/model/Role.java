@@ -19,7 +19,7 @@ import org.springframework.security.core.GrantedAuthority;
  * 
  */
 @Entity
-@Table(name = "role")
+@Table(name = "t_role")
 @NamedQueries({ @NamedQuery(name = "findRoleByName", query = "select r from Role r where r.name = :name ") })
 public class Role implements Serializable, GrantedAuthority {
 	private static final long serialVersionUID = -3583718150935910279L;

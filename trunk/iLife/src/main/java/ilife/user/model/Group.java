@@ -10,13 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "group")
+@Table(name = "t_group")
 public class Group implements Serializable {
 
 	private static final long serialVersionUID = 760774790479778416L;
 	private Long id;
 	private String name;
 	private String description;
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
