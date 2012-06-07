@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
@@ -17,12 +16,12 @@
 		<property name="jdbcUrl" value="${jdbc.url}" />
 		<property name="user" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
-		
+
 		<property name="maxPoolSize" value="${c3p0.maxPoolSize}" />
 		<property name="minPoolSize" value="${c3p0.minPoolSize}" />
 		<property name="maxIdleTime" value="${c3p0.maxIdleTime}" />
 		<property name="initialPoolSize" value="${c3p0.initialPoolSize}" />
-		<property name="preferredTestQuery" value="${c3p0.preferredTestQuery}"/>
+		<property name="preferredTestQuery" value="${c3p0.preferredTestQuery}" />
 		<property name="idleConnectionTestPeriod" value="${c3p0.idleConnectionTestPeriod}" />
 	</bean>
 
