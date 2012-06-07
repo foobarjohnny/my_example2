@@ -3,10 +3,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>发生错误了！</title>
+<title>access denied！</title>
 </head>
 <body>
-
-
+	<h1>禁止访问</h1>
 </body>
 </html>
