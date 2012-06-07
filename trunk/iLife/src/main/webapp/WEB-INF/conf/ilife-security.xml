@@ -6,10 +6,9 @@
                     http://www.springframework.org/schema/security 
                     http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-	<http>
+	<http access-denied-page="/accessDenied">
 		<form-login login-page="/login" default-target-url="/welcome" authentication-failure-url="/login" />
 		<logout logout-success-url="/logout" />
-		<access-denied-handler error-page="/accessDenied" />
 		<remember-me />
 		<session-management>
 			<concurrency-control max-sessions="1" error-if-maximum-exceeded="false" expired-url="/login" />
@@ -17,7 +16,6 @@
 		<intercept-url pattern="/about" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/signup" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-
 	</http>
 
 	<authentication-manager>
