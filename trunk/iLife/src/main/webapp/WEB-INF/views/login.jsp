@@ -7,40 +7,31 @@
 </head>
 
 <body>
-	<section>
-		<c:if test="${not empty param.error}">
-			<font color="red"> 登录失败, <c:out
-					value="${SPRING_SECURITY_LAST_EXCEPTION.message }"></c:out>
-	
-			</font>
-		</c:if>
-		<c:if test="${not empty param.session_expired }">
-			<font color="blue">
-			会话过期，请重新登录
-			</font>
-		</c:if>
-		
-		<form action="j_spring_security_check" method="post">
-			<table>
-				<tr>
-					<td>用户:</td>
-					<td><input type='text' name='j_username'
-						value="${sessionScope['SPRING_SECURITY_LAST_USERNAME']}"></td>
-				</tr>
-				<tr>
-					<td>密码:</td>
-					<td><input type='password' name='j_password'></td>
-				</tr>
-				<tr>
-					<td>记住我</td>
-					<td><input type="checkbox" name="_spring_security_remember_me"/></td>
-				</tr>
-				<tr>
-					<td><input name="reset" type="reset"></td>
-					<td><input name="submit" type="submit"></td>
-				</tr>
-			</table>
-		</form>
-	</section>
+	<div class="accounts-form">
+			<h2>登录您的帐号</h2>
+			<hr class="small"/>
+			<form action="j_spring_security_check" method="post" class="well" >
+				<div id="errors">
+					<c:if test="${not empty param.error}">
+						<font color="red"> 登录失败, 
+							<c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message }"></c:out>
+						</font>
+					</c:if>
+					<c:if test="${not empty param.session_expired }">
+						<font color="blue">
+						会话过期，请重新登录
+						</font>
+					</c:if>
+				</div>
+				<label style="text-align: left">您的邮箱</label>
+				<input type="text" class="span5" name="j_username" value="${sessionScope['SPRING_SECURITY_LAST_USERNAME']}" placeholder="somebody@someplace.com">
+				<label style="text-align: left">您的密码</label>
+				<input type="password" class="span5" name="j_password" placeholder="**********">
+				<div class="form-actions">
+		            <button class="btn btn-primary btn-large" type="submit">马上登录</button>
+	            </div>
+			</form>
+			<p class="help-block"><a href="/iforget">忘记密码</a>&nbsp;.&nbsp;<a href="/signup">没有帐号</a></p>
+	</div>
 </body>
 </html>
