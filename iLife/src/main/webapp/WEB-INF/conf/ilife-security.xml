@@ -6,12 +6,12 @@
                     http://www.springframework.org/schema/security 
                     http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-	<http access-denied-page="/accessDenied">
-		<form-login login-page="/login" default-target-url="/welcome" authentication-failure-url="/login" />
+	<http access-denied-page="/accessDenied" >
+		<form-login login-page="/login" default-target-url="/welcome" authentication-failure-url="/login?error=true" />
 		<logout logout-success-url="/logout" />
 		<remember-me />
 		<session-management>
-			<concurrency-control max-sessions="1" error-if-maximum-exceeded="false" expired-url="/login" />
+			<concurrency-control max-sessions="1" error-if-maximum-exceeded="false" expired-url="/login?session_expired=true" />
 		</session-management>
 		<intercept-url pattern="/about" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/signup" access="IS_AUTHENTICATED_ANONYMOUSLY" />
@@ -21,11 +21,12 @@
 	<authentication-manager>
 		<authentication-provider>
 			<password-encoder hash="md5" />
-			<jdbc-user-service data-source-ref="dataSource" users-by-username-query="select username,password, enabled from user where username=?"
-
-				authorities-by-username-query="
-					select u.username, ur.authority from user u, user_role ur 
-					where u.user_id = ur.user_id and u.username =?  " />
+			<user-service>
+				<!-- test environment-->
+				<!-- user/password,admin/password -->
+				<user name="user@qq.com" authorities="ROLE_USER" password="286755fad04869ca523320acce0dc6a4"/>
+				<user name="admin@qq.com" authorities="ROLE_ADMIN" password="286755fad04869ca523320acce0dc6a4"/>
+			</user-service>			
 		</authentication-provider>
 	</authentication-manager>
 </beans:beans>   
