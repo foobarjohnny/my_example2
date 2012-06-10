@@ -3,6 +3,7 @@ package ilife.music.model;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,11 +19,16 @@ public class Artist {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@Column(length = 50, nullable = false)
 	private String name;
+	
 	@Transient
 	private Set<String> images;
-	@ManyToMany(mappedBy="artists")
+	
+	@ManyToMany(mappedBy = "artists")
 	private List<Song> songs;
+	
 	private String description;
 
 	public Long getId() {
@@ -64,6 +70,5 @@ public class Artist {
 	public void setSongs(List<Song> songs) {
 		this.songs = songs;
 	}
-	
 
 }

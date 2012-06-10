@@ -3,6 +3,7 @@ package ilife.music.model;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,9 @@ public class Album {
 	@Id
 	@GeneratedValue
 	private Long id;
+	@Column(length=50,nullable=false)
 	private String name;
+
 	private String image;
 	
 	public Album() {
