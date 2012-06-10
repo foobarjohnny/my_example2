@@ -16,27 +16,9 @@ public class LoginController {
 
 		model.addAttribute("username", name);
 		model.addAttribute("message", "Spring Security login + database example");
-		return "hello";
+		return "index";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() {
-		return "login";
-	}
-
-	@RequestMapping(value = "/loginfailed", method = RequestMethod.GET)
-	public String loginerror(ModelMap model) {
-
-		model.addAttribute("error", "true");
-		return "login";
-
-	}
-
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout(ModelMap model) {
-
-		return "login";
-
-	}
-
+	
+	
 }

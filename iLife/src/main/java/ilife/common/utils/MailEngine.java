@@ -5,10 +5,10 @@ import java.util.Map;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.VelocityException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
@@ -23,7 +23,8 @@ import org.springframework.ui.velocity.VelocityEngineUtils;
  * 
  */
 public class MailEngine {
-    private final Log log = LogFactory.getLog(MailEngine.class);
+    private final Logger logger = LoggerFactory.getLogger(MailEngine.class);
+    
     private MailSender mailSender;
     private VelocityEngine velocityEngine;
     private String defaultFrom;
@@ -59,7 +60,7 @@ public class MailEngine {
                                                             templateName, model);
         } catch (VelocityException e) {
             e.printStackTrace();
-            log.error(e.getMessage());
+            logger.error(e.getMessage());
         }
 
         msg.setText(result);
@@ -75,7 +76,7 @@ public class MailEngine {
         try {
             mailSender.send(msg);
         } catch (MailException ex) {
-            log.error(ex.getMessage());
+            logger.error(ex.getMessage());
             throw ex;
         }
     }
