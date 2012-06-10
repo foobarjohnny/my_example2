@@ -22,6 +22,7 @@
 	<mvc:view-controller path="/login" view-name="login"/>
 	<mvc:view-controller path="/joinus" view-name="joinus"/>
 	<mvc:view-controller path="/signup" view-name="signup"/>
+	<mvc:view-controller path="/blog" view-name="blog"/>
 	<mvc:view-controller path="/accessDenied" view-name="error/403"/>
 	
 	<!-- Configures Handler Interceptors -->
