@@ -1,0 +1,22 @@
+/**
+* our custom style write here.
+*
+*/
+body {
+	background: url("/resources/images/bg-page.jpg") no-repeat scroll center 40px white;
+	/* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+footer {
+	text-align: center;
+}
+
+.page {
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
+	margin: 70px 0 0;
+	padding: 30px 12% 60px;
+}
+.navbar-inner {
+	padding-top: 4px;
+	
+}
