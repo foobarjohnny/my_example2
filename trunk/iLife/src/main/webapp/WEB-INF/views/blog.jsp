@@ -7,14 +7,24 @@
 </head>
 <body>
 	<div class="page">
-        <h2>Our Principle!</h2>
+        <h3>Our Principle!</h3>
         <p>我们是一群充满激情，我们生活在充斥着斗志与执迷.我们也曾经奋斗，现在依然奋斗着……<br>
         </p>
-        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+        <p><a class="btn btn-primary btn-small">Learn more &raquo;</a></p>
         <hr />
-        <h2>Our Dream</h2>
+        <h3>Our Dream</h3>
 		<p>
 			Build the simple code and skeleton!
+		</p>
+        <hr />
+        <h3>what we can do</h3>
+		<p>
+			stay foolish stay hungry!
+		</p>
+        <hr />
+        <h3>why do we need this place</h3>
+		<p>
+			just for life,for money,for my girl.^_^
 		</p>
 	</div>
 </body>
