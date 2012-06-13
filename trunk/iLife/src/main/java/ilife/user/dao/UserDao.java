@@ -5,7 +5,6 @@ import ilife.user.model.User;
 
 import java.util.List;
 
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +26,7 @@ public interface UserDao extends GenericDao<User, Long> {
 	 *             thrown when user not found in database
 	 */
 	@Transactional
-	UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
+	User loadUserByUsername(String username) throws UsernameNotFoundException;
 
 	/**
 	 * Gets a list of users ordered by the uppercase version of their username.
@@ -37,7 +36,7 @@ public interface UserDao extends GenericDao<User, Long> {
 	List<User> getUsers();
 
 	/**
-	 * .
+	 * 
 	 * 
 	 * @param user
 	 *            the object to be saved
@@ -54,4 +53,11 @@ public interface UserDao extends GenericDao<User, Long> {
 	 */
 	@Transactional(propagation = Propagation.NOT_SUPPORTED)
 	String getUserPassword(String username);
+
+	/**
+	 * 根据激活码激活用户帐号
+	 * @param activationCode
+	 * @return
+	 */
+	public boolean activateUser(String activationCode);
 }
