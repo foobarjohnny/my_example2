@@ -3,36 +3,52 @@
 *
 */
 body {
-	background: url("/resources/images/bg-page.jpg") no-repeat scroll center 40px white;
+	background: url("/resources/images/bg-page.jpg") no-repeat scroll center
+		40px white;
 	/* 60px to make the container go all the way to the bottom of the topbar */
 }
 
 footer {
 	text-align: center;
 }
-article.container{
+
+article.container {
 	margin-top: 50px;
 }
+
 .page {
 	background: none repeat scroll 0 0 #FFFFFF;
 	margin: 70px 0 0;
 	padding: 30px 12% 60px;
+	-moz-border-radius: 15px; /* Firefox */ -webkit-border-radius : 15px;
+	/* Safari 和 Chrome */
 	border-radius: 15px; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
-	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25); /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
-	behavior: url(ie-css3.htc); /* 通知IE浏览器调用脚本作用于'box'类 */
+	-moz-box-shadow: 10px 10px 20px #BBBBBB; /* Firefox */
+	-webkit-box-shadow : 10px 10px 20px #BBBBBB; /* Safari 和 Chrome */
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+	/* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+	behavior: url(ie-css3.htc);
+	-webkit-box-shadow: 10px 10px 20px #BBBBBB;
+	-webkit-border-radius: 15px; /* 通知IE浏览器调用脚本作用于'box'类 */
 }
+
 .navbar-inner {
 	padding-top: 4px;
 }
+
 .accounts-form {
-    background: none repeat scroll 0 0 #FFFFFF;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.18);
-    margin: 50px auto 30px;
-    padding: 30px 0 0;
-    text-align: center;
-    width: 500px;
+	background: none repeat scroll 0 0 #FFFFFF;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+	margin: 50px auto 30px;
+	padding: 30px 0 0;
+	text-align: center;
+	width: 500px;
+	-moz-border-radius: 15px; /* Firefox */
+	-webkit-border-radius: 15px; /* Safari 和 Chrome */
 	border-radius: 15px; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
-	box-shadow: 10px 10px 20px #BBBBBB; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+	-moz-box-shadow: 10px 10px 20px #BBBBBB; /* Firefox */
+	-webkit-box-shadow: 10px 10px 20px #BBBBBB; /* Safari 和 Chrome */
+	box-shadow: 10px 10px 20px #BBBBBB;
+	/* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
 	behavior: url(ie-css3.htc); /* 通知IE浏览器调用脚本作用于'box'类 */
-    
 }
