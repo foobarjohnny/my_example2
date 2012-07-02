@@ -9,8 +9,8 @@
 		<meta charset="utf-8">
 	
 		<!-- Le styles -->
-		<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
-		<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="resources/css/bootstrap.css" rel="stylesheet">
+		<link href="resources/css/bootstrap-responsive.css" rel="stylesheet">
 		<link href="resources/css/style.css" rel="stylesheet">
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
@@ -37,6 +37,17 @@
 		<script src="resources/scripts/bootstrap-collapse.js"></script>
 		<script src="resources/scripts/bootstrap-carousel.js"></script>
 		<script src="resources/scripts/bootstrap-typeahead.js"></script>
+		<script type="text/javascript" language="javascript">
+			$(document).ready(function(){
+				var IE6 = false /*@cc_on || @_jscript_version < 5.7 @*/;
+				var gteIE7 = false /*@cc_on || @_jscript_version >= 5.7 @*/;
+				// Disable IE6 browsers as UI does not support it
+				if (IE6 == true) {
+					alert("亲,请使用IE7+,FireFox3+,Chrome或Safari浏览,有惊喜哦！");
+					return;
+				}
+			});
+		</script>
 		<sitemesh:write property='head' />
 	</head>
 	<body>
