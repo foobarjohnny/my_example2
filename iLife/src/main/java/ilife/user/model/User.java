@@ -38,8 +38,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Table(name = "t_user")
 @NamedQueries({
 		@NamedQuery(name = "findUserByName", query = "select obj from User obj where obj.username=:username"),
-		@NamedQuery(name = "findPasswordByName", query = "select obj.password from User obj where obj.username=:username") })
-	
+		@NamedQuery(name = "findPasswordByName", query = "select obj.password from User obj where obj.username=:username"),
+		@NamedQuery(name = "findUserByCode", query = "select obj from User obj where obj.activationCode=:code"),
+})
 public class User implements UserDetails {
 
 	private static final long serialVersionUID = 1586548162553407141L;
@@ -59,6 +60,7 @@ public class User implements UserDetails {
 	private boolean accountExpired;
 	private boolean accountLocked;
 	private boolean credentialsExpired;
+    private String  activationCode;
 
 	private Set<Group> groups = new HashSet<Group>();
 	
@@ -242,6 +244,10 @@ public class User implements UserDetails {
 	public Set<Group> getGroups() {
 		return groups;
 	}
+	@Column(name="activation_code",nullable=false,length=32)
+	public String getActivationCode() {
+		return activationCode;
+	}
 
 	/**
 	 * @see org.springframework.security.core.userdetails.UserDetails#isCredentialsNonExpired()
@@ -315,6 +321,11 @@ public class User implements UserDetails {
 
 	public void setGroups(Set<Group> groups) {
 		this.groups = groups;
+	}
+
+
+	public void setActivationCode(String activationCode) {
+		this.activationCode = activationCode;
 	}
 
 	/**
