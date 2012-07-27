@@ -10,7 +10,7 @@
 		<form-login login-page="/login" default-target-url="/welcome" authentication-failure-url="/login?error=true" />
 		<logout logout-success-url="/logout" />
 		<remember-me />
-		<session-management>
+		<session-management >
 			<concurrency-control max-sessions="1" error-if-maximum-exceeded="false" expired-url="/login?session_expired=true" />
 		</session-management>
 		<intercept-url pattern="/about" access="IS_AUTHENTICATED_ANONYMOUSLY" />
