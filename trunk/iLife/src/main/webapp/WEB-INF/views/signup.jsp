@@ -12,7 +12,7 @@
 			<label style="text-align: left">你的名称</label>
 			<input type="text" class="span5" name="j_username" placeholder="somebody">
 			<label style="text-align: left">您的邮箱</label>
-			<input type="text" class="span5" name="email"  placeholder="somebody@someplace.com">
+			<input type="email" class="span5" name="email"  placeholder="somebody@someplace.com">
 			<label style="text-align: left">您的密码</label>
 			<input type="password" class="span5" name="j_password" placeholder="**********">
 			<div class="form-actions">

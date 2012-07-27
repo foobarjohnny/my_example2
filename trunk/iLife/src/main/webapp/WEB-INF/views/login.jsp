@@ -1,5 +1,6 @@
 <%@page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,8 @@
 
 <body>
 	<div class="accounts-form">
-			<h2>登录您的帐号</h2>
+			<h2>登录您的帐号
+			</h2>
 			<hr class="small"/>
 			<form action="j_spring_security_check" method="post" class="well" >
 				<div id="errors">
