@@ -8,7 +8,9 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-	<context:component-scan base-package="ilife" />
+	<context:component-scan base-package="ilife">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
 
 	<mvc:annotation-driven />
 	<!-- add css3 support for ie6-8 <mvc:resources location="/resources/css/ie-css3.htc" mapping="ie-css3.htc" /> -->
@@ -25,20 +27,6 @@
 	<mvc:view-controller path="/signup" view-name="signup" />
 	<mvc:view-controller path="/blog" view-name="blog" />
 	<mvc:view-controller path="/accessDenied" view-name="error/403" />
-
-	<!-- Configures Handler Interceptors -->
-	<mvc:interceptors>
-		<!-- Changes the locale when a 'locale' request parameter is sent; e.g. /?locale=de -->
-		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
-	</mvc:interceptors>
-
-	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
-	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="cacheSeconds" value="0" />
-		<property name="defaultEncoding" value="UTF-8" />
-		<!-- Do not use 0 in a production environment! -->
-		<property name="basename" value="/WEB-INF/messages/messages" />
-	</bean>
 
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
